@@ -1,0 +1,261 @@
+# =============================================================================
+# BeStMeta Metadata Schema — Video Tracking Assay Metadata Standard
+# Version: 0.1.0 (DRAFT)
+# Based on: DOI:XX.XXXX/vta-paper (BeStMeta paper, 2026)
+# License: CC-BY 4.0
+# Author: Steffi Bredemeyer
+# =============================================================================
+
+##to do: check for further exact_mappings and additional relevant close_mappings
+##to do: check all comments
+
+id: https://w3id.org/bestmeta/schema
+name: bestmeta 
+title: BeStMeta Metadata Schema
+description: >-
+  A cross-domain metadata schema for video tracking assays (VTAs) with focus on
+  ecotoxicology and biomedical research. Designed to improve FAIR compliance
+  by providing structured, machine-readable metadata for VTA datasets and
+  individual trials.
+version: 0.1.0
+license: https://creativecommons.org/licenses/by/4.0/
+
+prefixes:
+  linkml:     https://w3id.org/linkml/
+  BeStMeta:   https://w3id.org/BeStMeta/
+  OBI:        http://purl.obolibrary.org/obo/OBI_
+  EFO:        http://www.ebi.ac.uk/efo/EFO_ 
+  CHEBI:      http://purl.obolibrary.org/obo/CHEBI_
+  NCBITaxon:  http://purl.obolibrary.org/obo/NCBITaxon_
+  SWO:        http://purl.obolibrary.org/obo/SWO_
+  ma:         http://www.w3.org/ns/ma-ont#
+  ebucore:    http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#
+  dcterms:    http://purl.org/dc/terms/
+  schema: ## to be added!
+
+default_prefix: bstm
+default_range: string
+
+imports:
+  - linkml:types
+
+classes:
+
+  VTADataset:
+    description: >-
+      Top-level study and provenance metadata for a VTA dataset.
+      One record per publication or deposited dataset. Contains
+      identifying, licensing, and bibliographic information.
+    slots:
+      - dataset_id
+      - dataset_title
+      - dataset_description
+      - dataset_version
+      - dataset_license
+      - dataset_doi
+      - publication_doi
+      - dataset_created_date
+      - dataset_creator
+      - dataset_contact_email
+      - dataset_funder
+      - research_domain
+      - repository_url
+      # --- Nested classes ---
+      - experimental_conditions
+      - video_hardware
+      - acquisition_parameters
+      - tracking_analysis
+      - data_availability
+    tree_root: true
+
+  ExperimentalConditions:
+    description: >-
+      Biological and experimental conditions applicable to all trials in
+      the dataset. Covers organism identity, treatment, assay design,
+      and environmental parameters.
+    slots:
+      # Organism identity (Tier 1 mandatory)
+      - species_name
+      - species_ncbi_taxon_id
+      - strain_or_genotype
+      - sex
+      - developmental_stage
+      - developmental_stage_value
+      - developmental_stage_unit
+      - age_value
+      - age_unit
+      - body_length_value
+      - body_length_unit
+      - weight_value
+      - weight_unit
+      - n_animals_total
+      - n_animals_per_arena
+      # Assay design
+      - assay_type
+      - assay_description
+      - arena_shape
+      - arena_dimensions_value
+      - arena_dimensions_unit
+      - habituation_duration_value
+      - habituation_duration_unit
+      - habituation_protocol
+      - recording_duration_value ##maybe better to AquisitionParameters
+      - recording_duration_unit
+      - temperature_value
+      - temperature_unit
+      - light_cycle ## maybe remove or put it somewhere else?
+      - housing_conditions ##define!
+      # Exposure / treatment (ecotox & biomedical)
+      - treatment_name
+      - treatment_description
+      - exposure_compound_name
+      - exposure_compound_chebi_id
+      - exposure_concentration_value
+      - exposure_concentration_unit
+      - exposure_route
+      - exposure_duration_h
+      - solvent_vehicle
+      - control_type
+      
+    rules:
+      - description: >-
+          At least one of: developmental_stage (categorical),
+          developmental_stage_value+unit, or age_value+unit must be provided
+        any_of:
+          - slot_conditions:
+              developmental_stage:
+                required: true
+          - slot_conditions:
+              developmental_stage_value:
+                required: true
+              developmental_stage_unit:
+                required: true
+          - slot_conditions:
+              age_value:
+                required: true
+              age_unit:
+                required: true
+
+slots:
+  dataset_id:
+    identifier: true
+    required: true
+    description: Unique identifier for the dataset or study package.
+    exact_mappings:
+      - dcterms:identifier
+ 
+  dataset_title:
+    required: true
+    description: Descriptive title of the dataset.
+    exact_mappings:
+      - dcterms:title
+
+  dataset_description:
+    description: .Free-text description of the dataset and its scientific purpose
+    exact_mappings:
+      - dcterms:description
+
+  dataset_version:
+    description: Semantic version string for the dataset (e.g. 1.0.0)
+    pattern: "^\\d+\\.\\d+\\.\\d+$"
+  
+  dataset_license:
+    description: SPDX license identifier or URL (e.g. CC-BY-4.0)
+    required: true
+    exact_mappings:
+      - dcterms:license
+  
+  dataset_doi:
+    description: DOI of the deposited dataset (assigned by repository)
+    range: uri
+    required: false
+    recommended: true
+    multivalued: false
+    pattern: "^https://doi\\.org/10\\.\\d{4,}/"
+    exact_mappings:
+      - schema:identifier
+      - dcterms:identifier
+
+  publication_doi:
+    description: DOI of the publication associated with the dataset.
+    range: uri
+    required: false
+    recommended: true
+    pattern: "^https://doi\\.org/10\\.\\d{4,}/"
+    exact_mappings:
+      - schema:citation
+      - dcterms:references
+
+  dataset_created_date:
+    description: Date when the dataset was created (YYYY-MM-DD)
+    range: date
+    exact_mappings: 
+      - dcterms:created
+
+  dataset_creator:
+    description: Name(s) of data creators; use ORCID where possible
+    multivalued: true
+    exact_mappings:
+      - dcterms:creator
+
+  dataset_contact_email:
+    description: Contact email for the dataset maintainer.
+    pattern: '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
+
+  dataset_funder:
+  research_domain:
+  repository_url:
+  experimental_conditions:
+  video_hardware:
+  acquisition_parameters:
+  tracking_analysis:
+  data_availability:
+
+  
+
+  developmental_stage:
+    range: DevelopmentalStageEnum
+    required: false
+    recommended: true
+
+  developmental_stage_value:
+    range: float
+    required: false
+
+  developmental_stage_unit:
+    range: DevelopmentUnitEnum
+    required: false
+
+  age_value:
+    range: float
+    required: false
+
+  age_unit:
+    range: AgeUnitEnum
+    required: false
+
+enums:
+  DevelopmentalStageEnum:
+    permissible_values:
+      larval:
+      juvenile:
+      adult:
+      embryonic:       
+      pupal:
+      subadult:
+
+  DevelopmentUnitEnum:
+    permissible_values:
+      hpf:             # hours post fertilization
+      dpf:             # days post fertilization
+      days:
+      weeks:
+      months:
+      years:
+
+  AgeUnitEnum:
+    permissible_values:
+      days:
+      weeks:
+      months:
+      years:
