@@ -57,15 +57,22 @@ classes:
       - dataset_created_date
       - dataset_creator
       - dataset_contact_email
-      - dataset_funder
       - research_domain
-      - repository_url
+      - raw_data_repository
+      - raw_data_repository_url
+      - raw_tracking_data_format
+      - raw_tracking_data_doi
+      - analysis_code_repository_url
+      - analysis_code_doi
+      - analysis_code_repository
+      - analysis_code_repository_url
+      - analysis_code_doi
       # --- Nested classes ---
       - experimental_conditions
       - video_hardware
       - acquisition_parameters
       - tracking_analysis
-      - data_availability
+      - VTATrial
     tree_root: true
 
   ExperimentalConditions:
@@ -107,13 +114,7 @@ classes:
       - housing_conditions ##define!
       # Exposure / treatment (ecotox & biomedical)
       - treatment_name
-      - treatment_description
-      - exposure_compound_name
-      - exposure_compound_chebi_id
-      - exposure_concentration_value
-      - exposure_concentration_unit
-      - exposure_route
-      - exposure_duration_h
+      - treatment_description ## maybe better to ecotox extension
       - solvent_vehicle
       - control_type
       
@@ -137,6 +138,7 @@ classes:
                 required: true
 
 slots:
+# ---VTADataset slots---
   dataset_id:
     identifier: true
     required: true
@@ -151,7 +153,7 @@ slots:
       - dcterms:title
 
   dataset_description:
-    description: .Free-text description of the dataset and its scientific purpose
+    description: Free-text description of the dataset and its scientific purpose
     exact_mappings:
       - dcterms:description
 
@@ -202,37 +204,89 @@ slots:
     description: Contact email for the dataset maintainer.
     pattern: '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
 
-  dataset_funder:
   research_domain:
-  repository_url:
-  experimental_conditions:
-  video_hardware:
-  acquisition_parameters:
-  tracking_analysis:
-  data_availability:
+    description: Primary research domain of this study.
+    range: DomainEnum
+    required: true
 
+  raw_data_repository:
+    description: Repository where raw tracking data and/or video files are deposited.
+    range: RepositoryEnum
+  
+  raw_data_repository_url:
+    description: URL of the repository record or landing page.
+    range: uri
+    exact_mappings:
+      - dcterms:source
+
+  raw_tracking_data_format:
+    description: File format of the raw tracking data.
+    range: RawDataFormatEnum
+    multivalued: true
+
+  raw_tracking_data_doi:
+    description: DOI of the deposited raw tracking data
+    range: uri
+    pattern: "^https://doi\\.org/10\\.\\d{4,}/"
+
+  analysis_code_repository:
+    description: Repository where analysis code is hosted.
+    range: RepositoryEnum
+
+  analysis_code_repository_url:
+    description: URL of the code repository.
+    range: uri
+
+  analysis_code_doi:
+    description: DOI of the deposited analysis code.
+    range: uri
+    required: false
+    pattern: "^https://doi\\.org/10\\.\\d{4,}/"
+
+  # Nested class slots
+  experimental_conditions:
+    description: Biological and experimental conditions for this dataset
+    range: ExperimentalConditions
+    inlined: true
+
+  video_hardware:
+    description: Camera and hardware configuration
+    range: VideoHardware
+    inlined: true
+
+  acquisition_parameters:
+    description: Video acquisition and recording settings
+    range: AcquisitionParameters
+    inlined: true
+
+  tracking_analysis:
+    description: Tracking software and analysis configuration
+    range: TrackingAnalysis
+    inlined: true
+
+  VTATrial:
+    description: Per-video trial records in this dataset
+    range: VTATrial
+    multivalued: true
+    inlined: true
   
 
   developmental_stage:
     range: DevelopmentalStageEnum
-    required: false
     recommended: true
 
   developmental_stage_value:
     range: float
-    required: false
 
   developmental_stage_unit:
     range: DevelopmentUnitEnum
-    required: false
 
   age_value:
     range: float
-    required: false
 
   age_unit:
     range: AgeUnitEnum
-    required: false
+
 
 enums:
   DevelopmentalStageEnum:
@@ -259,3 +313,22 @@ enums:
       weeks:
       months:
       years:
+  
+  RepositoryEnum:
+    permissible_values: ##add more
+      Zenodo:
+      OSF:
+      Figshare:
+      Dryad:
+      journal_supplementary:
+        description: Supplementary material hosted by the journal
+
+  RawDataFormatEnum:
+    permissible_values:
+      CSV:
+      XLSX:
+      HDF5:
+      JSON:
+      ZIP:
+      PHR:
+        description: Zebrabox raw file format
