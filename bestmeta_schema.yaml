@@ -6,7 +6,6 @@
 # Author: Steffi Bredemeyer
 # =============================================================================
 
-##to do: check for further exact_mappings and additional relevant close_mappings
 ##to do: check all comments
 
 id: https://w3id.org/bestmeta/schema
@@ -20,6 +19,7 @@ description: >-
 version: 0.1.0
 license: https://creativecommons.org/licenses/by/4.0/
 
+# --- prefixes ---
 prefixes:
   linkml:     https://w3id.org/linkml/
   BeStMeta:   https://w3id.org/BeStMeta/
@@ -31,14 +31,17 @@ prefixes:
   ma:         http://www.w3.org/ns/ma-ont#
   ebucore:    http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#
   dcterms:    http://purl.org/dc/terms/
-  schema: ## to be added!
+  pav:        http://purl.org/pav/ 
+  schema:     http://schema.org/
+  dwc:        http://rs.tdwg.org/dwc/terms/
+  geno:       http://purl.obolibrary.org/obo/GENO_
 
 default_prefix: bstm
 default_range: string
 
 imports:
   - linkml:types
-
+# --- classes ---
 classes:
 
   VTADataset:
@@ -55,15 +58,14 @@ classes:
       - dataset_doi
       - publication_doi
       - dataset_created_date
-      - dataset_creator
+      - dataset_creator_name
+      - dataset_creator_orcid
       - dataset_contact_email
       - research_domain
       - raw_data_repository
       - raw_data_repository_url
       - raw_tracking_data_format
       - raw_tracking_data_doi
-      - analysis_code_repository_url
-      - analysis_code_doi
       - analysis_code_repository
       - analysis_code_repository_url
       - analysis_code_doi
@@ -72,7 +74,7 @@ classes:
       - video_hardware
       - acquisition_parameters
       - tracking_analysis
-      - VTATrial
+      -  vta_trials
     tree_root: true
 
   ExperimentalConditions:
@@ -117,7 +119,8 @@ classes:
       - treatment_description ## maybe better to ecotox extension
       - solvent_vehicle
       - control_type
-      
+
+# --- rules ---
     rules:
       - description: >-
           At least one of: developmental_stage (categorical),
@@ -136,31 +139,39 @@ classes:
                 required: true
               age_unit:
                 required: true
-
+# --- slots ---
 slots:
-# ---VTADataset slots---
+# --- VTADataset slots ---
   dataset_id:
+    description: Unique identifier for the dataset or study package.
     identifier: true
     required: true
-    description: Unique identifier for the dataset or study package.
     exact_mappings:
       - dcterms:identifier
  
   dataset_title:
-    required: true
     description: Descriptive title of the dataset.
+    required: true
     exact_mappings:
       - dcterms:title
 
   dataset_description:
     description: Free-text description of the dataset and its scientific purpose
+    required: false
+    recommended: true
     exact_mappings:
       - dcterms:description
 
   dataset_version:
     description: Semantic version string for the dataset (e.g. 1.0.0)
+    required: false
     pattern: "^\\d+\\.\\d+\\.\\d+$"
-  
+    exact_mappings:
+      primary:
+      - pav:version
+      secondary:
+      - schema:version
+      
   dataset_license:
     description: SPDX license identifier or URL (e.g. CC-BY-4.0)
     required: true
@@ -173,17 +184,18 @@ slots:
     required: false
     recommended: true
     multivalued: false
-    pattern: "^https://doi\\.org/10\\.\\d{4,}/"
+    pattern: "^https://doi\\.org/10\\.\\d{4,9}/[-._;()+/:A-Za-z0-9%]+$"
     exact_mappings:
       - schema:identifier
-      - dcterms:identifier
+    close_mappings:
+    - dcterms:identifier
 
   publication_doi:
     description: DOI of the publication associated with the dataset.
     range: uri
     required: false
     recommended: true
-    pattern: "^https://doi\\.org/10\\.\\d{4,}/"
+    pattern: "^https://doi\\.org/10\\.\\d{4,9}/[-._;()+/:A-Za-z0-9%]+$"
     exact_mappings:
       - schema:citation
       - dcterms:references
@@ -191,57 +203,97 @@ slots:
   dataset_created_date:
     description: Date when the dataset was created (YYYY-MM-DD)
     range: date
+    required: false
     exact_mappings: 
       - dcterms:created
+      - schema:creator
 
-  dataset_creator:
-    description: Name(s) of data creators; use ORCID where possible
+  dataset_creator_name:
+    description: Name(s) of data creators.
+    required: false
+    recommended: true
     multivalued: true
     exact_mappings:
       - dcterms:creator
+      - schema:creator
+  
+  dataset_creator_orcid:
+    required: false
+    recommended: true
+    multivalued: true
+    range: uri
+    pattern: '^https://orcid\.org/\d{4}-\d{4}-\d{4}-\d{3}[0-9X]$'
+    exact_mappings:
+    - schema:identifier
+    - dcterms:identifier
 
   dataset_contact_email:
+    range: string
+    required: false
+    recommended: true
     description: Contact email for the dataset maintainer.
     pattern: '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
+    exact_mappings:
+      - schema:email
 
   research_domain:
     description: Primary research domain of this study.
     range: DomainEnum
-    required: true
+    required: false
+    recommended: true
+    exact_mappings:
+      - dcterms:subject
 
   raw_data_repository:
     description: Repository where raw tracking data and/or video files are deposited.
+    required: false
+    recommended: true
     range: RepositoryEnum
   
   raw_data_repository_url:
     description: URL of the repository record or landing page.
+    required: false
+    recommended: true
     range: uri
     exact_mappings:
+      - schema:url
       - dcterms:source
 
   raw_tracking_data_format:
     description: File format of the raw tracking data.
+    required: false
+    recommended: true
     range: RawDataFormatEnum
     multivalued: true
 
   raw_tracking_data_doi:
     description: DOI of the deposited raw tracking data
+    required: false
     range: uri
-    pattern: "^https://doi\\.org/10\\.\\d{4,}/"
+    pattern: "^https://doi\\.org/10\\.\\d{4,9}/[-._;()+/:A-Za-z0-9%]+$"
+    exact_mappings:
+    - schema:identifier
+    close_mappings:
+    - dcterms:identifier
 
   analysis_code_repository:
     description: Repository where analysis code is hosted.
+    required: false
     range: RepositoryEnum
 
   analysis_code_repository_url:
     description: URL of the code repository.
+    required: false
     range: uri
+    exact_mappings:
+      - schema:codeRepository
+      - schema:url
 
   analysis_code_doi:
     description: DOI of the deposited analysis code.
-    range: uri
     required: false
-    pattern: "^https://doi\\.org/10\\.\\d{4,}/"
+    range: uri
+    pattern: "^https://doi\\.org/10\\.\\d{4,9}/[-._;()+/:A-Za-z0-9%]+$"
 
   # Nested class slots
   experimental_conditions:
@@ -264,13 +316,80 @@ slots:
     range: TrackingAnalysis
     inlined: true
 
-  VTATrial:
+  vta_trials:
     description: Per-video trial records in this dataset
     range: VTATrial
     multivalued: true
     inlined: true
-  
 
+# Organism identity (Tier 1 mandatory)
+  species_name:
+    description: Scientific (Latin) binomial name of the study organism
+    required: true
+    exact_mappings:
+      - dwc:scientificName
+    examples:
+      - value: "Danio rerio"
+      - value: "Mus musculus"
+      - value: "Daphnia magna"
+
+  species_ncbi_taxon_id:
+    description: NCBI Taxonomy ID for the study organism
+    required: false
+    recommended: true
+    pattern: "^\\d+$"
+    examples:
+      - value: "7955"
+      - value: "10090"
+
+  strain:
+    description: Organism strain or line
+    range: string
+    broad_mappings:
+      - OBI:0001185  # organism strain
+
+  genotype:
+    description: Genotype identifier of the organism
+    range: string
+    required: false
+    recommended: true
+    annotations:
+      source_ontology: GENO
+      - sex
+      - developmental_stage
+      - developmental_stage_value
+      - developmental_stage_unit
+      - age_value
+      - age_unit
+      - body_length_value
+      - body_length_unit
+      - weight_value
+      - weight_unit
+      - n_animals_total
+      - n_animals_per_arena
+      # Assay design
+      - assay_type
+      - assay_description
+      - arena_shape
+      - arena_dimensions_value
+      - arena_dimensions_unit
+      - habituation_duration_value
+      - habituation_duration_unit
+      - habituation_protocol
+      - recording_duration_value ##maybe better to AquisitionParameters
+      - recording_duration_unit
+      - temperature_value
+      - temperature_unit
+      - light_cycle ## maybe remove or put it somewhere else?
+      - housing_conditions ##define!
+      # Exposure / treatment (ecotox & biomedical)
+      - treatment_name
+      - treatment_description ## maybe better to ecotox extension
+      - solvent_vehicle
+      - control_type  
+# --- ExperimentalConditions slots ---
+
+# --- Enums ---
   developmental_stage:
     range: DevelopmentalStageEnum
     recommended: true
@@ -331,4 +450,4 @@ enums:
       JSON:
       ZIP:
       PHR:
-        description: Zebrabox raw file format
+        description: Zebrabox raw file
