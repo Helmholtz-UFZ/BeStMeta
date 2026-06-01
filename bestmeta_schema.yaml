@@ -35,6 +35,7 @@ prefixes:
   schema:     http://schema.org/
   dwc:        http://rs.tdwg.org/dwc/terms/
   geno:       http://purl.obolibrary.org/obo/GENO_
+  UO:         http://purl.obolibrary.org/obo/UO_
 
 default_prefix: bstm
 default_range: string
@@ -86,7 +87,8 @@ classes:
       # Organism identity (Tier 1 mandatory)
       - species_name
       - species_ncbi_taxon_id
-      - strain_or_genotype
+      - strain
+      - genotype
       - sex
       - developmental_stage
       - developmental_stage_value
@@ -139,6 +141,7 @@ classes:
                 required: true
               age_unit:
                 required: true
+
 # --- slots ---
 slots:
 # --- VTADataset slots ---
@@ -322,7 +325,8 @@ slots:
     multivalued: true
     inlined: true
 
-# Organism identity (Tier 1 mandatory)
+# --- ExperimentalConditions slots ---
+## Organism identity
   species_name:
     description: Scientific (Latin) binomial name of the study organism
     required: true
@@ -339,32 +343,91 @@ slots:
     recommended: true
     pattern: "^\\d+$"
     examples:
-      - value: "7955"
-      - value: "10090"
+      - value: "7955" #Danio rerio
+      - value: "10090" #Mus musculus
 
   strain:
     description: Organism strain or line
+    required: false
+    recommended: true
     range: string
     broad_mappings:
       - OBI:0001185  # organism strain
 
   genotype:
-    description: Genotype identifier of the organism
+    description: Genotype identifier of the tracked organism(s).
     range: string
     required: false
     recommended: true
     annotations:
       source_ontology: GENO
-      - sex
-      - developmental_stage
-      - developmental_stage_value
-      - developmental_stage_unit
-      - age_value
-      - age_unit
-      - body_length_value
-      - body_length_unit
-      - weight_value
-      - weight_unit
+  
+  sex:
+    description: Biological sex of the tracked organism(s).
+    required: true ## or only recommended?
+    range: SexEnum
+    exact_mappings:
+      - PATO:0000047
+
+  developmental_stage:
+    description: Developmental stage of the tracked organism(s).
+    range: DevelopmentalStageEnum
+    exact_mappings:
+      - EFO:0000399
+  
+  developmental_stage_value:
+    description: Numeric developmental stage value (e.g. 72 for 72 hpf) of the tracked organism(s).
+    range: float
+    close_mappings:
+      - EFO:0000399
+
+  developmental_stage_unit:
+    description: Unit for developmental stage value of the tracked organism(s).
+    range: DevelopmentUnitEnum
+
+  age_value:
+    description: Numeric age value of the tracked organism(s).
+    range: float
+    exact_mappings:
+      - EFO:0000246 
+
+  age_unit:
+    description: Age unit of the tracked organism(s).
+    range: DevelopmentUnitEnum
+
+  body_length_value:
+    description: Body length numeric value of the tracked organism(s).
+    required: false
+    recommended: true
+    range: float
+    close_mappings:
+      - EFO:0004339
+      - mesh:D049628
+
+  body_length_unit:
+    description: Body length unit of the tracked organism(s).
+    required: false
+    recommended: true
+    range: BodyLengthUnitEnum
+    close_mappings: 
+      - UO:0000001
+
+  weight_value:
+    description: Body weight numeric value of the tracked organism(s).
+    required: false
+    range: float
+    close_mappings: 
+      - EFO:0004324
+      - EFO:0004338
+
+  weight_unit:
+    description: Body weight unit of the tracked organism(s).
+    required: false
+    range: WeightUnitEnum
+    close_mappings: 
+      - UO:0000002 
+
+
       - n_animals_total
       - n_animals_per_arena
       # Assay design
@@ -387,52 +450,22 @@ slots:
       - treatment_description ## maybe better to ecotox extension
       - solvent_vehicle
       - control_type  
-# --- ExperimentalConditions slots ---
+
+
+
+
 
 # --- Enums ---
-  developmental_stage:
-    range: DevelopmentalStageEnum
-    recommended: true
-
-  developmental_stage_value:
-    range: float
-
-  developmental_stage_unit:
-    range: DevelopmentUnitEnum
-
-  age_value:
-    range: float
-
-  age_unit:
-    range: AgeUnitEnum
-
-
 enums:
-  DevelopmentalStageEnum:
-    permissible_values:
-      larval:
-      juvenile:
-      adult:
-      embryonic:       
-      pupal:
-      subadult:
 
-  DevelopmentUnitEnum:
+  DomainEnum: ##ask others for which domains to include
+    description: Research domain of the study
     permissible_values:
-      hpf:             # hours post fertilization
-      dpf:             # days post fertilization
-      days:
-      weeks:
-      months:
-      years:
+      ecotoxicology:
+      biomedical:
+      neuroscience:
+      other:
 
-  AgeUnitEnum:
-    permissible_values:
-      days:
-      weeks:
-      months:
-      years:
-  
   RepositoryEnum:
     permissible_values: ##add more
       Zenodo:
@@ -451,3 +484,50 @@ enums:
       ZIP:
       PHR:
         description: Zebrabox raw file
+
+  SexEnum:
+    description: Biological sex of the study subjects
+    permissible_values:
+      male:
+      female:
+      mixed:    { description: "Mixed male and female in same group" }
+      unknown:
+      not_applicable: { description: "e.g. asexual organisms, embryos" } 
+
+  DevelopmentalStageEnum:
+    permissible_values:
+      larval:
+      juvenile:
+      adult:
+      embryonic:       
+      pupal:
+      subadult:
+
+  DevelopmentUnitEnum:
+    permissible_values:
+      hpf:             # hours post fertilization
+      dpf:             # days post fertilization
+      days:
+      weeks:
+      months:
+      years:
+    
+  BodyLengthUnitEnum:
+    permissible_values:
+      µm:
+      mm:
+      cm:
+      dm:
+      m:
+
+  WeightUnitEnum:
+    permissible_values:
+      µg:
+      mg:
+      g:
+      kg:
+
+
+
+  
+  
