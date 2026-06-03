@@ -36,12 +36,27 @@ prefixes:
   dwc:        http://rs.tdwg.org/dwc/terms/
   geno:       http://purl.obolibrary.org/obo/GENO_
   UO:         http://purl.obolibrary.org/obo/UO_
+  MESH:       http://id.nlm.nih.gov/mesh/
 
 default_prefix: bstm
 default_range: string
 
+# --- imports ---
 imports:
   - linkml:types
+
+# --- types ---
+types:
+  UnitString: ## useful for free-text field, e.g., substance_dose_unit, where many different units are possible - check if needed
+    typeof: string
+    uri: UO:0000000
+    id_prefixes:
+      - UO
+    exact_mappings:
+      - qud:Unit
+    description: >-
+      A standard of measurement drawn from the Units of Measurement
+      Ontology (UO:0000000).
 # --- classes ---
 classes:
 
@@ -105,23 +120,41 @@ classes:
       - assay_type
       - assay_description
       - arena_shape
-      - arena_dimensions_value
-      - arena_dimensions_unit
-      - habituation_duration_value
-      - habituation_duration_unit
+      - arena_type
+      - arena_length
+      - arena_length_unit
+      - arena_width
+      - arena_width_unit
+      - arena_height
+      - arena_height_unit
+      - plate_well_count
+      - well_shape_cross_section
+      - well_shape_bottom
+      - habituation_duration_min
       - habituation_protocol
-      - recording_duration_value ##maybe better to AquisitionParameters
-      - recording_duration_unit
-      - temperature_value
-      - temperature_unit
-      - light_cycle ## maybe remove or put it somewhere else?
+      - temperature_celsius
+      - light_cycle
+      - light_cycle_detail
       - housing_conditions ##define!
       # Exposure / treatment (ecotox & biomedical)
+      - treatment_name
+      - treatment_description
+      - exposure_compound_name
+      - exposure_compound_chebi_id  
+      - exposure_concentration
+      - exposure_concentration_unit
+      - exposure_route
+      - exposure_duration_h
+      - solvent_vehicle
+      - control_type
       - treatment_name
       - treatment_description ## maybe better to ecotox extension
       - solvent_vehicle
       - control_type
 
+      - recording_duration_value ##maybe better to AquisitionParameters
+      - recording_duration_unit
+      
 # --- rules ---
     rules:
       - description: >-
@@ -141,6 +174,68 @@ classes:
                 required: true
               age_unit:
                 required: true
+
+      - description: body_length_value requires body_length_unit
+        preconditions:
+          slot_conditions:
+            body_length_value:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            body_length_unit:
+              required: true 
+      
+      - description: weight_value requires weight_unit
+        preconditions:
+          slot_conditions:
+            weight_value:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            weight_unit:
+              required: true 
+
+      - description: arena_length requires arena_length_unit
+        preconditions:
+          slot_conditions:
+            arena_length:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            arena_length_unit:
+              required: true
+
+      - description: arena_width requires arena_width_unit
+        preconditions:
+          slot_conditions:
+            arena_width:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            arena_width_unit:
+              required: true
+
+      - description: arena_height requires arena_height_unit
+        preconditions:
+          slot_conditions:
+            arena_height:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            arena_height_unit:
+              required: true
+
+      - description: If light_cycle_type is cyclic_ld, light_cycle_detail should be provided.
+        preconditions:
+          slot_conditions:
+            light_cycle_type:
+              equals_string: cyclic_ld
+        postconditions:
+          slot_conditions:
+            light_cycle_detail:
+              required: true
+          
+
 
 # --- slots ---
 slots:
@@ -326,7 +421,6 @@ slots:
     inlined: true
 
 # --- ExperimentalConditions slots ---
-## Organism identity
   species_name:
     description: Scientific (Latin) binomial name of the study organism
     required: true
@@ -402,56 +496,229 @@ slots:
     range: float
     close_mappings:
       - EFO:0004339
-      - mesh:D049628
+      - MESH:D049628
 
   body_length_unit:
     description: Body length unit of the tracked organism(s).
     required: false
     recommended: true
-    range: BodyLengthUnitEnum
-    close_mappings: 
-      - UO:0000001
+    range: LengthUnitEnum
 
   weight_value:
     description: Body weight numeric value of the tracked organism(s).
     required: false
     range: float
-    close_mappings: 
-      - EFO:0004324
+    exact_mappings: 
       - EFO:0004338
 
   weight_unit:
     description: Body weight unit of the tracked organism(s).
     required: false
     range: WeightUnitEnum
-    close_mappings: 
-      - UO:0000002 
+
+  n_animals_total:
+    description: Total number of animals used in the experiment.
+    range: integer
+    required: true
+  
+  n_animals_per_arena:
+    description: Number of animals tested simultaneously in the arena.
+    required: true
+    range: integer
+    minimum_value: 1
+  
+  assay_type:
+    description: Name of the behavioral assay paradigm or test paradigm.
+    required: true
+    examples:
+      - value: "open field test"
+      - value: "light-dark transition"
+      - value: "elevated plus maze"
+      - value: "locomotor activity assay"
+      - value: "chemobehavioural assay"    
+    broad_mappings:
+      - OBI:0000070
+    
+  assay_description:
+    description: Free-text description of the assay protocol
+
+  arena_shape:
+    description: Geometric shape of the test arena.
+    required: false
+    recommended: true
+    range: ArenaShapeEnum
+    broad_mappings:
+      - OBI:0000968
+  
+  arena_type: 
+    description: Type of the test arena, e.g., open field, multiwell plate or elevated plus maze.
+    required: false
+    recommended: true
+    range: ArenaTypeEnum
+  
+  arena_length:
+    description: Length of the arena along one axis.
+    required: false
+    recommended: true
+    range: float
+  
+  arena_length_unit:
+    required: false
+    recommended: true
+    range: LengthUnitEnum
+
+  arena_width:
+    description: Width of the arena along one axis.
+    required: false
+    recommended: true
+    range: float
+  
+  arena_width_unit:
+    required: false
+    recommended: true
+    range: LengthUnitEnum
+
+  arena_height:
+    description: Height of the arena, when applicable.
+    required: false
+    recommended: true
+    range: float
+  
+  arena_height_unit:
+    required: false
+    recommended: true
+    range: LengthUnitEnum
+  
+  plate_well_count:
+    description: Number of wells in the multiwell plate.
+    required: false
+    recommended: true
+    range: integer
+    minimum_value: 1
+    examples:
+      - value: 24
+      - value: 96
+
+  well_shape_cross_section:
+    description: Geometric cross section shape of the wells of a multiwell plate.
+    required: false
+    recommended: true
+    range: WellCrossSectionShapeEnum
+
+  well_shape_bottom:
+    description: Geometric bottom shape of the wells of a multiwell plate.
+    required: false
+    range: WellBottomShapeEnum
+
+  habituation_duration_min:
+    description: Duration of habituation period before recording, in minutes
+    required: false
+    range: float
+    unit:
+      ucum_code: min
+
+  habituation_protocol:
+    description: Description of habituation or acclimation prior to testing.
+    required: false
+    range: string  
+  
+  temperature_celsius:
+    description: Water or ambient temperature during the recording in degrees Celsius
+    range: float
+    required: true
+    unit:
+      ucum_code:  Cel
+  
+  light_cycle_type:
+    description: Standardized category of the light-dark cycle.
+    required: false
+    recommended: true
+    range: LightCycleTypeEnum
+
+  light_cycle_detail:
+    description: Free-text description of the light-dark cycle.
+    required: false
+    recommended: true
+    range: string
+
+  housing_conditions:
+    description: Free-text description of animal housing conditions prior to assay.
+    required: false
+    range: string
+
+  treatment_name:
+    description: Short label identifying the experimental treatment group, condition, or regimen.
+    required: false
+    recommended: true
+    range: string
+    examples:
+      - value: "diazepam 1 mg/kg"
+      - value: "atrazine 10 ug/L"
+      - value: "vehicle control"
+
+  treatment_description:
+    description: Full description of the treatment protocol.
+    required: false
+    recommended: true
+    range: string
+
+  exposure_compound_name:
+    description: Name of the chemical, drug, or substance used in the treatment or exposure.
+    required: false
+    recommended: true
+    range: string
+
+  exposure_compound_chebi_id:
+    description: ChEBI identifier for the test substance.
+    required: false
+    recommended: true
+    range: string
+    pattern: "^CHEBI:\\d+$"
+    examples:
+      - value: "CHEBI:15930"   # atrazine
+      - value: "CHEBI:49575"  # diazepam
+    
+  exposure_concentration:
+    description: Nominal exposure concentration (numeric value only; use unit field).
+    required: false
+    recommended: true
+    range: float
+
+  exposure_concentration_unit:
+    description: Unit for exposure concentration.
+    required: false
+    recommended: true
+    range: ConcentrationUnitEnum
+
+  exposure_route:
+    description: Route of chemical or treatment administration.
+    required: false
+    range: ExposureRouteEnum
+
+  exposure_duration_h:
+    description: Duration of chemical or treatment exposure in hours.
+    required: false
+    range: float
+    unit:
+      ucum_code: h
+
+  solvent_vehicle:
+    description: Solvent or vehicle used to dissolve the test substance.
+    required: false
+    range: string
+    examples:
+      - value: "DMSO 0.01%"
+      - value: "ethanol 0.1%"
+      - value: "water" 
+
+  control_type:
+    description: Type of control group used.
+    required: false
+    range: ControlTypeEnum
 
 
-      - n_animals_total
-      - n_animals_per_arena
-      # Assay design
-      - assay_type
-      - assay_description
-      - arena_shape
-      - arena_dimensions_value
-      - arena_dimensions_unit
-      - habituation_duration_value
-      - habituation_duration_unit
-      - habituation_protocol
       - recording_duration_value ##maybe better to AquisitionParameters
       - recording_duration_unit
-      - temperature_value
-      - temperature_unit
-      - light_cycle ## maybe remove or put it somewhere else?
-      - housing_conditions ##define!
-      # Exposure / treatment (ecotox & biomedical)
-      - treatment_name
-      - treatment_description ## maybe better to ecotox extension
-      - solvent_vehicle
-      - control_type  
-
-
 
 
 
@@ -505,29 +772,125 @@ enums:
 
   DevelopmentUnitEnum:
     permissible_values:
-      hpf:             # hours post fertilization
-      dpf:             # days post fertilization
+      hpf:
+        description: Hours post fertilization
+      dpf:
+        description: Days post fertilization
       days:
+        meaning: UO:0000033
       weeks:
+        meaning: UO:0000034
       months:
+        meaning: UO:0000035
       years:
+        meaning: UO:0000036
     
-  BodyLengthUnitEnum:
+  LengthUnitEnum: ## it would be more consistent and better for machine-readability to have just one unit - but hard for cross-domain approach
     permissible_values:
-      µm:
+      um:
+        meaning: UO:0000017
       mm:
+        meaning: UO:0000016
       cm:
-      dm:
+        meaning: UO:0000015
       m:
+        meaning: UO:0000008
 
   WeightUnitEnum:
     permissible_values:
-      µg:
+      ug:
+        meaning: UO:0000023
       mg:
+        meaning: UO:0000022
       g:
+        meaning: UO:0000021
       kg:
+        meaning: UO:0000009
+  
+  ArenaShapeEnum:
+    description: Geometric shape of the test arena. ## get feedback if the values are suitable
+    permissible_values:
+      circular:  
+      rectangular:
+      square: 
+      plus_maze:
+      y_maze:
+      t_maze: 
+      other:
+  
+  ArenaTypeEnum:
+    description: Type of the test arena, e.g., open field, multiwell plate or elevated plus maze.
+    permissible_values:
+      open_field:
+      plus_maze:
+      y_maze:
+      t_maze: 
+      multiwell_plate:
+      light_dark_box:
+      elevated_plus_maze:
+      other:
 
+  WellCrossSectionShapeEnum:
+    description: Geometric cross section shape of the wells of a multiwell plate.
+    permissible_values:
+      circular:
+      square:
+      other:
 
+  WellBottomShapeEnum: 
+    description: Geometric bottom shape of the wells of a multiwell plate.
+    permissible_values:
+      flat_bottom:
+        description: Flat well bottom; also called F-bottom.
+      u_bottom:
+        description: Rounded well bottom; also called round-bottom.
+      v_bottom:
+        description: V-shaped or conical well bottom.
+      other:
+  
+  LightCycleTypeEnum:
+    description: Standardized light-dark cycle types.
+    permissible_values:
+      cyclic_ld:
+        description: Cyclic light-dark cycle, e.g. 14:10 LD.
+      constant_light:
+        description: Continuous light.
+      constant_dark:
+        description: Continuous darkness.
+      other:
+        description: Other or non-standard light regime.
+
+  ConcentrationUnitEnum:
+    permissible_values:
+      mg_per_l:
+      ug_per_l:
+      mmol_per_l:
+      umol_per_l:
+
+  ExposureRouteEnum:
+    description: Route of chemical or treatment exposure
+    permissible_values:
+      waterborne:
+      dietary:
+      injection_ip:
+        description: "Intraperitoneal injection"
+      injection_iv:
+        description: "Intravenous injection"
+      gavage:
+      topical:
+      inhalation:
+      other:
+
+  ControlTypeEnum:
+    solvent_control:
+    vehicle_control:
+    naive_control:
+    sham_control:
+    positive_control:
+    untreated_control:
+    other:
+    
+    
 
   
   
