@@ -21,22 +21,24 @@ license: https://creativecommons.org/licenses/by/4.0/
 
 # --- prefixes ---
 prefixes:
-  linkml:     https://w3id.org/linkml/
   BeStMeta:   https://w3id.org/BeStMeta/
-  OBI:        http://purl.obolibrary.org/obo/OBI_
-  EFO:        http://www.ebi.ac.uk/efo/EFO_ 
   CHEBI:      http://purl.obolibrary.org/obo/CHEBI_
-  NCBITaxon:  http://purl.obolibrary.org/obo/NCBITaxon_
-  SWO:        http://purl.obolibrary.org/obo/SWO_
-  ma:         http://www.w3.org/ns/ma-ont#
-  ebucore:    http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#
+  CHMO:       http://purl.obolibrary.org/obo/CHMO
   dcterms:    http://purl.org/dc/terms/
+  dwc:        http://rs.tdwg.org/dwc/terms/
+  ebucore:    http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#
+  EFO:        http://www.ebi.ac.uk/efo/EFO_
+  geno:       http://purl.obolibrary.org/obo/GENO_
+  linkml:     https://w3id.org/linkml/
+  ma:         http://www.w3.org/ns/ma-ont#
+  MESH:       http://id.nlm.nih.gov/mesh/
+  NCBITaxon:  http://purl.obolibrary.org/obo/NCBITaxon_
+  OBI:        http://purl.obolibrary.org/obo/OBI_
   pav:        http://purl.org/pav/ 
   schema:     http://schema.org/
-  dwc:        http://rs.tdwg.org/dwc/terms/
-  geno:       http://purl.obolibrary.org/obo/GENO_
+  SNOMED:     http://snomed.info/id/ 
+  SWO:        http://purl.obolibrary.org/obo/SWO_
   UO:         http://purl.obolibrary.org/obo/UO_
-  MESH:       http://id.nlm.nih.gov/mesh/
 
 default_prefix: bstm
 default_range: string
@@ -99,7 +101,7 @@ classes:
       the dataset. Covers organism identity, treatment, assay design,
       and environmental parameters.
     slots:
-      # Organism identity (Tier 1 mandatory)
+      ## Organism identity
       - species_name
       - species_ncbi_taxon_id
       - strain
@@ -135,8 +137,8 @@ classes:
       - temperature_celsius
       - light_cycle
       - light_cycle_detail
-      - housing_conditions ##define!
-      # Exposure / treatment (ecotox & biomedical)
+      - housing_conditions
+      ## Exposure / treatment 
       - treatment_name
       - treatment_description
       - exposure_compound_name
@@ -148,14 +150,10 @@ classes:
       - solvent_vehicle
       - control_type
       - treatment_name
-      - treatment_description ## maybe better to ecotox extension
+      - treatment_description
       - solvent_vehicle
       - control_type
-
-      - recording_duration_value ##maybe better to AquisitionParameters
-      - recording_duration_unit
       
-# --- rules ---
     rules:
       - description: >-
           At least one of: developmental_stage (categorical),
@@ -235,7 +233,39 @@ classes:
             light_cycle_detail:
               required: true
           
+  VideoHardware:
+    description: >-
+      Camera systems, optical configuration, and physical recording
+      infrastructure used in the VTA. Documents instrument identity and
+      optical specifications.
+    slots:
+      ## Camera identity
+      - camera_count
+      - camera_device_type
+      - camera_model
+      - camera_manufacturer
+      - camera_sensor_type
+      ## Optics
+      - lens_focal_length_mm
+      - objective_magnification
+      - field_of_view_mm
+      - camera_distance_mm
+      - camera_position
+      ## Closed-box system
+      - closed_box_system_name
+      - closed_box_system_version
+      ## Arena hardware
+      - arena_material
+      - illumination_type
+      - illumination_wavelength_nm
+      ## Notes
+      - hardware_notes
 
+  AquisitionParameters:    
+      - recording_duration_value
+      - recording_duration_unit
+      - compression_method
+      - spatial_resolution_mm_per_px
 
 # --- slots ---
 slots:
@@ -716,9 +746,59 @@ slots:
     required: false
     range: ControlTypeEnum
 
+# --- VideoHardware slots ---
+  camera_count:
+    description: Number of cameras used simultaneously.
+    required: true
+    range: integer
 
-      - recording_duration_value ##maybe better to AquisitionParameters
-      - recording_duration_unit
+  camera_device_type:
+    description: General type of imaging device
+    required: true
+    range: CameraDeviceTypeEnum
+    broad_mappings:
+      - OBI:0000398
+
+  camera_model:
+    description: Full manufacturer model name of the camera.
+    required: true
+    range: string
+    examples:
+      - value: "Basler acA1300-60gc"
+      - value: "Logitech C920"
+
+  camera_manufacturer:
+    description: Manufacturer of the camera.
+    required: true
+    range: string
+
+  camera_sensor_type:
+    description: Image sensor technology.
+    required: false
+    recommended: true
+    range: CameraSensorTypeEnum
+  
+  camera_interface:
+    description: Interface standard for the connection of camera and acquisition system.
+    required: false
+    range: CameraInterfaceEnum
+    
+
+      ## Optics
+      - lens_focal_length_mm
+      - objective_magnification
+      - field_of_view_mm
+      - camera_distance_mm
+      - camera_position
+      ## Closed-box system
+      - closed_box_system_name
+      - closed_box_system_version
+      ## Arena hardware
+      - arena_material
+      - illumination_type
+      - illumination_wavelength_nm
+      ## Notes
+      - hardware_notes
 
 
 
@@ -889,8 +969,38 @@ enums:
     positive_control:
     untreated_control:
     other:
+
+  CameraDeviceTypeEnum:
+    description: General types of imaging devices used in VTA setups.
+    permissible_values:
+      digital_camera:
+        meaning: OBI:0001048
+      usb_camera:
+      microscope_camera:
+        meaning: SNOMED:706582001
+      smartphone:
+        meaning: SNOMED:733681009
+      other:
     
-    
+  CameraSensorTypeEnum:
+    description: Image sensor technologies used in cameras.
+    permissible_values:
+      ccd:
+        meaning: CHMO:0002245
+      cmos: 
+      scmos:
+      emccd:
+      other:  
+
+  CameraInterfaceEnum:
+    permissible_values:
+      usb:
+      ethernet:
+      ip:
+      camera_link:
+      coaxpress:
+      hdmi:
+      other:
 
   
   
