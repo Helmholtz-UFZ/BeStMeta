@@ -21,24 +21,29 @@ license: https://creativecommons.org/licenses/by/4.0/
 
 # --- prefixes ---
 prefixes:
+  AFR:        http://purl.allotrope.org/ontologies/result#AFR_
+  AFQ:        http://purl.allotrope.org/ontologies/quality#AFQ_
   BeStMeta:   https://w3id.org/BeStMeta/
   CHEBI:      http://purl.obolibrary.org/obo/CHEBI_
   CHMO:       http://purl.obolibrary.org/obo/CHMO
   dcterms:    http://purl.org/dc/terms/
   dwc:        http://rs.tdwg.org/dwc/terms/
   ebucore:    http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#
+  EDAM-DATA:  http://edamontology.org/data_
   EFO:        http://www.ebi.ac.uk/efo/EFO_
   geno:       http://purl.obolibrary.org/obo/GENO_
   linkml:     https://w3id.org/linkml/
   ma:         http://www.w3.org/ns/ma-ont#
   MESH:       http://id.nlm.nih.gov/mesh/
   NCBITaxon:  http://purl.obolibrary.org/obo/NCBITaxon_
+  NCIT:       http://purl.obolibrary.org/obo/NCIT_
   OBI:        http://purl.obolibrary.org/obo/OBI_
   pav:        http://purl.org/pav/ 
   schema:     http://schema.org/
   SNOMED:     http://snomed.info/id/ 
   SWO:        http://purl.obolibrary.org/obo/SWO_
   UO:         http://purl.obolibrary.org/obo/UO_
+  XCO:        http://purl.obolibrary.org/obo/XCO_
 
 default_prefix: bstm
 default_range: string
@@ -454,8 +459,10 @@ slots:
   species_name:
     description: Scientific (Latin) binomial name of the study organism
     required: true
+    range: string
     exact_mappings:
       - dwc:scientificName
+      - EDAM-DATA:1045
     examples:
       - value: "Danio rerio"
       - value: "Mus musculus"
@@ -465,7 +472,11 @@ slots:
     description: NCBI Taxonomy ID for the study organism
     required: false
     recommended: true
+    range: string
     pattern: "^\\d+$"
+    exact_mappings:
+      - dwc:taxonID
+      - EDAM-DATA:1179
     examples:
       - value: "7955" #Danio rerio
       - value: "10090" #Mus musculus
@@ -475,20 +486,25 @@ slots:
     required: false
     recommended: true
     range: string
-    broad_mappings:
-      - OBI:0001185  # organism strain
+    exact_mappings:
+      - EDAM-DATA:2379
 
   genotype:
-    description: Genotype identifier of the tracked organism(s).
+    description: >-
+      Genotype identifier of the tracked organism(s)including 
+      strain-specific, mutant, transgenic, or engineered genotypes.
     range: string
     required: false
     recommended: true
+    exact_mappings:
+      - EFO:0000513
+      - GENO:0000536
     annotations:
       source_ontology: GENO
   
   sex:
     description: Biological sex of the tracked organism(s).
-    required: true ## or only recommended?
+    required: true
     range: SexEnum
     exact_mappings:
       - PATO:0000047
@@ -571,6 +587,7 @@ slots:
     
   assay_description:
     description: Free-text description of the assay protocol
+    required: false
 
   arena_shape:
     description: Geometric shape of the test arena.
@@ -625,6 +642,8 @@ slots:
     recommended: true
     range: integer
     minimum_value: 1
+    exact_mappings:
+      - AFR:0002231
     examples:
       - value: 24
       - value: 96
@@ -670,17 +689,23 @@ slots:
     required: false
     recommended: true
     range: string
+    exact_mappings:
+      - MESH:D017440
 
   housing_conditions:
     description: Free-text description of animal housing conditions prior to assay.
     required: false
     range: string
+    exact_mappings:
+      - XCO:0000033
 
   treatment_name:
     description: Short label identifying the experimental treatment group, condition, or regimen.
     required: false
     recommended: true
     range: string
+    exact_mappings:
+      - NCIT:C82542
     examples:
       - value: "diazepam 1 mg/kg"
       - value: "atrazine 10 ug/L"
@@ -697,6 +722,8 @@ slots:
     required: false
     recommended: true
     range: string
+    exact_mappings:
+      - EDAM-DATA:0997
 
   exposure_compound_chebi_id:
     description: ChEBI identifier for the test substance.
@@ -704,6 +731,8 @@ slots:
     recommended: true
     range: string
     pattern: "^CHEBI:\\d+$"
+    exact_mappings:
+      - EDAM-DATA:1174
     examples:
       - value: "CHEBI:15930"   # atrazine
       - value: "CHEBI:49575"  # diazepam
@@ -713,6 +742,8 @@ slots:
     required: false
     recommended: true
     range: float
+    exact_mappings:
+      - EDAM-DATA:2140
 
   exposure_concentration_unit:
     description: Unit for exposure concentration.
@@ -724,6 +755,8 @@ slots:
     description: Route of chemical or treatment administration.
     required: false
     range: ExposureRouteEnum
+    exact_mappings:
+      - MESH:D004333
 
   exposure_duration_h:
     description: Duration of chemical or treatment exposure in hours.
@@ -745,6 +778,8 @@ slots:
     description: Type of control group used.
     required: false
     range: ControlTypeEnum
+    exact_mappings:
+      - NCIT:C178849
 
 # --- VideoHardware slots ---
   camera_count:
@@ -779,17 +814,52 @@ slots:
     range: CameraSensorTypeEnum
   
   camera_interface:
-    description: Interface standard for the connection of camera and acquisition system.
+    description: Interface standard used for communication between the camera and the acquisition system.
     required: false
     range: CameraInterfaceEnum
+  
+  lens_focal_length_mm:
+    description: >-
+      Focal length of the imaging lens in millimetres; 
+      applicable to camera or microscope optics when reported.
+    required: false
+    recommended: true
+    range: float
+    unit:
+      ucum_code: mm
+    exact_mappings:
+      - AFQ:0000062
+
+  objective_magnification:
+    description: Magnification of microscope objective (if applicable).
+    required: false
+    recommended: true
+    range: float
+    exact_mappings:
+      - OME:Objective/Magnification
+    examples:
+      - value: "4"
+      - value: "10"
+
+  field_of_view_mm:
+    description: Actual field of view covered by the camera in millimetres
+    range: float
+    unit:
+      symbol: mm
+
+  camera_distance_mm:
+    description: Distance from camera lens to the arena floor in millimetres
+    range: float
+    unit:
+      symbol: mm
+
+  camera_position:
+    description: Position of the camera relative to the arena
+    range: CameraPositionEnum
+    required: true
     
 
-      ## Optics
-      - lens_focal_length_mm
-      - objective_magnification
-      - field_of_view_mm
-      - camera_distance_mm
-      - camera_position
+
       ## Closed-box system
       - closed_box_system_name
       - closed_box_system_version
