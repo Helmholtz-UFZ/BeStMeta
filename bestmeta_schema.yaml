@@ -38,6 +38,7 @@ prefixes:
   NCBITaxon:  http://purl.obolibrary.org/obo/NCBITaxon_
   NCIT:       http://purl.obolibrary.org/obo/NCIT_
   OBI:        http://purl.obolibrary.org/obo/OBI_
+  OME:        http://www.openmicroscopy.org/Schemas/OME/2016-06#
   pav:        http://purl.org/pav/ 
   schema:     http://schema.org/
   SNOMED:     http://snomed.info/id/ 
@@ -53,7 +54,7 @@ imports:
   - linkml:types
 
 # --- types ---
-types:
+types: ## check at the end
   UnitString: ## useful for free-text field, e.g., substance_dose_unit, where many different units are possible - check if needed
     typeof: string
     uri: UO:0000000
@@ -92,12 +93,13 @@ classes:
       - analysis_code_repository
       - analysis_code_repository_url
       - analysis_code_doi
+      - dataset_notes
       # --- Nested classes ---
       - experimental_conditions
       - video_hardware
       - acquisition_parameters
       - tracking_analysis
-      -  vta_trials
+      - vta_trials
     tree_root: true
 
   ExperimentalConditions:
@@ -158,6 +160,8 @@ classes:
       - treatment_description
       - solvent_vehicle
       - control_type
+      ## Notes
+      - experiment_notes
       
     rules:
       - description: >-
@@ -250,27 +254,120 @@ classes:
       - camera_model
       - camera_manufacturer
       - camera_sensor_type
+      - camera_interface
+      - camera_distance_mm
+      - camera_position
+      ## Microscope
+      - microscope_manufacturer
+      - microscope_model
+      - microscope_type
       ## Optics
       - lens_focal_length_mm
       - objective_magnification
-      - field_of_view_mm
-      - camera_distance_mm
-      - camera_position
+      - field_of_view_width
+      - field_of_view_height 
+      - field_of_view_unit
       ## Closed-box system
       - closed_box_system_name
       - closed_box_system_version
-      ## Arena hardware
-      - arena_material
-      - illumination_type
-      - illumination_wavelength_nm
       ## Notes
       - hardware_notes
+    rules:
+      - description: If either field of view dimension is provided, the unit must also be provided.
+        preconditions:
+          slot_conditions:
+            field_of_view_width:
+              any_of:
+                - value_presence: present
+            field_of_view_height:
+              any_of:
+                - value_presence: present
+        postconditions:
+          slot_conditions:
+            field_of_view_unit:
+              value_presence: present
 
-  AquisitionParameters:    
-      - recording_duration_value
-      - recording_duration_unit
-      - compression_method
+      - description: Field of view width and height should be reported together.
+        preconditions:
+          slot_conditions:
+            field_of_view_width:
+              value_presence: present
+        postconditions:
+          slot_conditions:
+            field_of_view_height:
+              value_presence: present
+
+    - description: Field of view width and height should be reported together.
+      preconditions:
+        slot_conditions:
+          field_of_view_height:
+            value_presence: present
+      postconditions:
+        slot_conditions:
+          field_of_view_width:
+            value_presence: present
+
+  AcquisitionParameters: 
+    description: >-
+      Video acquisition and recording parameters.
+    slots:
+      # Core acquisition
+      - recording_software_name
+      - recording_software_version
+      - recording_duration_hh_mm_ss
+      - illumination_type
+      - illumination_wavelength_nm
+      - illumination_lux
+      - frame_rate_fps
+      - video_resolution_width_px
+      - video_resolution_height_px
+      - bit_depth
+      - color_mode
+      - camera_binning
       - spatial_resolution_mm_per_px
+      - video_container_format
+      - video_codec
+      - compression_method
+      # Image quality
+      - gain
+      - exposure_time_ms
+      - contrast_settings
+      - noise_reduction_method
+      - compression_quality
+      # Derived / calculable
+      - total_frame_count
+      # Notes
+      - acquisition_notes 
+
+  TrackingAnalysis:
+    description: >-
+      Tracking software identity and version, algorithm details,
+      post-tracking computational steps, derived behavioral metrics,
+      and statistical analysis methods.
+    slots:
+      # Tracking software
+      - tracking_software_name
+      - tracking_software_version
+      - tracking_software_url
+      - tracking_algorithm
+      - tracking_software_settings
+      - pose_estimation_model
+      - pose_estimation_model_version
+      - compute_type
+      # Pre-processing
+      - preprocessing_steps
+      - background_subtraction_method
+      - detection_threshold
+      # Behavioral endpoints / metrics
+      - behavioral_endpoints
+      - endpoint_definitions
+      # Statistical analysis
+      - statistical_software
+      - statistical_tests
+      - multiple_testing_correction
+      - significance_threshold
+      - analysis_code_doi
+      - analysis_code_url      
 
 # --- slots ---
 slots:
@@ -427,6 +524,11 @@ slots:
     required: false
     range: uri
     pattern: "^https://doi\\.org/10\\.\\d{4,9}/[-._;()+/:A-Za-z0-9%]+$"
+  
+  dataset_notes:
+    description: Free-text notes on the dataset not captured by structured fields.
+    required: false
+    range: string
 
   # Nested class slots
   experimental_conditions:
@@ -610,6 +712,7 @@ slots:
     range: float
   
   arena_length_unit:
+    Unit of measurement for arena_length.
     required: false
     recommended: true
     range: LengthUnitEnum
@@ -621,6 +724,7 @@ slots:
     range: float
   
   arena_width_unit:
+    description: Unit of measurement for arena_width.
     required: false
     recommended: true
     range: LengthUnitEnum
@@ -632,6 +736,7 @@ slots:
     range: float
   
   arena_height_unit:
+    description: Unit of measurement for arena_height.
     required: false
     recommended: true
     range: LengthUnitEnum
@@ -780,6 +885,11 @@ slots:
     range: ControlTypeEnum
     exact_mappings:
       - NCIT:C178849
+  
+  experiment_notes:
+    description: Free-text notes on experimental conditions not captured by structured fields.
+    required: false
+    range: string
 
 # --- VideoHardware slots ---
   camera_count:
@@ -788,7 +898,7 @@ slots:
     range: integer
 
   camera_device_type:
-    description: General type of imaging device
+    description: General type of imaging device.
     required: true
     range: CameraDeviceTypeEnum
     broad_mappings:
@@ -806,6 +916,8 @@ slots:
     description: Manufacturer of the camera.
     required: true
     range: string
+    exact_mappings:
+      - schema:manufacturer
 
   camera_sensor_type:
     description: Image sensor technology.
@@ -818,6 +930,57 @@ slots:
     required: false
     range: CameraInterfaceEnum
   
+  camera_distance_mm:
+    description: Distance from camera lens to the arena floor in millimetres.
+    required: false
+    recommended: true
+    range: float
+    unit:
+      ucum_code: mm
+
+  camera_position:
+    description: Position of the camera relative to the arena.
+    required: false
+    recommended: true
+    range: CameraPositionEnum
+
+  
+  microscope_manufacturer:
+    description: Manufacturer of the microscope.
+    required: false
+    range: string
+    exact_mappings:
+      - OME:Manufacturer
+      - schema:manufacturer
+  
+  microscope_model:
+    description: Model name or identifier of the microscope.
+    required: false
+    range: string
+    exact_mappings:
+      - OME:Model
+  
+  microscope_type:
+    description: Microscope configuration according to the OME microscope type classification.
+    required: false
+    range: MicroscopeTypeEnum
+    exact_mappings:
+      - OME:Type
+  
+  microscope_serial_number:
+    description: Serial number of the microscope.
+    required: false
+    range: string
+    exact_mappings:
+      - OME:SerialNumber
+
+  microscope_lot_number:
+    description: Lot number of the microscope.
+    required: false
+    range: string
+    exact_mappings:
+      - OME:LotNumber
+
   lens_focal_length_mm:
     description: >-
       Focal length of the imaging lens in millimetres; 
@@ -835,42 +998,91 @@ slots:
     required: false
     recommended: true
     range: float
-    exact_mappings:
-      - OME:Objective/Magnification
+    annotations:
+      ome_element: Objective/Magnification
     examples:
-      - value: "4"
-      - value: "10"
-
-  field_of_view_mm:
-    description: Actual field of view covered by the camera in millimetres
+      - value: 4
+      - value: 10
+  
+  field_of_view_width:
+    description: Numeric value of horizontal field of view covered by the camera.
+    required: false
+    recommended: true
     range: float
-    unit:
-      symbol: mm
 
-  camera_distance_mm:
-    description: Distance from camera lens to the arena floor in millimetres
+  field_of_view_height:
+    description: Numeric value of vertical field of view covered by the camera.
+    required: false
+    recommended: true
     range: float
-    unit:
-      symbol: mm
-
-  camera_position:
-    description: Position of the camera relative to the arena
-    range: CameraPositionEnum
-    required: true
     
+  field_of_view_unit:
+    description: Unit of measurement for field_of_view_width and field_of_view_height.
+    range: LengthUnitEnum
+
+  closed_box_system_name:
+    description: >-
+      Name of the integrated commercial closed-box tracking system.
+      (e.g. ZebraBox, DanioVision, ToxMate, PhenoTyper).
+    required: false
+    range: ClosedBoxSxstemEnum
+
+  closed_box_system_version:
+    description: Hardware version or model number of the closed-box system.
+    required: false
+    range: string
+
+  hardware_notes:
+    description: Free-text notes on hardware configuration not captured by structured fields.
+    required: false
+    range: string
+
+# --- AcquisitionParameters slots ---
+  recording_software_name:
+    description: Name of the software used to record the video.
+    required: true
+    range: string
+    examples:
+      - value: "ZebraLab"
+      - value: "EthoVision XT"
+      - value: "OBS Studio"
+      - value: "custom"
+    exact_mappings:
+      - AFO_0002802
+
+  recording_software_version:
+    description: Version string of the recording software.
+    required: true
+    range: string
+    exact_mappings:
+      - AFR:0001700
 
 
-      ## Closed-box system
-      - closed_box_system_name
-      - closed_box_system_version
-      ## Arena hardware
-      - arena_material
+
+      - recording_duration_hh_mm_ss
       - illumination_type
       - illumination_wavelength_nm
-      ## Notes
-      - hardware_notes
-
-
+      - illumination_lux
+      - frame_rate_fps
+      - video_resolution_width_px
+      - video_resolution_height_px
+      - bit_depth
+      - color_mode
+      - camera_binning
+      - spatial_resolution_mm_per_px
+      - video_container_format
+      - video_codec
+      - compression_method
+      # Image quality
+      - gain
+      - exposure_time_ms
+      - contrast_settings
+      - noise_reduction_method
+      - compression_quality
+      # Derived / calculable
+      - total_frame_count
+      # Notes
+      - acquisition_notes   
 
 # --- Enums ---
 enums:
@@ -1072,5 +1284,29 @@ enums:
       hdmi:
       other:
 
+  CameraPositionEnum:
+    permissible_values:
+      overhead:
+        description: Camera positioned vertically above the arena.
+      lateral:
+        description: Camera positioned horizontally from the side.
+      other:
   
-  
+  MicroscopeTypeEnum:
+    description: OME microscope type values.
+    exact_mappings:
+      - OME:Type
+    permissible_values:
+      Upright:
+      Inverted:
+      Dissection:
+      Electrophysiology:
+      Other:
+
+  ClosedBoxSxstemEnum:
+    permissible_values:
+      ZebraBox:
+      DanioVision:
+      ToxMate:
+      Noldus PhenoTyper:
+      Other:
