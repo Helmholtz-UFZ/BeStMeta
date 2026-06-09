@@ -21,8 +21,8 @@ license: https://creativecommons.org/licenses/by/4.0/
 
 # --- prefixes ---
 prefixes:
-  AFR:        http://purl.allotrope.org/ontologies/result#AFR_
-  AFQ:        http://purl.allotrope.org/ontologies/quality#AFQ_
+  AFR:        http://purl.allotrope.org/ontologies/result#
+  AFQ:        http://purl.allotrope.org/ontologies/quality#
   BeStMeta:   https://w3id.org/BeStMeta/
   CHEBI:      http://purl.obolibrary.org/obo/CHEBI_
   CHMO:       http://purl.obolibrary.org/obo/CHMO
@@ -314,7 +314,7 @@ classes:
       # Core acquisition
       - recording_software_name
       - recording_software_version
-      - recording_duration_hh_mm_ss
+      - recording_duration
       - illumination_type
       - illumination_wavelength_nm
       - illumination_lux
@@ -1041,12 +1041,7 @@ slots:
   recording_software_name:
     description: Name of the software used to record the video.
     required: true
-    range: string
-    examples:
-      - value: "ZebraLab"
-      - value: "EthoVision XT"
-      - value: "OBS Studio"
-      - value: "custom"
+    range: string                                                 
     exact_mappings:
       - AFO_0002802
 
@@ -1057,9 +1052,27 @@ slots:
     exact_mappings:
       - AFR:0001700
 
+  recording_duration:
+    description: Total duration of the video recording in HH:MM:SS format.
+    required: false ## maybe change to true 
+    recommended: true
+    range: duration
+    exact_mappings:
+      - AFR:0000951
+    close_mappings:
+      - schema:duration
+    examples:
+      - value: "PT30M"
+        description: 30 minutes
+      - value: "PT1H15M30S"
+        description: 1 hour, 15 minutes, 30 seconds
+      - value: "PT45S"
+        description: 45 seconds
+    notes:
+      - Use ISO 8601 duration format (e.g. PT30M, PT1H15M30S).
 
 
-      - recording_duration_hh_mm_ss
+
       - illumination_type
       - illumination_wavelength_nm
       - illumination_lux
