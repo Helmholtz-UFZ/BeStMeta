@@ -35,6 +35,7 @@ prefixes:
   linkml:     https://w3id.org/linkml/
   ma:         http://www.w3.org/ns/ma-ont#
   MESH:       http://id.nlm.nih.gov/mesh/
+  MIxS:       https://w3id.org/mixs/
   NCBITaxon:  http://purl.obolibrary.org/obo/NCBITaxon_
   NCIT:       http://purl.obolibrary.org/obo/NCIT_
   OBI:        http://purl.obolibrary.org/obo/OBI_
@@ -1054,8 +1055,7 @@ slots:
 
   recording_duration:
     description: Total duration of the video recording in HH:MM:SS format.
-    required: false ## maybe change to true 
-    recommended: true
+    required: true
     range: duration
     exact_mappings:
       - AFR:0000951
@@ -1069,9 +1069,21 @@ slots:
       - value: "PT45S"
         description: 45 seconds
     notes:
-      - Use ISO 8601 duration format (e.g. PT30M, PT1H15M30S).
+      - Use ISO 8601 duration format.
 
+  illumination_type:
+    description: Type of illumination used during recording.
+    required: false
+    recommended: true 
+    range: IlluminationTypeEnum
+    exact_mappings:
+      - MIxS:0000769
 
+  illumination_wavelength_nm:
+    description: Wavelength of illumination in nanometres (for non-white-light sources)
+    range: integer
+    unit:
+      symbol: nm
 
       - illumination_type
       - illumination_wavelength_nm
@@ -1132,9 +1144,11 @@ enums:
     permissible_values:
       male:
       female:
-      mixed:    { description: "Mixed male and female in same group" }
+      mixed:
+        description: Mixed male and female in same group.
       unknown:
-      not_applicable: { description: "e.g. asexual organisms, embryos" } 
+      not_applicable:
+        description: e.g. asexual organisms, embryos
 
   DevelopmentalStageEnum:
     permissible_values:
@@ -1323,3 +1337,23 @@ enums:
       ToxMate:
       Noldus PhenoTyper:
       Other:
+
+  IlluminationTypeEnum:
+    description: Technology type of the light source used during video recording.
+    permissible_values:
+      white_light:
+        description: Standard broadband visible light.
+      infrared:
+        description: Infrared illumination panel or backlight; use illumination_wavelength_nm for exact wavelength.
+      red:
+        description: Red-spectrum light.
+      fluorescent:
+        description: Fluorescent tube or bulb illumination.
+      led:
+        description: LED-based illumination without further specification.
+      ambient:
+        description: Environmental or room lighting without a dedicated source.
+      none:
+        description: No active illumination.
+      other:
+        description: Other illumination type; describe in acquisition_notes.
