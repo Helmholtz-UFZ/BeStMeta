@@ -39,6 +39,7 @@ prefixes:
   NCBITaxon:  http://purl.obolibrary.org/obo/NCBITaxon_
   NCIT:       http://purl.obolibrary.org/obo/NCIT_
   OBI:        http://purl.obolibrary.org/obo/OBI_
+  OM:         http://www.ontology-of-units-of-measure.org/resource/om-2/
   OME:        http://www.openmicroscopy.org/Schemas/OME/2016-06#
   pav:        http://purl.org/pav/ 
   schema:     http://schema.org/
@@ -317,21 +318,21 @@ classes:
       - recording_software_version
       - recording_duration
       - illumination_type
-      - illumination_wavelength_nm
-      - illumination_lux
-      - frame_rate_fps
-      - video_resolution_width_px
-      - video_resolution_height_px
+      - illumination_wavelength
+      - illumination_illuminance
+      - frame_rate
+      - video_resolution_width
+      - video_resolution_height
       - bit_depth
       - color_mode
       - camera_binning
-      - spatial_resolution_mm_per_px
+      - spatial_resolution
       - video_container_format
       - video_codec
       - compression_method
       # Image quality
       - gain
-      - exposure_time_ms
+      - exposure_time
       - contrast_settings
       - noise_reduction_method
       - compression_quality
@@ -1079,22 +1080,88 @@ slots:
     exact_mappings:
       - MIxS:0000769
 
-  illumination_wavelength_nm:
-    description: Wavelength of illumination in nanometres (for non-white-light sources)
+  illumination_wavelength:
+    description: >-
+      Wavelength of the illumination source in nanometres.
+      Use for non-white-light sources such as infrared or UV.
+    required: false
     range: integer
     unit:
-      symbol: nm
+      ucum_code: nm
+    exact_mappings:
+      - AFR:0001159
+    close_mappings:
+      - PATO:0001242
+  
+  illumination_illuminance:
+    description: Illuminance at the recording arena or observation surface.
+    required: false
+    range: float
+    unit:
+      ucum_code: lx
+    exact_mappings:
+      - OM:Illuminance
+    examples:
+      - value: "0"
+        description: Dark condition
+      - value: "100"
+        description: Dim illumination
+      - value: "1000"
+        description: Bright laboratory illumination
+    notes:
+      - Measure at the level of the arena floor, water surface, or observation plane.
+      - Particularly relevant for light-dark assays and circadian behaviour studies.
 
-      - illumination_type
-      - illumination_wavelength_nm
-      - illumination_lux
-      - frame_rate_fps
-      - video_resolution_width_px
-      - video_resolution_height_px
+  frame_rate:
+    description: Number of frames captured per second during video recording.
+    required: true
+    range: float
+    unit:
+      ucum_code: Hz
+      symbol: fps
+    exact_mappings:
+      - AFR:0001240   # verify before committing
+
+  video_resolution_width:
+    description: Horizontal pixel count of the recorded video.
+    required: false
+    range: integer
+    unit:
+      ucum_code: "[px]"
+    notes:
+      - Report the native capture resolution, not a post-processing rescaled value.
+
+  video_resolution_height:
+    description: Vertical pixel count of the recorded video.
+    required: false
+    range: integer
+    unit:
+      ucum_code: "[px]"
+    notes:
+      - Report the native capture resolution, not a post-processing rescaled value.
+
+  spatial_resolution:
+    description: Physical size represented by one pixel at the arena plane.
+    required: false
+    range: float
+    unit:
+      ucum_code: mm/[px]
+    notes:
+      - Calibrate at the focal plane of the arena floor or water surface.
+
+  exposure_time:
+    description: Camera sensor exposure time per frame.
+    required: false
+    range: float
+    unit:
+      ucum_code: ms
+      - frame_rate
+      - video_resolution_width
+      - video_resolution_height
       - bit_depth
       - color_mode
       - camera_binning
-      - spatial_resolution_mm_per_px
+      - spatial_resolution
       - video_container_format
       - video_codec
       - compression_method
@@ -1345,10 +1412,8 @@ enums:
         description: Standard broadband visible light.
       infrared:
         description: Infrared illumination panel or backlight; use illumination_wavelength_nm for exact wavelength.
-      red:
-        description: Red-spectrum light.
       fluorescent:
-        description: Fluorescent tube or bulb illumination.
+        description: Fluorescent light source.
       led:
         description: LED-based illumination without further specification.
       ambient:
