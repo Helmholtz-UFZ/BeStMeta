@@ -27,6 +27,7 @@ prefixes:
   CHEBI:      http://purl.obolibrary.org/obo/CHEBI_
   CHMO:       http://purl.obolibrary.org/obo/CHMO
   dcterms:    http://purl.org/dc/terms/
+  dicom:      http://purl.org/healthcarevocab/v1#
   dwc:        http://rs.tdwg.org/dwc/terms/
   ebucore:    http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#
   EDAM-DATA:  http://edamontology.org/data_
@@ -42,6 +43,7 @@ prefixes:
   OM:         http://www.ontology-of-units-of-measure.org/resource/om-2/
   OME:        http://www.openmicroscopy.org/Schemas/OME/2016-06#
   pav:        http://purl.org/pav/ 
+  REPR:       https://w3id.org/reproduceme#
   schema:     http://schema.org/
   SNOMED:     http://snomed.info/id/ 
   SWO:        http://purl.obolibrary.org/obo/SWO_
@@ -325,15 +327,13 @@ classes:
       - video_resolution_height
       - bit_depth
       - color_mode
-      - camera_binning
       - spatial_resolution
       - video_container_format
       - video_codec
-      - compression_method
       # Image quality
       - gain
       - exposure_time
-      - contrast_settings
+      - contrast_polarity
       - noise_reduction_method
       - compression_quality
       # Derived / calculable
@@ -1079,10 +1079,10 @@ slots:
     range: IlluminationTypeEnum
     exact_mappings:
       - MIxS:0000769
-
+    
   illumination_wavelength:
     description: >-
-      Wavelength of the illumination source in nanometres.
+      Peak wavelength of the illumination source in nanometres.
       Use for non-white-light sources such as infrared or UV.
     required: false
     range: integer
@@ -1102,15 +1102,12 @@ slots:
     exact_mappings:
       - OM:Illuminance
     examples:
-      - value: "0"
+      - value: 0
         description: Dark condition
-      - value: "100"
+      - value: 100
         description: Dim illumination
-      - value: "1000"
+      - value: 1000
         description: Bright laboratory illumination
-    notes:
-      - Measure at the level of the arena floor, water surface, or observation plane.
-      - Particularly relevant for light-dark assays and circadian behaviour studies.
 
   frame_rate:
     description: Number of frames captured per second during video recording.
@@ -1120,55 +1117,105 @@ slots:
       ucum_code: Hz
       symbol: fps
     exact_mappings:
-      - AFR:0001240   # verify before committing
+      - ebucore:frameRate
+    close_mappings:
+      - ma:frameRate
 
   video_resolution_width:
     description: Horizontal pixel count of the recorded video.
-    required: false
+    required: true
     range: integer
     unit:
-      ucum_code: "[px]"
-    notes:
-      - Report the native capture resolution, not a post-processing rescaled value.
+      ucum_code: [px]
+    close_mappings:
+      - ebucore:width
 
   video_resolution_height:
     description: Vertical pixel count of the recorded video.
-    required: false
+    required: true
     range: integer
     unit:
-      ucum_code: "[px]"
-    notes:
-      - Report the native capture resolution, not a post-processing rescaled value.
+      ucum_code: [px]
+    close_mappings:
+      - ebucore:height
 
-  spatial_resolution:
-    description: Physical size represented by one pixel at the arena plane.
+  bit_depth:
+    description: Bit depth per pixel channel of the recorded video.
     required: false
+    range: integer
+    exact_mappings:
+    - ebucore:bitDepth
+    examples:
+      - value: 8
+      - value: 16
+    notes:
+      - Common values are 8-bit and 16-bit.
+  
+  color_mode:
+    description: >-
+      Color mode of the recorded video.
+      Affects tracking algorithm behavior and file size.
+    required: false
+    range: ColorModeEnum
+    
+  spatial_resolution:
+    description: Physical size represented by one pixel at the observation plane.
+    required: true
     range: float
     unit:
       ucum_code: mm/[px]
+    close_mappings:
+      - dicom:SpatialResolution
+
+  video_container_format:
+    description: File container format of the recorded video.
+    required: true
+    range: VideoContainerEnum
+    exact_mappings:
+      - ebucore:hasContainerFormat
     notes:
-      - Calibrate at the focal plane of the arena floor or water surface.
+      - Report the container format, not the codec.
+      - Codec is captured separately in video_codec.
+  
+  video_codec:
+    description: Video compression codec used for recording.
+    required: false
+    recommended: true
+    range: VideoCodecEnum
+    exact_mappings:
+      - ebucore:codecName
+    notes:
+      - Report the codec, not the container format.
+      - Container format is captured separately in video_container_format.
+      - mp4 is a container, not a codec — most mp4 files use H264 or H265 as codec.
+
+  gain:
+    description: Camera gain setting at the time of recording.
+    required: false
+    range: string
+    exact_mappings:
+      - AFQ:0000201
 
   exposure_time:
     description: Camera sensor exposure time per frame.
     required: false
+    recommended: true
     range: float
     unit:
       ucum_code: ms
-      - frame_rate
-      - video_resolution_width
-      - video_resolution_height
-      - bit_depth
-      - color_mode
-      - camera_binning
-      - spatial_resolution
-      - video_container_format
-      - video_codec
-      - compression_method
-      # Image quality
-      - gain
-      - exposure_time_ms
-      - contrast_settings
+    exact_mappings:
+      - REPR:ExposureTime
+
+    contrast_polarity:
+      description: >-
+        Contrast relationship between the tracked object and the background;
+        indicates whether the subject appears bright on a dark background or
+        dark on a bright background in the recorded video.
+      required: false
+      range: ContrastPolarityEnum
+
+
+
       - noise_reduction_method
       - compression_quality
       # Derived / calculable
@@ -1422,3 +1469,56 @@ enums:
         description: No active illumination.
       other:
         description: Other illumination type; describe in acquisition_notes.
+  
+  ColorModeEnum:
+    description: Color mode of the video recording.
+    permissible_values:
+      grayscale:
+        description: Single-channel intensity image.
+      rgb:
+        description: Three-channel red-green-blue color image.
+      other:
+        description: Other color mode; describe in acquisition_notes.
+
+  VideoContainerEnum:
+    description: Video file container format.
+    permissible_values:
+      mp4:
+        description: MPEG-4 container.
+      avi:
+        description: Audio Video Interleave.
+      mov:
+        description: Apple QuickTime container.
+      other:
+        description: Other container format; describe in acquisition_notes.
+
+  VideoCodecEnum:
+    description: Video compression codec used for recording.
+    permissible_values:
+      H264:
+      H265:
+      FFV1:
+      AV1:
+      MJPEG:
+      MPEG4:
+        description: MPEG-4 Part 2 codec (DivX/Xvid); not to be confused with the mp4 container format.
+      RAW:
+        description: Uncompressed video; no codec applied.
+      other:
+        description: Other codec; describe in acquisition_notes.
+
+  ContrastPolarityEnum:
+    description: Polarity of object-to-background contrast in the video.
+    permissible_values:
+      bright_on_dark:
+        description: >-
+          Tracked object appears brighter than the background
+          (analogous to dark-field imaging).
+      dark_on_bright:
+        description: >-
+          Tracked object appears darker than the background
+          (analogous to bright-field imaging).
+      mixed:
+        description: Polarity varies across regions, frames, or channels.
+      unknown:
+        description: Polarity not determined or not reported.
