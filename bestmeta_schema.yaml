@@ -113,6 +113,8 @@ classes:
       and environmental parameters.
     slots:
       ## Organism identity
+      - experiment_start_datetime
+      - experiment_end_datetime
       - species_name
       - species_ncbi_taxon_id
       - strain
@@ -268,6 +270,7 @@ classes:
       ## Optics
       - lens_focal_length_mm
       - objective_magnification
+      - contrast_polarity
       - field_of_view_width
       - field_of_view_height 
       - field_of_view_unit
@@ -301,21 +304,23 @@ classes:
             field_of_view_height:
               value_presence: present
 
-    - description: Field of view width and height should be reported together.
-      preconditions:
-        slot_conditions:
-          field_of_view_height:
-            value_presence: present
-      postconditions:
-        slot_conditions:
-          field_of_view_width:
-            value_presence: present
+      - description: Field of view width and height should be reported together.
+        preconditions:
+          slot_conditions:
+            field_of_view_height:
+              value_presence: present
+        postconditions:
+          slot_conditions:
+            field_of_view_width:
+              value_presence: present
 
   AcquisitionParameters: 
     description: >-
       Video acquisition and recording parameters.
     slots:
       # Core acquisition
+      - recording_start_datetime
+      - recording_end_datetime
       - recording_software_name
       - recording_software_version
       - recording_duration
@@ -323,6 +328,7 @@ classes:
       - illumination_wavelength
       - illumination_illuminance
       - frame_rate
+      - total_frame_count
       - video_resolution_width
       - video_resolution_height
       - bit_depth
@@ -333,13 +339,24 @@ classes:
       # Image quality
       - gain
       - exposure_time
-      - contrast_polarity
       - noise_reduction_method
-      - compression_quality
       # Derived / calculable
-      - total_frame_count
+
       # Notes
       - acquisition_notes 
+
+    rules:
+      - description: Bit depth should be reported when it is available for lossless or uncompressed video.
+        preconditions:
+          slot_conditions:
+            video_codec:
+              any_of:
+                - equals_string: FFV1
+                - equals_string: RAW
+        postconditions:
+          slot_conditions:
+            bit_depth:
+              recommended: true
 
   TrackingAnalysis:
     description: >-
@@ -350,7 +367,6 @@ classes:
       # Tracking software
       - tracking_software_name
       - tracking_software_version
-      - tracking_software_url
       - tracking_algorithm
       - tracking_software_settings
       - pose_estimation_model
@@ -560,6 +576,18 @@ slots:
     inlined: true
 
 # --- ExperimentalConditions slots ---
+  experiment_start_datetime:
+    description: Date and time at which the experiment began.
+    range: datetime
+    required: false
+    recommended: true
+  
+  experiment_end_datetime:
+    description: Date and time at which the experiment ended.
+    range: datetime
+    required: false
+    recommended: true
+  
   species_name:
     description: Scientific (Latin) binomial name of the study organism
     required: true
@@ -714,7 +742,7 @@ slots:
     range: float
   
   arena_length_unit:
-    Unit of measurement for arena_length.
+    description: Unit of measurement for arena_length.
     required: false
     recommended: true
     range: LengthUnitEnum
@@ -1005,6 +1033,15 @@ slots:
     examples:
       - value: 4
       - value: 10
+
+  contrast_polarity:
+    description: >-
+      Contrast relationship between the tracked object and the background;
+      indicates whether the subject appears bright on a dark background or
+      dark on a bright background in the recorded video.
+    required: false
+    recommended: true
+    range: ContrastPolarityEnum
   
   field_of_view_width:
     description: Numeric value of horizontal field of view covered by the camera.
@@ -1040,12 +1077,24 @@ slots:
     range: string
 
 # --- AcquisitionParameters slots ---
+  recording_start_datetime:
+    description: Date and time at which acquisition of the video recording began.
+    range: datetime
+    required: false
+    recommended: true
+  
+  recording_end_datetime:
+    description: Date and time at which acquisition of the video recording ended.
+    range: datetime
+    required: false
+    recommended: true
+  
   recording_software_name:
     description: Name of the software used to record the video.
     required: true
     range: string                                                 
     exact_mappings:
-      - AFO_0002802
+      - AFR:0002802
 
   recording_software_version:
     description: Version string of the recording software.
@@ -1055,7 +1104,7 @@ slots:
       - AFR:0001700
 
   recording_duration:
-    description: Total duration of the video recording in HH:MM:SS format.
+    description: Total duration of the video recording in ISO 8601 duration format.
     required: true
     range: duration
     exact_mappings:
@@ -1085,7 +1134,7 @@ slots:
       Peak wavelength of the illumination source in nanometres.
       Use for non-white-light sources such as infrared or UV.
     required: false
-    range: integer
+    range: float
     unit:
       ucum_code: nm
     exact_mappings:
@@ -1121,6 +1170,18 @@ slots:
     close_mappings:
       - ma:frameRate
 
+  total_frame_count:
+    description: >-
+      Total number of frames in the video. Can be derived from
+      frame_rate_fps × trial_duration_actual_s if not explicitly stated.
+    range: integer
+    required: false
+    exact_mappings:
+      - dicom:NumberOfFrames
+    notes:
+      - Prefer direct reporting when available.
+      - If absent, it may be computed from frame rate and actual trial duration.
+  
   video_resolution_width:
     description: Horizontal pixel count of the recorded video.
     required: true
@@ -1160,7 +1221,8 @@ slots:
     
   spatial_resolution:
     description: Physical size represented by one pixel at the observation plane.
-    required: true
+    required: false
+    recommended: true
     range: float
     unit:
       ucum_code: mm/[px]
@@ -1206,22 +1268,65 @@ slots:
     exact_mappings:
       - REPR:ExposureTime
 
-    contrast_polarity:
-      description: >-
-        Contrast relationship between the tracked object and the background;
-        indicates whether the subject appears bright on a dark background or
-        dark on a bright background in the recorded video.
-      required: false
-      range: ContrastPolarityEnum
+  noise_reduction_method:
+    description: Method or algorithm used to reduce image noise during acquisition or immediately after recording.
+    range: string
+    required: false
+    recommended: true
+
+  acquisition_notes:
+    description: Free-text notes on acquisition settings
+    required: false
+    range: string
+
+# --- TrackingAnalysis slots ---
+  tracking_software_name:
+      description: Name of the software used for tracking.
+      required: true
+      range: string                                                 
+      exact_mappings:
+        - AFR:0002802
+
+  tracking_software_version:
+    description: Version string of the tracking software.
+    required: true
+    range: string
+    exact_mappings:
+      - AFR:0001700
+
+  tracking_algorithm:
+    description: >-
+      Tracking algorithm or method used to track organisms in the video
+      (e.g. centroid tracking, pose estimation, pixel thresholding)
+    required: false
+    recommended: true
+    range: string
+    examples:
+      - value: "centroid tracking"
+      - value: "background subtraction"
+      - value: "pose estimation"
+      - value: "optical flow"
 
 
-
-      - noise_reduction_method
-      - compression_quality
-      # Derived / calculable
-      - total_frame_count
-      # Notes
-      - acquisition_notes   
+      - tracking_algorithm
+      - tracking_software_settings
+      - pose_estimation_model
+      - pose_estimation_model_version
+      - compute_type
+      # Pre-processing
+      - preprocessing_steps
+      - background_subtraction_method
+      - detection_threshold
+      # Behavioral endpoints / metrics
+      - behavioral_endpoints
+      - endpoint_definitions
+      # Statistical analysis
+      - statistical_software
+      - statistical_tests
+      - multiple_testing_correction
+      - significance_threshold
+      - analysis_code_doi
+      - analysis_code_url    
 
 # --- Enums ---
 enums:
