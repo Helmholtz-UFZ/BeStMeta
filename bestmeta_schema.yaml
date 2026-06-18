@@ -369,13 +369,9 @@ classes:
       - tracking_software_version
       - tracking_algorithm
       - tracking_software_settings
-      - pose_estimation_model
-      - pose_estimation_model_version
-      - compute_type
+      - compute_hardware
       # Pre-processing
       - preprocessing_steps
-      - background_subtraction_method
-      - detection_threshold
       # Behavioral endpoints / metrics
       - behavioral_endpoints
       - endpoint_definitions
@@ -1296,27 +1292,59 @@ slots:
 
   tracking_algorithm:
     description: >-
-      Tracking algorithm or method used to track organisms in the video
-      (e.g. centroid tracking, pose estimation, pixel thresholding)
+      Algorithmic approach used to detect, identify, and track organisms in
+      video recordings. Multiple values may be provided when tracking is
+      performed using a pipeline of methods. 
+## does this make sense?
     required: false
     recommended: true
     range: string
     examples:
-      - value: "centroid tracking"
       - value: "background subtraction"
+      - value: "centroid tracking"
       - value: "pose estimation"
-      - value: "optical flow"
+      - value: "Kalman filter"
+      - value: "Hungarian algorithm"
+      - value: "YOLO object detection"
+      ## do the examples make sense?
 
+  tracking_software_settings:
+    description: >-
+      Key tracking configuration parameters used during analysis,
+      including software-specific settings required to reproduce
+      tracking results.
+    required: false
+    recommended: true
+    range: string
+    examples:
+      - value: "Detection threshold=25; minimum blob size=50 px"
+      - value: "DeepLabCut likelihood threshold=0.9"
+      - value: "Interpolation enabled; gap length=5 frames"
 
-      - tracking_algorithm
-      - tracking_software_settings
-      - pose_estimation_model
-      - pose_estimation_model_version
-      - compute_type
-      # Pre-processing
-      - preprocessing_steps
-      - background_subtraction_method
-      - detection_threshold
+  compute_hardware:
+    description: >-
+      Primary compute hardware used for tracking and analysis.
+      Include model information when available.
+    required: false
+    recommended: true
+    range: string
+    multivalued: true
+    examples:
+      - value: "GPU (NVIDIA RTX 3090)"
+      - value: "GPU (NVIDIA A100 80GB)"
+      - value: "CPU (Intel Xeon Gold 6248)"
+      - value: "CPU (AMD Ryzen 9 7950X)"
+
+  preprocessing_steps:
+    description: >-
+      Preprocessing steps applied to video before tracking to enhance quality
+      or isolate features.
+    required: false
+    recommended: true
+    range: PreprocessingStepEnum
+    multivalued: true
+
+    
       # Behavioral endpoints / metrics
       - behavioral_endpoints
       - endpoint_definitions
@@ -1627,3 +1655,32 @@ enums:
         description: Polarity varies across regions, frames, or channels.
       unknown:
         description: Polarity not determined or not reported.
+
+  PreprocessingStepEnum: ## do they make sense?
+    permissible_values:
+      background_subtraction:
+        description: Removal of static background elements.
+      brightness_normalization:
+        description: Adjustment of brightness levels.
+      contrast_enhancement:
+        description: Improvement of contrast.
+      spatial_filtering:
+        description: Spatial domain filtering, for example Gaussian blur.
+      temporal_filtering:
+        description: Temporal smoothing across frames.
+      roi_masking:
+        description: Restriction to a region of interest.
+      noise_reduction:
+        description: Denoising applied to the video.
+      frame_averaging:
+        description: Averaging multiple frames.
+      perspective_correction:
+        description: Geometric correction of image perspective.
+      colour_space_conversion:
+        description: Conversion between color spaces.
+      thresholding:
+        description: Segmentation of objects using intensity or color thresholds.
+      image_stabilization:
+        description: Correction of camera movement between frames.
+      other:
+        description: Other preprocessing step, describe in notes. 
