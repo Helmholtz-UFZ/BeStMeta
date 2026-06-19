@@ -42,10 +42,12 @@ prefixes:
   OBI:        http://purl.obolibrary.org/obo/OBI_
   OM:         http://www.ontology-of-units-of-measure.org/resource/om-2/
   OME:        http://www.openmicroscopy.org/Schemas/OME/2016-06#
+  ORCID:      https://orcid.org/
   pav:        http://purl.org/pav/ 
   REPR:       https://w3id.org/reproduceme#
   schema:     http://schema.org/
   SNOMED:     http://snomed.info/id/ 
+  STATO:      http://purl.obolibrary.org/obo/STATO_
   SWO:        http://purl.obolibrary.org/obo/SWO_
   UO:         http://purl.obolibrary.org/obo/UO_
   XCO:        http://purl.obolibrary.org/obo/XCO_
@@ -129,8 +131,8 @@ classes:
       - body_length_unit
       - weight_value
       - weight_unit
-      - n_animals_total
-      - n_animals_per_arena
+      - n_individuals_total
+      - n_individuals_per_arena
       # Assay design
       - assay_type
       - assay_description
@@ -329,6 +331,8 @@ classes:
       - illumination_illuminance
       - frame_rate
       - total_frame_count
+      - dropped_frames_count
+      - dropped_frames_reason
       - video_resolution_width
       - video_resolution_height
       - bit_depth
@@ -340,8 +344,6 @@ classes:
       - gain
       - exposure_time
       - noise_reduction_method
-      # Derived / calculable
-
       # Notes
       - acquisition_notes 
 
@@ -361,27 +363,45 @@ classes:
   TrackingAnalysis:
     description: >-
       Tracking software identity and version, algorithm details,
-      post-tracking computational steps, derived behavioral metrics,
-      and statistical analysis methods.
+      post-tracking computational steps and derived behavioral metrics.
     slots:
       # Tracking software
       - tracking_software_name
       - tracking_software_version
       - tracking_algorithm
       - tracking_software_settings
+      - tracking_data_format
+      - tracking_confidence_threshold
+      - tracking_manual_correction
       - compute_hardware
       # Pre-processing
       - preprocessing_steps
+      - n_individuals_tracked_per_arena
+      - n_bodyparts_tracked
+      - frames_without_tracked_individual
+      - frames_without_tracked_bodyparts
       # Behavioral endpoints / metrics
       - behavioral_endpoints
       - endpoint_definitions
-      # Statistical analysis
-      - statistical_software
+      - tracking_notes
+
+  StatisticalAnalysis:   
+    description: >-
+      Information describing the statistical analysis of behavioral data,
+      including statistical tests, models, significance criteria,
+      multiple-testing corrections, and other methods used to evaluate
+      experimental outcomes.
+    slots:
+      - statistical_software_name
+      - statistical_software_version
       - statistical_tests
+      - statistical_models
       - multiple_testing_correction
-      - significance_threshold
-      - analysis_code_doi
-      - analysis_code_url      
+      - significance_level
+      - effect_size_measure
+      - confidence_interval_level
+      - sample_size_analysis
+      - statistics_notes
 
 # --- slots ---
 slots:
@@ -462,10 +482,11 @@ slots:
       - schema:creator
   
   dataset_creator_orcid:
+    description: ORCID identifier of the dataset creator.
     required: false
     recommended: true
     multivalued: true
-    range: uri
+    range: uriorcurie
     pattern: '^https://orcid\.org/\d{4}-\d{4}-\d{4}-\d{3}[0-9X]$'
     exact_mappings:
     - schema:identifier
@@ -543,7 +564,7 @@ slots:
     description: Free-text notes on the dataset not captured by structured fields.
     required: false
     range: string
-
+    
   # Nested class slots
   experimental_conditions:
     description: Biological and experimental conditions for this dataset
@@ -690,13 +711,13 @@ slots:
     required: false
     range: WeightUnitEnum
 
-  n_animals_total:
-    description: Total number of animals used in the experiment.
+  n_individuals_total:
+    description: Total number of individuals used in the experiment.
     range: integer
     required: true
   
-  n_animals_per_arena:
-    description: Number of animals tested simultaneously in the arena.
+  n_individuals_per_arena:
+    description: Number of individuals tested simultaneously in the arena.
     required: true
     range: integer
     minimum_value: 1
@@ -1178,6 +1199,31 @@ slots:
       - Prefer direct reporting when available.
       - If absent, it may be computed from frame rate and actual trial duration.
   
+  dropped_frame_count:
+    description: Number of video frames lost or omitted during acquisition.
+    required: false
+    recommended: true
+    range: integer
+    examples:
+      - value: 0
+      - value: 12
+    notes:
+      - Report frames missing due to acquisition, recording, or encoding issues.
+      - A value of 0 indicates no dropped frames were detected.
+  
+  dropped_frame_reason:
+    description: >-
+      Reason for dropped or omitted frames during acquisition,
+      recording, encoding, or quality control.
+    required: false
+    range: string
+    examples:
+      - value: "Camera buffer overflow"
+      - value: "Temporary USB bandwidth limitation"
+      - value: "Corrupted frames removed during quality control"
+      - value: "Frames dropped due to encoder performance limitations"
+      - value: "Network transmission interruption"
+
   video_resolution_width:
     description: Horizontal pixel count of the recorded video.
     required: true
@@ -1278,14 +1324,16 @@ slots:
 # --- TrackingAnalysis slots ---
   tracking_software_name:
       description: Name of the software used for tracking.
-      required: true
+      required: fals
+      recommended: true
       range: string                                                 
       exact_mappings:
         - AFR:0002802
 
   tracking_software_version:
     description: Version string of the tracking software.
-    required: true
+    required: fals
+    recommended: true
     range: string
     exact_mappings:
       - AFR:0001700
@@ -1294,19 +1342,18 @@ slots:
     description: >-
       Algorithmic approach used to detect, identify, and track organisms in
       video recordings. Multiple values may be provided when tracking is
-      performed using a pipeline of methods. 
-## does this make sense?
+      performed using a pipeline of methods.
     required: false
     recommended: true
     range: string
+    multivalued: true
     examples:
       - value: "background subtraction"
       - value: "centroid tracking"
       - value: "pose estimation"
-      - value: "Kalman filter"
-      - value: "Hungarian algorithm"
       - value: "YOLO object detection"
-      ## do the examples make sense? add augmentation here
+      - value: "DeepLabCut multi-animal pose estimation"
+      ##  add augmentation here
 
   tracking_software_settings:
     description: >-
@@ -1320,7 +1367,51 @@ slots:
       - value: "Detection threshold=25; minimum blob size=50 px"
       - value: "DeepLabCut likelihood threshold=0.9"
       - value: "Interpolation enabled; gap length=5 frames"
+    
+  tracking_data_format:
+    description: >-
+      File format used to store tracking results, including coordinates,
+      keypoints, identities, trajectories, annotations, or derived outputs.
+    required: false
+    recommended: true
+    range: string
+    multivalued: true
+    examples:
+      - value: "CSV"
+      - value: "HDF5"
+      - value: "JSON"
+      - value: "NWB"
+      - value: "DeepLabCut .h5"
+      - value: "SLEAP .slp"
+      - value: "ZebraBox PHR"
+    notes:
+      - Report the output format of the tracking results, not the raw video container.
+      - Use this for coordinate/keypoint files and derived tracking outputs.
+    
+  tracking_confidence_threshold:
+    description: >-
+      Confidence or likelihood threshold used to accept detections,
+      identities, tracks, or keypoints during tracking analysis.
+    required: false
+    recommended: true
+    range: float
+    examples:
+      - value: 0.9
+      - value: 0.3
 
+  tracking_manual_correction:
+    description: >-
+      Whether tracking results were manually reviewed, corrected, or curated
+      after automated tracking.
+    required: false
+    recommended: true
+    range: boolean
+    examples:
+      - value: true
+      - value: false
+    notes:
+      - Use true if outputs were manually curated, corrected, or quality-checked by a human after automated tracking.
+      
   compute_hardware:
     description: >-
       Primary compute hardware used for tracking and analysis.
@@ -1343,6 +1434,38 @@ slots:
     recommended: true
     range: PreprocessingStepEnum
     multivalued: true
+
+  n_individuals_tracked_per_arena:
+    description: Number of individuals actually tracked in a single arena or trial.
+    required: false
+    recommended: true
+    range: integer
+    exact_mappings:
+    - BeStMeta:n_individuals_per_arena
+    notes:
+      - Can be derived from ExperimentalConditions.n_individuals_per_arena.
+      - Report explicitly if fewer animals were successfully tracked.
+
+  n_bodyparts_tracked:
+    description: Number of body parts or keypoints tracked per individual.
+    required: false
+    recommended: true
+    range: integer
+    notes:
+    - For centroid tracking, use 1.
+    - For pose-estimation approaches, report the number of tracked landmarks.
+
+  frames_without_tracked_individual: ##change to percentage?
+    description: Number of frames in which no individual was tracked.
+    required: false
+    recommended: true
+    range: integer
+
+  frames_without_tracked_bodypart: ##change to percentage?
+    description: Number of frames in which no body part was tracked.
+    required: false
+    recommended: true
+    range: integer
 
   behavioral_endpoints:
     description: List of behavioral metrics or endpoints extracted from tracking data.
@@ -1369,22 +1492,147 @@ slots:
       - value: "Freezing defined as speed < 1 mm/s for ≥ 1 s"
       - value: "Center zone defined as central 50% of arena area"
 
+  tracking_notes:
+    description: Free-text notes on the tracking analysis not captured by structured fields.
+    required: false
+    range: string
+    
+# --- StatisticalAnalysis slots ---
+  statistical_software_name:
+    description: Name of the software used for statistical analysis.
+    required: false
+    recommended: true
+    range: string                                                 
+    exact_mappings:
+      - AFR:0002802 
+    examples:
+      - value: "R"
+      - value: "GraphPad Prism"
+      - value: "SPSS"
+      - value: "SAS"
+      - value: "Stata"
+    notes:
+    - Use a software/package name rather than a software class or workflow.
 
+  statistical_software_version:
+    description: Version string of the software used for statistical analysis.
+    required: false
+    recommended: true
+    range: string
+    exact_mappings:
+      - AFR:0001700
 
-##### next slots to write:
-        - dropped_frames
-        - frames_without_tracked_animal
-        - frames_without_tracked_bodyparts
-        - no_of_tracked_animals # link to experiment
-        - no_oftrackes_bodyparts # into ecotox extension?
-        # Statistical analysis
-        - statistical_software
-        - statistical_tests
-        - multiple_testing_correction
-        - significance_threshold
-        - analysis_code_doi
-        - analysis_code_url    
+  statistical_tests:
+    description: >-
+      Statistical tests applied to behavioral endpoints
+      for hypothesis testing or inference.
+    required: false
+    recommended: true
+    range: string
+    multivalued: true
+    examples:
+      - value: "Student's t-test"
+      - value: "Mann-Whitney U test"
+      - value: "one-way ANOVA"
+      - value: "two-way ANOVA"
+      - value: "repeated-measures ANOVA"
+      - value: "Kruskal-Wallis test"
+      - value: "Wilcoxon signed-rank test"
+      - value: "Chi-square test"
+    exact_mappings:
+      - NCIT:C53228
+    notes:
+      - Multiple tests may be listed if different endpoints were analysed with different methods.
+  
+  statistical_models: ## maybe remove this slot and put it together with "statistical_test"/"statistical_methods"
+    description: Statistical models used to analyse behavioral endpoints.
+    required: false
+    recommended: true
+    range: string
+    multivalued: true
+    exact_mappings:
+      - STATO:0000107
+    examples:
+      - value: "linear mixed-effects model"
+      - value: "generalized linear model"
+      - value: "generalized additive model"
+      - value: "Cox proportional hazards model"
+      - value: "logistic regression"
+    
+  multiple_testing_correction:
+    description: >-
+      Procedure used to correct for multiple comparisons (if more than one
+      hypothesis was tested).  Include the name of the method and any
+      parameters (e.g., false‑discovery‑rate level).
+    required: false
+    recommended: true
+    range: string
+    exact_mappings:
+     - OBI:0200089
+    examples:
+      - value: "Benjamini‑Hochberg FDR (q = 0.05)"
+      - value: "Bonferroni (α / n = 0.001)"
 
+  significance_level:
+    description: Significance threshold used for hypothesis testing (e.g., alpha).
+    required: false
+    recommended: true
+    range: float
+    minimum_value: 0
+    maximum_value: 1
+    exact_mappings:
+      - NCIT:C41265
+    examples:
+      - value: 0.05
+      - value: 0.01
+
+  effect_size_measure:
+    description: >-
+      Effect size measure reported to quantify the magnitude of observed
+      effects or associations.
+    required: false
+    recommended: true
+    range: string
+    multivalued: true
+    close_mappings:
+      - NCIT:C209463
+    examples:
+      - value: "Cohen's d"
+      - value: "Hedges' g"
+      - value: "eta-squared"
+      - value: "partial eta-squared"
+      - value: "odds ratio"
+      - value: "Pearson's r"
+      - value: "Spearman's rho"
+
+  confidence_interval_level:
+    description: Confidence interval reported for statistical results.
+    required: false
+    recommended: true
+    range: string
+    multivalued: true
+    exact_mappings:
+      - STATO:0000196
+    examples:
+      - value: "95% CI"
+
+  sample_size_analysis:
+    description: Sample size or power analysis method, software, or justification used before the study.
+    required: false
+    recommended: true
+    range: string
+    multivalued: true
+    examples:
+      - value: "power analysis in G*Power"
+      - value: "calculated using alpha=0.05 and power=0.8"
+    exact_mappings:
+      - NCIT:C115467
+  
+  statistics_notes:
+    description: Free-text notes on the statistical analysis not captured by structured fields.
+    required: false
+    range: string
+    
 # --- Enums ---
 enums:
 
