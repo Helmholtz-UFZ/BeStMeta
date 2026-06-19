@@ -709,7 +709,7 @@ slots:
       - value: "light-dark transition"
       - value: "elevated plus maze"
       - value: "locomotor activity assay"
-      - value: "chemobehavioural assay"    
+      - value: "chemobehavioral assay"    
     broad_mappings:
       - OBI:0000070
     
@@ -1306,7 +1306,7 @@ slots:
       - value: "Kalman filter"
       - value: "Hungarian algorithm"
       - value: "YOLO object detection"
-      ## do the examples make sense?
+      ## do the examples make sense? add augmentation here
 
   tracking_software_settings:
     description: >-
@@ -1344,17 +1344,46 @@ slots:
     range: PreprocessingStepEnum
     multivalued: true
 
+  behavioral_endpoints:
+    description: List of behavioral metrics or endpoints extracted from tracking data.
+    required: false
+    recommended: true
+    range: string
+    multivalued: true
+    examples:
+      - value: "total distance moved"
+      - value: "average velocity"
+      - value: "time in center zone"
+      - value: "freezing duration"
     
-      # Behavioral endpoints / metrics
-      - behavioral_endpoints
-      - endpoint_definitions
-      # Statistical analysis
-      - statistical_software
-      - statistical_tests
-      - multiple_testing_correction
-      - significance_threshold
-      - analysis_code_doi
-      - analysis_code_url    
+  endpoint_definitions:
+    description: >-
+      Definitions and calculation criteria used for behavioral endpoints,
+      including thresholds, zone boundaries, event definitions, and other
+      parameters required to reproduce endpoint calculations.
+    required: false
+    recommended: true
+    range: string
+    multivalued: true
+    examples:
+      - value: "Freezing defined as speed < 1 mm/s for ≥ 1 s"
+      - value: "Center zone defined as central 50% of arena area"
+
+
+
+##### next slots to write:
+        - dropped_frames
+        - frames_without_tracked_animal
+        - frames_without_tracked_bodyparts
+        - no_of_tracked_animals # link to experiment
+        - no_oftrackes_bodyparts # into ecotox extension?
+        # Statistical analysis
+        - statistical_software
+        - statistical_tests
+        - multiple_testing_correction
+        - significance_threshold
+        - analysis_code_doi
+        - analysis_code_url    
 
 # --- Enums ---
 enums:
