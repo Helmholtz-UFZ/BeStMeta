@@ -366,6 +366,7 @@ classes:
       post-tracking computational steps and derived behavioral metrics.
     slots:
       # Tracking software
+      - tracking_software_type
       - tracking_software_name
       - tracking_software_version
       - tracking_algorithm
@@ -1322,9 +1323,15 @@ slots:
     range: string
 
 # --- TrackingAnalysis slots ---
+  tracking_software_type:
+      description: Indicates whether the tracking analysis was performed using a custom software or a standard package or software
+      required: false
+      recommended: true
+      range: TrackingSoftwareTypeEnum
+      
   tracking_software_name:
       description: Name of the software used for tracking.
-      required: fals
+      required: false
       recommended: true
       range: string                                                 
       exact_mappings:
@@ -1332,7 +1339,7 @@ slots:
 
   tracking_software_version:
     description: Version string of the tracking software.
-    required: fals
+    required: false
     recommended: true
     range: string
     exact_mappings:
@@ -1961,3 +1968,15 @@ enums:
         description: Correction of camera movement between frames.
       other:
         description: Other preprocessing step, describe in notes. 
+        
+  TrackingSoftwareTypeEnum:
+    description: Type of tracking software used.
+    permissible_values:
+      standard:
+        description: Commercial or publicly available software package.
+      custom:
+        description: Home-developed, in-house, or project-specific software.
+      modified_standard:
+        description: Standard software with custom modifications, plugins, or scripts.
+      unknown:
+        description: Software type not reported.
