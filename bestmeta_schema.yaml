@@ -323,16 +323,16 @@ classes:
       # Core acquisition
       - recording_start_datetime
       - recording_end_datetime
+      - recording_duration
       - recording_software_name
       - recording_software_version
-      - recording_duration
       - illumination_type
       - illumination_wavelength
       - illumination_illuminance
-      - frame_rate
+      - frame_rate ####FRAME RATE in seconds or in hz?
       - total_frame_count
-      - dropped_frames_count
-      - dropped_frames_reason
+      - dropped_frames_count ####this should be moved to tracking_analysis
+      - dropped_frames_reason ###this shoould be moved to tracking_analysis
       - video_resolution_width
       - video_resolution_height
       - bit_depth
