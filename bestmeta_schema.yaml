@@ -6,8 +6,6 @@
 # Author: Steffi Bredemeyer
 # =============================================================================
 
-##to do: check all comments
-
 id: https://w3id.org/bestmeta/schema
 name: bestmeta 
 title: BeStMeta Metadata Schema
@@ -152,10 +150,6 @@ classes:
       - exposure_duration_h
       - solvent_vehicle
       - control_type
-      - treatment_name
-      - treatment_description
-      - solvent_vehicle
-      - control_type
       ## Notes
       - experiment_notes
       
@@ -272,38 +266,22 @@ classes:
       ## Notes
       - hardware_notes
     rules:
-      - description: If either field of view dimension is provided, the unit must also be provided.
+      - description: Field of view width, height, and unit should be reported together.
         preconditions:
-          slot_conditions:
-            field_of_view_width:
-              any_of:
-                - value_presence: present
-            field_of_view_height:
-              any_of:
-                - value_presence: present
+          any_of:
+            - slot_conditions:
+                field_of_view_width:
+                  value_presence: present
+            - slot_conditions:
+                field_of_view_height:
+                  value_presence: present
         postconditions:
           slot_conditions:
+            field_of_view_width:
+              value_presence: present
+            field_of_view_height:
+              value_presence: present
             field_of_view_unit:
-              value_presence: present
-
-      - description: Field of view width and height should be reported together.
-        preconditions:
-          slot_conditions:
-            field_of_view_width:
-              value_presence: present
-        postconditions:
-          slot_conditions:
-            field_of_view_height:
-              value_presence: present
-
-      - description: Field of view width and height should be reported together.
-        preconditions:
-          slot_conditions:
-            field_of_view_height:
-              value_presence: present
-        postconditions:
-          slot_conditions:
-            field_of_view_width:
               value_presence: present
 
   AcquisitionParameters: 
@@ -370,7 +348,7 @@ classes:
       - dropped_frames_count
       - dropped_frames_reason
       - frames_without_tracked_individual
-      - frames_without_tracked_bodyparts
+      - frames_without_tracked_bodypart
       # Behavioral endpoints / metrics
       - behavioral_endpoints
       - endpoint_definitions
@@ -461,7 +439,6 @@ slots:
     required: false
     exact_mappings: 
       - dcterms:created
-      - schema:creator
 
   dataset_creator_name:
     description: Name(s) of data creators.
@@ -477,7 +454,7 @@ slots:
     required: false
     recommended: true
     multivalued: true
-    range: uriorcurie
+    range: uri
     pattern: '^https://orcid\.org/\d{4}-\d{4}-\d{4}-\d{3}[0-9X]$'
     exact_mappings:
     - schema:identifier
@@ -1181,7 +1158,7 @@ slots:
   total_frame_count:
     description: >-
       Total number of frames in the video. Can be derived from
-      frame_rate_fps × trial_duration_actual_s if not explicitly stated.
+      frame_rate × recording_duration if not explicitly stated.
     range: integer
     required: false
     exact_mappings:
@@ -1195,7 +1172,7 @@ slots:
     required: true
     range: integer
     unit:
-      ucum_code: [px]
+      ucum_code: px
     close_mappings:
       - ebucore:width
 
@@ -1204,7 +1181,7 @@ slots:
     required: true
     range: integer
     unit:
-      ucum_code: [px]
+      ucum_code: px
     close_mappings:
       - ebucore:height
 
@@ -1233,7 +1210,7 @@ slots:
     recommended: true
     range: float
     unit:
-      ucum_code: mm/[px]
+      ucum_code: mm/px
     close_mappings:
       - dicom:SpatialResolution
 
@@ -1415,7 +1392,7 @@ slots:
     exact_mappings:
     - BeStMeta:n_individuals_per_arena
     notes:
-      - Can be derived from ExperimentalConditions.n_individuals_per_arena.
+      - Can be derived from ExperimentalConditions/n_individuals_per_arena.
       - Report explicitly if fewer animals were successfully tracked.
 
   n_bodyparts_tracked:
@@ -1652,12 +1629,12 @@ enums:
 
   RawDataFormatEnum:
     permissible_values:
-      CSV:
-      XLSX:
-      HDF5:
-      JSON:
-      ZIP:
-      PHR:
+      csv:
+      xlsx:
+      hdf5:
+      json:
+      zip:
+      phr:
         description: Zebrabox raw file
 
   SexEnum:
@@ -1845,11 +1822,11 @@ enums:
     exact_mappings:
       - OME:Type
     permissible_values:
-      Upright:
-      Inverted:
-      Dissection:
-      Electrophysiology:
-      Other:
+      upright:
+      inverted:
+      dissection:
+      electrophysiology:
+      other:
 
   ClosedBoxSystemEnum:
     permissible_values:
