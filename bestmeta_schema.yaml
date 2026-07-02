@@ -1769,13 +1769,14 @@ enums:
       other:
 
   ControlTypeEnum:
-    solvent_control:
-    vehicle_control:
-    naive_control:
-    sham_control:
-    positive_control:
-    untreated_control:
-    other:
+    permissible_values:
+      solvent_control:
+      vehicle_control:
+      naive_control:
+      sham_control:
+      positive_control:
+      untreated_control:
+      other:
 
   CameraDeviceTypeEnum:
     description: General types of imaging devices used in VTA setups.
