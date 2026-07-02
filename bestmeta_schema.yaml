@@ -59,18 +59,6 @@ default_range: string
 imports:
   - linkml:types
 
-# --- types ---
-types: ## check at the end
-  UnitString: ## useful for free-text field, e.g., substance_dose_unit, where many different units are possible - check if needed
-    typeof: string
-    uri: UO:0000000
-    id_prefixes:
-      - UO
-    exact_mappings:
-      - qud:Unit
-    description: >-
-      A standard of measurement drawn from the Units of Measurement
-      Ontology (UO:0000000).
 # --- classes ---
 classes:
 
@@ -105,7 +93,6 @@ classes:
       - video_hardware
       - acquisition_parameters
       - tracking_analysis
-      - vta_trials
     tree_root: true
 
   ExperimentalConditions:
@@ -150,7 +137,7 @@ classes:
       - habituation_duration_min
       - habituation_protocol
       - temperature_celsius
-      - light_cycle
+      - light_cycle_type
       - light_cycle_detail
       - housing_conditions
       ## Exposure / treatment 
@@ -329,7 +316,7 @@ classes:
       - illumination_type
       - illumination_wavelength
       - illumination_illuminance
-      - frame_rate ####FRAME RATE in seconds or in hz?
+      - frame_rate
       - total_frame_count
       - video_resolution_width
       - video_resolution_height
@@ -587,12 +574,6 @@ slots:
     range: TrackingAnalysis
     inlined: true
 
-  vta_trials:
-    description: Per-video trial records in this dataset
-    range: VTATrial
-    multivalued: true
-    inlined: true
-
 # --- ExperimentalConditions slots ---
   experiment_start_datetime:
     description: Date and time at which the experiment began.
@@ -654,7 +635,8 @@ slots:
   
   sex:
     description: Biological sex of the tracked organism(s).
-    required: true
+    required: false
+    recommended: true
     range: SexEnum
     exact_mappings:
       - PATO:0000047
@@ -827,7 +809,8 @@ slots:
   temperature_celsius:
     description: Water or ambient temperature during the recording in degrees Celsius
     range: float
-    required: true
+    required: false
+    recommended: true
     unit:
       ucum_code:  Cel
   
