@@ -331,8 +331,6 @@ classes:
       - illumination_illuminance
       - frame_rate ####FRAME RATE in seconds or in hz?
       - total_frame_count
-      - dropped_frames_count ####this should be moved to tracking_analysis
-      - dropped_frames_reason ###this shoould be moved to tracking_analysis
       - video_resolution_width
       - video_resolution_height
       - bit_depth
@@ -379,6 +377,8 @@ classes:
       - preprocessing_steps
       - n_individuals_tracked_per_arena
       - n_bodyparts_tracked
+      - dropped_frames_count
+      - dropped_frames_reason
       - frames_without_tracked_individual
       - frames_without_tracked_bodyparts
       # Behavioral endpoints / metrics
@@ -430,7 +430,7 @@ slots:
   dataset_version:
     description: Semantic version string for the dataset (e.g. 1.0.0)
     required: false
-    pattern: "^\\d+\\.\\d+\\.\\d+$"
+    pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
     exact_mappings:
       primary:
       - pav:version
@@ -1082,7 +1082,7 @@ slots:
       Name of the integrated commercial closed-box tracking system.
       (e.g. ZebraBox, DanioVision, ToxMate, PhenoTyper).
     required: false
-    range: ClosedBoxSxstemEnum
+    range: ClosedBoxSystemEnum
 
   closed_box_system_version:
     description: Hardware version or model number of the closed-box system.
@@ -1107,20 +1107,6 @@ slots:
     required: false
     recommended: true
   
-  recording_software_name:
-    description: Name of the software used to record the video.
-    required: true
-    range: string                                                 
-    exact_mappings:
-      - AFR:0002802
-
-  recording_software_version:
-    description: Version string of the recording software.
-    required: true
-    range: string
-    exact_mappings:
-      - AFR:0001700
-
   recording_duration:
     description: Total duration of the video recording in ISO 8601 duration format.
     required: true
@@ -1137,7 +1123,23 @@ slots:
       - value: "PT45S"
         description: 45 seconds
     notes:
-      - Use ISO 8601 duration format.
+      - Use ISO 8601 duration format.  
+
+  recording_software_name:
+    description: Name of the software used to record the video.
+    required: true
+    range: string                                                 
+    exact_mappings:
+      - AFR:0002802
+
+  recording_software_version:
+    description: Version string of the recording software.
+    required: true
+    range: string
+    exact_mappings:
+      - AFR:0001700
+
+
 
   illumination_type:
     description: Type of illumination used during recording.
@@ -1177,12 +1179,11 @@ slots:
         description: Bright laboratory illumination
 
   frame_rate:
-    description: Number of frames captured per second during video recording.
+    description: Number of frames captured per second (fps) during video recording.
     required: true
     range: float
     unit:
       ucum_code: Hz
-      symbol: fps
     exact_mappings:
       - ebucore:frameRate
     close_mappings:
@@ -1199,31 +1200,6 @@ slots:
     notes:
       - Prefer direct reporting when available.
       - If absent, it may be computed from frame rate and actual trial duration.
-  
-  dropped_frame_count:
-    description: Number of video frames lost or omitted during acquisition.
-    required: false
-    recommended: true
-    range: integer
-    examples:
-      - value: 0
-      - value: 12
-    notes:
-      - Report frames missing due to acquisition, recording, or encoding issues.
-      - A value of 0 indicates no dropped frames were detected.
-  
-  dropped_frame_reason:
-    description: >-
-      Reason for dropped or omitted frames during acquisition,
-      recording, encoding, or quality control.
-    required: false
-    range: string
-    examples:
-      - value: "Camera buffer overflow"
-      - value: "Temporary USB bandwidth limitation"
-      - value: "Corrupted frames removed during quality control"
-      - value: "Frames dropped due to encoder performance limitations"
-      - value: "Network transmission interruption"
 
   video_resolution_width:
     description: Horizontal pixel count of the recorded video.
@@ -1461,6 +1437,31 @@ slots:
     notes:
     - For centroid tracking, use 1.
     - For pose-estimation approaches, report the number of tracked landmarks.
+  
+  dropped_frame_count:
+    description: Number of video frames lost or omitted during acquisition.
+    required: false
+    recommended: true
+    range: integer
+    examples:
+      - value: 0
+      - value: 12
+    notes:
+      - Report frames missing due to acquisition, recording, or encoding issues.
+      - A value of 0 indicates no dropped frames were detected.
+  
+  dropped_frame_reason:
+    description: >-
+      Reason for dropped or omitted frames during acquisition,
+      recording, encoding, or quality control.
+    required: false
+    range: string
+    examples:
+      - value: "Camera buffer overflow"
+      - value: "Temporary USB bandwidth limitation"
+      - value: "Corrupted frames removed during quality control"
+      - value: "Frames dropped due to encoder performance limitations"
+      - value: "Network transmission interruption"
 
   frames_without_tracked_individual: ##change to percentage?
     description: Number of frames in which no individual was tracked.
@@ -1861,7 +1862,7 @@ enums:
       Electrophysiology:
       Other:
 
-  ClosedBoxSxstemEnum:
+  ClosedBoxSystemEnum:
     permissible_values:
       ZebraBox:
       DanioVision:
