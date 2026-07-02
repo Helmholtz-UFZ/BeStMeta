@@ -93,6 +93,7 @@ classes:
       - video_hardware
       - acquisition_parameters
       - tracking_analysis
+      - statistical_analysis
     tree_root: true
 
   ExperimentalConditions:
@@ -256,6 +257,8 @@ classes:
       - microscope_manufacturer
       - microscope_model
       - microscope_type
+      - microscope_serial_number
+      - microscope_lot_number
       ## Optics
       - lens_focal_length_mm
       - objective_magnification
@@ -572,6 +575,11 @@ slots:
   tracking_analysis:
     description: Tracking software and analysis configuration
     range: TrackingAnalysis
+    inlined: true
+
+  statistical_analsis:
+    description: Statistical analysis for this dataset
+    range: StatisticalAnalysis
     inlined: true
 
 # --- ExperimentalConditions slots ---
@@ -1122,8 +1130,6 @@ slots:
     exact_mappings:
       - AFR:0001700
 
-
-
   illumination_type:
     description: Type of illumination used during recording.
     required: false
@@ -1421,7 +1427,7 @@ slots:
     - For centroid tracking, use 1.
     - For pose-estimation approaches, report the number of tracked landmarks.
   
-  dropped_frame_count:
+  dropped_frames_count:
     description: Number of video frames lost or omitted during acquisition.
     required: false
     recommended: true
@@ -1433,7 +1439,7 @@ slots:
       - Report frames missing due to acquisition, recording, or encoding issues.
       - A value of 0 indicates no dropped frames were detected.
   
-  dropped_frame_reason:
+  dropped_frames_reason:
     description: >-
       Reason for dropped or omitted frames during acquisition,
       recording, encoding, or quality control.
@@ -1689,7 +1695,7 @@ enums:
       years:
         meaning: UO:0000036
     
-  LengthUnitEnum: ## it would be more consistent and better for machine-readability to have just one unit - but hard for cross-domain approach
+  LengthUnitEnum:
     permissible_values:
       um:
         meaning: UO:0000017
