@@ -955,7 +955,6 @@ slots:
     recommended: true
     range: CameraPositionEnum
 
-  
   microscope_manufacturer:
     description: Manufacturer of the microscope.
     required: false
