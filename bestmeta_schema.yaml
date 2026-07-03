@@ -153,25 +153,22 @@ classes:
       ## Notes
       - experiment_notes
       
-    rules:
-      - description: >-
-          At least one of: developmental_stage (categorical),
-          developmental_stage_value+unit, or age_value+unit must be provided
-        any_of:
-          - slot_conditions:
-              developmental_stage:
-                required: true
-          - slot_conditions:
-              developmental_stage_value:
-                required: true
-              developmental_stage_unit:
-                required: true
-          - slot_conditions:
-              age_value:
-                required: true
-              age_unit:
-                required: true
+    any_of: #At least one of: developmental_stage, developmental_stage_value+unit, or age_value+unit must be provided
+      - slot_conditions:
+          developmental_stage:
+            required: true
+      - slot_conditions:
+          developmental_stage_value:
+            required: true
+          developmental_stage_unit:
+            required: true
+      - slot_conditions:
+          age_value:
+            required: true
+          age_unit:
+            required: true
 
+    rules:
       - description: body_length_value requires body_length_unit
         preconditions:
           slot_conditions:
@@ -271,18 +268,18 @@ classes:
           any_of:
             - slot_conditions:
                 field_of_view_width:
-                  value_presence: present
+                  value_presence: PRESENT
             - slot_conditions:
                 field_of_view_height:
-                  value_presence: present
+                  value_presence: PRESENT
         postconditions:
           slot_conditions:
             field_of_view_width:
-              value_presence: present
+              value_presence: PRESENT
             field_of_view_height:
-              value_presence: present
+              value_presence: PRESENT
             field_of_view_unit:
-              value_presence: present
+              value_presence: PRESENT
 
   AcquisitionParameters: 
     description: >-
@@ -400,9 +397,7 @@ slots:
     required: false
     pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
     exact_mappings:
-      primary:
       - pav:version
-      secondary:
       - schema:version
       
   dataset_license:
@@ -554,7 +549,7 @@ slots:
     range: TrackingAnalysis
     inlined: true
 
-  statistical_analsis:
+  statistical_analysis:
     description: Statistical analysis for this dataset
     range: StatisticalAnalysis
     inlined: true

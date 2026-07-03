@@ -1,0 +1,163 @@
+```mermaid
+erDiagram
+AcquisitionParameters {
+    string acquisition_notes  
+    integer bit_depth  
+    ColorModeEnum color_mode  
+    float exposure_time  
+    float frame_rate  
+    string gain  
+    float illumination_illuminance  
+    IlluminationTypeEnum illumination_type  
+    float illumination_wavelength  
+    string noise_reduction_method  
+    duration recording_duration  
+    datetime recording_end_datetime  
+    string recording_software_name  
+    string recording_software_version  
+    datetime recording_start_datetime  
+    float spatial_resolution  
+    integer total_frame_count  
+    VideoCodecEnum video_codec  
+    VideoContainerEnum video_container_format  
+    integer video_resolution_height  
+    integer video_resolution_width  
+}
+ExperimentalConditions {
+    DevelopmentUnitEnum age_unit  
+    float age_value  
+    float arena_height  
+    LengthUnitEnum arena_height_unit  
+    float arena_length  
+    LengthUnitEnum arena_length_unit  
+    ArenaShapeEnum arena_shape  
+    ArenaTypeEnum arena_type  
+    float arena_width  
+    LengthUnitEnum arena_width_unit  
+    string assay_description  
+    string assay_type  
+    LengthUnitEnum body_length_unit  
+    float body_length_value  
+    ControlTypeEnum control_type  
+    DevelopmentalStageEnum developmental_stage  
+    DevelopmentUnitEnum developmental_stage_unit  
+    float developmental_stage_value  
+    datetime experiment_end_datetime  
+    string experiment_notes  
+    datetime experiment_start_datetime  
+    string exposure_compound_chebi_id  
+    string exposure_compound_name  
+    float exposure_concentration  
+    ConcentrationUnitEnum exposure_concentration_unit  
+    float exposure_duration_h  
+    ExposureRouteEnum exposure_route  
+    string genotype  
+    float habituation_duration_min  
+    string habituation_protocol  
+    string housing_conditions  
+    string light_cycle_detail  
+    LightCycleTypeEnum light_cycle_type  
+    integer n_individuals_per_arena  
+    integer n_individuals_total  
+    integer plate_well_count  
+    SexEnum sex  
+    string solvent_vehicle  
+    string species_name  
+    string species_ncbi_taxon_id  
+    string strain  
+    float temperature_celsius  
+    string treatment_description  
+    string treatment_name  
+    WeightUnitEnum weight_unit  
+    float weight_value  
+    WellBottomShapeEnum well_shape_bottom  
+    WellCrossSectionShapeEnum well_shape_cross_section  
+}
+StatisticalAnalysis {
+    stringList confidence_interval_level  
+    stringList effect_size_measure  
+    string multiple_testing_correction  
+    stringList sample_size_analysis  
+    float significance_level  
+    stringList statistical_models  
+    string statistical_software_name  
+    string statistical_software_version  
+    stringList statistical_tests  
+    string statistics_notes  
+}
+TrackingAnalysis {
+    stringList behavioral_endpoints  
+    stringList compute_hardware  
+    integer dropped_frames_count  
+    string dropped_frames_reason  
+    stringList endpoint_definitions  
+    integer frames_without_tracked_bodypart  
+    integer frames_without_tracked_individual  
+    integer n_bodyparts_tracked  
+    integer n_individuals_tracked_per_arena  
+    PreprocessingStepEnumList preprocessing_steps  
+    stringList tracking_algorithm  
+    float tracking_confidence_threshold  
+    stringList tracking_data_format  
+    boolean tracking_manual_correction  
+    string tracking_notes  
+    string tracking_software_name  
+    string tracking_software_settings  
+    TrackingSoftwareTypeEnum tracking_software_type  
+    string tracking_software_version  
+}
+VTADataset {
+    uri analysis_code_doi  
+    RepositoryEnum analysis_code_repository  
+    uri analysis_code_repository_url  
+    string dataset_contact_email  
+    date dataset_created_date  
+    stringList dataset_creator_name  
+    uriList dataset_creator_orcid  
+    string dataset_description  
+    uri dataset_doi  
+    string dataset_id  
+    string dataset_license  
+    string dataset_notes  
+    string dataset_title  
+    string dataset_version  
+    uri publication_doi  
+    RepositoryEnum raw_data_repository  
+    uri raw_data_repository_url  
+    uri raw_tracking_data_doi  
+    RawDataFormatEnumList raw_tracking_data_format  
+    DomainEnum research_domain  
+}
+VideoHardware {
+    integer camera_count  
+    CameraDeviceTypeEnum camera_device_type  
+    float camera_distance_mm  
+    CameraInterfaceEnum camera_interface  
+    string camera_manufacturer  
+    string camera_model  
+    CameraPositionEnum camera_position  
+    CameraSensorTypeEnum camera_sensor_type  
+    ClosedBoxSystemEnum closed_box_system_name  
+    string closed_box_system_version  
+    ContrastPolarityEnum contrast_polarity  
+    float field_of_view_height  
+    LengthUnitEnum field_of_view_unit  
+    float field_of_view_width  
+    string hardware_notes  
+    float lens_focal_length_mm  
+    string microscope_lot_number  
+    string microscope_manufacturer  
+    string microscope_model  
+    string microscope_serial_number  
+    MicroscopeTypeEnum microscope_type  
+    float objective_magnification  
+}
+
+VTADataset ||--|o AcquisitionParameters : "acquisition_parameters"
+VTADataset ||--|o ExperimentalConditions : "experimental_conditions"
+VTADataset ||--|o StatisticalAnalysis : "statistical_analysis"
+VTADataset ||--|o TrackingAnalysis : "tracking_analysis"
+VTADataset ||--|o VideoHardware : "video_hardware"
+
+```
+
