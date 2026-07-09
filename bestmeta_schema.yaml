@@ -347,7 +347,7 @@ classes:
       - frames_without_tracked_individual
       - frames_without_tracked_bodypart
       # Behavioral endpoints / metrics
-      - behavioral_endpoints
+      - behavioral_metrics
       - endpoint_definitions
       - tracking_notes
 
@@ -466,7 +466,7 @@ slots:
 
   research_domain:
     description: Primary research domain of this study.
-    range: DomainEnum
+    range: string
     required: false
     recommended: true
     exact_mappings:
@@ -476,7 +476,7 @@ slots:
     description: Repository where raw tracking data and/or video files are deposited.
     required: false
     recommended: true
-    range: RepositoryEnum
+    range: string
   
   raw_data_repository_url:
     description: URL of the repository record or landing page.
@@ -491,7 +491,7 @@ slots:
     description: File format of the raw tracking data.
     required: false
     recommended: true
-    range: RawDataFormatEnum
+    range: string
     multivalued: true
 
   raw_tracking_data_doi:
@@ -507,7 +507,7 @@ slots:
   analysis_code_repository:
     description: Repository where analysis code is hosted.
     required: false
-    range: RepositoryEnum
+    range: string
 
   analysis_code_repository_url:
     description: URL of the code repository.
@@ -1293,9 +1293,7 @@ slots:
     examples:
       - value: "background subtraction"
       - value: "centroid tracking"
-      - value: "pose estimation"
       - value: "YOLO object detection"
-      - value: "DeepLabCut multi-animal pose estimation"
       ##  add augmentation here
 
   tracking_software_settings:
@@ -1423,19 +1421,23 @@ slots:
       - value: "Frames dropped due to encoder performance limitations"
       - value: "Network transmission interruption"
 
-  frames_without_tracked_individual: ##change to percentage?
-    description: Number of frames in which no individual was tracked.
+  frames_without_tracked_individual:
+    description: Percentage of frames in which no individual was tracked.
     required: false
     recommended: true
-    range: integer
+    range: float
+    minimum_value: 0
+    maximum_value: 100
 
-  frames_without_tracked_bodypart: ##change to percentage?
-    description: Number of frames in which no body part was tracked.
+  frames_without_tracked_bodypart:
+    description: Percentage of frames in which no body part was tracked.
     required: false
     recommended: true
-    range: integer
+    range: float
+    minimum_value: 0
+    maximum_value: 100
 
-  behavioral_endpoints:
+  behavioral_metrics:
     description: List of behavioral metrics or endpoints extracted from tracking data.
     required: false
     recommended: true
@@ -1603,33 +1605,6 @@ slots:
     
 # --- Enums ---
 enums:
-
-  DomainEnum: ##ask others for which domains to include
-    description: Research domain of the study
-    permissible_values:
-      ecotoxicology:
-      biomedical:
-      neuroscience:
-      other:
-
-  RepositoryEnum:
-    permissible_values: ##add more
-      Zenodo:
-      OSF:
-      Figshare:
-      Dryad:
-      journal_supplementary:
-        description: Supplementary material hosted by the journal
-
-  RawDataFormatEnum:
-    permissible_values:
-      csv:
-      xlsx:
-      hdf5:
-      json:
-      zip:
-      phr:
-        description: Zebrabox raw file
 
   SexEnum:
     description: Biological sex of the study subjects
@@ -1902,7 +1877,7 @@ enums:
       unknown:
         description: Polarity not determined or not reported.
 
-  PreprocessingStepEnum: ## do they make sense?
+  PreprocessingStepEnum:
     permissible_values:
       background_subtraction:
         description: Removal of static background elements.
