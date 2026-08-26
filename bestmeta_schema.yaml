@@ -19,36 +19,37 @@ license: https://creativecommons.org/licenses/by/4.0/
 
 # --- prefixes ---
 prefixes:
-  AFR:        http://purl.allotrope.org/ontologies/result#
+  afr:        http://purl.allotrope.org/ontologies/result#
   AFQ:        http://purl.allotrope.org/ontologies/quality#
   BeStMeta:   https://w3id.org/BeStMeta/
   CHEBI:      http://purl.obolibrary.org/obo/CHEBI_
-  CHMO:       http://purl.obolibrary.org/obo/CHMO
+  CHMO:       http://purl.obolibrary.org/obo/CHMO_
   dcterms:    http://purl.org/dc/terms/
   dicom:      http://purl.org/healthcarevocab/v1#
   dwc:        http://rs.tdwg.org/dwc/terms/
   ebucore:    http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#
-  EDAM-DATA:  http://edamontology.org/data_
-  EFO:        http://www.ebi.ac.uk/efo/EFO_
-  geno:       http://purl.obolibrary.org/obo/GENO_
+  EDAM.DATA:  http://edamontology.org/data_
+  EFO:        http://identifiers.org/efo/
+  GENO:       http://purl.obolibrary.org/obo/GENO_
   linkml:     https://w3id.org/linkml/
   ma:         http://www.w3.org/ns/ma-ont#
-  MESH:       http://id.nlm.nih.gov/mesh/
-  MIxS:       https://w3id.org/mixs/
+  MESH:       http://identifiers.org/mesh/
+  MIXS:       https://w3id.org/mixs/
   NCBITaxon:  http://purl.obolibrary.org/obo/NCBITaxon_
   NCIT:       http://purl.obolibrary.org/obo/NCIT_
   OBI:        http://purl.obolibrary.org/obo/OBI_
   OM:         http://www.ontology-of-units-of-measure.org/resource/om-2/
   OME:        http://www.openmicroscopy.org/Schemas/OME/2016-06#
-  ORCID:      https://orcid.org/
+  ORCID:      http://identifiers.org/orcid/
   pav:        http://purl.org/pav/ 
-  REPR:       https://w3id.org/reproduceme#
+  REPRODUCEME:       https://w3id.org/reproduceme#
   schema:     http://schema.org/
   SNOMED:     http://snomed.info/id/ 
   STATO:      http://purl.obolibrary.org/obo/STATO_
   SWO:        http://purl.obolibrary.org/obo/SWO_
   UO:         http://purl.obolibrary.org/obo/UO_
   XCO:        http://purl.obolibrary.org/obo/XCO_
+  xsd:        http://www.w3.org/2001/XMLSchema#
 
 default_prefix: bstm
 default_range: string
@@ -1618,6 +1619,7 @@ enums:
         description: e.g. asexual organisms, embryos
 
   DevelopmentalStageEnum:
+    description: Controlled vocabulary of developmental stages of an organism.
     permissible_values:
       larval:
       juvenile:
@@ -1627,6 +1629,7 @@ enums:
       subadult:
 
   DevelopmentUnitEnum:
+    description: Units of time used to express the developmental age of an organism.
     permissible_values:
       hpf:
         description: Hours post fertilization
@@ -1642,6 +1645,7 @@ enums:
         meaning: UO:0000036
     
   LengthUnitEnum:
+    description: Units of length, ranging from micrometers to meters.
     permissible_values:
       um:
         meaning: UO:0000017
@@ -1653,6 +1657,7 @@ enums:
         meaning: UO:0000008
 
   WeightUnitEnum:
+    description: Units of mass used to express weight measurements, ranging from micrograms to kilograms.
     permissible_values:
       ug:
         meaning: UO:0000023
@@ -1717,6 +1722,7 @@ enums:
         description: Other or non-standard light regime.
 
   ConcentrationUnitEnum:
+    description: Units of concentration used to express the amount of a substance per volume of solution.
     permissible_values:
       mg_per_l:
       ug_per_l:
@@ -1724,7 +1730,7 @@ enums:
       umol_per_l:
 
   ExposureRouteEnum:
-    description: Route of chemical or treatment exposure
+    description: Route of chemical or treatment exposure.
     permissible_values:
       waterborne:
       dietary:
@@ -1738,6 +1744,7 @@ enums:
       other:
 
   ControlTypeEnum:
+    description: Type of control condition used in the experiment for comparison against treated groups.
     permissible_values:
       solvent_control:
       vehicle_control:
@@ -1770,6 +1777,8 @@ enums:
       other:  
 
   CameraInterfaceEnum:
+    description: >-
+      Hardware or connection interface used to transfer data from the camera to the recording system.
     permissible_values:
       usb:
       ethernet:
@@ -1780,6 +1789,7 @@ enums:
       other:
 
   CameraPositionEnum:
+    description: Position of the camera relative to the arena used to record the tracked organism(s).
     permissible_values:
       overhead:
         description: Camera positioned vertically above the arena.
@@ -1799,12 +1809,15 @@ enums:
       other:
 
   ClosedBoxSystemEnum:
+    description: >-
+      Commercial closed-box system used for recording and tracking the organism(s) 
+      in a controlled environment.
     permissible_values:
-      ZebraBox:
-      DanioVision:
-      ToxMate:
-      Noldus PhenoTyper:
-      Other:
+      zebrabox:
+      daniovision:
+      toxmate:
+      noldus_phenotyper:
+      other:
 
   IlluminationTypeEnum:
     description: Technology type of the light source used during video recording.
@@ -1849,14 +1862,14 @@ enums:
   VideoCodecEnum:
     description: Video compression codec used for recording.
     permissible_values:
-      H264:
-      H265:
-      FFV1:
-      AV1:
-      MJPEG:
-      MPEG4:
+      h264:
+      h265:
+      ffv1:
+      av1:
+      mjpeg:
+      mpeg4:
         description: MPEG-4 Part 2 codec (DivX/Xvid); not to be confused with the mp4 container format.
-      RAW:
+      raw:
         description: Uncompressed video; no codec applied.
       other:
         description: Other codec; describe in acquisition_notes.
@@ -1878,6 +1891,7 @@ enums:
         description: Polarity not determined or not reported.
 
   PreprocessingStepEnum:
+    description: Type of preprocessing step applied to the video data prior to tracking or analysis.
     permissible_values:
       background_subtraction:
         description: Removal of static background elements.
@@ -1917,3 +1931,10 @@ enums:
         description: Standard software with custom modifications, plugins, or scripts.
       unknown:
         description: Software type not reported.
+
+types:
+  duration:
+    uri: xsd:duration
+    base: str
+    description: A time duration in ISO 8601 format
+    pattern: "^P(?!$)(\\d+Y)?(\\d+M)?(\\d+W)?(\\d+D)?(T(?=\\d)(\\d+H)?(\\d+M)?(\\d+(\\.\\d+)?S)?)?$"
