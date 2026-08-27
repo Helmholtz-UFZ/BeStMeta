@@ -67,14 +67,14 @@ classes:
       One record per publication or deposited dataset. Contains
       identifying, licensing, and bibliographic information.
     slots:
+      # required
       - dataset_id
       - dataset_title
-      - dataset_description
-      - dataset_version
       - dataset_license
+      # recommended
+      - dataset_description
       - dataset_doi
       - publication_doi
-      - dataset_created_date
       - dataset_creator_name
       - dataset_creator_orcid
       - dataset_contact_email
@@ -82,6 +82,9 @@ classes:
       - raw_data_repository
       - raw_data_repository_url
       - raw_tracking_data_format
+      # optional
+      - dataset_version
+      - dataset_created_date
       - raw_tracking_data_doi
       - analysis_code_repository
       - analysis_code_repository_url
@@ -101,28 +104,20 @@ classes:
       the dataset. Covers organism identity, treatment, assay design,
       and environmental parameters.
     slots:
-      ## Organism identity
+      # required
+      - species_name
+      - n_individuals_total
+      - n_individuals_per_arena
+      - assay_type
+      # recommended
       - experiment_start_datetime
       - experiment_end_datetime
-      - species_name
       - species_ncbi_taxon_id
       - strain
       - genotype
       - sex
-      - developmental_stage
-      - developmental_stage_value
-      - developmental_stage_unit
-      - age_value
-      - age_unit
       - body_length_value
       - body_length_unit
-      - weight_value
-      - weight_unit
-      - n_individuals_total
-      - n_individuals_per_arena
-      # Assay design
-      - assay_type
-      - assay_description
       - arena_shape
       - arena_type
       - arena_length
@@ -133,28 +128,37 @@ classes:
       - arena_height_unit
       - plate_well_count
       - well_shape_cross_section
-      - well_shape_bottom
-      - habituation_duration_min
-      - habituation_protocol
       - temperature_celsius
       - light_cycle_type
-      - light_cycle_detail
-      - housing_conditions
-      ## Exposure / treatment 
+      - light_cycle_detail        
       - treatment_name
       - treatment_description
       - exposure_compound_name
       - exposure_compound_chebi_id  
       - exposure_concentration
       - exposure_concentration_unit
+      # conditionally required
+      - developmental_stage
+      - developmental_stage_value
+      - developmental_stage_unit
+      - age_value
+      - age_unit
+      # optional
+      - weight_value
+      - weight_unit
+      - assay_description      
+      - well_shape_bottom
+      - habituation_duration_min
+      - habituation_protocol      
+      - housing_conditions
       - exposure_route
       - exposure_duration_h
       - solvent_vehicle
       - control_type
-      ## Notes
       - experiment_notes
-      
-    any_of: #At least one of: developmental_stage, developmental_stage_value+unit, or age_value+unit must be provided
+    # At least one of: developmental_stage, developmental_stage_value+unit, 
+    # or age_value+unit must be provided  
+    any_of: 
       - slot_conditions:
           developmental_stage:
             required: true
@@ -236,32 +240,32 @@ classes:
       infrastructure used in the VTA. Documents instrument identity and
       optical specifications.
     slots:
-      ## Camera identity
+      # required
       - camera_count
       - camera_device_type
       - camera_model
       - camera_manufacturer
+      # recommended
       - camera_sensor_type
-      - camera_interface
       - camera_distance_mm
       - camera_position
-      ## Microscope
+      - lens_focal_length_mm
+      - objective_magnification
+      - contrast_polarity
+      # conditionally required
+      - field_of_view_width
+      - field_of_view_height 
+      - field_of_view_unit
+      # optional
+      - camera_interface
       - microscope_manufacturer
       - microscope_model
       - microscope_type
       - microscope_serial_number
       - microscope_lot_number
-      ## Optics
-      - lens_focal_length_mm
-      - objective_magnification
-      - contrast_polarity
-      - field_of_view_width
-      - field_of_view_height 
-      - field_of_view_unit
       ## Closed-box system
       - closed_box_system_name
       - closed_box_system_version
-      ## Notes
       - hardware_notes
     rules:
       - description: Field of view width, height, and unit should be reported together.
@@ -286,29 +290,30 @@ classes:
     description: >-
       Video acquisition and recording parameters.
     slots:
-      # Core acquisition
-      - recording_start_datetime
-      - recording_end_datetime
+      # required
       - recording_duration
       - recording_software_name
       - recording_software_version
-      - illumination_type
-      - illumination_wavelength
-      - illumination_illuminance
-      - frame_rate
-      - total_frame_count
+      - frame_rate 
       - video_resolution_width
       - video_resolution_height
-      - bit_depth
-      - color_mode
-      - spatial_resolution
       - video_container_format
+      # recommended      
+      - recording_start_datetime
+      - recording_end_datetime
+      - illumination_type
+      - spatial_resolution
       - video_codec
-      # Image quality
-      - gain
       - exposure_time
-      - noise_reduction_method
-      # Notes
+      - noise_reduction_method 
+      # conditionally required  
+      - bit_depth
+      # opional
+      - illumination_wavelength
+      - illumination_illuminance
+      - total_frame_count
+      - color_mode
+      - gain
       - acquisition_notes 
 
     rules:
@@ -329,7 +334,7 @@ classes:
       Tracking software identity and version, algorithm details,
       post-tracking computational steps and derived behavioral metrics.
     slots:
-      # Tracking software
+      # recommended
       - tracking_software_type
       - tracking_software_name
       - tracking_software_version
@@ -339,17 +344,16 @@ classes:
       - tracking_confidence_threshold
       - tracking_manual_correction
       - compute_hardware
-      # Pre-processing
       - preprocessing_steps
       - n_individuals_tracked_per_arena
       - n_bodyparts_tracked
       - dropped_frames_count
-      - dropped_frames_reason
       - frames_without_tracked_individual
       - frames_without_tracked_bodypart
-      # Behavioral endpoints / metrics
       - behavioral_metrics
       - endpoint_definitions
+      # optional
+      - dropped_frames_reason
       - tracking_notes
 
   StatisticalAnalysis:   
@@ -359,6 +363,7 @@ classes:
       multiple-testing corrections, and other methods used to evaluate
       experimental outcomes.
     slots:
+      # recommended
       - statistical_software_name
       - statistical_software_version
       - statistical_tests
@@ -368,6 +373,7 @@ classes:
       - effect_size_measure
       - confidence_interval_level
       - sample_size_analysis
+      # optional
       - statistics_notes
 
 # --- slots ---
@@ -386,6 +392,12 @@ slots:
     exact_mappings:
       - dcterms:title
 
+  dataset_license:
+    description: SPDX license identifier or URL (e.g. CC-BY-4.0)
+    required: true
+    exact_mappings:
+      - dcterms:license
+
   dataset_description:
     description: Free-text description of the dataset and its scientific purpose
     required: false
@@ -393,20 +405,6 @@ slots:
     exact_mappings:
       - dcterms:description
 
-  dataset_version:
-    description: Semantic version string for the dataset (e.g. 1.0.0)
-    required: false
-    pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
-    exact_mappings:
-      - pav:version
-      - schema:version
-      
-  dataset_license:
-    description: SPDX license identifier or URL (e.g. CC-BY-4.0)
-    required: true
-    exact_mappings:
-      - dcterms:license
-  
   dataset_doi:
     description: DOI of the deposited dataset (assigned by repository)
     range: uri
@@ -428,13 +426,6 @@ slots:
     exact_mappings:
       - schema:citation
       - dcterms:references
-
-  dataset_created_date:
-    description: Date when the dataset was created (YYYY-MM-DD)
-    range: date
-    required: false
-    exact_mappings: 
-      - dcterms:created
 
   dataset_creator_name:
     description: Name(s) of data creators.
@@ -463,8 +454,8 @@ slots:
     description: Contact email for the dataset maintainer.
     pattern: '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
     exact_mappings:
-      - schema:email
-
+      - schema:email  
+  
   research_domain:
     description: Primary research domain of this study.
     range: string
@@ -494,6 +485,21 @@ slots:
     recommended: true
     range: string
     multivalued: true
+    
+  dataset_version:
+    description: Semantic version string for the dataset (e.g. 1.0.0)
+    required: false
+    pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    exact_mappings:
+      - pav:version
+      - schema:version
+  
+  dataset_created_date:
+    description: Date when the dataset was created (YYYY-MM-DD)
+    range: date
+    required: false
+    exact_mappings: 
+      - dcterms:created
 
   raw_tracking_data_doi:
     description: DOI of the deposited raw tracking data
@@ -556,6 +562,41 @@ slots:
     inlined: true
 
 # --- ExperimentalConditions slots ---
+  species_name:
+    description: Scientific (Latin) binomial name of the study organism
+    required: true
+    range: string
+    exact_mappings:
+      - dwc:scientificName
+      - EDAM-DATA:1045
+    examples:
+      - value: "Danio rerio"
+      - value: "Mus musculus"
+      - value: "Daphnia magna"
+  
+  n_individuals_total:
+    description: Total number of individuals used in the experiment.
+    range: integer
+    required: true
+  
+  n_individuals_per_arena:
+    description: Number of individuals tested simultaneously in the arena.
+    required: true
+    range: integer
+    minimum_value: 1
+  
+  assay_type:
+    description: Name of the behavioral assay paradigm or test paradigm.
+    required: true
+    examples:
+      - value: "open field test"
+      - value: "light-dark transition"
+      - value: "elevated plus maze"
+      - value: "locomotor activity assay"
+      - value: "chemobehavioral assay"    
+    broad_mappings:
+      - OBI:0000070
+
   experiment_start_datetime:
     description: Date and time at which the experiment began.
     range: datetime
@@ -568,18 +609,6 @@ slots:
     required: false
     recommended: true
   
-  species_name:
-    description: Scientific (Latin) binomial name of the study organism
-    required: true
-    range: string
-    exact_mappings:
-      - dwc:scientificName
-      - EDAM-DATA:1045
-    examples:
-      - value: "Danio rerio"
-      - value: "Mus musculus"
-      - value: "Daphnia magna"
-
   species_ncbi_taxon_id:
     description: NCBI Taxonomy ID for the study organism
     required: false
@@ -622,32 +651,6 @@ slots:
     exact_mappings:
       - PATO:0000047
 
-  developmental_stage:
-    description: Developmental stage of the tracked organism(s).
-    range: DevelopmentalStageEnum
-    exact_mappings:
-      - EFO:0000399
-  
-  developmental_stage_value:
-    description: Numeric developmental stage value (e.g. 72 for 72 hpf) of the tracked organism(s).
-    range: float
-    close_mappings:
-      - EFO:0000399
-
-  developmental_stage_unit:
-    description: Unit for developmental stage value of the tracked organism(s).
-    range: DevelopmentUnitEnum
-
-  age_value:
-    description: Numeric age value of the tracked organism(s).
-    range: float
-    exact_mappings:
-      - EFO:0000246 
-
-  age_unit:
-    description: Age unit of the tracked organism(s).
-    range: DevelopmentUnitEnum
-
   body_length_value:
     description: Body length numeric value of the tracked organism(s).
     required: false
@@ -662,45 +665,6 @@ slots:
     required: false
     recommended: true
     range: LengthUnitEnum
-
-  weight_value:
-    description: Body weight numeric value of the tracked organism(s).
-    required: false
-    range: float
-    exact_mappings: 
-      - EFO:0004338
-
-  weight_unit:
-    description: Body weight unit of the tracked organism(s).
-    required: false
-    range: WeightUnitEnum
-
-  n_individuals_total:
-    description: Total number of individuals used in the experiment.
-    range: integer
-    required: true
-  
-  n_individuals_per_arena:
-    description: Number of individuals tested simultaneously in the arena.
-    required: true
-    range: integer
-    minimum_value: 1
-  
-  assay_type:
-    description: Name of the behavioral assay paradigm or test paradigm.
-    required: true
-    examples:
-      - value: "open field test"
-      - value: "light-dark transition"
-      - value: "elevated plus maze"
-      - value: "locomotor activity assay"
-      - value: "chemobehavioral assay"    
-    broad_mappings:
-      - OBI:0000070
-    
-  assay_description:
-    description: Free-text description of the assay protocol
-    required: false
 
   arena_shape:
     description: Geometric shape of the test arena.
@@ -769,23 +733,6 @@ slots:
     required: false
     recommended: true
     range: WellCrossSectionShapeEnum
-
-  well_shape_bottom:
-    description: Geometric bottom shape of the wells of a multiwell plate.
-    required: false
-    range: WellBottomShapeEnum
-
-  habituation_duration_min:
-    description: Duration of habituation period before recording, in minutes
-    required: false
-    range: float
-    unit:
-      ucum_code: min
-
-  habituation_protocol:
-    description: Description of habituation or acclimation prior to testing.
-    required: false
-    range: string  
   
   temperature_celsius:
     description: Water or ambient temperature during the recording in degrees Celsius
@@ -808,13 +755,6 @@ slots:
     range: string
     exact_mappings:
       - MESH:D017440
-
-  housing_conditions:
-    description: Free-text description of animal housing conditions prior to assay.
-    required: false
-    range: string
-    exact_mappings:
-      - XCO:0000033
 
   treatment_name:
     description: Short label identifying the experimental treatment group, condition, or regimen.
@@ -867,6 +807,72 @@ slots:
     required: false
     recommended: true
     range: ConcentrationUnitEnum
+  
+  developmental_stage:
+    description: Developmental stage of the tracked organism(s).
+    range: DevelopmentalStageEnum
+    exact_mappings:
+      - EFO:0000399
+  
+  developmental_stage_value:
+    description: Numeric developmental stage value (e.g. 72 for 72 hpf) of the tracked organism(s).
+    range: float
+    close_mappings:
+      - EFO:0000399
+
+  developmental_stage_unit:
+    description: Unit for developmental stage value of the tracked organism(s).
+    range: DevelopmentUnitEnum
+  
+  age_value:
+    description: Numeric age value of the tracked organism(s).
+    range: float
+    exact_mappings:
+      - EFO:0000246 
+
+  age_unit:
+    description: Age unit of the tracked organism(s).
+    range: DevelopmentUnitEnum
+  
+  weight_value:
+    description: Body weight numeric value of the tracked organism(s).
+    required: false
+    range: float
+    exact_mappings: 
+      - EFO:0004338
+
+  weight_unit:
+    description: Body weight unit of the tracked organism(s).
+    required: false
+    range: WeightUnitEnum
+ 
+  assay_description:
+    description: Free-text description of the assay protocol
+    required: false
+
+  well_shape_bottom:
+    description: Geometric bottom shape of the wells of a multiwell plate.
+    required: false
+    range: WellBottomShapeEnum
+
+  habituation_duration_min:
+    description: Duration of habituation period before recording, in minutes
+    required: false
+    range: float
+    unit:
+      ucum_code: min
+
+  habituation_protocol:
+    description: Description of habituation or acclimation prior to testing.
+    required: false
+    range: string
+
+  housing_conditions:
+    description: Free-text description of animal housing conditions prior to assay.
+    required: false
+    range: string
+    exact_mappings:
+      - XCO:0000033
 
   exposure_route:
     description: Route of chemical or treatment administration.
@@ -936,12 +942,7 @@ slots:
     required: false
     recommended: true
     range: CameraSensorTypeEnum
-  
-  camera_interface:
-    description: Interface standard used for communication between the camera and the acquisition system.
-    required: false
-    range: CameraInterfaceEnum
-  
+ 
   camera_distance_mm:
     description: Distance from camera lens to the arena floor in millimetres.
     required: false
@@ -955,42 +956,6 @@ slots:
     required: false
     recommended: true
     range: CameraPositionEnum
-
-  microscope_manufacturer:
-    description: Manufacturer of the microscope.
-    required: false
-    range: string
-    exact_mappings:
-      - OME:Manufacturer
-      - schema:manufacturer
-  
-  microscope_model:
-    description: Model name or identifier of the microscope.
-    required: false
-    range: string
-    exact_mappings:
-      - OME:Model
-  
-  microscope_type:
-    description: Microscope configuration according to the OME microscope type classification.
-    required: false
-    range: MicroscopeTypeEnum
-    exact_mappings:
-      - OME:Type
-  
-  microscope_serial_number:
-    description: Serial number of the microscope.
-    required: false
-    range: string
-    exact_mappings:
-      - OME:SerialNumber
-
-  microscope_lot_number:
-    description: Lot number of the microscope.
-    required: false
-    range: string
-    exact_mappings:
-      - OME:LotNumber
 
   lens_focal_length_mm:
     description: >-
@@ -1039,7 +1004,48 @@ slots:
   field_of_view_unit:
     description: Unit of measurement for field_of_view_width and field_of_view_height.
     range: LengthUnitEnum
+  
+  camera_interface:
+    description: Interface standard used for communication between the camera and the acquisition system.
+    required: false
+    range: CameraInterfaceEnum
+ 
+  microscope_manufacturer:
+    description: Manufacturer of the microscope.
+    required: false
+    range: string
+    exact_mappings:
+      - OME:Manufacturer
+      - schema:manufacturer
+  
+  microscope_model:
+    description: Model name or identifier of the microscope.
+    required: false
+    range: string
+    exact_mappings:
+      - OME:Model
+  
+  microscope_type:
+    description: Microscope configuration according to the OME microscope type classification.
+    required: false
+    range: MicroscopeTypeEnum
+    exact_mappings:
+      - OME:Type
+  
+  microscope_serial_number:
+    description: Serial number of the microscope.
+    required: false
+    range: string
+    exact_mappings:
+      - OME:SerialNumber
 
+  microscope_lot_number:
+    description: Lot number of the microscope.
+    required: false
+    range: string
+    exact_mappings:
+      - OME:LotNumber
+  
   closed_box_system_name:
     description: >-
       Name of the integrated commercial closed-box tracking system.
@@ -1058,18 +1064,6 @@ slots:
     range: string
 
 # --- AcquisitionParameters slots ---
-  recording_start_datetime:
-    description: Date and time at which acquisition of the video recording began.
-    range: datetime
-    required: false
-    recommended: true
-  
-  recording_end_datetime:
-    description: Date and time at which acquisition of the video recording ended.
-    range: datetime
-    required: false
-    recommended: true
-  
   recording_duration:
     description: Total duration of the video recording in ISO 8601 duration format.
     required: true
@@ -1102,6 +1096,57 @@ slots:
     exact_mappings:
       - AFR:0001700
 
+  frame_rate:
+    description: Number of frames captured per second (fps) during video recording.
+    required: true
+    range: float
+    unit:
+      ucum_code: Hz
+    exact_mappings:
+      - ebucore:frameRate
+    close_mappings:
+      - ma:frameRate
+
+  video_resolution_width:
+    description: Horizontal pixel count of the recorded video.
+    required: true
+    range: integer
+    unit:
+      ucum_code: px
+    close_mappings:
+      - ebucore:width
+
+  video_resolution_height:
+    description: Vertical pixel count of the recorded video.
+    required: true
+    range: integer
+    unit:
+      ucum_code: px
+    close_mappings:
+      - ebucore:height
+
+  video_container_format:
+    description: File container format of the recorded video.
+    required: true
+    range: VideoContainerEnum
+    exact_mappings:
+      - ebucore:hasContainerFormat
+    notes:
+      - Report the container format, not the codec.
+      - Codec is captured separately in video_codec.
+  
+  recording_start_datetime:
+    description: Date and time at which acquisition of the video recording began.
+    range: datetime
+    required: false
+    recommended: true
+  
+  recording_end_datetime:
+    description: Date and time at which acquisition of the video recording ended.
+    range: datetime
+    required: false
+    recommended: true
+
   illumination_type:
     description: Type of illumination used during recording.
     required: false
@@ -1109,7 +1154,57 @@ slots:
     range: IlluminationTypeEnum
     exact_mappings:
       - MIxS:0000769
-    
+   
+  spatial_resolution:
+    description: Physical size represented by one pixel at the observation plane.
+    required: false
+    recommended: true
+    range: float
+    unit:
+      ucum_code: mm/px
+    close_mappings:
+      - dicom:SpatialResolution
+
+  video_codec:
+    description: Video compression codec used for recording.
+    required: false
+    recommended: true
+    range: VideoCodecEnum
+    exact_mappings:
+      - ebucore:codecName
+    notes:
+      - Report the codec, not the container format.
+      - Container format is captured separately in video_container_format.
+      - mp4 is a container, not a codec — most mp4 files use H264 or H265 as codec.
+
+  exposure_time:
+    description: Camera sensor exposure time per frame.
+    required: false
+    recommended: true
+    range: float
+    unit:
+      ucum_code: ms
+    exact_mappings:
+      - REPR:ExposureTime
+
+  noise_reduction_method:
+    description: Method or algorithm used to reduce image noise during acquisition or immediately after recording.
+    range: string
+    required: false
+    recommended: true
+
+  bit_depth:
+    description: Bit depth per pixel channel of the recorded video.
+    required: false
+    range: integer
+    exact_mappings:
+    - ebucore:bitDepth
+    examples:
+      - value: "8"
+      - value: "16"
+    notes:
+      - Common values are 8-bit and 16-bit.
+ 
   illumination_wavelength:
     description: >-
       Peak wavelength of the illumination source in nanometres.
@@ -1139,17 +1234,6 @@ slots:
       - value: "1000"
         description: Bright laboratory illumination
 
-  frame_rate:
-    description: Number of frames captured per second (fps) during video recording.
-    required: true
-    range: float
-    unit:
-      ucum_code: Hz
-    exact_mappings:
-      - ebucore:frameRate
-    close_mappings:
-      - ma:frameRate
-
   total_frame_count:
     description: >-
       Total number of frames in the video. Can be derived from
@@ -1162,97 +1246,19 @@ slots:
       - Prefer direct reporting when available.
       - If absent, it may be computed from frame rate and actual trial duration.
 
-  video_resolution_width:
-    description: Horizontal pixel count of the recorded video.
-    required: true
-    range: integer
-    unit:
-      ucum_code: px
-    close_mappings:
-      - ebucore:width
-
-  video_resolution_height:
-    description: Vertical pixel count of the recorded video.
-    required: true
-    range: integer
-    unit:
-      ucum_code: px
-    close_mappings:
-      - ebucore:height
-
-  bit_depth:
-    description: Bit depth per pixel channel of the recorded video.
-    required: false
-    range: integer
-    exact_mappings:
-    - ebucore:bitDepth
-    examples:
-      - value: "8"
-      - value: "16"
-    notes:
-      - Common values are 8-bit and 16-bit.
-  
   color_mode:
     description: >-
       Color mode of the recorded video.
       Affects tracking algorithm behavior and file size.
     required: false
     range: ColorModeEnum
-    
-  spatial_resolution:
-    description: Physical size represented by one pixel at the observation plane.
-    required: false
-    recommended: true
-    range: float
-    unit:
-      ucum_code: mm/px
-    close_mappings:
-      - dicom:SpatialResolution
-
-  video_container_format:
-    description: File container format of the recorded video.
-    required: true
-    range: VideoContainerEnum
-    exact_mappings:
-      - ebucore:hasContainerFormat
-    notes:
-      - Report the container format, not the codec.
-      - Codec is captured separately in video_codec.
-  
-  video_codec:
-    description: Video compression codec used for recording.
-    required: false
-    recommended: true
-    range: VideoCodecEnum
-    exact_mappings:
-      - ebucore:codecName
-    notes:
-      - Report the codec, not the container format.
-      - Container format is captured separately in video_container_format.
-      - mp4 is a container, not a codec — most mp4 files use H264 or H265 as codec.
-
+ 
   gain:
     description: Camera gain setting at the time of recording.
     required: false
     range: string
     exact_mappings:
       - AFQ:0000201
-
-  exposure_time:
-    description: Camera sensor exposure time per frame.
-    required: false
-    recommended: true
-    range: float
-    unit:
-      ucum_code: ms
-    exact_mappings:
-      - REPR:ExposureTime
-
-  noise_reduction_method:
-    description: Method or algorithm used to reduce image noise during acquisition or immediately after recording.
-    range: string
-    required: false
-    recommended: true
 
   acquisition_notes:
     description: Free-text notes on acquisition settings
@@ -1396,7 +1402,7 @@ slots:
     notes:
     - For centroid tracking, use 1.
     - For pose-estimation approaches, report the number of tracked landmarks.
-  
+    
   dropped_frames_count:
     description: Number of video frames lost or omitted during acquisition.
     required: false
@@ -1408,19 +1414,6 @@ slots:
     notes:
       - Report frames missing due to acquisition, recording, or encoding issues.
       - A value of 0 indicates no dropped frames were detected.
-  
-  dropped_frames_reason:
-    description: >-
-      Reason for dropped or omitted frames during acquisition,
-      recording, encoding, or quality control.
-    required: false
-    range: string
-    examples:
-      - value: "Camera buffer overflow"
-      - value: "Temporary USB bandwidth limitation"
-      - value: "Corrupted frames removed during quality control"
-      - value: "Frames dropped due to encoder performance limitations"
-      - value: "Network transmission interruption"
 
   frames_without_tracked_individual:
     description: Percentage of frames in which no individual was tracked.
@@ -1462,6 +1455,19 @@ slots:
     examples:
       - value: "Freezing defined as speed < 1 mm/s for ≥ 1 s"
       - value: "Center zone defined as central 50% of arena area"
+
+  dropped_frames_reason:
+    description: >-
+      Reason for dropped or omitted frames during acquisition,
+      recording, encoding, or quality control.
+    required: false
+    range: string
+    examples:
+      - value: "Camera buffer overflow"
+      - value: "Temporary USB bandwidth limitation"
+      - value: "Corrupted frames removed during quality control"
+      - value: "Frames dropped due to encoder performance limitations"
+      - value: "Network transmission interruption"
 
   tracking_notes:
     description: Free-text notes on the tracking analysis not captured by structured fields.
