@@ -1,0 +1,1975 @@
+{
+    "$defs": {
+        "AcquisitionParameters": {
+            "additionalProperties": false,
+            "description": "Video acquisition and recording parameters.",
+            "if": {
+                "properties": {
+                    "video_codec": {
+                        "anyOf": [
+                            {
+                                "const": "FFV1"
+                            },
+                            {
+                                "const": "RAW"
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "video_codec"
+                ]
+            },
+            "properties": {
+                "acquisition_notes": {
+                    "description": "Free-text notes on acquisition settings",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "bit_depth": {
+                    "description": "Bit depth per pixel channel of the recorded video.",
+                    "examples": [
+                        8,
+                        16
+                    ],
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "color_mode": {
+                    "$ref": "#/$defs/ColorModeEnum",
+                    "description": "Color mode of the recorded video. Affects tracking algorithm behavior and file size."
+                },
+                "exposure_time": {
+                    "description": "Camera sensor exposure time per frame.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "frame_rate": {
+                    "description": "Number of frames captured per second (fps) during video recording.",
+                    "type": "number"
+                },
+                "gain": {
+                    "description": "Camera gain setting at the time of recording.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "illumination_illuminance": {
+                    "description": "Illuminance at the recording arena or observation surface.",
+                    "examples": [
+                        0.0,
+                        100.0,
+                        1000.0
+                    ],
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "illumination_type": {
+                    "$ref": "#/$defs/IlluminationTypeEnum",
+                    "description": "Type of illumination used during recording."
+                },
+                "illumination_wavelength": {
+                    "description": "Peak wavelength of the illumination source in nanometres. Use for non-white-light sources such as infrared or UV.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "noise_reduction_method": {
+                    "description": "Method or algorithm used to reduce image noise during acquisition or immediately after recording.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "recording_duration": {
+                    "description": "Total duration of the video recording in ISO 8601 duration format.",
+                    "examples": [
+                        "PT30M",
+                        "PT1H15M30S",
+                        "PT45S"
+                    ],
+                    "pattern": "^P(?!$)(\\d+Y)?(\\d+M)?(\\d+W)?(\\d+D)?(T(?=\\d)(\\d+H)?(\\d+M)?(\\d+(\\.\\d+)?S)?)?$",
+                    "type": "string"
+                },
+                "recording_end_datetime": {
+                    "description": "Date and time at which acquisition of the video recording ended.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "recording_software_name": {
+                    "description": "Name of the software used to record the video.",
+                    "type": "string"
+                },
+                "recording_software_version": {
+                    "description": "Version string of the recording software.",
+                    "type": "string"
+                },
+                "recording_start_datetime": {
+                    "description": "Date and time at which acquisition of the video recording began.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "spatial_resolution": {
+                    "description": "Physical size represented by one pixel at the observation plane.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "total_frame_count": {
+                    "description": "Total number of frames in the video. Can be derived from frame_rate \u00d7 recording_duration if not explicitly stated.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "video_codec": {
+                    "$ref": "#/$defs/VideoCodecEnum",
+                    "description": "Video compression codec used for recording."
+                },
+                "video_container_format": {
+                    "$ref": "#/$defs/VideoContainerEnum",
+                    "description": "File container format of the recorded video."
+                },
+                "video_resolution_height": {
+                    "description": "Vertical pixel count of the recorded video.",
+                    "type": "integer"
+                },
+                "video_resolution_width": {
+                    "description": "Horizontal pixel count of the recorded video.",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "recording_duration",
+                "recording_software_name",
+                "recording_software_version",
+                "frame_rate",
+                "video_resolution_width",
+                "video_resolution_height",
+                "video_container_format"
+            ],
+            "then": {
+                "properties": {
+                    "bit_depth": {}
+                },
+                "required": [
+                    "bit_depth"
+                ]
+            },
+            "title": "AcquisitionParameters",
+            "type": "object"
+        },
+        "ArenaShapeEnum": {
+            "description": "Geometric shape of the test arena.",
+            "enum": [
+                "circular",
+                "rectangular",
+                "square",
+                "plus_maze",
+                "y_maze",
+                "t_maze",
+                "other"
+            ],
+            "title": "ArenaShapeEnum",
+            "type": "string"
+        },
+        "ArenaTypeEnum": {
+            "description": "Type of the test arena, e.g., open field, multiwell plate or elevated plus maze.",
+            "enum": [
+                "open_field",
+                "plus_maze",
+                "y_maze",
+                "t_maze",
+                "multiwell_plate",
+                "light_dark_box",
+                "elevated_plus_maze",
+                "other"
+            ],
+            "title": "ArenaTypeEnum",
+            "type": "string"
+        },
+        "CameraDeviceTypeEnum": {
+            "description": "General types of imaging devices used in VTA setups.",
+            "enum": [
+                "digital_camera",
+                "usb_camera",
+                "microscope_camera",
+                "smartphone",
+                "other"
+            ],
+            "title": "CameraDeviceTypeEnum",
+            "type": "string"
+        },
+        "CameraInterfaceEnum": {
+            "description": "Hardware or connection interface used to transfer data from the camera to the recording system.",
+            "enum": [
+                "usb",
+                "ethernet",
+                "ip",
+                "camera_link",
+                "coaxpress",
+                "hdmi",
+                "other"
+            ],
+            "title": "CameraInterfaceEnum",
+            "type": "string"
+        },
+        "CameraPositionEnum": {
+            "description": "Position of the camera relative to the arena used to record the tracked organism(s).",
+            "enum": [
+                "overhead",
+                "lateral",
+                "other"
+            ],
+            "title": "CameraPositionEnum",
+            "type": "string"
+        },
+        "CameraSensorTypeEnum": {
+            "description": "Image sensor technologies used in cameras.",
+            "enum": [
+                "ccd",
+                "cmos",
+                "scmos",
+                "emccd",
+                "other"
+            ],
+            "title": "CameraSensorTypeEnum",
+            "type": "string"
+        },
+        "ClosedBoxSystemEnum": {
+            "description": "Commercial closed-box system used for recording and tracking the organism(s)  in a controlled environment.",
+            "enum": [
+                "zebrabox",
+                "daniovision",
+                "toxmate",
+                "noldus_phenotyper",
+                "other"
+            ],
+            "title": "ClosedBoxSystemEnum",
+            "type": "string"
+        },
+        "ColorModeEnum": {
+            "description": "Color mode of the video recording.",
+            "enum": [
+                "grayscale",
+                "rgb",
+                "other"
+            ],
+            "title": "ColorModeEnum",
+            "type": "string"
+        },
+        "ConcentrationUnitEnum": {
+            "description": "Units of concentration used to express the amount of a substance per volume of solution.",
+            "enum": [
+                "mg_per_l",
+                "ug_per_l",
+                "mmol_per_l",
+                "umol_per_l"
+            ],
+            "title": "ConcentrationUnitEnum",
+            "type": "string"
+        },
+        "ContrastPolarityEnum": {
+            "description": "Polarity of object-to-background contrast in the video.",
+            "enum": [
+                "bright_on_dark",
+                "dark_on_bright",
+                "mixed",
+                "unknown"
+            ],
+            "title": "ContrastPolarityEnum",
+            "type": "string"
+        },
+        "ControlTypeEnum": {
+            "description": "Type of control condition used in the experiment for comparison against treated groups.",
+            "enum": [
+                "solvent_control",
+                "vehicle_control",
+                "naive_control",
+                "sham_control",
+                "positive_control",
+                "untreated_control",
+                "other"
+            ],
+            "title": "ControlTypeEnum",
+            "type": "string"
+        },
+        "DevelopmentUnitEnum": {
+            "description": "Units of time used to express the developmental age of an organism.",
+            "enum": [
+                "hpf",
+                "dpf",
+                "days",
+                "weeks",
+                "months",
+                "years"
+            ],
+            "title": "DevelopmentUnitEnum",
+            "type": "string"
+        },
+        "DevelopmentalStageEnum": {
+            "description": "Controlled vocabulary of developmental stages of an organism.",
+            "enum": [
+                "larval",
+                "juvenile",
+                "adult",
+                "embryonic",
+                "pupal",
+                "subadult"
+            ],
+            "title": "DevelopmentalStageEnum",
+            "type": "string"
+        },
+        "ExperimentalConditions": {
+            "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "body_length_value": {}
+                        },
+                        "required": [
+                            "body_length_value"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "body_length_unit": {}
+                        },
+                        "required": [
+                            "body_length_unit"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "weight_value": {}
+                        },
+                        "required": [
+                            "weight_value"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "weight_unit": {}
+                        },
+                        "required": [
+                            "weight_unit"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "arena_length": {}
+                        },
+                        "required": [
+                            "arena_length"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "arena_length_unit": {}
+                        },
+                        "required": [
+                            "arena_length_unit"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "arena_width": {}
+                        },
+                        "required": [
+                            "arena_width"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "arena_width_unit": {}
+                        },
+                        "required": [
+                            "arena_width_unit"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "arena_height": {}
+                        },
+                        "required": [
+                            "arena_height"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "arena_height_unit": {}
+                        },
+                        "required": [
+                            "arena_height_unit"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "light_cycle_type": {
+                                "const": "cyclic_ld"
+                            }
+                        },
+                        "required": [
+                            "light_cycle_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "light_cycle_detail": {}
+                        },
+                        "required": [
+                            "light_cycle_detail"
+                        ]
+                    }
+                }
+            ],
+            "anyOf": [
+                {
+                    "properties": {
+                        "developmental_stage": {}
+                    },
+                    "required": [
+                        "developmental_stage"
+                    ]
+                },
+                {
+                    "properties": {
+                        "developmental_stage_unit": {},
+                        "developmental_stage_value": {}
+                    },
+                    "required": [
+                        "developmental_stage_value",
+                        "developmental_stage_unit"
+                    ]
+                },
+                {
+                    "properties": {
+                        "age_unit": {},
+                        "age_value": {}
+                    },
+                    "required": [
+                        "age_value",
+                        "age_unit"
+                    ]
+                }
+            ],
+            "description": "Biological and experimental conditions applicable to all trials in the dataset. Covers organism identity, treatment, assay design, and environmental parameters.",
+            "properties": {
+                "age_unit": {
+                    "$ref": "#/$defs/DevelopmentUnitEnum",
+                    "description": "Age unit of the tracked organism(s)."
+                },
+                "age_value": {
+                    "description": "Numeric age value of the tracked organism(s).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "arena_height": {
+                    "description": "Height of the arena, when applicable.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "arena_height_unit": {
+                    "$ref": "#/$defs/LengthUnitEnum",
+                    "description": "Unit of measurement for arena_height."
+                },
+                "arena_length": {
+                    "description": "Length of the arena along one axis.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "arena_length_unit": {
+                    "$ref": "#/$defs/LengthUnitEnum",
+                    "description": "Unit of measurement for arena_length."
+                },
+                "arena_shape": {
+                    "$ref": "#/$defs/ArenaShapeEnum",
+                    "description": "Geometric shape of the test arena."
+                },
+                "arena_type": {
+                    "$ref": "#/$defs/ArenaTypeEnum",
+                    "description": "Type of the test arena, e.g., open field, multiwell plate or elevated plus maze."
+                },
+                "arena_width": {
+                    "description": "Width of the arena along one axis.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "arena_width_unit": {
+                    "$ref": "#/$defs/LengthUnitEnum",
+                    "description": "Unit of measurement for arena_width."
+                },
+                "assay_description": {
+                    "description": "Free-text description of the assay protocol",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "assay_type": {
+                    "description": "Name of the behavioral assay paradigm or test paradigm.",
+                    "examples": [
+                        "open field test",
+                        "light-dark transition",
+                        "elevated plus maze",
+                        "locomotor activity assay",
+                        "chemobehavioral assay"
+                    ],
+                    "type": "string"
+                },
+                "body_length_unit": {
+                    "$ref": "#/$defs/LengthUnitEnum",
+                    "description": "Body length unit of the tracked organism(s)."
+                },
+                "body_length_value": {
+                    "description": "Body length numeric value of the tracked organism(s).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "control_type": {
+                    "$ref": "#/$defs/ControlTypeEnum",
+                    "description": "Type of control group used."
+                },
+                "developmental_stage": {
+                    "$ref": "#/$defs/DevelopmentalStageEnum",
+                    "description": "Developmental stage of the tracked organism(s)."
+                },
+                "developmental_stage_unit": {
+                    "$ref": "#/$defs/DevelopmentUnitEnum",
+                    "description": "Unit for developmental stage value of the tracked organism(s)."
+                },
+                "developmental_stage_value": {
+                    "description": "Numeric developmental stage value (e.g. 72 for 72 hpf) of the tracked organism(s).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "experiment_end_datetime": {
+                    "description": "Date and time at which the experiment ended.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "experiment_notes": {
+                    "description": "Free-text notes on experimental conditions not captured by structured fields.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "experiment_start_datetime": {
+                    "description": "Date and time at which the experiment began.",
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "exposure_compound_chebi_id": {
+                    "description": "ChEBI identifier for the test substance.",
+                    "examples": [
+                        "CHEBI:15930",
+                        "CHEBI:49575"
+                    ],
+                    "pattern": "^CHEBI:\\d+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "exposure_compound_name": {
+                    "description": "Name of the chemical, drug, or substance used in the treatment or exposure.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "exposure_concentration": {
+                    "description": "Nominal exposure concentration (numeric value only; use unit field).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "exposure_concentration_unit": {
+                    "$ref": "#/$defs/ConcentrationUnitEnum",
+                    "description": "Unit for exposure concentration."
+                },
+                "exposure_duration_h": {
+                    "description": "Duration of chemical or treatment exposure in hours.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "exposure_route": {
+                    "$ref": "#/$defs/ExposureRouteEnum",
+                    "description": "Route of chemical or treatment administration."
+                },
+                "genotype": {
+                    "description": "Genotype identifier of the tracked organism(s)including  strain-specific, mutant, transgenic, or engineered genotypes.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "habituation_duration_min": {
+                    "description": "Duration of habituation period before recording, in minutes",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "habituation_protocol": {
+                    "description": "Description of habituation or acclimation prior to testing.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "housing_conditions": {
+                    "description": "Free-text description of animal housing conditions prior to assay.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "light_cycle_detail": {
+                    "description": "Free-text description of the light-dark cycle.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "light_cycle_type": {
+                    "$ref": "#/$defs/LightCycleTypeEnum",
+                    "description": "Standardized category of the light-dark cycle."
+                },
+                "n_individuals_per_arena": {
+                    "description": "Number of individuals tested simultaneously in the arena.",
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "n_individuals_total": {
+                    "description": "Total number of individuals used in the experiment.",
+                    "type": "integer"
+                },
+                "plate_well_count": {
+                    "description": "Number of wells in the multiwell plate.",
+                    "examples": [
+                        24,
+                        96
+                    ],
+                    "minimum": 1,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "sex": {
+                    "$ref": "#/$defs/SexEnum",
+                    "description": "Biological sex of the tracked organism(s)."
+                },
+                "solvent_vehicle": {
+                    "description": "Solvent or vehicle used to dissolve the test substance.",
+                    "examples": [
+                        "DMSO 0.01%",
+                        "ethanol 0.1%",
+                        "water"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "species_name": {
+                    "description": "Scientific (Latin) binomial name of the study organism",
+                    "examples": [
+                        "Danio rerio",
+                        "Mus musculus",
+                        "Daphnia magna"
+                    ],
+                    "type": "string"
+                },
+                "species_ncbi_taxon_id": {
+                    "description": "NCBI Taxonomy ID for the study organism",
+                    "examples": [
+                        "7955",
+                        "10090"
+                    ],
+                    "pattern": "^\\d+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "strain": {
+                    "description": "Organism strain or line",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "temperature_celsius": {
+                    "description": "Water or ambient temperature during the recording in degrees Celsius",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "treatment_description": {
+                    "description": "Full description of the treatment protocol.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "treatment_name": {
+                    "description": "Short label identifying the experimental treatment group, condition, or regimen.",
+                    "examples": [
+                        "diazepam 1 mg/kg",
+                        "atrazine 10 ug/L",
+                        "vehicle control"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "weight_unit": {
+                    "$ref": "#/$defs/WeightUnitEnum",
+                    "description": "Body weight unit of the tracked organism(s)."
+                },
+                "weight_value": {
+                    "description": "Body weight numeric value of the tracked organism(s).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "well_shape_bottom": {
+                    "$ref": "#/$defs/WellBottomShapeEnum",
+                    "description": "Geometric bottom shape of the wells of a multiwell plate."
+                },
+                "well_shape_cross_section": {
+                    "$ref": "#/$defs/WellCrossSectionShapeEnum",
+                    "description": "Geometric cross section shape of the wells of a multiwell plate."
+                }
+            },
+            "required": [
+                "species_name",
+                "n_individuals_total",
+                "n_individuals_per_arena",
+                "assay_type"
+            ],
+            "title": "ExperimentalConditions",
+            "type": "object"
+        },
+        "ExposureRouteEnum": {
+            "description": "Route of chemical or treatment exposure.",
+            "enum": [
+                "waterborne",
+                "dietary",
+                "injection_ip",
+                "injection_iv",
+                "gavage",
+                "topical",
+                "inhalation",
+                "other"
+            ],
+            "title": "ExposureRouteEnum",
+            "type": "string"
+        },
+        "IlluminationTypeEnum": {
+            "description": "Technology type of the light source used during video recording.",
+            "enum": [
+                "white_light",
+                "infrared",
+                "fluorescent",
+                "led",
+                "ambient",
+                "none",
+                "other"
+            ],
+            "title": "IlluminationTypeEnum",
+            "type": "string"
+        },
+        "LengthUnitEnum": {
+            "description": "Units of length, ranging from micrometers to meters.",
+            "enum": [
+                "um",
+                "mm",
+                "cm",
+                "m"
+            ],
+            "title": "LengthUnitEnum",
+            "type": "string"
+        },
+        "LightCycleTypeEnum": {
+            "description": "Standardized light-dark cycle types.",
+            "enum": [
+                "cyclic_ld",
+                "constant_light",
+                "constant_dark",
+                "other"
+            ],
+            "title": "LightCycleTypeEnum",
+            "type": "string"
+        },
+        "MicroscopeTypeEnum": {
+            "description": "OME microscope type values.",
+            "enum": [
+                "upright",
+                "inverted",
+                "dissection",
+                "electrophysiology",
+                "other"
+            ],
+            "title": "MicroscopeTypeEnum",
+            "type": "string"
+        },
+        "PreprocessingStepEnum": {
+            "description": "Type of preprocessing step applied to the video data prior to tracking or analysis.",
+            "enum": [
+                "background_subtraction",
+                "brightness_normalization",
+                "contrast_enhancement",
+                "spatial_filtering",
+                "temporal_filtering",
+                "roi_masking",
+                "noise_reduction",
+                "frame_averaging",
+                "perspective_correction",
+                "colour_space_conversion",
+                "thresholding",
+                "image_stabilization",
+                "other"
+            ],
+            "title": "PreprocessingStepEnum",
+            "type": "string"
+        },
+        "SexEnum": {
+            "description": "Biological sex of the study subjects",
+            "enum": [
+                "male",
+                "female",
+                "mixed",
+                "unknown",
+                "not_applicable"
+            ],
+            "title": "SexEnum",
+            "type": "string"
+        },
+        "StatisticalAnalysis": {
+            "additionalProperties": false,
+            "description": "Information describing the statistical analysis of behavioral data, including statistical tests, models, significance criteria, multiple-testing corrections, and other methods used to evaluate experimental outcomes.",
+            "properties": {
+                "confidence_interval_level": {
+                    "description": "Confidence interval reported for statistical results.",
+                    "examples": [
+                        [
+                            "95% CI"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "effect_size_measure": {
+                    "description": "Effect size measure reported to quantify the magnitude of observed effects or associations.",
+                    "examples": [
+                        [
+                            "Cohen's d",
+                            "Hedges' g",
+                            "eta-squared",
+                            "partial eta-squared",
+                            "odds ratio",
+                            "Pearson's r",
+                            "Spearman's rho"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "multiple_testing_correction": {
+                    "description": "Procedure used to correct for multiple comparisons (if more than one hypothesis was tested).  Include the name of the method and any parameters (e.g., false\u2011discovery\u2011rate level).",
+                    "examples": [
+                        "Benjamini\u2011Hochberg FDR (q = 0.05)",
+                        "Bonferroni (\u03b1 / n = 0.001)"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample_size_analysis": {
+                    "description": "Sample size or power analysis method, software, or justification used before the study.",
+                    "examples": [
+                        [
+                            "power analysis in G*Power",
+                            "calculated using alpha=0.05 and power=0.8"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "significance_level": {
+                    "description": "Significance threshold used for hypothesis testing (e.g., alpha).",
+                    "examples": [
+                        0.05,
+                        0.01
+                    ],
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "statistical_models": {
+                    "description": "Statistical models used to analyse behavioral endpoints.",
+                    "examples": [
+                        [
+                            "linear mixed-effects model",
+                            "generalized linear model",
+                            "generalized additive model",
+                            "Cox proportional hazards model",
+                            "logistic regression"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "statistical_software_name": {
+                    "description": "Name of the software used for statistical analysis.",
+                    "examples": [
+                        "R",
+                        "GraphPad Prism",
+                        "SPSS",
+                        "SAS",
+                        "Stata"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "statistical_software_version": {
+                    "description": "Version string of the software used for statistical analysis.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "statistical_tests": {
+                    "description": "Statistical tests applied to behavioral endpoints for hypothesis testing or inference.",
+                    "examples": [
+                        [
+                            "Student's t-test",
+                            "Mann-Whitney U test",
+                            "one-way ANOVA",
+                            "two-way ANOVA",
+                            "repeated-measures ANOVA",
+                            "Kruskal-Wallis test",
+                            "Wilcoxon signed-rank test",
+                            "Chi-square test"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "statistics_notes": {
+                    "description": "Free-text notes on the statistical analysis not captured by structured fields.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "StatisticalAnalysis",
+            "type": "object"
+        },
+        "TrackingAnalysis": {
+            "additionalProperties": false,
+            "description": "Tracking software identity and version, algorithm details, post-tracking computational steps and derived behavioral metrics.",
+            "properties": {
+                "behavioral_metrics": {
+                    "description": "List of behavioral metrics or endpoints extracted from tracking data.",
+                    "examples": [
+                        [
+                            "total distance moved",
+                            "average velocity",
+                            "time in center zone",
+                            "freezing duration"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "compute_hardware": {
+                    "description": "Primary compute hardware used for tracking and analysis. Include model information when available.",
+                    "examples": [
+                        [
+                            "GPU (NVIDIA RTX 3090)",
+                            "GPU (NVIDIA A100 80GB)",
+                            "CPU (Intel Xeon Gold 6248)",
+                            "CPU (AMD Ryzen 9 7950X)"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "dropped_frames_count": {
+                    "description": "Number of video frames lost or omitted during acquisition.",
+                    "examples": [
+                        0,
+                        12
+                    ],
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "dropped_frames_reason": {
+                    "description": "Reason for dropped or omitted frames during acquisition, recording, encoding, or quality control.",
+                    "examples": [
+                        "Camera buffer overflow",
+                        "Temporary USB bandwidth limitation",
+                        "Corrupted frames removed during quality control",
+                        "Frames dropped due to encoder performance limitations",
+                        "Network transmission interruption"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "endpoint_definitions": {
+                    "description": "Definitions and calculation criteria used for behavioral endpoints, including thresholds, zone boundaries, event definitions, and other parameters required to reproduce endpoint calculations.",
+                    "examples": [
+                        [
+                            "Freezing defined as speed < 1 mm/s for \u2265 1 s",
+                            "Center zone defined as central 50% of arena area"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "frames_without_tracked_bodypart": {
+                    "description": "Percentage of frames in which no body part was tracked.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "frames_without_tracked_individual": {
+                    "description": "Percentage of frames in which no individual was tracked.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "n_bodyparts_tracked": {
+                    "description": "Number of body parts or keypoints tracked per individual.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "n_individuals_tracked_per_arena": {
+                    "description": "Number of individuals actually tracked in a single arena or trial.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "preprocessing_steps": {
+                    "description": "Preprocessing steps applied to video before tracking to enhance quality or isolate features.",
+                    "items": {
+                        "$ref": "#/$defs/PreprocessingStepEnum"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "tracking_algorithm": {
+                    "description": "Algorithmic approach used to detect, identify, and track organisms in video recordings. Multiple values may be provided when tracking is performed using a pipeline of methods.",
+                    "examples": [
+                        [
+                            "background subtraction",
+                            "centroid tracking",
+                            "YOLO object detection"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "tracking_confidence_threshold": {
+                    "description": "Confidence or likelihood threshold used to accept detections, identities, tracks, or keypoints during tracking analysis.",
+                    "examples": [
+                        0.9,
+                        0.3
+                    ],
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "tracking_data_format": {
+                    "description": "File format used to store tracking results, including coordinates, keypoints, identities, trajectories, annotations, or derived outputs.",
+                    "examples": [
+                        [
+                            "CSV",
+                            "HDF5",
+                            "JSON",
+                            "NWB",
+                            "DeepLabCut .h5",
+                            "SLEAP .slp",
+                            "ZebraBox PHR"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "tracking_manual_correction": {
+                    "description": "Whether tracking results were manually reviewed, corrected, or curated after automated tracking.",
+                    "examples": [
+                        true,
+                        false
+                    ],
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "tracking_notes": {
+                    "description": "Free-text notes on the tracking analysis not captured by structured fields.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "tracking_software_name": {
+                    "description": "Name of the software used for tracking.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "tracking_software_settings": {
+                    "description": "Key tracking configuration parameters used during analysis, including software-specific settings required to reproduce tracking results.",
+                    "examples": [
+                        "Detection threshold=25; minimum blob size=50 px",
+                        "DeepLabCut likelihood threshold=0.9",
+                        "Interpolation enabled; gap length=5 frames"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "tracking_software_type": {
+                    "$ref": "#/$defs/TrackingSoftwareTypeEnum",
+                    "description": "Indicates whether the tracking analysis was performed using a custom software or a standard package or software"
+                },
+                "tracking_software_version": {
+                    "description": "Version string of the tracking software.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "TrackingAnalysis",
+            "type": "object"
+        },
+        "TrackingSoftwareTypeEnum": {
+            "description": "Type of tracking software used.",
+            "enum": [
+                "standard",
+                "custom",
+                "modified_standard",
+                "unknown"
+            ],
+            "title": "TrackingSoftwareTypeEnum",
+            "type": "string"
+        },
+        "VTADataset": {
+            "additionalProperties": false,
+            "description": "Top-level study and provenance metadata for a VTA dataset. One record per publication or deposited dataset. Contains identifying, licensing, and bibliographic information.",
+            "properties": {
+                "acquisition_parameters": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AcquisitionParameters"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Video acquisition and recording settings"
+                },
+                "analysis_code_doi": {
+                    "description": "DOI of the deposited analysis code.",
+                    "format": "uri",
+                    "pattern": "^https://doi\\.org/10\\.\\d{4,9}/[-._;()+/:A-Za-z0-9%]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "analysis_code_repository": {
+                    "description": "Repository where analysis code is hosted.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "analysis_code_repository_url": {
+                    "description": "URL of the code repository.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dataset_contact_email": {
+                    "description": "Contact email for the dataset maintainer.",
+                    "pattern": "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dataset_created_date": {
+                    "description": "Date when the dataset was created (YYYY-MM-DD)",
+                    "format": "date",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dataset_creator_name": {
+                    "description": "Name(s) of data creators.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "dataset_creator_orcid": {
+                    "description": "ORCID identifier of the dataset creator.",
+                    "items": {
+                        "format": "uri",
+                        "pattern": "^https://orcid\\.org/\\d{4}-\\d{4}-\\d{4}-\\d{3}[0-9X]$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "dataset_description": {
+                    "description": "Free-text description of the dataset and its scientific purpose",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dataset_doi": {
+                    "description": "DOI of the deposited dataset (assigned by repository)",
+                    "format": "uri",
+                    "pattern": "^https://doi\\.org/10\\.\\d{4,9}/[-._;()+/:A-Za-z0-9%]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dataset_id": {
+                    "description": "Unique identifier for the dataset or study package.",
+                    "type": "string"
+                },
+                "dataset_license": {
+                    "description": "SPDX license identifier or URL (e.g. CC-BY-4.0)",
+                    "type": "string"
+                },
+                "dataset_notes": {
+                    "description": "Free-text notes on the dataset not captured by structured fields.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dataset_title": {
+                    "description": "Descriptive title of the dataset.",
+                    "type": "string"
+                },
+                "dataset_version": {
+                    "description": "Semantic version string for the dataset (e.g. 1.0.0)",
+                    "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "experimental_conditions": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ExperimentalConditions"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Biological and experimental conditions for this dataset"
+                },
+                "publication_doi": {
+                    "description": "DOI of the publication associated with the dataset.",
+                    "format": "uri",
+                    "pattern": "^https://doi\\.org/10\\.\\d{4,9}/[-._;()+/:A-Za-z0-9%]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "raw_data_repository": {
+                    "description": "Repository where raw tracking data and/or video files are deposited.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "raw_data_repository_url": {
+                    "description": "URL of the repository record or landing page.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "raw_tracking_data_doi": {
+                    "description": "DOI of the deposited raw tracking data",
+                    "format": "uri",
+                    "pattern": "^https://doi\\.org/10\\.\\d{4,9}/[-._;()+/:A-Za-z0-9%]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "raw_tracking_data_format": {
+                    "description": "File format of the raw tracking data.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "research_domain": {
+                    "description": "Primary research domain of this study.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "statistical_analysis": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/StatisticalAnalysis"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Statistical analysis for this dataset"
+                },
+                "tracking_analysis": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TrackingAnalysis"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Tracking software and analysis configuration"
+                },
+                "video_hardware": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/VideoHardware"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Camera and hardware configuration"
+                }
+            },
+            "required": [
+                "dataset_id",
+                "dataset_title",
+                "dataset_license"
+            ],
+            "title": "VTADataset",
+            "type": "object"
+        },
+        "VideoCodecEnum": {
+            "description": "Video compression codec used for recording.",
+            "enum": [
+                "h264",
+                "h265",
+                "ffv1",
+                "av1",
+                "mjpeg",
+                "mpeg4",
+                "raw",
+                "other"
+            ],
+            "title": "VideoCodecEnum",
+            "type": "string"
+        },
+        "VideoContainerEnum": {
+            "description": "Video file container format.",
+            "enum": [
+                "mp4",
+                "avi",
+                "mov",
+                "other"
+            ],
+            "title": "VideoContainerEnum",
+            "type": "string"
+        },
+        "VideoHardware": {
+            "additionalProperties": false,
+            "description": "Camera systems, optical configuration, and physical recording infrastructure used in the VTA. Documents instrument identity and optical specifications.",
+            "if": {
+                "anyOf": [
+                    {
+                        "properties": {
+                            "field_of_view_width": {}
+                        },
+                        "required": [
+                            "field_of_view_width"
+                        ]
+                    },
+                    {
+                        "properties": {
+                            "field_of_view_height": {}
+                        },
+                        "required": [
+                            "field_of_view_height"
+                        ]
+                    }
+                ]
+            },
+            "properties": {
+                "camera_count": {
+                    "description": "Number of cameras used simultaneously.",
+                    "type": "integer"
+                },
+                "camera_device_type": {
+                    "$ref": "#/$defs/CameraDeviceTypeEnum",
+                    "description": "General type of imaging device."
+                },
+                "camera_distance_mm": {
+                    "description": "Distance from camera lens to the arena floor in millimetres.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "camera_interface": {
+                    "$ref": "#/$defs/CameraInterfaceEnum",
+                    "description": "Interface standard used for communication between the camera and the acquisition system."
+                },
+                "camera_manufacturer": {
+                    "description": "Manufacturer of the camera.",
+                    "type": "string"
+                },
+                "camera_model": {
+                    "description": "Full manufacturer model name of the camera.",
+                    "examples": [
+                        "Basler acA1300-60gc",
+                        "Logitech C920"
+                    ],
+                    "type": "string"
+                },
+                "camera_position": {
+                    "$ref": "#/$defs/CameraPositionEnum",
+                    "description": "Position of the camera relative to the arena."
+                },
+                "camera_sensor_type": {
+                    "$ref": "#/$defs/CameraSensorTypeEnum",
+                    "description": "Image sensor technology."
+                },
+                "closed_box_system_name": {
+                    "$ref": "#/$defs/ClosedBoxSystemEnum",
+                    "description": "Name of the integrated commercial closed-box tracking system. (e.g. ZebraBox, DanioVision, ToxMate, PhenoTyper)."
+                },
+                "closed_box_system_version": {
+                    "description": "Hardware version or model number of the closed-box system.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "contrast_polarity": {
+                    "$ref": "#/$defs/ContrastPolarityEnum",
+                    "description": "Contrast relationship between the tracked object and the background; indicates whether the subject appears bright on a dark background or dark on a bright background in the recorded video."
+                },
+                "field_of_view_height": {
+                    "description": "Numeric value of vertical field of view covered by the camera.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "field_of_view_unit": {
+                    "$ref": "#/$defs/LengthUnitEnum",
+                    "description": "Unit of measurement for field_of_view_width and field_of_view_height."
+                },
+                "field_of_view_width": {
+                    "description": "Numeric value of horizontal field of view covered by the camera.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "hardware_notes": {
+                    "description": "Free-text notes on hardware configuration not captured by structured fields.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "lens_focal_length_mm": {
+                    "description": "Focal length of the imaging lens in millimetres;  applicable to camera or microscope optics when reported.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "microscope_lot_number": {
+                    "description": "Lot number of the microscope.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "microscope_manufacturer": {
+                    "description": "Manufacturer of the microscope.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "microscope_model": {
+                    "description": "Model name or identifier of the microscope.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "microscope_serial_number": {
+                    "description": "Serial number of the microscope.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "microscope_type": {
+                    "$ref": "#/$defs/MicroscopeTypeEnum",
+                    "description": "Microscope configuration according to the OME microscope type classification."
+                },
+                "objective_magnification": {
+                    "description": "Magnification of microscope objective (if applicable).",
+                    "examples": [
+                        4.0,
+                        10.0
+                    ],
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "camera_count",
+                "camera_device_type",
+                "camera_model",
+                "camera_manufacturer"
+            ],
+            "then": {
+                "properties": {
+                    "field_of_view_height": {},
+                    "field_of_view_unit": {},
+                    "field_of_view_width": {}
+                },
+                "required": [
+                    "field_of_view_width",
+                    "field_of_view_height",
+                    "field_of_view_unit"
+                ]
+            },
+            "title": "VideoHardware",
+            "type": "object"
+        },
+        "WeightUnitEnum": {
+            "description": "Units of mass used to express weight measurements, ranging from micrograms to kilograms.",
+            "enum": [
+                "ug",
+                "mg",
+                "g",
+                "kg"
+            ],
+            "title": "WeightUnitEnum",
+            "type": "string"
+        },
+        "WellBottomShapeEnum": {
+            "description": "Geometric bottom shape of the wells of a multiwell plate.",
+            "enum": [
+                "flat_bottom",
+                "u_bottom",
+                "v_bottom",
+                "other"
+            ],
+            "title": "WellBottomShapeEnum",
+            "type": "string"
+        },
+        "WellCrossSectionShapeEnum": {
+            "description": "Geometric cross section shape of the wells of a multiwell plate.",
+            "enum": [
+                "circular",
+                "square",
+                "other"
+            ],
+            "title": "WellCrossSectionShapeEnum",
+            "type": "string"
+        }
+    },
+    "$id": "https://w3id.org/bestmeta/schema",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "description": "Top-level study and provenance metadata for a VTA dataset. One record per publication or deposited dataset. Contains identifying, licensing, and bibliographic information.",
+    "metamodel_version": "1.11.0",
+    "properties": {
+        "acquisition_parameters": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/AcquisitionParameters"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "Video acquisition and recording settings"
+        },
+        "analysis_code_doi": {
+            "description": "DOI of the deposited analysis code.",
+            "format": "uri",
+            "pattern": "^https://doi\\.org/10\\.\\d{4,9}/[-._;()+/:A-Za-z0-9%]+$",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "analysis_code_repository": {
+            "description": "Repository where analysis code is hosted.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "analysis_code_repository_url": {
+            "description": "URL of the code repository.",
+            "format": "uri",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "dataset_contact_email": {
+            "description": "Contact email for the dataset maintainer.",
+            "pattern": "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "dataset_created_date": {
+            "description": "Date when the dataset was created (YYYY-MM-DD)",
+            "format": "date",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "dataset_creator_name": {
+            "description": "Name(s) of data creators.",
+            "items": {
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "dataset_creator_orcid": {
+            "description": "ORCID identifier of the dataset creator.",
+            "items": {
+                "format": "uri",
+                "pattern": "^https://orcid\\.org/\\d{4}-\\d{4}-\\d{4}-\\d{3}[0-9X]$",
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "dataset_description": {
+            "description": "Free-text description of the dataset and its scientific purpose",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "dataset_doi": {
+            "description": "DOI of the deposited dataset (assigned by repository)",
+            "format": "uri",
+            "pattern": "^https://doi\\.org/10\\.\\d{4,9}/[-._;()+/:A-Za-z0-9%]+$",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "dataset_id": {
+            "description": "Unique identifier for the dataset or study package.",
+            "type": "string"
+        },
+        "dataset_license": {
+            "description": "SPDX license identifier or URL (e.g. CC-BY-4.0)",
+            "type": "string"
+        },
+        "dataset_notes": {
+            "description": "Free-text notes on the dataset not captured by structured fields.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "dataset_title": {
+            "description": "Descriptive title of the dataset.",
+            "type": "string"
+        },
+        "dataset_version": {
+            "description": "Semantic version string for the dataset (e.g. 1.0.0)",
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "experimental_conditions": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/ExperimentalConditions"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "Biological and experimental conditions for this dataset"
+        },
+        "publication_doi": {
+            "description": "DOI of the publication associated with the dataset.",
+            "format": "uri",
+            "pattern": "^https://doi\\.org/10\\.\\d{4,9}/[-._;()+/:A-Za-z0-9%]+$",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "raw_data_repository": {
+            "description": "Repository where raw tracking data and/or video files are deposited.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "raw_data_repository_url": {
+            "description": "URL of the repository record or landing page.",
+            "format": "uri",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "raw_tracking_data_doi": {
+            "description": "DOI of the deposited raw tracking data",
+            "format": "uri",
+            "pattern": "^https://doi\\.org/10\\.\\d{4,9}/[-._;()+/:A-Za-z0-9%]+$",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "raw_tracking_data_format": {
+            "description": "File format of the raw tracking data.",
+            "items": {
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "research_domain": {
+            "description": "Primary research domain of this study.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "statistical_analysis": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/StatisticalAnalysis"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "Statistical analysis for this dataset"
+        },
+        "tracking_analysis": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/TrackingAnalysis"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "Tracking software and analysis configuration"
+        },
+        "video_hardware": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/VideoHardware"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "Camera and hardware configuration"
+        }
+    },
+    "required": [
+        "dataset_id",
+        "dataset_title",
+        "dataset_license"
+    ],
+    "title": "bestmeta",
+    "type": "object",
+    "version": "0.1.0"
+}
+
