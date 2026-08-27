@@ -42,7 +42,8 @@ prefixes:
   OME:        http://www.openmicroscopy.org/Schemas/OME/2016-06#
   ORCID:      http://identifiers.org/orcid/
   pav:        http://purl.org/pav/ 
-  REPRODUCEME:       https://w3id.org/reproduceme#
+  PATO:       http://purl.obolibrary.org/obo/PATO_
+  REPRODUCEME: https://w3id.org/reproduceme#
   schema:     http://schema.org/
   SNOMED:     http://snomed.info/id/ 
   STATO:      http://purl.obolibrary.org/obo/STATO_
@@ -51,7 +52,7 @@ prefixes:
   XCO:        http://purl.obolibrary.org/obo/XCO_
   xsd:        http://www.w3.org/2001/XMLSchema#
 
-default_prefix: bstm
+default_prefix: BeStMeta
 default_range: string
 
 # --- imports ---
@@ -568,7 +569,7 @@ slots:
     range: string
     exact_mappings:
       - dwc:scientificName
-      - EDAM-DATA:1045
+      - EDAM.DATA:1045
     examples:
       - value: "Danio rerio"
       - value: "Mus musculus"
@@ -617,7 +618,7 @@ slots:
     pattern: "^\\d+$"
     exact_mappings:
       - dwc:taxonID
-      - EDAM-DATA:1179
+      - EDAM.DATA:1179
     examples:
       - value: "7955" #Danio rerio
       - value: "10090" #Mus musculus
@@ -628,7 +629,7 @@ slots:
     recommended: true
     range: string
     exact_mappings:
-      - EDAM-DATA:2379
+      - EDAM.DATA:2379
 
   genotype:
     description: >-
@@ -780,7 +781,7 @@ slots:
     recommended: true
     range: string
     exact_mappings:
-      - EDAM-DATA:0997
+      - EDAM.DATA:0997
 
   exposure_compound_chebi_id:
     description: ChEBI identifier for the test substance.
@@ -789,7 +790,7 @@ slots:
     range: string
     pattern: "^CHEBI:\\d+$"
     exact_mappings:
-      - EDAM-DATA:1174
+      - EDAM.DATA:1174
     examples:
       - value: "CHEBI:15930"   # atrazine
       - value: "CHEBI:49575"  # diazepam
@@ -800,7 +801,7 @@ slots:
     recommended: true
     range: float
     exact_mappings:
-      - EDAM-DATA:2140
+      - EDAM.DATA:2140
 
   exposure_concentration_unit:
     description: Unit for exposure concentration.
@@ -1185,7 +1186,7 @@ slots:
     unit:
       ucum_code: ms
     exact_mappings:
-      - REPR:ExposureTime
+      - REPRODUCEME:ExposureTime
 
   noise_reduction_method:
     description: Method or algorithm used to reduce image noise during acquisition or immediately after recording.

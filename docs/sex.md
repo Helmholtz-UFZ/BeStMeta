@@ -1,0 +1,101 @@
+---
+search:
+  boost: 5.0
+---
+
+# Slot: sex 
+
+
+_Biological sex of the tracked organism(s)._
+
+
+
+<div data-search-exclude markdown="1">
+
+
+
+URI: [bstm:sex](bstm:sex)
+<!-- no inheritance hierarchy -->
+
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+
+
+
+
+
+
+## Properties
+
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [SexEnum](SexEnum.md) |
+| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Recommended | Yes |
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/bestmeta/schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | bstm:sex |
+| native | bstm:sex |
+| exact | PATO:0000047 |
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: sex
+description: Biological sex of the tracked organism(s).
+from_schema: https://w3id.org/bestmeta/schema
+exact_mappings:
+- PATO:0000047
+rank: 1000
+domain_of:
+- ExperimentalConditions
+range: SexEnum
+required: false
+recommended: true
+
+```
+</details></div>

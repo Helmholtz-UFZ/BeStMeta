@@ -1,4 +1,4 @@
-
+```mermaid
 erDiagram
 AcquisitionParameters {
     string acquisition_notes  
@@ -86,13 +86,13 @@ StatisticalAnalysis {
     string statistics_notes  
 }
 TrackingAnalysis {
-    stringList behavioral_endpoints  
+    stringList behavioral_metrics  
     stringList compute_hardware  
     integer dropped_frames_count  
     string dropped_frames_reason  
     stringList endpoint_definitions  
-    integer frames_without_tracked_bodypart  
-    integer frames_without_tracked_individual  
+    float frames_without_tracked_bodypart  
+    float frames_without_tracked_individual  
     integer n_bodyparts_tracked  
     integer n_individuals_tracked_per_arena  
     PreprocessingStepEnumList preprocessing_steps  
@@ -108,7 +108,7 @@ TrackingAnalysis {
 }
 VTADataset {
     uri analysis_code_doi  
-    RepositoryEnum analysis_code_repository  
+    string analysis_code_repository  
     uri analysis_code_repository_url  
     string dataset_contact_email  
     date dataset_created_date  
@@ -122,11 +122,11 @@ VTADataset {
     string dataset_title  
     string dataset_version  
     uri publication_doi  
-    RepositoryEnum raw_data_repository  
+    string raw_data_repository  
     uri raw_data_repository_url  
     uri raw_tracking_data_doi  
-    RawDataFormatEnumList raw_tracking_data_format  
-    DomainEnum research_domain  
+    stringList raw_tracking_data_format  
+    string research_domain  
 }
 VideoHardware {
     integer camera_count  
@@ -159,4 +159,5 @@ VTADataset ||--|o StatisticalAnalysis : "statistical_analysis"
 VTADataset ||--|o TrackingAnalysis : "tracking_analysis"
 VTADataset ||--|o VideoHardware : "video_hardware"
 
+```
 
