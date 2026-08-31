@@ -15,7 +15,7 @@ _OME microscope type values._
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:MicroscopeTypeEnum](bstm:MicroscopeTypeEnum)
+URI: [BeStMeta:MicroscopeTypeEnum](https://w3id.org/BeStMeta/MicroscopeTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

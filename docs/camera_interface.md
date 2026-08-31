@@ -14,7 +14,7 @@ _Interface standard used for communication between the camera and the acquisitio
 
 
 
-URI: [bstm:camera_interface](bstm:camera_interface)
+URI: [BeStMeta:camera_interface](https://w3id.org/BeStMeta/camera_interface)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:camera_interface](bstm:camera_interface)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:camera_interface |
-| native | bstm:camera_interface |
+| self | BeStMeta:camera_interface |
+| native | BeStMeta:camera_interface |
 
 
 

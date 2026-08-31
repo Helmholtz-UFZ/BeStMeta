@@ -14,7 +14,7 @@ _File container format of the recorded video._
 
 
 
-URI: [bstm:video_container_format](bstm:video_container_format)
+URI: [BeStMeta:video_container_format](https://w3id.org/BeStMeta/video_container_format)
 <!-- no inheritance hierarchy -->
 
 
@@ -79,8 +79,8 @@ URI: [bstm:video_container_format](bstm:video_container_format)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:video_container_format |
-| native | bstm:video_container_format |
+| self | BeStMeta:video_container_format |
+| native | BeStMeta:video_container_format |
 | exact | ebucore:hasContainerFormat |
 
 

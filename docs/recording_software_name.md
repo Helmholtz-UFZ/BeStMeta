@@ -14,7 +14,7 @@ _Name of the software used to record the video._
 
 
 
-URI: [bstm:recording_software_name](bstm:recording_software_name)
+URI: [BeStMeta:recording_software_name](https://w3id.org/BeStMeta/recording_software_name)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:recording_software_name](bstm:recording_software_name)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:recording_software_name |
-| native | bstm:recording_software_name |
+| self | BeStMeta:recording_software_name |
+| native | BeStMeta:recording_software_name |
 | exact | AFR:0002802 |
 
 

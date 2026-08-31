@@ -51,7 +51,7 @@ URI: [xsd:string](http://www.w3.org/2001/XMLSchema#string)
 | Mapping Type | Mapped Value |
 | ---  | ---  |
 | self | xsd:string |
-| native | bstm:string |
+| native | BeStMeta:string |
 | exact | schema:Text |
 
 

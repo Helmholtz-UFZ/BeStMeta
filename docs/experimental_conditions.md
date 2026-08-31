@@ -14,7 +14,7 @@ _Biological and experimental conditions for this dataset_
 
 
 
-URI: [bstm:experimental_conditions](bstm:experimental_conditions)
+URI: [BeStMeta:experimental_conditions](https://w3id.org/BeStMeta/experimental_conditions)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:experimental_conditions](bstm:experimental_conditions)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:experimental_conditions |
-| native | bstm:experimental_conditions |
+| self | BeStMeta:experimental_conditions |
+| native | BeStMeta:experimental_conditions |
 
 
 

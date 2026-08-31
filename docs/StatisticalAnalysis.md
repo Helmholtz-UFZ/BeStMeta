@@ -14,7 +14,7 @@ _Information describing the statistical analysis of behavioral data, including s
 
 
 
-URI: [bstm:StatisticalAnalysis](bstm:StatisticalAnalysis)
+URI: [BeStMeta:StatisticalAnalysis](https://w3id.org/BeStMeta/StatisticalAnalysis)
 
 
 
@@ -106,8 +106,8 @@ URI: [bstm:StatisticalAnalysis](bstm:StatisticalAnalysis)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:StatisticalAnalysis |
-| native | bstm:StatisticalAnalysis |
+| self | BeStMeta:StatisticalAnalysis |
+| native | BeStMeta:StatisticalAnalysis |
 
 
 

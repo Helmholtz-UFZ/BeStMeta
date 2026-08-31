@@ -14,7 +14,7 @@ _Numeric developmental stage value (e.g. 72 for 72 hpf) of the tracked organism(
 
 
 
-URI: [bstm:developmental_stage_value](bstm:developmental_stage_value)
+URI: [BeStMeta:developmental_stage_value](https://w3id.org/BeStMeta/developmental_stage_value)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:developmental_stage_value](bstm:developmental_stage_value)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Subject](Subject.md) | Biological identity of the organism(s) that is studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:developmental_stage_value](bstm:developmental_stage_value)
 | Property | Value |
 | --- | --- |
 | Range | [Float](Float.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Subject](Subject.md) |
 
 ### Cardinality and Requirements
 
@@ -73,8 +73,8 @@ URI: [bstm:developmental_stage_value](bstm:developmental_stage_value)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:developmental_stage_value |
-| native | bstm:developmental_stage_value |
+| self | BeStMeta:developmental_stage_value |
+| native | BeStMeta:developmental_stage_value |
 | close | EFO:0000399 |
 
 
@@ -92,7 +92,7 @@ close_mappings:
 - EFO:0000399
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Subject
 range: float
 
 ```

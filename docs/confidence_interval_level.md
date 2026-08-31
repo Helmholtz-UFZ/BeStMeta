@@ -14,7 +14,7 @@ _Confidence interval reported for statistical results._
 
 
 
-URI: [bstm:confidence_interval_level](bstm:confidence_interval_level)
+URI: [BeStMeta:confidence_interval_level](https://w3id.org/BeStMeta/confidence_interval_level)
 <!-- no inheritance hierarchy -->
 
 
@@ -82,8 +82,8 @@ URI: [bstm:confidence_interval_level](bstm:confidence_interval_level)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:confidence_interval_level |
-| native | bstm:confidence_interval_level |
+| self | BeStMeta:confidence_interval_level |
+| native | BeStMeta:confidence_interval_level |
 | exact | STATO:0000196 |
 
 

@@ -15,7 +15,7 @@ _Units of concentration used to express the amount of a substance per volume of 
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:ConcentrationUnitEnum](bstm:ConcentrationUnitEnum)
+URI: [BeStMeta:ConcentrationUnitEnum](https://w3id.org/BeStMeta/ConcentrationUnitEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

@@ -14,7 +14,7 @@ _Statistical models used to analyse behavioral endpoints._
 
 
 
-URI: [bstm:statistical_models](bstm:statistical_models)
+URI: [BeStMeta:statistical_models](https://w3id.org/BeStMeta/statistical_models)
 <!-- no inheritance hierarchy -->
 
 
@@ -86,8 +86,8 @@ URI: [bstm:statistical_models](bstm:statistical_models)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:statistical_models |
-| native | bstm:statistical_models |
+| self | BeStMeta:statistical_models |
+| native | BeStMeta:statistical_models |
 | exact | STATO:0000107 |
 
 

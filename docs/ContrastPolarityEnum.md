@@ -15,7 +15,7 @@ _Polarity of object-to-background contrast in the video._
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:ContrastPolarityEnum](bstm:ContrastPolarityEnum)
+URI: [BeStMeta:ContrastPolarityEnum](https://w3id.org/BeStMeta/ContrastPolarityEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

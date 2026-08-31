@@ -14,7 +14,7 @@ _Microscope configuration according to the OME microscope type classification._
 
 
 
-URI: [bstm:microscope_type](bstm:microscope_type)
+URI: [BeStMeta:microscope_type](https://w3id.org/BeStMeta/microscope_type)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:microscope_type](bstm:microscope_type)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:microscope_type |
-| native | bstm:microscope_type |
+| self | BeStMeta:microscope_type |
+| native | BeStMeta:microscope_type |
 | exact | OME:Type |
 
 

@@ -14,7 +14,7 @@ _Date and time at which acquisition of the video recording began._
 
 
 
-URI: [bstm:recording_start_datetime](bstm:recording_start_datetime)
+URI: [BeStMeta:recording_start_datetime](https://w3id.org/BeStMeta/recording_start_datetime)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:recording_start_datetime](bstm:recording_start_datetime)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:recording_start_datetime |
-| native | bstm:recording_start_datetime |
+| self | BeStMeta:recording_start_datetime |
+| native | BeStMeta:recording_start_datetime |
 
 
 

@@ -14,7 +14,7 @@ _Number of video frames lost or omitted during acquisition._
 
 
 
-URI: [bstm:dropped_frames_count](bstm:dropped_frames_count)
+URI: [BeStMeta:dropped_frames_count](https://w3id.org/BeStMeta/dropped_frames_count)
 <!-- no inheritance hierarchy -->
 
 
@@ -87,8 +87,8 @@ URI: [bstm:dropped_frames_count](bstm:dropped_frames_count)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:dropped_frames_count |
-| native | bstm:dropped_frames_count |
+| self | BeStMeta:dropped_frames_count |
+| native | BeStMeta:dropped_frames_count |
 
 
 

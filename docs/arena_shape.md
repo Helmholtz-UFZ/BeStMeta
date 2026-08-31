@@ -14,7 +14,7 @@ _Geometric shape of the test arena._
 
 
 
-URI: [bstm:arena_shape](bstm:arena_shape)
+URI: [BeStMeta:arena_shape](https://w3id.org/BeStMeta/arena_shape)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:arena_shape](bstm:arena_shape)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:arena_shape](bstm:arena_shape)
 | Property | Value |
 | --- | --- |
 | Range | [ArenaShapeEnum](ArenaShapeEnum.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
@@ -74,8 +74,8 @@ URI: [bstm:arena_shape](bstm:arena_shape)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:arena_shape |
-| native | bstm:arena_shape |
+| self | BeStMeta:arena_shape |
+| native | BeStMeta:arena_shape |
 | broad | OBI:0000968 |
 
 
@@ -92,7 +92,7 @@ broad_mappings:
 - OBI:0000968
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Experiment
 range: ArenaShapeEnum
 required: false
 recommended: true

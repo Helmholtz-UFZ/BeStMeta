@@ -14,7 +14,7 @@ _Hardware version or model number of the closed-box system._
 
 
 
-URI: [bstm:closed_box_system_version](bstm:closed_box_system_version)
+URI: [BeStMeta:closed_box_system_version](https://w3id.org/BeStMeta/closed_box_system_version)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:closed_box_system_version](bstm:closed_box_system_version)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:closed_box_system_version |
-| native | bstm:closed_box_system_version |
+| self | BeStMeta:closed_box_system_version |
+| native | BeStMeta:closed_box_system_version |
 
 
 

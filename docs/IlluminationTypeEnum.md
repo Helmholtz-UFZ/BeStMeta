@@ -15,7 +15,7 @@ _Technology type of the light source used during video recording._
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:IlluminationTypeEnum](bstm:IlluminationTypeEnum)
+URI: [BeStMeta:IlluminationTypeEnum](https://w3id.org/BeStMeta/IlluminationTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

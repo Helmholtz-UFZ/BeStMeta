@@ -14,7 +14,7 @@ _Version string of the tracking software._
 
 
 
-URI: [bstm:tracking_software_version](bstm:tracking_software_version)
+URI: [BeStMeta:tracking_software_version](https://w3id.org/BeStMeta/tracking_software_version)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:tracking_software_version](bstm:tracking_software_version)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:tracking_software_version |
-| native | bstm:tracking_software_version |
+| self | BeStMeta:tracking_software_version |
+| native | BeStMeta:tracking_software_version |
 | exact | AFR:0001700 |
 
 

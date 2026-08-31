@@ -14,7 +14,7 @@ _Model name or identifier of the microscope._
 
 
 
-URI: [bstm:microscope_model](bstm:microscope_model)
+URI: [BeStMeta:microscope_model](https://w3id.org/BeStMeta/microscope_model)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:microscope_model](bstm:microscope_model)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:microscope_model |
-| native | bstm:microscope_model |
+| self | BeStMeta:microscope_model |
+| native | BeStMeta:microscope_model |
 | exact | OME:Model |
 
 

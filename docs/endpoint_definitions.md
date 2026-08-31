@@ -14,7 +14,7 @@ _Definitions and calculation criteria used for behavioral endpoints, including t
 
 
 
-URI: [bstm:endpoint_definitions](bstm:endpoint_definitions)
+URI: [BeStMeta:endpoint_definitions](https://w3id.org/BeStMeta/endpoint_definitions)
 <!-- no inheritance hierarchy -->
 
 
@@ -83,8 +83,8 @@ URI: [bstm:endpoint_definitions](bstm:endpoint_definitions)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:endpoint_definitions |
-| native | bstm:endpoint_definitions |
+| self | BeStMeta:endpoint_definitions |
+| native | BeStMeta:endpoint_definitions |
 
 
 

@@ -14,7 +14,7 @@ _Preprocessing steps applied to video before tracking to enhance quality or isol
 
 
 
-URI: [bstm:preprocessing_steps](bstm:preprocessing_steps)
+URI: [BeStMeta:preprocessing_steps](https://w3id.org/BeStMeta/preprocessing_steps)
 <!-- no inheritance hierarchy -->
 
 
@@ -75,8 +75,8 @@ URI: [bstm:preprocessing_steps](bstm:preprocessing_steps)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:preprocessing_steps |
-| native | bstm:preprocessing_steps |
+| self | BeStMeta:preprocessing_steps |
+| native | BeStMeta:preprocessing_steps |
 
 
 

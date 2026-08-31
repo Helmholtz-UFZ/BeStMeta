@@ -14,7 +14,7 @@ _Descriptive title of the dataset._
 
 
 
-URI: [bstm:dataset_title](bstm:dataset_title)
+URI: [BeStMeta:dataset_title](https://w3id.org/BeStMeta/dataset_title)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:dataset_title](bstm:dataset_title)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:dataset_title |
-| native | bstm:dataset_title |
+| self | BeStMeta:dataset_title |
+| native | BeStMeta:dataset_title |
 | exact | dcterms:title |
 
 

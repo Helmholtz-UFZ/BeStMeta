@@ -14,7 +14,7 @@ _Type of illumination used during recording._
 
 
 
-URI: [bstm:illumination_type](bstm:illumination_type)
+URI: [BeStMeta:illumination_type](https://w3id.org/BeStMeta/illumination_type)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:illumination_type](bstm:illumination_type)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:illumination_type |
-| native | bstm:illumination_type |
+| self | BeStMeta:illumination_type |
+| native | BeStMeta:illumination_type |
 | exact | MIxS:0000769 |
 
 

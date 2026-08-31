@@ -14,7 +14,7 @@ _Date when the dataset was created (YYYY-MM-DD)_
 
 
 
-URI: [bstm:dataset_created_date](bstm:dataset_created_date)
+URI: [BeStMeta:dataset_created_date](https://w3id.org/BeStMeta/dataset_created_date)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:dataset_created_date](bstm:dataset_created_date)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:dataset_created_date |
-| native | bstm:dataset_created_date |
+| self | BeStMeta:dataset_created_date |
+| native | BeStMeta:dataset_created_date |
 | exact | dcterms:created |
 
 

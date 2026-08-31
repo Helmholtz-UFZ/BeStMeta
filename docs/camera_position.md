@@ -14,7 +14,7 @@ _Position of the camera relative to the arena._
 
 
 
-URI: [bstm:camera_position](bstm:camera_position)
+URI: [BeStMeta:camera_position](https://w3id.org/BeStMeta/camera_position)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:camera_position](bstm:camera_position)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:camera_position |
-| native | bstm:camera_position |
+| self | BeStMeta:camera_position |
+| native | BeStMeta:camera_position |
 
 
 

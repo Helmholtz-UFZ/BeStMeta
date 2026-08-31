@@ -14,7 +14,7 @@ _Duration of habituation period before recording, in minutes_
 
 
 
-URI: [bstm:habituation_duration_min](bstm:habituation_duration_min)
+URI: [BeStMeta:habituation_duration_min](https://w3id.org/BeStMeta/habituation_duration_min)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:habituation_duration_min](bstm:habituation_duration_min)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Manipulation](Manipulation.md) | Treatment and chemical exposure information decribing pharmacological, toxico... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:habituation_duration_min](bstm:habituation_duration_min)
 | Property | Value |
 | --- | --- |
 | Range | [Float](Float.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Manipulation](Manipulation.md) |
 
 ### Cardinality and Requirements
 
@@ -83,8 +83,8 @@ URI: [bstm:habituation_duration_min](bstm:habituation_duration_min)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:habituation_duration_min |
-| native | bstm:habituation_duration_min |
+| self | BeStMeta:habituation_duration_min |
+| native | BeStMeta:habituation_duration_min |
 
 
 
@@ -98,7 +98,7 @@ description: Duration of habituation period before recording, in minutes
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Manipulation
 range: float
 required: false
 unit:

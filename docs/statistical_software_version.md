@@ -14,7 +14,7 @@ _Version string of the software used for statistical analysis._
 
 
 
-URI: [bstm:statistical_software_version](bstm:statistical_software_version)
+URI: [BeStMeta:statistical_software_version](https://w3id.org/BeStMeta/statistical_software_version)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:statistical_software_version](bstm:statistical_software_version)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:statistical_software_version |
-| native | bstm:statistical_software_version |
+| self | BeStMeta:statistical_software_version |
+| native | BeStMeta:statistical_software_version |
 | exact | AFR:0001700 |
 
 

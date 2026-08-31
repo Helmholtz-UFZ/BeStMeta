@@ -7,7 +7,7 @@
 # =============================================================================
 
 id: https://w3id.org/bestmeta/schema
-name: bestmeta 
+name: bestmeta
 title: BeStMeta Metadata Schema
 description: >-
   A cross-domain metadata schema for video tracking assays (VTAs) with focus on
@@ -41,11 +41,11 @@ prefixes:
   OM:         http://www.ontology-of-units-of-measure.org/resource/om-2/
   OME:        http://www.openmicroscopy.org/Schemas/OME/2016-06#
   ORCID:      http://identifiers.org/orcid/
-  pav:        http://purl.org/pav/ 
+  pav:        http://purl.org/pav/
   PATO:       http://purl.obolibrary.org/obo/PATO_
   REPRODUCEME: https://w3id.org/reproduceme#
   schema:     http://schema.org/
-  SNOMED:     http://snomed.info/id/ 
+  SNOMED:     http://snomed.info/id/
   STATO:      http://purl.obolibrary.org/obo/STATO_
   SWO:        http://purl.obolibrary.org/obo/SWO_
   UO:         http://purl.obolibrary.org/obo/UO_
@@ -67,7 +67,7 @@ classes:
       Top-level study and provenance metadata for a VTA dataset.
       One record per publication or deposited dataset. Contains
       identifying, licensing, and bibliographic information.
-    slots:
+    slots:     
       # required
       - dataset_id
       - dataset_title
@@ -105,39 +105,29 @@ classes:
       the dataset. Covers organism identity, treatment, assay design,
       and environmental parameters.
     slots:
+      - subject
+      - experiment
+      #optional
+      - manipulation
+      - experiment_notes
+      
+      
+  Subject:
+    description: >-
+        Biological identity of the organism(s) that is studied. 
+        Contains details like taxonomy, strain, genotype, sex, age 
+        and/or other morphometric details and measurements.
+    slots:
       # required
       - species_name
-      - n_individuals_total
-      - n_individuals_per_arena
-      - assay_type
       # recommended
-      - experiment_start_datetime
-      - experiment_end_datetime
       - species_ncbi_taxon_id
       - strain
       - genotype
       - sex
       - body_length_value
       - body_length_unit
-      - arena_shape
-      - arena_type
-      - arena_length
-      - arena_length_unit
-      - arena_width
-      - arena_width_unit
-      - arena_height
-      - arena_height_unit
-      - plate_well_count
-      - well_shape_cross_section
-      - temperature_celsius
-      - light_cycle_type
-      - light_cycle_detail        
-      - treatment_name
-      - treatment_description
-      - exposure_compound_name
-      - exposure_compound_chebi_id  
-      - exposure_concentration
-      - exposure_concentration_unit
+      - housing_conditions
       # conditionally required
       - developmental_stage
       - developmental_stage_value
@@ -147,17 +137,8 @@ classes:
       # optional
       - weight_value
       - weight_unit
-      - assay_description      
-      - well_shape_bottom
-      - habituation_duration_min
-      - habituation_protocol      
-      - housing_conditions
-      - exposure_route
-      - exposure_duration_h
-      - solvent_vehicle
-      - control_type
-      - experiment_notes
-    # At least one of: developmental_stage, developmental_stage_value+unit, 
+      
+      # At least one of: developmental_stage, developmental_stage_value+unit, 
     # or age_value+unit must be provided  
     any_of: 
       - slot_conditions:
@@ -193,8 +174,39 @@ classes:
         postconditions:
           slot_conditions:
             weight_unit:
-              required: true 
-
+              required: true  
+         
+  Experiment:
+    description: >-
+        Defines experimental context in which the subjects were studied.
+        Covers environmental parameters like study counts, arena geometry,
+        temperature, multi well plate details etc.
+    slots:
+      # required      
+      - n_individuals_total
+      - n_individuals_per_arena
+      - assay_type
+      # recommended
+      - experiment_start_datetime
+      - experiment_end_datetime
+      - assay_description
+      - arena_shape
+      - arena_type
+      - arena_length
+      - arena_length_unit
+      - arena_width
+      - arena_width_unit
+      - arena_height
+      - arena_height_unit
+      - plate_well_count
+      - well_shape_cross_section
+      - temperature_celsius
+      - light_cycle_type
+      - light_cycle_detail
+      # optional   
+      - assay_description
+      
+    rules:
       - description: arena_length requires arena_length_unit
         preconditions:
           slot_conditions:
@@ -234,6 +246,56 @@ classes:
           slot_conditions:
             light_cycle_detail:
               required: true
+              
+              
+  Manipulation:
+    description: >-
+         Treatment and chemical exposure information decribing pharmacological,
+         toxicological and/or any other interventions that subjects went through.
+         This sub-class can be omitted where no interventions were used.
+    slots:
+        # recommended        
+        - treatment_name
+        - treatment_description
+        - exposure_compound_name
+        - exposure_compound_chebi_id  
+        - exposure_concentration
+        - exposure_concentration_unit
+        # optional            
+        - well_shape_bottom
+        - habituation_duration_min
+        - habituation_protocol      
+        - housing_conditions
+        - exposure_route
+        - exposure_duration_h
+        - solvent_vehicle
+        - control_type
+        
+        
+    rules:
+      - description: >-
+          exposure_concentration requires exposure_concentration_unit.
+        preconditions:
+          slot_conditions:
+            exposure_concentration:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            exposure_concentration_unit:
+              required: true
+ 
+      - description: >-
+          exposure_compound_name is recommended when
+          exposure_compound_chebi_id is provided.
+        preconditions:
+          slot_conditions:
+            exposure_compound_chebi_id:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            exposure_compound_name:
+              recommended: true
+      
           
   VideoHardware:
     description: >-
@@ -561,6 +623,34 @@ slots:
     description: Statistical analysis for this dataset
     range: StatisticalAnalysis
     inlined: true
+    
+    
+# --- ExperimentalConditions sub-classes ---
+  subject:
+    description: Organism identity and biological attributes of the tracked subjects.
+    range: Subject
+    required: true
+    inlined: true
+ 
+  experiment:
+    description: Assay design, arena configuration, and environmental parameters.
+    range: Experiment
+    required: true
+    inlined: true
+ 
+  manipulation:
+    description: >-
+      Treatment and chemical exposure applied to the subjects.
+      Omit this sub-class entirely for naive or vehicle-only datasets.
+    range: Manipulation
+    required: false
+    inlined: true
+ 
+  experiment_notes:
+    description: Free-text notes on experimental conditions not captured by structured fields.
+    required: false
+    range: string
+
 
 # --- ExperimentalConditions slots ---
   species_name:
@@ -905,10 +995,6 @@ slots:
     exact_mappings:
       - NCIT:C178849
   
-  experiment_notes:
-    description: Free-text notes on experimental conditions not captured by structured fields.
-    required: false
-    range: string
 
 # --- VideoHardware slots ---
   camera_count:
@@ -1660,8 +1746,9 @@ enums:
         meaning: UO:0000016
       cm:
         meaning: UO:0000015
-      m:
+      meter:
         meaning: UO:0000008
+        aliases: ["m"]
 
   WeightUnitEnum:
     description: Units of mass used to express weight measurements, ranging from micrograms to kilograms.
@@ -1670,8 +1757,9 @@ enums:
         meaning: UO:0000023
       mg:
         meaning: UO:0000022
-      g:
+      gram:
         meaning: UO:0000021
+        aliases: ["g"]
       kg:
         meaning: UO:0000009
   

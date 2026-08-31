@@ -14,7 +14,7 @@ _Genotype identifier of the tracked organism(s)including  strain-specific, mutan
 
 
 
-URI: [bstm:genotype](bstm:genotype)
+URI: [BeStMeta:genotype](https://w3id.org/BeStMeta/genotype)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:genotype](bstm:genotype)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Subject](Subject.md) | Biological identity of the organism(s) that is studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:genotype](bstm:genotype)
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Subject](Subject.md) |
 
 ### Cardinality and Requirements
 
@@ -81,8 +81,8 @@ URI: [bstm:genotype](bstm:genotype)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:genotype |
-| native | bstm:genotype |
+| self | BeStMeta:genotype |
+| native | BeStMeta:genotype |
 | exact | EFO:0000513, GENO:0000536 |
 
 
@@ -105,7 +105,7 @@ exact_mappings:
 - GENO:0000536
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Subject
 range: string
 required: false
 recommended: true

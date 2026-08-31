@@ -14,7 +14,7 @@ _Organism strain or line_
 
 
 
-URI: [bstm:strain](bstm:strain)
+URI: [BeStMeta:strain](https://w3id.org/BeStMeta/strain)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:strain](bstm:strain)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Subject](Subject.md) | Biological identity of the organism(s) that is studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:strain](bstm:strain)
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Subject](Subject.md) |
 
 ### Cardinality and Requirements
 
@@ -74,9 +74,9 @@ URI: [bstm:strain](bstm:strain)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:strain |
-| native | bstm:strain |
-| exact | EDAM-DATA:2379 |
+| self | BeStMeta:strain |
+| native | BeStMeta:strain |
+| exact | EDAM.DATA:2379 |
 
 
 
@@ -89,10 +89,10 @@ name: strain
 description: Organism strain or line
 from_schema: https://w3id.org/bestmeta/schema
 exact_mappings:
-- EDAM-DATA:2379
+- EDAM.DATA:2379
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Subject
 range: string
 required: false
 recommended: true

@@ -15,7 +15,7 @@ _Type of preprocessing step applied to the video data prior to tracking or analy
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:PreprocessingStepEnum](bstm:PreprocessingStepEnum)
+URI: [BeStMeta:PreprocessingStepEnum](https://w3id.org/BeStMeta/PreprocessingStepEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

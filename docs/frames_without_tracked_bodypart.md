@@ -14,7 +14,7 @@ _Percentage of frames in which no body part was tracked._
 
 
 
-URI: [bstm:frames_without_tracked_bodypart](bstm:frames_without_tracked_bodypart)
+URI: [BeStMeta:frames_without_tracked_bodypart](https://w3id.org/BeStMeta/frames_without_tracked_bodypart)
 <!-- no inheritance hierarchy -->
 
 
@@ -82,8 +82,8 @@ URI: [bstm:frames_without_tracked_bodypart](bstm:frames_without_tracked_bodypart
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:frames_without_tracked_bodypart |
-| native | bstm:frames_without_tracked_bodypart |
+| self | BeStMeta:frames_without_tracked_bodypart |
+| native | BeStMeta:frames_without_tracked_bodypart |
 
 
 

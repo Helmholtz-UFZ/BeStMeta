@@ -56,7 +56,7 @@ URI: [xsd:anyURI](http://www.w3.org/2001/XMLSchema#anyURI)
 | Mapping Type | Mapped Value |
 | ---  | ---  |
 | self | xsd:anyURI |
-| native | bstm:uri |
+| native | BeStMeta:uri |
 | close | schema:URL |
 
 

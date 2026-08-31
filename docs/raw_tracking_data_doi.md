@@ -14,7 +14,7 @@ _DOI of the deposited raw tracking data_
 
 
 
-URI: [bstm:raw_tracking_data_doi](bstm:raw_tracking_data_doi)
+URI: [BeStMeta:raw_tracking_data_doi](https://w3id.org/BeStMeta/raw_tracking_data_doi)
 <!-- no inheritance hierarchy -->
 
 
@@ -80,8 +80,8 @@ URI: [bstm:raw_tracking_data_doi](bstm:raw_tracking_data_doi)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:raw_tracking_data_doi |
-| native | bstm:raw_tracking_data_doi |
+| self | BeStMeta:raw_tracking_data_doi |
+| native | BeStMeta:raw_tracking_data_doi |
 | exact | schema:identifier |
 | close | dcterms:identifier |
 

@@ -14,7 +14,7 @@ _Free-text description of the light-dark cycle._
 
 
 
-URI: [bstm:light_cycle_detail](bstm:light_cycle_detail)
+URI: [BeStMeta:light_cycle_detail](https://w3id.org/BeStMeta/light_cycle_detail)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:light_cycle_detail](bstm:light_cycle_detail)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:light_cycle_detail](bstm:light_cycle_detail)
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
@@ -74,8 +74,8 @@ URI: [bstm:light_cycle_detail](bstm:light_cycle_detail)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:light_cycle_detail |
-| native | bstm:light_cycle_detail |
+| self | BeStMeta:light_cycle_detail |
+| native | BeStMeta:light_cycle_detail |
 | exact | MESH:D017440 |
 
 
@@ -92,7 +92,7 @@ exact_mappings:
 - MESH:D017440
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Experiment
 range: string
 required: false
 recommended: true

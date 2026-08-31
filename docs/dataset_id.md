@@ -14,7 +14,7 @@ _Unique identifier for the dataset or study package._
 
 
 
-URI: [bstm:dataset_id](bstm:dataset_id)
+URI: [BeStMeta:dataset_id](https://w3id.org/BeStMeta/dataset_id)
 <!-- no inheritance hierarchy -->
 
 
@@ -81,8 +81,8 @@ URI: [bstm:dataset_id](bstm:dataset_id)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:dataset_id |
-| native | bstm:dataset_id |
+| self | BeStMeta:dataset_id |
+| native | BeStMeta:dataset_id |
 | exact | dcterms:identifier |
 
 

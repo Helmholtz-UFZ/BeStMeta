@@ -14,7 +14,7 @@ _Tracking software identity and version, algorithm details, post-tracking comput
 
 
 
-URI: [bstm:TrackingAnalysis](bstm:TrackingAnalysis)
+URI: [BeStMeta:TrackingAnalysis](https://w3id.org/BeStMeta/TrackingAnalysis)
 
 
 
@@ -151,8 +151,8 @@ URI: [bstm:TrackingAnalysis](bstm:TrackingAnalysis)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:TrackingAnalysis |
-| native | bstm:TrackingAnalysis |
+| self | BeStMeta:TrackingAnalysis |
+| native | BeStMeta:TrackingAnalysis |
 
 
 

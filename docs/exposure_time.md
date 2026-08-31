@@ -14,7 +14,7 @@ _Camera sensor exposure time per frame._
 
 
 
-URI: [bstm:exposure_time](bstm:exposure_time)
+URI: [BeStMeta:exposure_time](https://w3id.org/BeStMeta/exposure_time)
 <!-- no inheritance hierarchy -->
 
 
@@ -84,9 +84,9 @@ URI: [bstm:exposure_time](bstm:exposure_time)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:exposure_time |
-| native | bstm:exposure_time |
-| exact | REPR:ExposureTime |
+| self | BeStMeta:exposure_time |
+| native | BeStMeta:exposure_time |
+| exact | REPRODUCEME:ExposureTime |
 
 
 
@@ -99,7 +99,7 @@ name: exposure_time
 description: Camera sensor exposure time per frame.
 from_schema: https://w3id.org/bestmeta/schema
 exact_mappings:
-- REPR:ExposureTime
+- REPRODUCEME:ExposureTime
 rank: 1000
 domain_of:
 - AcquisitionParameters

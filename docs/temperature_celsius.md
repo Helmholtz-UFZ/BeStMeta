@@ -14,7 +14,7 @@ _Water or ambient temperature during the recording in degrees Celsius_
 
 
 
-URI: [bstm:temperature_celsius](bstm:temperature_celsius)
+URI: [BeStMeta:temperature_celsius](https://w3id.org/BeStMeta/temperature_celsius)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:temperature_celsius](bstm:temperature_celsius)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:temperature_celsius](bstm:temperature_celsius)
 | Property | Value |
 | --- | --- |
 | Range | [Float](Float.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
@@ -84,8 +84,8 @@ URI: [bstm:temperature_celsius](bstm:temperature_celsius)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:temperature_celsius |
-| native | bstm:temperature_celsius |
+| self | BeStMeta:temperature_celsius |
+| native | BeStMeta:temperature_celsius |
 
 
 
@@ -99,7 +99,7 @@ description: Water or ambient temperature during the recording in degrees Celsiu
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Experiment
 range: float
 required: false
 recommended: true

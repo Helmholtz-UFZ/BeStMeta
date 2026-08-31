@@ -15,7 +15,7 @@ _Type of tracking software used._
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:TrackingSoftwareTypeEnum](bstm:TrackingSoftwareTypeEnum)
+URI: [BeStMeta:TrackingSoftwareTypeEnum](https://w3id.org/BeStMeta/TrackingSoftwareTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

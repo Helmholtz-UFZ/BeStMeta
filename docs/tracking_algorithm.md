@@ -14,7 +14,7 @@ _Algorithmic approach used to detect, identify, and track organisms in video rec
 
 
 
-URI: [bstm:tracking_algorithm](bstm:tracking_algorithm)
+URI: [BeStMeta:tracking_algorithm](https://w3id.org/BeStMeta/tracking_algorithm)
 <!-- no inheritance hierarchy -->
 
 
@@ -84,8 +84,8 @@ URI: [bstm:tracking_algorithm](bstm:tracking_algorithm)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:tracking_algorithm |
-| native | bstm:tracking_algorithm |
+| self | BeStMeta:tracking_algorithm |
+| native | BeStMeta:tracking_algorithm |
 
 
 

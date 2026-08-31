@@ -14,7 +14,7 @@ _Height of the arena, when applicable._
 
 
 
-URI: [bstm:arena_height](bstm:arena_height)
+URI: [BeStMeta:arena_height](https://w3id.org/BeStMeta/arena_height)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:arena_height](bstm:arena_height)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:arena_height](bstm:arena_height)
 | Property | Value |
 | --- | --- |
 | Range | [Float](Float.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
@@ -74,8 +74,8 @@ URI: [bstm:arena_height](bstm:arena_height)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:arena_height |
-| native | bstm:arena_height |
+| self | BeStMeta:arena_height |
+| native | BeStMeta:arena_height |
 
 
 
@@ -89,7 +89,7 @@ description: Height of the arena, when applicable.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Experiment
 range: float
 required: false
 recommended: true

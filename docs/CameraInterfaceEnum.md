@@ -15,7 +15,7 @@ _Hardware or connection interface used to transfer data from the camera to the r
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:CameraInterfaceEnum](bstm:CameraInterfaceEnum)
+URI: [BeStMeta:CameraInterfaceEnum](https://w3id.org/BeStMeta/CameraInterfaceEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

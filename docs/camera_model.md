@@ -14,7 +14,7 @@ _Full manufacturer model name of the camera._
 
 
 
-URI: [bstm:camera_model](bstm:camera_model)
+URI: [BeStMeta:camera_model](https://w3id.org/BeStMeta/camera_model)
 <!-- no inheritance hierarchy -->
 
 
@@ -82,8 +82,8 @@ URI: [bstm:camera_model](bstm:camera_model)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:camera_model |
-| native | bstm:camera_model |
+| self | BeStMeta:camera_model |
+| native | BeStMeta:camera_model |
 
 
 

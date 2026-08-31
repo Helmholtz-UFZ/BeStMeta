@@ -15,7 +15,7 @@ _Position of the camera relative to the arena used to record the tracked organis
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:CameraPositionEnum](bstm:CameraPositionEnum)
+URI: [BeStMeta:CameraPositionEnum](https://w3id.org/BeStMeta/CameraPositionEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

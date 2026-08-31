@@ -14,7 +14,7 @@ _Statistical tests applied to behavioral endpoints for hypothesis testing or inf
 
 
 
-URI: [bstm:statistical_tests](bstm:statistical_tests)
+URI: [BeStMeta:statistical_tests](https://w3id.org/BeStMeta/statistical_tests)
 <!-- no inheritance hierarchy -->
 
 
@@ -93,8 +93,8 @@ URI: [bstm:statistical_tests](bstm:statistical_tests)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:statistical_tests |
-| native | bstm:statistical_tests |
+| self | BeStMeta:statistical_tests |
+| native | BeStMeta:statistical_tests |
 | exact | NCIT:C53228 |
 
 

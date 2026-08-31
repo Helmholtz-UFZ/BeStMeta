@@ -14,7 +14,7 @@ _Free-text description of the assay protocol_
 
 
 
-URI: [bstm:assay_description](bstm:assay_description)
+URI: [BeStMeta:assay_description](https://w3id.org/BeStMeta/assay_description)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:assay_description](bstm:assay_description)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:assay_description](bstm:assay_description)
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
@@ -73,8 +73,8 @@ URI: [bstm:assay_description](bstm:assay_description)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:assay_description |
-| native | bstm:assay_description |
+| self | BeStMeta:assay_description |
+| native | BeStMeta:assay_description |
 
 
 
@@ -88,7 +88,7 @@ description: Free-text description of the assay protocol
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Experiment
 range: string
 required: false
 

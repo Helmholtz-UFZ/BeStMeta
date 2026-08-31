@@ -14,7 +14,7 @@ _Contrast relationship between the tracked object and the background; indicates 
 
 
 
-URI: [bstm:contrast_polarity](bstm:contrast_polarity)
+URI: [BeStMeta:contrast_polarity](https://w3id.org/BeStMeta/contrast_polarity)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:contrast_polarity](bstm:contrast_polarity)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:contrast_polarity |
-| native | bstm:contrast_polarity |
+| self | BeStMeta:contrast_polarity |
+| native | BeStMeta:contrast_polarity |
 
 
 

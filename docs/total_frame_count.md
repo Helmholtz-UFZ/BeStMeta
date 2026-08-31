@@ -14,7 +14,7 @@ _Total number of frames in the video. Can be derived from frame_rate × recordin
 
 
 
-URI: [bstm:total_frame_count](bstm:total_frame_count)
+URI: [BeStMeta:total_frame_count](https://w3id.org/BeStMeta/total_frame_count)
 <!-- no inheritance hierarchy -->
 
 
@@ -78,8 +78,8 @@ URI: [bstm:total_frame_count](bstm:total_frame_count)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:total_frame_count |
-| native | bstm:total_frame_count |
+| self | BeStMeta:total_frame_count |
+| native | BeStMeta:total_frame_count |
 | exact | dicom:NumberOfFrames |
 
 

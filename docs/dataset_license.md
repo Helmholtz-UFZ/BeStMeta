@@ -14,7 +14,7 @@ _SPDX license identifier or URL (e.g. CC-BY-4.0)_
 
 
 
-URI: [bstm:dataset_license](bstm:dataset_license)
+URI: [BeStMeta:dataset_license](https://w3id.org/BeStMeta/dataset_license)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:dataset_license](bstm:dataset_license)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:dataset_license |
-| native | bstm:dataset_license |
+| self | BeStMeta:dataset_license |
+| native | BeStMeta:dataset_license |
 | exact | dcterms:license |
 
 

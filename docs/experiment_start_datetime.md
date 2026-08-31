@@ -14,7 +14,7 @@ _Date and time at which the experiment began._
 
 
 
-URI: [bstm:experiment_start_datetime](bstm:experiment_start_datetime)
+URI: [BeStMeta:experiment_start_datetime](https://w3id.org/BeStMeta/experiment_start_datetime)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:experiment_start_datetime](bstm:experiment_start_datetime)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:experiment_start_datetime](bstm:experiment_start_datetime)
 | Property | Value |
 | --- | --- |
 | Range | [Datetime](Datetime.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
@@ -74,8 +74,8 @@ URI: [bstm:experiment_start_datetime](bstm:experiment_start_datetime)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:experiment_start_datetime |
-| native | bstm:experiment_start_datetime |
+| self | BeStMeta:experiment_start_datetime |
+| native | BeStMeta:experiment_start_datetime |
 
 
 
@@ -89,7 +89,7 @@ description: Date and time at which the experiment began.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Experiment
 range: datetime
 required: false
 recommended: true

@@ -14,7 +14,7 @@ _Full description of the treatment protocol._
 
 
 
-URI: [bstm:treatment_description](bstm:treatment_description)
+URI: [BeStMeta:treatment_description](https://w3id.org/BeStMeta/treatment_description)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:treatment_description](bstm:treatment_description)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Manipulation](Manipulation.md) | Treatment and chemical exposure information decribing pharmacological, toxico... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:treatment_description](bstm:treatment_description)
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Manipulation](Manipulation.md) |
 
 ### Cardinality and Requirements
 
@@ -74,8 +74,8 @@ URI: [bstm:treatment_description](bstm:treatment_description)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:treatment_description |
-| native | bstm:treatment_description |
+| self | BeStMeta:treatment_description |
+| native | BeStMeta:treatment_description |
 
 
 
@@ -89,7 +89,7 @@ description: Full description of the treatment protocol.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Manipulation
 range: string
 required: false
 recommended: true

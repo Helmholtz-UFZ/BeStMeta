@@ -15,7 +15,7 @@ _Geometric cross section shape of the wells of a multiwell plate._
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:WellCrossSectionShapeEnum](bstm:WellCrossSectionShapeEnum)
+URI: [BeStMeta:WellCrossSectionShapeEnum](https://w3id.org/BeStMeta/WellCrossSectionShapeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

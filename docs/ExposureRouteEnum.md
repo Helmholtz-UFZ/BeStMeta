@@ -15,7 +15,7 @@ _Route of chemical or treatment exposure._
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:ExposureRouteEnum](bstm:ExposureRouteEnum)
+URI: [BeStMeta:ExposureRouteEnum](https://w3id.org/BeStMeta/ExposureRouteEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

@@ -14,7 +14,7 @@ _Body length numeric value of the tracked organism(s)._
 
 
 
-URI: [bstm:body_length_value](bstm:body_length_value)
+URI: [BeStMeta:body_length_value](https://w3id.org/BeStMeta/body_length_value)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:body_length_value](bstm:body_length_value)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Subject](Subject.md) | Biological identity of the organism(s) that is studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:body_length_value](bstm:body_length_value)
 | Property | Value |
 | --- | --- |
 | Range | [Float](Float.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Subject](Subject.md) |
 
 ### Cardinality and Requirements
 
@@ -74,8 +74,8 @@ URI: [bstm:body_length_value](bstm:body_length_value)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:body_length_value |
-| native | bstm:body_length_value |
+| self | BeStMeta:body_length_value |
+| native | BeStMeta:body_length_value |
 | close | EFO:0004339, MESH:D049628 |
 
 
@@ -93,7 +93,7 @@ close_mappings:
 - MESH:D049628
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Subject
 range: float
 required: false
 recommended: true

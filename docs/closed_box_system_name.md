@@ -14,7 +14,7 @@ _Name of the integrated commercial closed-box tracking system. (e.g. ZebraBox, D
 
 
 
-URI: [bstm:closed_box_system_name](bstm:closed_box_system_name)
+URI: [BeStMeta:closed_box_system_name](https://w3id.org/BeStMeta/closed_box_system_name)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:closed_box_system_name](bstm:closed_box_system_name)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:closed_box_system_name |
-| native | bstm:closed_box_system_name |
+| self | BeStMeta:closed_box_system_name |
+| native | BeStMeta:closed_box_system_name |
 
 
 

@@ -14,7 +14,7 @@ _Number of wells in the multiwell plate._
 
 
 
-URI: [bstm:plate_well_count](bstm:plate_well_count)
+URI: [BeStMeta:plate_well_count](https://w3id.org/BeStMeta/plate_well_count)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:plate_well_count](bstm:plate_well_count)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:plate_well_count](bstm:plate_well_count)
 | Property | Value |
 | --- | --- |
 | Range | [Integer](Integer.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
@@ -89,8 +89,8 @@ URI: [bstm:plate_well_count](bstm:plate_well_count)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:plate_well_count |
-| native | bstm:plate_well_count |
+| self | BeStMeta:plate_well_count |
+| native | BeStMeta:plate_well_count |
 | exact | AFR:0002231 |
 
 
@@ -110,7 +110,7 @@ exact_mappings:
 - AFR:0002231
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Experiment
 range: integer
 required: false
 recommended: true

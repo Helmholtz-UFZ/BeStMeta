@@ -14,7 +14,7 @@ _Camera gain setting at the time of recording._
 
 
 
-URI: [bstm:gain](bstm:gain)
+URI: [BeStMeta:gain](https://w3id.org/BeStMeta/gain)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:gain](bstm:gain)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:gain |
-| native | bstm:gain |
+| self | BeStMeta:gain |
+| native | BeStMeta:gain |
 | exact | AFQ:0000201 |
 
 
