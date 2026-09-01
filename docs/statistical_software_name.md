@@ -14,7 +14,7 @@ _Name of the software used for statistical analysis._
 
 
 
-URI: [bstm:statistical_software_name](bstm:statistical_software_name)
+URI: [BeStMeta:statistical_software_name](https://w3id.org/BeStMeta/statistical_software_name)
 <!-- no inheritance hierarchy -->
 
 
@@ -89,8 +89,8 @@ URI: [bstm:statistical_software_name](bstm:statistical_software_name)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:statistical_software_name |
-| native | bstm:statistical_software_name |
+| self | BeStMeta:statistical_software_name |
+| native | BeStMeta:statistical_software_name |
 | exact | AFR:0002802 |
 
 

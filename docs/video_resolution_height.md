@@ -14,7 +14,7 @@ _Vertical pixel count of the recorded video._
 
 
 
-URI: [bstm:video_resolution_height](bstm:video_resolution_height)
+URI: [BeStMeta:video_resolution_height](https://w3id.org/BeStMeta/video_resolution_height)
 <!-- no inheritance hierarchy -->
 
 
@@ -84,8 +84,8 @@ URI: [bstm:video_resolution_height](bstm:video_resolution_height)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:video_resolution_height |
-| native | bstm:video_resolution_height |
+| self | BeStMeta:video_resolution_height |
+| native | BeStMeta:video_resolution_height |
 | close | ebucore:height |
 
 

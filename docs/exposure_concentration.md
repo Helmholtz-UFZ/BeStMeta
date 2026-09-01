@@ -14,7 +14,7 @@ _Nominal exposure concentration (numeric value only; use unit field)._
 
 
 
-URI: [bstm:exposure_concentration](bstm:exposure_concentration)
+URI: [BeStMeta:exposure_concentration](https://w3id.org/BeStMeta/exposure_concentration)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:exposure_concentration](bstm:exposure_concentration)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Manipulation](Manipulation.md) | Treatment and chemical exposure information decribing pharmacological, toxico... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:exposure_concentration](bstm:exposure_concentration)
 | Property | Value |
 | --- | --- |
 | Range | [Float](Float.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Manipulation](Manipulation.md) |
 
 ### Cardinality and Requirements
 
@@ -74,9 +74,9 @@ URI: [bstm:exposure_concentration](bstm:exposure_concentration)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:exposure_concentration |
-| native | bstm:exposure_concentration |
-| exact | EDAM-DATA:2140 |
+| self | BeStMeta:exposure_concentration |
+| native | BeStMeta:exposure_concentration |
+| exact | EDAM.DATA:2140 |
 
 
 
@@ -89,10 +89,10 @@ name: exposure_concentration
 description: Nominal exposure concentration (numeric value only; use unit field).
 from_schema: https://w3id.org/bestmeta/schema
 exact_mappings:
-- EDAM-DATA:2140
+- EDAM.DATA:2140
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Manipulation
 range: float
 required: false
 recommended: true

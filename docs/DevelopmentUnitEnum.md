@@ -15,7 +15,7 @@ _Units of time used to express the developmental age of an organism._
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:DevelopmentUnitEnum](bstm:DevelopmentUnitEnum)
+URI: [BeStMeta:DevelopmentUnitEnum](https://w3id.org/BeStMeta/DevelopmentUnitEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

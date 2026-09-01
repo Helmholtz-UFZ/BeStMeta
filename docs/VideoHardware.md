@@ -14,7 +14,7 @@ _Camera systems, optical configuration, and physical recording infrastructure us
 
 
 
-URI: [bstm:VideoHardware](bstm:VideoHardware)
+URI: [BeStMeta:VideoHardware](https://w3id.org/BeStMeta/VideoHardware)
 
 
 
@@ -226,8 +226,8 @@ URI: [bstm:VideoHardware](bstm:VideoHardware)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:VideoHardware |
-| native | bstm:VideoHardware |
+| self | BeStMeta:VideoHardware |
+| native | BeStMeta:VideoHardware |
 
 
 

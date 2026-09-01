@@ -54,7 +54,7 @@ URI: [xsd:duration](http://www.w3.org/2001/XMLSchema#duration)
 | Mapping Type | Mapped Value |
 | ---  | ---  |
 | self | xsd:duration |
-| native | bstm:duration |
+| native | BeStMeta:duration |
 
 
 

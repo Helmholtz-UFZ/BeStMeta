@@ -14,7 +14,7 @@ _Repository where raw tracking data and/or video files are deposited._
 
 
 
-URI: [bstm:raw_data_repository](bstm:raw_data_repository)
+URI: [BeStMeta:raw_data_repository](https://w3id.org/BeStMeta/raw_data_repository)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:raw_data_repository](bstm:raw_data_repository)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:raw_data_repository |
-| native | bstm:raw_data_repository |
+| self | BeStMeta:raw_data_repository |
+| native | BeStMeta:raw_data_repository |
 
 
 

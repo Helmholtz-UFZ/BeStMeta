@@ -14,7 +14,7 @@ _Unit for developmental stage value of the tracked organism(s)._
 
 
 
-URI: [bstm:developmental_stage_unit](bstm:developmental_stage_unit)
+URI: [BeStMeta:developmental_stage_unit](https://w3id.org/BeStMeta/developmental_stage_unit)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:developmental_stage_unit](bstm:developmental_stage_unit)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Subject](Subject.md) | Biological identity of the organism(s) that is studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:developmental_stage_unit](bstm:developmental_stage_unit)
 | Property | Value |
 | --- | --- |
 | Range | [DevelopmentUnitEnum](DevelopmentUnitEnum.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Subject](Subject.md) |
 
 ### Cardinality and Requirements
 
@@ -73,8 +73,8 @@ URI: [bstm:developmental_stage_unit](bstm:developmental_stage_unit)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:developmental_stage_unit |
-| native | bstm:developmental_stage_unit |
+| self | BeStMeta:developmental_stage_unit |
+| native | BeStMeta:developmental_stage_unit |
 
 
 
@@ -88,7 +88,7 @@ description: Unit for developmental stage value of the tracked organism(s).
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Subject
 range: DevelopmentUnitEnum
 
 ```

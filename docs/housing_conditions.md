@@ -14,7 +14,7 @@ _Free-text description of animal housing conditions prior to assay._
 
 
 
-URI: [bstm:housing_conditions](bstm:housing_conditions)
+URI: [BeStMeta:housing_conditions](https://w3id.org/BeStMeta/housing_conditions)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,8 @@ URI: [bstm:housing_conditions](bstm:housing_conditions)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Subject](Subject.md) | Biological identity of the organism(s) that is studied |  no  |
+| [Manipulation](Manipulation.md) | Treatment and chemical exposure information decribing pharmacological, toxico... |  no  |
 
 
 
@@ -39,7 +40,7 @@ URI: [bstm:housing_conditions](bstm:housing_conditions)
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Subject](Subject.md), [Manipulation](Manipulation.md) |
 
 ### Cardinality and Requirements
 
@@ -73,8 +74,8 @@ URI: [bstm:housing_conditions](bstm:housing_conditions)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:housing_conditions |
-| native | bstm:housing_conditions |
+| self | BeStMeta:housing_conditions |
+| native | BeStMeta:housing_conditions |
 | exact | XCO:0000033 |
 
 
@@ -91,7 +92,8 @@ exact_mappings:
 - XCO:0000033
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Subject
+- Manipulation
 range: string
 required: false
 

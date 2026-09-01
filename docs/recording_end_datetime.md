@@ -14,7 +14,7 @@ _Date and time at which acquisition of the video recording ended._
 
 
 
-URI: [bstm:recording_end_datetime](bstm:recording_end_datetime)
+URI: [BeStMeta:recording_end_datetime](https://w3id.org/BeStMeta/recording_end_datetime)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:recording_end_datetime](bstm:recording_end_datetime)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:recording_end_datetime |
-| native | bstm:recording_end_datetime |
+| self | BeStMeta:recording_end_datetime |
+| native | BeStMeta:recording_end_datetime |
 
 
 

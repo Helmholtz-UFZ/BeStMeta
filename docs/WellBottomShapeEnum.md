@@ -15,7 +15,7 @@ _Geometric bottom shape of the wells of a multiwell plate._
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:WellBottomShapeEnum](bstm:WellBottomShapeEnum)
+URI: [BeStMeta:WellBottomShapeEnum](https://w3id.org/BeStMeta/WellBottomShapeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

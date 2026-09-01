@@ -13,8 +13,11 @@ Name: bestmeta
 | Class | Description |
 | --- | --- |
 | [AcquisitionParameters](AcquisitionParameters.md) | Video acquisition and recording parameters |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |
 | [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |
+| [Manipulation](Manipulation.md) | Treatment and chemical exposure information decribing pharmacological, toxico... |
 | [StatisticalAnalysis](StatisticalAnalysis.md) | Information describing the statistical analysis of behavioral data, including... |
+| [Subject](Subject.md) | Biological identity of the organism(s) that is studied |
 | [TrackingAnalysis](TrackingAnalysis.md) | Tracking software identity and version, algorithm details, post-tracking comp... |
 | [VideoHardware](VideoHardware.md) | Camera systems, optical configuration, and physical recording infrastructure ... |
 | [VTADataset](VTADataset.md) | Top-level study and provenance metadata for a VTA dataset |
@@ -79,6 +82,7 @@ Name: bestmeta
 | [dropped_frames_reason](dropped_frames_reason.md) | Reason for dropped or omitted frames during acquisition, recording, encoding,... |
 | [effect_size_measure](effect_size_measure.md) | Effect size measure reported to quantify the magnitude of observed effects or... |
 | [endpoint_definitions](endpoint_definitions.md) | Definitions and calculation criteria used for behavioral endpoints, including... |
+| [experiment](experiment.md) | Assay design, arena configuration, and environmental parameters |
 | [experiment_end_datetime](experiment_end_datetime.md) | Date and time at which the experiment ended |
 | [experiment_notes](experiment_notes.md) | Free-text notes on experimental conditions not captured by structured fields |
 | [experiment_start_datetime](experiment_start_datetime.md) | Date and time at which the experiment began |
@@ -108,6 +112,7 @@ Name: bestmeta
 | [lens_focal_length_mm](lens_focal_length_mm.md) | Focal length of the imaging lens in millimetres;  applicable to camera or mic... |
 | [light_cycle_detail](light_cycle_detail.md) | Free-text description of the light-dark cycle |
 | [light_cycle_type](light_cycle_type.md) | Standardized category of the light-dark cycle |
+| [manipulation](manipulation.md) | Treatment and chemical exposure applied to the subjects |
 | [microscope_lot_number](microscope_lot_number.md) | Lot number of the microscope |
 | [microscope_manufacturer](microscope_manufacturer.md) | Manufacturer of the microscope |
 | [microscope_model](microscope_model.md) | Model name or identifier of the microscope |
@@ -147,6 +152,7 @@ Name: bestmeta
 | [statistical_tests](statistical_tests.md) | Statistical tests applied to behavioral endpoints for hypothesis testing or i... |
 | [statistics_notes](statistics_notes.md) | Free-text notes on the statistical analysis not captured by structured fields |
 | [strain](strain.md) | Organism strain or line |
+| [subject](subject.md) | Organism identity and biological attributes of the tracked subjects |
 | [temperature_celsius](temperature_celsius.md) | Water or ambient temperature during the recording in degrees Celsius |
 | [total_frame_count](total_frame_count.md) | Total number of frames in the video |
 | [tracking_algorithm](tracking_algorithm.md) | Algorithmic approach used to detect, identify, and track organisms in video r... |

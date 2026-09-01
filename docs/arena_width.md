@@ -14,7 +14,7 @@ _Width of the arena along one axis._
 
 
 
-URI: [bstm:arena_width](bstm:arena_width)
+URI: [BeStMeta:arena_width](https://w3id.org/BeStMeta/arena_width)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:arena_width](bstm:arena_width)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:arena_width](bstm:arena_width)
 | Property | Value |
 | --- | --- |
 | Range | [Float](Float.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
@@ -74,8 +74,8 @@ URI: [bstm:arena_width](bstm:arena_width)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:arena_width |
-| native | bstm:arena_width |
+| self | BeStMeta:arena_width |
+| native | BeStMeta:arena_width |
 
 
 
@@ -89,7 +89,7 @@ description: Width of the arena along one axis.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Experiment
 range: float
 required: false
 recommended: true

@@ -14,7 +14,7 @@ _Whether tracking results were manually reviewed, corrected, or curated after au
 
 
 
-URI: [bstm:tracking_manual_correction](bstm:tracking_manual_correction)
+URI: [BeStMeta:tracking_manual_correction](https://w3id.org/BeStMeta/tracking_manual_correction)
 <!-- no inheritance hierarchy -->
 
 
@@ -86,8 +86,8 @@ URI: [bstm:tracking_manual_correction](bstm:tracking_manual_correction)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:tracking_manual_correction |
-| native | bstm:tracking_manual_correction |
+| self | BeStMeta:tracking_manual_correction |
+| native | BeStMeta:tracking_manual_correction |
 
 
 

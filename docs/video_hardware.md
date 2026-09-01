@@ -14,7 +14,7 @@ _Camera and hardware configuration_
 
 
 
-URI: [bstm:video_hardware](bstm:video_hardware)
+URI: [BeStMeta:video_hardware](https://w3id.org/BeStMeta/video_hardware)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:video_hardware](bstm:video_hardware)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:video_hardware |
-| native | bstm:video_hardware |
+| self | BeStMeta:video_hardware |
+| native | BeStMeta:video_hardware |
 
 
 

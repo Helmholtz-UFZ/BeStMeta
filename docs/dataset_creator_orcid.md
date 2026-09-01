@@ -14,7 +14,7 @@ _ORCID identifier of the dataset creator._
 
 
 
-URI: [bstm:dataset_creator_orcid](bstm:dataset_creator_orcid)
+URI: [BeStMeta:dataset_creator_orcid](https://w3id.org/BeStMeta/dataset_creator_orcid)
 <!-- no inheritance hierarchy -->
 
 
@@ -82,8 +82,8 @@ URI: [bstm:dataset_creator_orcid](bstm:dataset_creator_orcid)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:dataset_creator_orcid |
-| native | bstm:dataset_creator_orcid |
+| self | BeStMeta:dataset_creator_orcid |
+| native | BeStMeta:dataset_creator_orcid |
 | exact | schema:identifier, dcterms:identifier |
 
 

@@ -15,7 +15,7 @@ _Video file container format._
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:VideoContainerEnum](bstm:VideoContainerEnum)
+URI: [BeStMeta:VideoContainerEnum](https://w3id.org/BeStMeta/VideoContainerEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

@@ -15,14 +15,14 @@ _Units of mass used to express weight measurements, ranging from micrograms to k
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:WeightUnitEnum](bstm:WeightUnitEnum)
+URI: [BeStMeta:WeightUnitEnum](https://w3id.org/BeStMeta/WeightUnitEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
 | --- | --- | --- |
 | ug | UO:0000023 |  |
 | mg | UO:0000022 |  |
-| g | UO:0000021 |  |
+| gram | UO:0000021 |  |
 | kg | UO:0000009 |  |
 
 
@@ -75,9 +75,11 @@ permissible_values:
   mg:
     text: mg
     meaning: UO:0000022
-  g:
-    text: g
+  gram:
+    text: gram
     meaning: UO:0000021
+    aliases:
+    - g
   kg:
     text: kg
     meaning: UO:0000009

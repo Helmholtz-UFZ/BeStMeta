@@ -14,7 +14,7 @@ _File format used to store tracking results, including coordinates, keypoints, i
 
 
 
-URI: [bstm:tracking_data_format](bstm:tracking_data_format)
+URI: [BeStMeta:tracking_data_format](https://w3id.org/BeStMeta/tracking_data_format)
 <!-- no inheritance hierarchy -->
 
 
@@ -93,8 +93,8 @@ URI: [bstm:tracking_data_format](bstm:tracking_data_format)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:tracking_data_format |
-| native | bstm:tracking_data_format |
+| self | BeStMeta:tracking_data_format |
+| native | BeStMeta:tracking_data_format |
 
 
 

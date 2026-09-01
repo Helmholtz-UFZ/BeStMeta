@@ -14,7 +14,7 @@ _Short label identifying the experimental treatment group, condition, or regimen
 
 
 
-URI: [bstm:treatment_name](bstm:treatment_name)
+URI: [BeStMeta:treatment_name](https://w3id.org/BeStMeta/treatment_name)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:treatment_name](bstm:treatment_name)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Manipulation](Manipulation.md) | Treatment and chemical exposure information decribing pharmacological, toxico... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:treatment_name](bstm:treatment_name)
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Manipulation](Manipulation.md) |
 
 ### Cardinality and Requirements
 
@@ -83,8 +83,8 @@ URI: [bstm:treatment_name](bstm:treatment_name)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:treatment_name |
-| native | bstm:treatment_name |
+| self | BeStMeta:treatment_name |
+| native | BeStMeta:treatment_name |
 | exact | NCIT:C82542 |
 
 
@@ -106,7 +106,7 @@ exact_mappings:
 - NCIT:C82542
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Manipulation
 range: string
 required: false
 recommended: true

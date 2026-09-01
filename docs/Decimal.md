@@ -51,7 +51,7 @@ URI: [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
 | Mapping Type | Mapped Value |
 | ---  | ---  |
 | self | xsd:decimal |
-| native | bstm:decimal |
+| native | BeStMeta:decimal |
 | broad | schema:Number |
 
 

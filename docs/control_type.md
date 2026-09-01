@@ -14,7 +14,7 @@ _Type of control group used._
 
 
 
-URI: [bstm:control_type](bstm:control_type)
+URI: [BeStMeta:control_type](https://w3id.org/BeStMeta/control_type)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:control_type](bstm:control_type)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Manipulation](Manipulation.md) | Treatment and chemical exposure information decribing pharmacological, toxico... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:control_type](bstm:control_type)
 | Property | Value |
 | --- | --- |
 | Range | [ControlTypeEnum](ControlTypeEnum.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Manipulation](Manipulation.md) |
 
 ### Cardinality and Requirements
 
@@ -73,8 +73,8 @@ URI: [bstm:control_type](bstm:control_type)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:control_type |
-| native | bstm:control_type |
+| self | BeStMeta:control_type |
+| native | BeStMeta:control_type |
 | exact | NCIT:C178849 |
 
 
@@ -91,7 +91,7 @@ exact_mappings:
 - NCIT:C178849
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Manipulation
 range: ControlTypeEnum
 required: false
 

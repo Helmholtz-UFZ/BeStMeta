@@ -14,7 +14,7 @@ _Physical size represented by one pixel at the observation plane._
 
 
 
-URI: [bstm:spatial_resolution](bstm:spatial_resolution)
+URI: [BeStMeta:spatial_resolution](https://w3id.org/BeStMeta/spatial_resolution)
 <!-- no inheritance hierarchy -->
 
 
@@ -84,8 +84,8 @@ URI: [bstm:spatial_resolution](bstm:spatial_resolution)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:spatial_resolution |
-| native | bstm:spatial_resolution |
+| self | BeStMeta:spatial_resolution |
+| native | BeStMeta:spatial_resolution |
 | close | dicom:SpatialResolution |
 
 

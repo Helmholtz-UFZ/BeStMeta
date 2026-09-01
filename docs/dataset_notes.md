@@ -14,7 +14,7 @@ _Free-text notes on the dataset not captured by structured fields._
 
 
 
-URI: [bstm:dataset_notes](bstm:dataset_notes)
+URI: [BeStMeta:dataset_notes](https://w3id.org/BeStMeta/dataset_notes)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:dataset_notes](bstm:dataset_notes)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:dataset_notes |
-| native | bstm:dataset_notes |
+| self | BeStMeta:dataset_notes |
+| native | BeStMeta:dataset_notes |
 
 
 

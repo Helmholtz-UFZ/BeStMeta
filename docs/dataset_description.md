@@ -14,7 +14,7 @@ _Free-text description of the dataset and its scientific purpose_
 
 
 
-URI: [bstm:dataset_description](bstm:dataset_description)
+URI: [BeStMeta:dataset_description](https://w3id.org/BeStMeta/dataset_description)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:dataset_description](bstm:dataset_description)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:dataset_description |
-| native | bstm:dataset_description |
+| self | BeStMeta:dataset_description |
+| native | BeStMeta:dataset_description |
 | exact | dcterms:description |
 
 

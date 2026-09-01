@@ -14,7 +14,7 @@ _Procedure used to correct for multiple comparisons (if more than one hypothesis
 
 
 
-URI: [bstm:multiple_testing_correction](bstm:multiple_testing_correction)
+URI: [BeStMeta:multiple_testing_correction](https://w3id.org/BeStMeta/multiple_testing_correction)
 <!-- no inheritance hierarchy -->
 
 
@@ -82,8 +82,8 @@ URI: [bstm:multiple_testing_correction](bstm:multiple_testing_correction)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:multiple_testing_correction |
-| native | bstm:multiple_testing_correction |
+| self | BeStMeta:multiple_testing_correction |
+| native | BeStMeta:multiple_testing_correction |
 | exact | OBI:0200089 |
 
 

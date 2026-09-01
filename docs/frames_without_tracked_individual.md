@@ -14,7 +14,7 @@ _Percentage of frames in which no individual was tracked._
 
 
 
-URI: [bstm:frames_without_tracked_individual](bstm:frames_without_tracked_individual)
+URI: [BeStMeta:frames_without_tracked_individual](https://w3id.org/BeStMeta/frames_without_tracked_individual)
 <!-- no inheritance hierarchy -->
 
 
@@ -82,8 +82,8 @@ URI: [bstm:frames_without_tracked_individual](bstm:frames_without_tracked_indivi
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:frames_without_tracked_individual |
-| native | bstm:frames_without_tracked_individual |
+| self | BeStMeta:frames_without_tracked_individual |
+| native | BeStMeta:frames_without_tracked_individual |
 
 
 

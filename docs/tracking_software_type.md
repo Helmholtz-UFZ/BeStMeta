@@ -14,7 +14,7 @@ _Indicates whether the tracking analysis was performed using a custom software o
 
 
 
-URI: [bstm:tracking_software_type](bstm:tracking_software_type)
+URI: [BeStMeta:tracking_software_type](https://w3id.org/BeStMeta/tracking_software_type)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:tracking_software_type](bstm:tracking_software_type)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:tracking_software_type |
-| native | bstm:tracking_software_type |
+| self | BeStMeta:tracking_software_type |
+| native | BeStMeta:tracking_software_type |
 
 
 

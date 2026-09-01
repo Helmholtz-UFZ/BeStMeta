@@ -14,7 +14,7 @@ _Confidence or likelihood threshold used to accept detections, identities, track
 
 
 
-URI: [bstm:tracking_confidence_threshold](bstm:tracking_confidence_threshold)
+URI: [BeStMeta:tracking_confidence_threshold](https://w3id.org/BeStMeta/tracking_confidence_threshold)
 <!-- no inheritance hierarchy -->
 
 
@@ -82,8 +82,8 @@ URI: [bstm:tracking_confidence_threshold](bstm:tracking_confidence_threshold)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:tracking_confidence_threshold |
-| native | bstm:tracking_confidence_threshold |
+| self | BeStMeta:tracking_confidence_threshold |
+| native | BeStMeta:tracking_confidence_threshold |
 
 
 

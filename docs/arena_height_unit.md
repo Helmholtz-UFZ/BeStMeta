@@ -14,7 +14,7 @@ _Unit of measurement for arena_height._
 
 
 
-URI: [bstm:arena_height_unit](bstm:arena_height_unit)
+URI: [BeStMeta:arena_height_unit](https://w3id.org/BeStMeta/arena_height_unit)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:arena_height_unit](bstm:arena_height_unit)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:arena_height_unit](bstm:arena_height_unit)
 | Property | Value |
 | --- | --- |
 | Range | [LengthUnitEnum](LengthUnitEnum.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
@@ -74,8 +74,8 @@ URI: [bstm:arena_height_unit](bstm:arena_height_unit)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:arena_height_unit |
-| native | bstm:arena_height_unit |
+| self | BeStMeta:arena_height_unit |
+| native | BeStMeta:arena_height_unit |
 
 
 
@@ -89,7 +89,7 @@ description: Unit of measurement for arena_height.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Experiment
 range: LengthUnitEnum
 required: false
 recommended: true

@@ -14,7 +14,7 @@ _Magnification of microscope objective (if applicable)._
 
 
 
-URI: [bstm:objective_magnification](bstm:objective_magnification)
+URI: [BeStMeta:objective_magnification](https://w3id.org/BeStMeta/objective_magnification)
 <!-- no inheritance hierarchy -->
 
 
@@ -89,8 +89,8 @@ URI: [bstm:objective_magnification](bstm:objective_magnification)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:objective_magnification |
-| native | bstm:objective_magnification |
+| self | BeStMeta:objective_magnification |
+| native | BeStMeta:objective_magnification |
 
 
 

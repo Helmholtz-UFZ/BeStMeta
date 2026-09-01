@@ -14,7 +14,7 @@ _Top-level study and provenance metadata for a VTA dataset. One record per publi
 
 
 
-URI: [bstm:VTADataset](bstm:VTADataset)
+URI: [BeStMeta:VTADataset](https://w3id.org/BeStMeta/VTADataset)
 
 
 
@@ -196,8 +196,8 @@ URI: [bstm:VTADataset](bstm:VTADataset)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:VTADataset |
-| native | bstm:VTADataset |
+| self | BeStMeta:VTADataset |
+| native | BeStMeta:VTADataset |
 
 
 

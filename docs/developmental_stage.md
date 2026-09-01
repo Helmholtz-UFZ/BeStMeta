@@ -14,7 +14,7 @@ _Developmental stage of the tracked organism(s)._
 
 
 
-URI: [bstm:developmental_stage](bstm:developmental_stage)
+URI: [BeStMeta:developmental_stage](https://w3id.org/BeStMeta/developmental_stage)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:developmental_stage](bstm:developmental_stage)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Subject](Subject.md) | Biological identity of the organism(s) that is studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:developmental_stage](bstm:developmental_stage)
 | Property | Value |
 | --- | --- |
 | Range | [DevelopmentalStageEnum](DevelopmentalStageEnum.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Subject](Subject.md) |
 
 ### Cardinality and Requirements
 
@@ -73,8 +73,8 @@ URI: [bstm:developmental_stage](bstm:developmental_stage)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:developmental_stage |
-| native | bstm:developmental_stage |
+| self | BeStMeta:developmental_stage |
+| native | BeStMeta:developmental_stage |
 | exact | EFO:0000399 |
 
 
@@ -91,7 +91,7 @@ exact_mappings:
 - EFO:0000399
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Subject
 range: DevelopmentalStageEnum
 
 ```

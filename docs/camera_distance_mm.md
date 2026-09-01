@@ -14,7 +14,7 @@ _Distance from camera lens to the arena floor in millimetres._
 
 
 
-URI: [bstm:camera_distance_mm](bstm:camera_distance_mm)
+URI: [BeStMeta:camera_distance_mm](https://w3id.org/BeStMeta/camera_distance_mm)
 <!-- no inheritance hierarchy -->
 
 
@@ -84,8 +84,8 @@ URI: [bstm:camera_distance_mm](bstm:camera_distance_mm)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:camera_distance_mm |
-| native | bstm:camera_distance_mm |
+| self | BeStMeta:camera_distance_mm |
+| native | BeStMeta:camera_distance_mm |
 
 
 

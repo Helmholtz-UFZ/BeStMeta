@@ -14,7 +14,7 @@ _Video compression codec used for recording._
 
 
 
-URI: [bstm:video_codec](bstm:video_codec)
+URI: [BeStMeta:video_codec](https://w3id.org/BeStMeta/video_codec)
 <!-- no inheritance hierarchy -->
 
 
@@ -80,8 +80,8 @@ URI: [bstm:video_codec](bstm:video_codec)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:video_codec |
-| native | bstm:video_codec |
+| self | BeStMeta:video_codec |
+| native | BeStMeta:video_codec |
 | exact | ebucore:codecName |
 
 

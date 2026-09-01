@@ -14,7 +14,7 @@ _DOI of the publication associated with the dataset._
 
 
 
-URI: [bstm:publication_doi](bstm:publication_doi)
+URI: [BeStMeta:publication_doi](https://w3id.org/BeStMeta/publication_doi)
 <!-- no inheritance hierarchy -->
 
 
@@ -81,8 +81,8 @@ URI: [bstm:publication_doi](bstm:publication_doi)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:publication_doi |
-| native | bstm:publication_doi |
+| self | BeStMeta:publication_doi |
+| native | BeStMeta:publication_doi |
 | exact | schema:citation, dcterms:references |
 
 

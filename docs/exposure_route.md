@@ -14,7 +14,7 @@ _Route of chemical or treatment administration._
 
 
 
-URI: [bstm:exposure_route](bstm:exposure_route)
+URI: [BeStMeta:exposure_route](https://w3id.org/BeStMeta/exposure_route)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:exposure_route](bstm:exposure_route)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Manipulation](Manipulation.md) | Treatment and chemical exposure information decribing pharmacological, toxico... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:exposure_route](bstm:exposure_route)
 | Property | Value |
 | --- | --- |
 | Range | [ExposureRouteEnum](ExposureRouteEnum.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Manipulation](Manipulation.md) |
 
 ### Cardinality and Requirements
 
@@ -73,8 +73,8 @@ URI: [bstm:exposure_route](bstm:exposure_route)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:exposure_route |
-| native | bstm:exposure_route |
+| self | BeStMeta:exposure_route |
+| native | BeStMeta:exposure_route |
 | exact | MESH:D004333 |
 
 
@@ -91,7 +91,7 @@ exact_mappings:
 - MESH:D004333
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Manipulation
 range: ExposureRouteEnum
 required: false
 

@@ -15,7 +15,7 @@ _Type of control condition used in the experiment for comparison against treated
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:ControlTypeEnum](bstm:ControlTypeEnum)
+URI: [BeStMeta:ControlTypeEnum](https://w3id.org/BeStMeta/ControlTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

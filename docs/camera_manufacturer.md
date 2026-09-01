@@ -14,7 +14,7 @@ _Manufacturer of the camera._
 
 
 
-URI: [bstm:camera_manufacturer](bstm:camera_manufacturer)
+URI: [BeStMeta:camera_manufacturer](https://w3id.org/BeStMeta/camera_manufacturer)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:camera_manufacturer](bstm:camera_manufacturer)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:camera_manufacturer |
-| native | bstm:camera_manufacturer |
+| self | BeStMeta:camera_manufacturer |
+| native | BeStMeta:camera_manufacturer |
 | exact | schema:manufacturer |
 
 

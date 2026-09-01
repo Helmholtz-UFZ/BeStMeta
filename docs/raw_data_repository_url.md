@@ -14,7 +14,7 @@ _URL of the repository record or landing page._
 
 
 
-URI: [bstm:raw_data_repository_url](bstm:raw_data_repository_url)
+URI: [BeStMeta:raw_data_repository_url](https://w3id.org/BeStMeta/raw_data_repository_url)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:raw_data_repository_url](bstm:raw_data_repository_url)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:raw_data_repository_url |
-| native | bstm:raw_data_repository_url |
+| self | BeStMeta:raw_data_repository_url |
+| native | BeStMeta:raw_data_repository_url |
 | exact | schema:url, dcterms:source |
 
 

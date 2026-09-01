@@ -14,7 +14,7 @@ _Biological sex of the tracked organism(s)._
 
 
 
-URI: [bstm:sex](bstm:sex)
+URI: [BeStMeta:sex](https://w3id.org/BeStMeta/sex)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:sex](bstm:sex)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Subject](Subject.md) | Biological identity of the organism(s) that is studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:sex](bstm:sex)
 | Property | Value |
 | --- | --- |
 | Range | [SexEnum](SexEnum.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Subject](Subject.md) |
 
 ### Cardinality and Requirements
 
@@ -74,8 +74,8 @@ URI: [bstm:sex](bstm:sex)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:sex |
-| native | bstm:sex |
+| self | BeStMeta:sex |
+| native | BeStMeta:sex |
 | exact | PATO:0000047 |
 
 
@@ -92,7 +92,7 @@ exact_mappings:
 - PATO:0000047
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Subject
 range: SexEnum
 required: false
 recommended: true

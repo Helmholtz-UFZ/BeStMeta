@@ -14,7 +14,7 @@ _Statistical analysis for this dataset_
 
 
 
-URI: [bstm:statistical_analysis](bstm:statistical_analysis)
+URI: [BeStMeta:statistical_analysis](https://w3id.org/BeStMeta/statistical_analysis)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:statistical_analysis](bstm:statistical_analysis)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:statistical_analysis |
-| native | bstm:statistical_analysis |
+| self | BeStMeta:statistical_analysis |
+| native | BeStMeta:statistical_analysis |
 
 
 

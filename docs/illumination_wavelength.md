@@ -14,7 +14,7 @@ _Peak wavelength of the illumination source in nanometres. Use for non-white-lig
 
 
 
-URI: [bstm:illumination_wavelength](bstm:illumination_wavelength)
+URI: [BeStMeta:illumination_wavelength](https://w3id.org/BeStMeta/illumination_wavelength)
 <!-- no inheritance hierarchy -->
 
 
@@ -83,8 +83,8 @@ URI: [bstm:illumination_wavelength](bstm:illumination_wavelength)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:illumination_wavelength |
-| native | bstm:illumination_wavelength |
+| self | BeStMeta:illumination_wavelength |
+| native | BeStMeta:illumination_wavelength |
 | exact | AFR:0001159 |
 | close | PATO:0001242 |
 

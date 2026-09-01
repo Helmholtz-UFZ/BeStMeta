@@ -14,7 +14,7 @@ _Horizontal pixel count of the recorded video._
 
 
 
-URI: [bstm:video_resolution_width](bstm:video_resolution_width)
+URI: [BeStMeta:video_resolution_width](https://w3id.org/BeStMeta/video_resolution_width)
 <!-- no inheritance hierarchy -->
 
 
@@ -84,8 +84,8 @@ URI: [bstm:video_resolution_width](bstm:video_resolution_width)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:video_resolution_width |
-| native | bstm:video_resolution_width |
+| self | BeStMeta:video_resolution_width |
+| native | BeStMeta:video_resolution_width |
 | close | ebucore:width |
 
 

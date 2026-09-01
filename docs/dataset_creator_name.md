@@ -14,7 +14,7 @@ _Name(s) of data creators._
 
 
 
-URI: [bstm:dataset_creator_name](bstm:dataset_creator_name)
+URI: [BeStMeta:dataset_creator_name](https://w3id.org/BeStMeta/dataset_creator_name)
 <!-- no inheritance hierarchy -->
 
 
@@ -75,8 +75,8 @@ URI: [bstm:dataset_creator_name](bstm:dataset_creator_name)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:dataset_creator_name |
-| native | bstm:dataset_creator_name |
+| self | BeStMeta:dataset_creator_name |
+| native | BeStMeta:dataset_creator_name |
 | exact | dcterms:creator, schema:creator |
 
 

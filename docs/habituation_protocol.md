@@ -14,7 +14,7 @@ _Description of habituation or acclimation prior to testing._
 
 
 
-URI: [bstm:habituation_protocol](bstm:habituation_protocol)
+URI: [BeStMeta:habituation_protocol](https://w3id.org/BeStMeta/habituation_protocol)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:habituation_protocol](bstm:habituation_protocol)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Manipulation](Manipulation.md) | Treatment and chemical exposure information decribing pharmacological, toxico... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:habituation_protocol](bstm:habituation_protocol)
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Manipulation](Manipulation.md) |
 
 ### Cardinality and Requirements
 
@@ -73,8 +73,8 @@ URI: [bstm:habituation_protocol](bstm:habituation_protocol)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:habituation_protocol |
-| native | bstm:habituation_protocol |
+| self | BeStMeta:habituation_protocol |
+| native | BeStMeta:habituation_protocol |
 
 
 
@@ -88,7 +88,7 @@ description: Description of habituation or acclimation prior to testing.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Manipulation
 range: string
 required: false
 

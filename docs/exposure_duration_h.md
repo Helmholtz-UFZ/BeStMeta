@@ -14,7 +14,7 @@ _Duration of chemical or treatment exposure in hours._
 
 
 
-URI: [bstm:exposure_duration_h](bstm:exposure_duration_h)
+URI: [BeStMeta:exposure_duration_h](https://w3id.org/BeStMeta/exposure_duration_h)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:exposure_duration_h](bstm:exposure_duration_h)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Manipulation](Manipulation.md) | Treatment and chemical exposure information decribing pharmacological, toxico... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:exposure_duration_h](bstm:exposure_duration_h)
 | Property | Value |
 | --- | --- |
 | Range | [Float](Float.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Manipulation](Manipulation.md) |
 
 ### Cardinality and Requirements
 
@@ -83,8 +83,8 @@ URI: [bstm:exposure_duration_h](bstm:exposure_duration_h)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:exposure_duration_h |
-| native | bstm:exposure_duration_h |
+| self | BeStMeta:exposure_duration_h |
+| native | BeStMeta:exposure_duration_h |
 
 
 
@@ -98,7 +98,7 @@ description: Duration of chemical or treatment exposure in hours.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Manipulation
 range: float
 required: false
 unit:

@@ -14,7 +14,7 @@ _Primary compute hardware used for tracking and analysis. Include model informat
 
 
 
-URI: [bstm:compute_hardware](bstm:compute_hardware)
+URI: [BeStMeta:compute_hardware](https://w3id.org/BeStMeta/compute_hardware)
 <!-- no inheritance hierarchy -->
 
 
@@ -85,8 +85,8 @@ URI: [bstm:compute_hardware](bstm:compute_hardware)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:compute_hardware |
-| native | bstm:compute_hardware |
+| self | BeStMeta:compute_hardware |
+| native | BeStMeta:compute_hardware |
 
 
 

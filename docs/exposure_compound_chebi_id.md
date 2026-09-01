@@ -14,7 +14,7 @@ _ChEBI identifier for the test substance._
 
 
 
-URI: [bstm:exposure_compound_chebi_id](bstm:exposure_compound_chebi_id)
+URI: [BeStMeta:exposure_compound_chebi_id](https://w3id.org/BeStMeta/exposure_compound_chebi_id)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:exposure_compound_chebi_id](bstm:exposure_compound_chebi_id)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Manipulation](Manipulation.md) | Treatment and chemical exposure information decribing pharmacological, toxico... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:exposure_compound_chebi_id](bstm:exposure_compound_chebi_id)
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Manipulation](Manipulation.md) |
 
 ### Cardinality and Requirements
 
@@ -89,9 +89,9 @@ URI: [bstm:exposure_compound_chebi_id](bstm:exposure_compound_chebi_id)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:exposure_compound_chebi_id |
-| native | bstm:exposure_compound_chebi_id |
-| exact | EDAM-DATA:1174 |
+| self | BeStMeta:exposure_compound_chebi_id |
+| native | BeStMeta:exposure_compound_chebi_id |
+| exact | EDAM.DATA:1174 |
 
 
 
@@ -107,10 +107,10 @@ examples:
 - value: CHEBI:49575
 from_schema: https://w3id.org/bestmeta/schema
 exact_mappings:
-- EDAM-DATA:1174
+- EDAM.DATA:1174
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Manipulation
 range: string
 required: false
 recommended: true

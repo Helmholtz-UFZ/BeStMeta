@@ -14,7 +14,7 @@ _Standardized category of the light-dark cycle._
 
 
 
-URI: [bstm:light_cycle_type](bstm:light_cycle_type)
+URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:light_cycle_type](bstm:light_cycle_type)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:light_cycle_type](bstm:light_cycle_type)
 | Property | Value |
 | --- | --- |
 | Range | [LightCycleTypeEnum](LightCycleTypeEnum.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
@@ -74,8 +74,8 @@ URI: [bstm:light_cycle_type](bstm:light_cycle_type)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:light_cycle_type |
-| native | bstm:light_cycle_type |
+| self | BeStMeta:light_cycle_type |
+| native | BeStMeta:light_cycle_type |
 
 
 
@@ -89,7 +89,7 @@ description: Standardized category of the light-dark cycle.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Experiment
 range: LightCycleTypeEnum
 required: false
 recommended: true

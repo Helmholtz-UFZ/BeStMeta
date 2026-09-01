@@ -15,7 +15,7 @@ _Image sensor technologies used in cameras._
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:CameraSensorTypeEnum](bstm:CameraSensorTypeEnum)
+URI: [BeStMeta:CameraSensorTypeEnum](https://w3id.org/BeStMeta/CameraSensorTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

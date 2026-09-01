@@ -14,7 +14,7 @@ _File format of the raw tracking data._
 
 
 
-URI: [bstm:raw_tracking_data_format](bstm:raw_tracking_data_format)
+URI: [BeStMeta:raw_tracking_data_format](https://w3id.org/BeStMeta/raw_tracking_data_format)
 <!-- no inheritance hierarchy -->
 
 
@@ -75,8 +75,8 @@ URI: [bstm:raw_tracking_data_format](bstm:raw_tracking_data_format)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:raw_tracking_data_format |
-| native | bstm:raw_tracking_data_format |
+| self | BeStMeta:raw_tracking_data_format |
+| native | BeStMeta:raw_tracking_data_format |
 
 
 

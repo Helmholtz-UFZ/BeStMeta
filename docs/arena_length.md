@@ -14,7 +14,7 @@ _Length of the arena along one axis._
 
 
 
-URI: [bstm:arena_length](bstm:arena_length)
+URI: [BeStMeta:arena_length](https://w3id.org/BeStMeta/arena_length)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:arena_length](bstm:arena_length)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:arena_length](bstm:arena_length)
 | Property | Value |
 | --- | --- |
 | Range | [Float](Float.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
@@ -74,8 +74,8 @@ URI: [bstm:arena_length](bstm:arena_length)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:arena_length |
-| native | bstm:arena_length |
+| self | BeStMeta:arena_length |
+| native | BeStMeta:arena_length |
 
 
 
@@ -89,7 +89,7 @@ description: Length of the arena along one axis.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Experiment
 range: float
 required: false
 recommended: true

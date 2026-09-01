@@ -14,7 +14,7 @@ _Numeric value of horizontal field of view covered by the camera._
 
 
 
-URI: [bstm:field_of_view_width](bstm:field_of_view_width)
+URI: [BeStMeta:field_of_view_width](https://w3id.org/BeStMeta/field_of_view_width)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:field_of_view_width](bstm:field_of_view_width)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:field_of_view_width |
-| native | bstm:field_of_view_width |
+| self | BeStMeta:field_of_view_width |
+| native | BeStMeta:field_of_view_width |
 
 
 

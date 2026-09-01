@@ -14,7 +14,7 @@ _NCBI Taxonomy ID for the study organism_
 
 
 
-URI: [bstm:species_ncbi_taxon_id](bstm:species_ncbi_taxon_id)
+URI: [BeStMeta:species_ncbi_taxon_id](https://w3id.org/BeStMeta/species_ncbi_taxon_id)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:species_ncbi_taxon_id](bstm:species_ncbi_taxon_id)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Subject](Subject.md) | Biological identity of the organism(s) that is studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:species_ncbi_taxon_id](bstm:species_ncbi_taxon_id)
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Subject](Subject.md) |
 
 ### Cardinality and Requirements
 
@@ -89,9 +89,9 @@ URI: [bstm:species_ncbi_taxon_id](bstm:species_ncbi_taxon_id)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:species_ncbi_taxon_id |
-| native | bstm:species_ncbi_taxon_id |
-| exact | dwc:taxonID, EDAM-DATA:1179 |
+| self | BeStMeta:species_ncbi_taxon_id |
+| native | BeStMeta:species_ncbi_taxon_id |
+| exact | dwc:taxonID, EDAM.DATA:1179 |
 
 
 
@@ -108,10 +108,10 @@ examples:
 from_schema: https://w3id.org/bestmeta/schema
 exact_mappings:
 - dwc:taxonID
-- EDAM-DATA:1179
+- EDAM.DATA:1179
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Subject
 range: string
 required: false
 recommended: true

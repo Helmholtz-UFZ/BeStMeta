@@ -14,7 +14,7 @@ _Image sensor technology._
 
 
 
-URI: [bstm:camera_sensor_type](bstm:camera_sensor_type)
+URI: [BeStMeta:camera_sensor_type](https://w3id.org/BeStMeta/camera_sensor_type)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:camera_sensor_type](bstm:camera_sensor_type)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:camera_sensor_type |
-| native | bstm:camera_sensor_type |
+| self | BeStMeta:camera_sensor_type |
+| native | BeStMeta:camera_sensor_type |
 
 
 

@@ -15,7 +15,7 @@ _Standardized light-dark cycle types._
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:LightCycleTypeEnum](bstm:LightCycleTypeEnum)
+URI: [BeStMeta:LightCycleTypeEnum](https://w3id.org/BeStMeta/LightCycleTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

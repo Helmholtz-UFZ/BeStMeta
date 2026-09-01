@@ -15,7 +15,7 @@ _Units of length, ranging from micrometers to meters._
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:LengthUnitEnum](bstm:LengthUnitEnum)
+URI: [BeStMeta:LengthUnitEnum](https://w3id.org/BeStMeta/LengthUnitEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |
@@ -23,7 +23,7 @@ URI: [bstm:LengthUnitEnum](bstm:LengthUnitEnum)
 | um | UO:0000017 |  |
 | mm | UO:0000016 |  |
 | cm | UO:0000015 |  |
-| m | UO:0000008 |  |
+| meter | UO:0000008 |  |
 
 
 
@@ -81,9 +81,11 @@ permissible_values:
   cm:
     text: cm
     meaning: UO:0000015
-  m:
-    text: m
+  meter:
+    text: meter
     meaning: UO:0000008
+    aliases:
+    - m
 
 ```
 </details>

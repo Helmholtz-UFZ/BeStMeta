@@ -15,7 +15,7 @@ _Video compression codec used for recording._
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:VideoCodecEnum](bstm:VideoCodecEnum)
+URI: [BeStMeta:VideoCodecEnum](https://w3id.org/BeStMeta/VideoCodecEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

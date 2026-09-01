@@ -14,7 +14,7 @@ _Free-text notes on the tracking analysis not captured by structured fields._
 
 
 
-URI: [bstm:tracking_notes](bstm:tracking_notes)
+URI: [BeStMeta:tracking_notes](https://w3id.org/BeStMeta/tracking_notes)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:tracking_notes](bstm:tracking_notes)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:tracking_notes |
-| native | bstm:tracking_notes |
+| self | BeStMeta:tracking_notes |
+| native | BeStMeta:tracking_notes |
 
 
 

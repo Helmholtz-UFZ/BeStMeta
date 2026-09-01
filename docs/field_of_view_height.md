@@ -14,7 +14,7 @@ _Numeric value of vertical field of view covered by the camera._
 
 
 
-URI: [bstm:field_of_view_height](bstm:field_of_view_height)
+URI: [BeStMeta:field_of_view_height](https://w3id.org/BeStMeta/field_of_view_height)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:field_of_view_height](bstm:field_of_view_height)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:field_of_view_height |
-| native | bstm:field_of_view_height |
+| self | BeStMeta:field_of_view_height |
+| native | BeStMeta:field_of_view_height |
 
 
 
