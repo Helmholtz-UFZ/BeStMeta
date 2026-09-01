@@ -14,7 +14,7 @@ _Solvent or vehicle used to dissolve the test substance._
 
 
 
-URI: [bstm:solvent_vehicle](bstm:solvent_vehicle)
+URI: [BeStMeta:solvent_vehicle](https://w3id.org/BeStMeta/solvent_vehicle)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:solvent_vehicle](bstm:solvent_vehicle)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Manipulation](Manipulation.md) | Treatment and chemical exposure information decribing pharmacological, toxico... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:solvent_vehicle](bstm:solvent_vehicle)
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Manipulation](Manipulation.md) |
 
 ### Cardinality and Requirements
 
@@ -82,8 +82,8 @@ URI: [bstm:solvent_vehicle](bstm:solvent_vehicle)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:solvent_vehicle |
-| native | bstm:solvent_vehicle |
+| self | BeStMeta:solvent_vehicle |
+| native | BeStMeta:solvent_vehicle |
 
 
 
@@ -101,7 +101,7 @@ examples:
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Manipulation
 range: string
 required: false
 

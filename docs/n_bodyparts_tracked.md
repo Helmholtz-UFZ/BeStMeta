@@ -14,7 +14,7 @@ _Number of body parts or keypoints tracked per individual._
 
 
 
-URI: [bstm:n_bodyparts_tracked](bstm:n_bodyparts_tracked)
+URI: [BeStMeta:n_bodyparts_tracked](https://w3id.org/BeStMeta/n_bodyparts_tracked)
 <!-- no inheritance hierarchy -->
 
 
@@ -79,8 +79,8 @@ URI: [bstm:n_bodyparts_tracked](bstm:n_bodyparts_tracked)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:n_bodyparts_tracked |
-| native | bstm:n_bodyparts_tracked |
+| self | BeStMeta:n_bodyparts_tracked |
+| native | BeStMeta:n_bodyparts_tracked |
 
 
 

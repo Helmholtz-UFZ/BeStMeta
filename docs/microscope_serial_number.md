@@ -14,7 +14,7 @@ _Serial number of the microscope._
 
 
 
-URI: [bstm:microscope_serial_number](bstm:microscope_serial_number)
+URI: [BeStMeta:microscope_serial_number](https://w3id.org/BeStMeta/microscope_serial_number)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:microscope_serial_number](bstm:microscope_serial_number)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:microscope_serial_number |
-| native | bstm:microscope_serial_number |
+| self | BeStMeta:microscope_serial_number |
+| native | BeStMeta:microscope_serial_number |
 | exact | OME:SerialNumber |
 
 

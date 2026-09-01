@@ -14,7 +14,7 @@ _Scientific (Latin) binomial name of the study organism_
 
 
 
-URI: [bstm:species_name](bstm:species_name)
+URI: [BeStMeta:species_name](https://w3id.org/BeStMeta/species_name)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:species_name](bstm:species_name)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Subject](Subject.md) | Biological identity of the organism(s) that is studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:species_name](bstm:species_name)
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Subject](Subject.md) |
 
 ### Cardinality and Requirements
 
@@ -83,9 +83,9 @@ URI: [bstm:species_name](bstm:species_name)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:species_name |
-| native | bstm:species_name |
-| exact | dwc:scientificName, EDAM-DATA:1045 |
+| self | BeStMeta:species_name |
+| native | BeStMeta:species_name |
+| exact | dwc:scientificName, EDAM.DATA:1045 |
 
 
 
@@ -103,10 +103,10 @@ examples:
 from_schema: https://w3id.org/bestmeta/schema
 exact_mappings:
 - dwc:scientificName
-- EDAM-DATA:1045
+- EDAM.DATA:1045
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Subject
 range: string
 required: true
 

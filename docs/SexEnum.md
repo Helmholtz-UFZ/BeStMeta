@@ -15,7 +15,7 @@ _Biological sex of the study subjects_
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:SexEnum](bstm:SexEnum)
+URI: [BeStMeta:SexEnum](https://w3id.org/BeStMeta/SexEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

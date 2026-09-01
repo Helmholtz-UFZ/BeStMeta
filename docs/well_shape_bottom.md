@@ -14,7 +14,7 @@ _Geometric bottom shape of the wells of a multiwell plate._
 
 
 
-URI: [bstm:well_shape_bottom](bstm:well_shape_bottom)
+URI: [BeStMeta:well_shape_bottom](https://w3id.org/BeStMeta/well_shape_bottom)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:well_shape_bottom](bstm:well_shape_bottom)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Manipulation](Manipulation.md) | Treatment and chemical exposure information decribing pharmacological, toxico... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:well_shape_bottom](bstm:well_shape_bottom)
 | Property | Value |
 | --- | --- |
 | Range | [WellBottomShapeEnum](WellBottomShapeEnum.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Manipulation](Manipulation.md) |
 
 ### Cardinality and Requirements
 
@@ -73,8 +73,8 @@ URI: [bstm:well_shape_bottom](bstm:well_shape_bottom)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:well_shape_bottom |
-| native | bstm:well_shape_bottom |
+| self | BeStMeta:well_shape_bottom |
+| native | BeStMeta:well_shape_bottom |
 
 
 
@@ -88,7 +88,7 @@ description: Geometric bottom shape of the wells of a multiwell plate.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Manipulation
 range: WellBottomShapeEnum
 required: false
 

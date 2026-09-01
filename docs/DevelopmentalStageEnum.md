@@ -15,7 +15,7 @@ _Controlled vocabulary of developmental stages of an organism._
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:DevelopmentalStageEnum](bstm:DevelopmentalStageEnum)
+URI: [BeStMeta:DevelopmentalStageEnum](https://w3id.org/BeStMeta/DevelopmentalStageEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

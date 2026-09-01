@@ -14,7 +14,7 @@ _Number of cameras used simultaneously._
 
 
 
-URI: [bstm:camera_count](bstm:camera_count)
+URI: [BeStMeta:camera_count](https://w3id.org/BeStMeta/camera_count)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:camera_count](bstm:camera_count)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:camera_count |
-| native | bstm:camera_count |
+| self | BeStMeta:camera_count |
+| native | BeStMeta:camera_count |
 
 
 

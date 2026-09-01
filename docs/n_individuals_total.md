@@ -14,7 +14,7 @@ _Total number of individuals used in the experiment._
 
 
 
-URI: [bstm:n_individuals_total](bstm:n_individuals_total)
+URI: [BeStMeta:n_individuals_total](https://w3id.org/BeStMeta/n_individuals_total)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:n_individuals_total](bstm:n_individuals_total)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:n_individuals_total](bstm:n_individuals_total)
 | Property | Value |
 | --- | --- |
 | Range | [Integer](Integer.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
@@ -74,8 +74,8 @@ URI: [bstm:n_individuals_total](bstm:n_individuals_total)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:n_individuals_total |
-| native | bstm:n_individuals_total |
+| self | BeStMeta:n_individuals_total |
+| native | BeStMeta:n_individuals_total |
 
 
 
@@ -89,7 +89,7 @@ description: Total number of individuals used in the experiment.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Experiment
 range: integer
 required: true
 

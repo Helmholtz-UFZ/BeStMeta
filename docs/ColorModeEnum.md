@@ -15,7 +15,7 @@ _Color mode of the video recording._
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:ColorModeEnum](bstm:ColorModeEnum)
+URI: [BeStMeta:ColorModeEnum](https://w3id.org/BeStMeta/ColorModeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

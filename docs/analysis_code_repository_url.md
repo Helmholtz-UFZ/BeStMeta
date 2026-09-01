@@ -14,7 +14,7 @@ _URL of the code repository._
 
 
 
-URI: [bstm:analysis_code_repository_url](bstm:analysis_code_repository_url)
+URI: [BeStMeta:analysis_code_repository_url](https://w3id.org/BeStMeta/analysis_code_repository_url)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:analysis_code_repository_url](bstm:analysis_code_repository_url)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:analysis_code_repository_url |
-| native | bstm:analysis_code_repository_url |
+| self | BeStMeta:analysis_code_repository_url |
+| native | BeStMeta:analysis_code_repository_url |
 | exact | schema:codeRepository, schema:url |
 
 

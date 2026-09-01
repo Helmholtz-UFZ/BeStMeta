@@ -14,7 +14,7 @@ _Effect size measure reported to quantify the magnitude of observed effects or a
 
 
 
-URI: [bstm:effect_size_measure](bstm:effect_size_measure)
+URI: [BeStMeta:effect_size_measure](https://w3id.org/BeStMeta/effect_size_measure)
 <!-- no inheritance hierarchy -->
 
 
@@ -88,8 +88,8 @@ URI: [bstm:effect_size_measure](bstm:effect_size_measure)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:effect_size_measure |
-| native | bstm:effect_size_measure |
+| self | BeStMeta:effect_size_measure |
+| native | BeStMeta:effect_size_measure |
 | close | NCIT:C209463 |
 
 

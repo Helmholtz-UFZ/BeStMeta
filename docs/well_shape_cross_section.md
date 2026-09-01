@@ -14,7 +14,7 @@ _Geometric cross section shape of the wells of a multiwell plate._
 
 
 
-URI: [bstm:well_shape_cross_section](bstm:well_shape_cross_section)
+URI: [BeStMeta:well_shape_cross_section](https://w3id.org/BeStMeta/well_shape_cross_section)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:well_shape_cross_section](bstm:well_shape_cross_section)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:well_shape_cross_section](bstm:well_shape_cross_section)
 | Property | Value |
 | --- | --- |
 | Range | [WellCrossSectionShapeEnum](WellCrossSectionShapeEnum.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
@@ -74,8 +74,8 @@ URI: [bstm:well_shape_cross_section](bstm:well_shape_cross_section)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:well_shape_cross_section |
-| native | bstm:well_shape_cross_section |
+| self | BeStMeta:well_shape_cross_section |
+| native | BeStMeta:well_shape_cross_section |
 
 
 
@@ -89,7 +89,7 @@ description: Geometric cross section shape of the wells of a multiwell plate.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Experiment
 range: WellCrossSectionShapeEnum
 required: false
 recommended: true

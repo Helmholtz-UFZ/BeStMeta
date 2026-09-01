@@ -15,7 +15,7 @@ _Commercial closed-box system used for recording and tracking the organism(s)  i
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:ClosedBoxSystemEnum](bstm:ClosedBoxSystemEnum)
+URI: [BeStMeta:ClosedBoxSystemEnum](https://w3id.org/BeStMeta/ClosedBoxSystemEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

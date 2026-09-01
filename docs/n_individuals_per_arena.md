@@ -14,7 +14,7 @@ _Number of individuals tested simultaneously in the arena._
 
 
 
-URI: [bstm:n_individuals_per_arena](bstm:n_individuals_per_arena)
+URI: [BeStMeta:n_individuals_per_arena](https://w3id.org/BeStMeta/n_individuals_per_arena)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:n_individuals_per_arena](bstm:n_individuals_per_arena)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:n_individuals_per_arena](bstm:n_individuals_per_arena)
 | Property | Value |
 | --- | --- |
 | Range | [Integer](Integer.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
@@ -81,8 +81,8 @@ URI: [bstm:n_individuals_per_arena](bstm:n_individuals_per_arena)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:n_individuals_per_arena |
-| native | bstm:n_individuals_per_arena |
+| self | BeStMeta:n_individuals_per_arena |
+| native | BeStMeta:n_individuals_per_arena |
 
 
 
@@ -96,7 +96,7 @@ description: Number of individuals tested simultaneously in the arena.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Experiment
 range: integer
 required: true
 minimum_value: 1

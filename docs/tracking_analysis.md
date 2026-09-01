@@ -14,7 +14,7 @@ _Tracking software and analysis configuration_
 
 
 
-URI: [bstm:tracking_analysis](bstm:tracking_analysis)
+URI: [BeStMeta:tracking_analysis](https://w3id.org/BeStMeta/tracking_analysis)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:tracking_analysis](bstm:tracking_analysis)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:tracking_analysis |
-| native | bstm:tracking_analysis |
+| self | BeStMeta:tracking_analysis |
+| native | BeStMeta:tracking_analysis |
 
 
 

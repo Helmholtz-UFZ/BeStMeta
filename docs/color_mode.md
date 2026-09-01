@@ -14,7 +14,7 @@ _Color mode of the recorded video. Affects tracking algorithm behavior and file 
 
 
 
-URI: [bstm:color_mode](bstm:color_mode)
+URI: [BeStMeta:color_mode](https://w3id.org/BeStMeta/color_mode)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:color_mode](bstm:color_mode)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:color_mode |
-| native | bstm:color_mode |
+| self | BeStMeta:color_mode |
+| native | BeStMeta:color_mode |
 
 
 

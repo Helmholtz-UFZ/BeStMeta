@@ -14,7 +14,7 @@ _Video acquisition and recording settings_
 
 
 
-URI: [bstm:acquisition_parameters](bstm:acquisition_parameters)
+URI: [BeStMeta:acquisition_parameters](https://w3id.org/BeStMeta/acquisition_parameters)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:acquisition_parameters](bstm:acquisition_parameters)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:acquisition_parameters |
-| native | bstm:acquisition_parameters |
+| self | BeStMeta:acquisition_parameters |
+| native | BeStMeta:acquisition_parameters |
 
 
 

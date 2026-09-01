@@ -14,7 +14,7 @@ _Type of the test arena, e.g., open field, multiwell plate or elevated plus maze
 
 
 
-URI: [bstm:arena_type](bstm:arena_type)
+URI: [BeStMeta:arena_type](https://w3id.org/BeStMeta/arena_type)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:arena_type](bstm:arena_type)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:arena_type](bstm:arena_type)
 | Property | Value |
 | --- | --- |
 | Range | [ArenaTypeEnum](ArenaTypeEnum.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
@@ -74,8 +74,8 @@ URI: [bstm:arena_type](bstm:arena_type)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:arena_type |
-| native | bstm:arena_type |
+| self | BeStMeta:arena_type |
+| native | BeStMeta:arena_type |
 
 
 
@@ -90,7 +90,7 @@ description: Type of the test arena, e.g., open field, multiwell plate or elevat
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Experiment
 range: ArenaTypeEnum
 required: false
 recommended: true

@@ -14,7 +14,7 @@ _List of behavioral metrics or endpoints extracted from tracking data._
 
 
 
-URI: [bstm:behavioral_metrics](bstm:behavioral_metrics)
+URI: [BeStMeta:behavioral_metrics](https://w3id.org/BeStMeta/behavioral_metrics)
 <!-- no inheritance hierarchy -->
 
 
@@ -85,8 +85,8 @@ URI: [bstm:behavioral_metrics](bstm:behavioral_metrics)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:behavioral_metrics |
-| native | bstm:behavioral_metrics |
+| self | BeStMeta:behavioral_metrics |
+| native | BeStMeta:behavioral_metrics |
 
 
 

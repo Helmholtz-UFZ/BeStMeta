@@ -14,7 +14,7 @@ _Manufacturer of the microscope._
 
 
 
-URI: [bstm:microscope_manufacturer](bstm:microscope_manufacturer)
+URI: [BeStMeta:microscope_manufacturer](https://w3id.org/BeStMeta/microscope_manufacturer)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:microscope_manufacturer](bstm:microscope_manufacturer)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:microscope_manufacturer |
-| native | bstm:microscope_manufacturer |
+| self | BeStMeta:microscope_manufacturer |
+| native | BeStMeta:microscope_manufacturer |
 | exact | OME:Manufacturer, schema:manufacturer |
 
 

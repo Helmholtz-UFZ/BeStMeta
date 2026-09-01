@@ -51,7 +51,7 @@ URI: [xsd:float](http://www.w3.org/2001/XMLSchema#float)
 | Mapping Type | Mapped Value |
 | ---  | ---  |
 | self | xsd:float |
-| native | bstm:float |
+| native | BeStMeta:float |
 | exact | schema:Float |
 
 

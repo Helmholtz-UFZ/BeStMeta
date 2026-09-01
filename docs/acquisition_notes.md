@@ -14,7 +14,7 @@ _Free-text notes on acquisition settings_
 
 
 
-URI: [bstm:acquisition_notes](bstm:acquisition_notes)
+URI: [BeStMeta:acquisition_notes](https://w3id.org/BeStMeta/acquisition_notes)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:acquisition_notes](bstm:acquisition_notes)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:acquisition_notes |
-| native | bstm:acquisition_notes |
+| self | BeStMeta:acquisition_notes |
+| native | BeStMeta:acquisition_notes |
 
 
 

@@ -14,7 +14,7 @@ _Bit depth per pixel channel of the recorded video._
 
 
 
-URI: [bstm:bit_depth](bstm:bit_depth)
+URI: [BeStMeta:bit_depth](https://w3id.org/BeStMeta/bit_depth)
 <!-- no inheritance hierarchy -->
 
 
@@ -85,8 +85,8 @@ URI: [bstm:bit_depth](bstm:bit_depth)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:bit_depth |
-| native | bstm:bit_depth |
+| self | BeStMeta:bit_depth |
+| native | BeStMeta:bit_depth |
 | exact | ebucore:bitDepth |
 
 

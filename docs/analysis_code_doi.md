@@ -14,7 +14,7 @@ _DOI of the deposited analysis code._
 
 
 
-URI: [bstm:analysis_code_doi](bstm:analysis_code_doi)
+URI: [BeStMeta:analysis_code_doi](https://w3id.org/BeStMeta/analysis_code_doi)
 <!-- no inheritance hierarchy -->
 
 
@@ -80,8 +80,8 @@ URI: [bstm:analysis_code_doi](bstm:analysis_code_doi)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:analysis_code_doi |
-| native | bstm:analysis_code_doi |
+| self | BeStMeta:analysis_code_doi |
+| native | BeStMeta:analysis_code_doi |
 
 
 

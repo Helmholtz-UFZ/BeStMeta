@@ -14,7 +14,7 @@ _Unit for exposure concentration._
 
 
 
-URI: [bstm:exposure_concentration_unit](bstm:exposure_concentration_unit)
+URI: [BeStMeta:exposure_concentration_unit](https://w3id.org/BeStMeta/exposure_concentration_unit)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:exposure_concentration_unit](bstm:exposure_concentration_unit)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Manipulation](Manipulation.md) | Treatment and chemical exposure information decribing pharmacological, toxico... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:exposure_concentration_unit](bstm:exposure_concentration_unit)
 | Property | Value |
 | --- | --- |
 | Range | [ConcentrationUnitEnum](ConcentrationUnitEnum.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Manipulation](Manipulation.md) |
 
 ### Cardinality and Requirements
 
@@ -74,8 +74,8 @@ URI: [bstm:exposure_concentration_unit](bstm:exposure_concentration_unit)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:exposure_concentration_unit |
-| native | bstm:exposure_concentration_unit |
+| self | BeStMeta:exposure_concentration_unit |
+| native | BeStMeta:exposure_concentration_unit |
 
 
 
@@ -89,7 +89,7 @@ description: Unit for exposure concentration.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Manipulation
 range: ConcentrationUnitEnum
 required: false
 recommended: true

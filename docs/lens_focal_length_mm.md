@@ -14,7 +14,7 @@ _Focal length of the imaging lens in millimetres;  applicable to camera or micro
 
 
 
-URI: [bstm:lens_focal_length_mm](bstm:lens_focal_length_mm)
+URI: [BeStMeta:lens_focal_length_mm](https://w3id.org/BeStMeta/lens_focal_length_mm)
 <!-- no inheritance hierarchy -->
 
 
@@ -84,8 +84,8 @@ URI: [bstm:lens_focal_length_mm](bstm:lens_focal_length_mm)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:lens_focal_length_mm |
-| native | bstm:lens_focal_length_mm |
+| self | BeStMeta:lens_focal_length_mm |
+| native | BeStMeta:lens_focal_length_mm |
 | exact | AFQ:0000062 |
 
 

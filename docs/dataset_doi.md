@@ -14,7 +14,7 @@ _DOI of the deposited dataset (assigned by repository)_
 
 
 
-URI: [bstm:dataset_doi](bstm:dataset_doi)
+URI: [BeStMeta:dataset_doi](https://w3id.org/BeStMeta/dataset_doi)
 <!-- no inheritance hierarchy -->
 
 
@@ -81,8 +81,8 @@ URI: [bstm:dataset_doi](bstm:dataset_doi)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:dataset_doi |
-| native | bstm:dataset_doi |
+| self | BeStMeta:dataset_doi |
+| native | BeStMeta:dataset_doi |
 | exact | schema:identifier |
 | close | dcterms:identifier |
 

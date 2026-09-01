@@ -14,7 +14,7 @@ _Illuminance at the recording arena or observation surface._
 
 
 
-URI: [bstm:illumination_illuminance](bstm:illumination_illuminance)
+URI: [BeStMeta:illumination_illuminance](https://w3id.org/BeStMeta/illumination_illuminance)
 <!-- no inheritance hierarchy -->
 
 
@@ -92,8 +92,8 @@ URI: [bstm:illumination_illuminance](bstm:illumination_illuminance)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:illumination_illuminance |
-| native | bstm:illumination_illuminance |
+| self | BeStMeta:illumination_illuminance |
+| native | BeStMeta:illumination_illuminance |
 | exact | OM:Illuminance |
 
 

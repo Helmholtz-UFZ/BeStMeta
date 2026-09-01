@@ -14,7 +14,7 @@ _Repository where analysis code is hosted._
 
 
 
-URI: [bstm:analysis_code_repository](bstm:analysis_code_repository)
+URI: [BeStMeta:analysis_code_repository](https://w3id.org/BeStMeta/analysis_code_repository)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:analysis_code_repository](bstm:analysis_code_repository)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:analysis_code_repository |
-| native | bstm:analysis_code_repository |
+| self | BeStMeta:analysis_code_repository |
+| native | BeStMeta:analysis_code_repository |
 
 
 

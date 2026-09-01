@@ -14,7 +14,7 @@ _Primary research domain of this study._
 
 
 
-URI: [bstm:research_domain](bstm:research_domain)
+URI: [BeStMeta:research_domain](https://w3id.org/BeStMeta/research_domain)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:research_domain](bstm:research_domain)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:research_domain |
-| native | bstm:research_domain |
+| self | BeStMeta:research_domain |
+| native | BeStMeta:research_domain |
 | exact | dcterms:subject |
 
 

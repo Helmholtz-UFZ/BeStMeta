@@ -15,7 +15,7 @@ _Type of the test arena, e.g., open field, multiwell plate or elevated plus maze
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:ArenaTypeEnum](bstm:ArenaTypeEnum)
+URI: [BeStMeta:ArenaTypeEnum](https://w3id.org/BeStMeta/ArenaTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

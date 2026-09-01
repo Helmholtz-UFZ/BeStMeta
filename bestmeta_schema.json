@@ -30,10 +30,6 @@
                 },
                 "bit_depth": {
                     "description": "Bit depth per pixel channel of the recorded video.",
-                    "examples": [
-                        8,
-                        16
-                    ],
                     "type": [
                         "integer",
                         "null"
@@ -63,11 +59,6 @@
                 },
                 "illumination_illuminance": {
                     "description": "Illuminance at the recording arena or observation surface.",
-                    "examples": [
-                        0.0,
-                        100.0,
-                        1000.0
-                    ],
                     "type": [
                         "number",
                         "null"
@@ -93,11 +84,6 @@
                 },
                 "recording_duration": {
                     "description": "Total duration of the video recording in ISO 8601 duration format.",
-                    "examples": [
-                        "PT30M",
-                        "PT1H15M30S",
-                        "PT45S"
-                    ],
                     "pattern": "^P(?!$)(\\d+Y)?(\\d+M)?(\\d+W)?(\\d+D)?(T(?=\\d)(\\d+H)?(\\d+M)?(\\d+(\\.\\d+)?S)?)?$",
                     "type": "string"
                 },
@@ -337,45 +323,9 @@
             "title": "DevelopmentalStageEnum",
             "type": "string"
         },
-        "ExperimentalConditions": {
+        "Experiment": {
             "additionalProperties": false,
             "allOf": [
-                {
-                    "if": {
-                        "properties": {
-                            "body_length_value": {}
-                        },
-                        "required": [
-                            "body_length_value"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "body_length_unit": {}
-                        },
-                        "required": [
-                            "body_length_unit"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "weight_value": {}
-                        },
-                        "required": [
-                            "weight_value"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "weight_unit": {}
-                        },
-                        "required": [
-                            "weight_unit"
-                        ]
-                    }
-                },
                 {
                     "if": {
                         "properties": {
@@ -451,49 +401,8 @@
                     }
                 }
             ],
-            "anyOf": [
-                {
-                    "properties": {
-                        "developmental_stage": {}
-                    },
-                    "required": [
-                        "developmental_stage"
-                    ]
-                },
-                {
-                    "properties": {
-                        "developmental_stage_unit": {},
-                        "developmental_stage_value": {}
-                    },
-                    "required": [
-                        "developmental_stage_value",
-                        "developmental_stage_unit"
-                    ]
-                },
-                {
-                    "properties": {
-                        "age_unit": {},
-                        "age_value": {}
-                    },
-                    "required": [
-                        "age_value",
-                        "age_unit"
-                    ]
-                }
-            ],
-            "description": "Biological and experimental conditions applicable to all trials in the dataset. Covers organism identity, treatment, assay design, and environmental parameters.",
+            "description": "Defines experimental context in which the subjects were studied. Covers environmental parameters like study counts, arena geometry, temperature, multi well plate details etc.",
             "properties": {
-                "age_unit": {
-                    "$ref": "#/$defs/DevelopmentUnitEnum",
-                    "description": "Age unit of the tracked organism(s)."
-                },
-                "age_value": {
-                    "description": "Numeric age value of the tracked organism(s).",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
                 "arena_height": {
                     "description": "Height of the arena, when applicable.",
                     "type": [
@@ -544,44 +453,7 @@
                 },
                 "assay_type": {
                     "description": "Name of the behavioral assay paradigm or test paradigm.",
-                    "examples": [
-                        "open field test",
-                        "light-dark transition",
-                        "elevated plus maze",
-                        "locomotor activity assay",
-                        "chemobehavioral assay"
-                    ],
                     "type": "string"
-                },
-                "body_length_unit": {
-                    "$ref": "#/$defs/LengthUnitEnum",
-                    "description": "Body length unit of the tracked organism(s)."
-                },
-                "body_length_value": {
-                    "description": "Body length numeric value of the tracked organism(s).",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "control_type": {
-                    "$ref": "#/$defs/ControlTypeEnum",
-                    "description": "Type of control group used."
-                },
-                "developmental_stage": {
-                    "$ref": "#/$defs/DevelopmentalStageEnum",
-                    "description": "Developmental stage of the tracked organism(s)."
-                },
-                "developmental_stage_unit": {
-                    "$ref": "#/$defs/DevelopmentUnitEnum",
-                    "description": "Unit for developmental stage value of the tracked organism(s)."
-                },
-                "developmental_stage_value": {
-                    "description": "Numeric developmental stage value (e.g. 72 for 72 hpf) of the tracked organism(s).",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
                 },
                 "experiment_end_datetime": {
                     "description": "Date and time at which the experiment ended.",
@@ -591,85 +463,9 @@
                         "null"
                     ]
                 },
-                "experiment_notes": {
-                    "description": "Free-text notes on experimental conditions not captured by structured fields.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "experiment_start_datetime": {
                     "description": "Date and time at which the experiment began.",
                     "format": "date-time",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "exposure_compound_chebi_id": {
-                    "description": "ChEBI identifier for the test substance.",
-                    "examples": [
-                        "CHEBI:15930",
-                        "CHEBI:49575"
-                    ],
-                    "pattern": "^CHEBI:\\d+$",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "exposure_compound_name": {
-                    "description": "Name of the chemical, drug, or substance used in the treatment or exposure.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "exposure_concentration": {
-                    "description": "Nominal exposure concentration (numeric value only; use unit field).",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "exposure_concentration_unit": {
-                    "$ref": "#/$defs/ConcentrationUnitEnum",
-                    "description": "Unit for exposure concentration."
-                },
-                "exposure_duration_h": {
-                    "description": "Duration of chemical or treatment exposure in hours.",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "exposure_route": {
-                    "$ref": "#/$defs/ExposureRouteEnum",
-                    "description": "Route of chemical or treatment administration."
-                },
-                "genotype": {
-                    "description": "Genotype identifier of the tracked organism(s)including  strain-specific, mutant, transgenic, or engineered genotypes.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "habituation_duration_min": {
-                    "description": "Duration of habituation period before recording, in minutes",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "habituation_protocol": {
-                    "description": "Description of habituation or acclimation prior to testing.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "housing_conditions": {
-                    "description": "Free-text description of animal housing conditions prior to assay.",
                     "type": [
                         "string",
                         "null"
@@ -697,57 +493,9 @@
                 },
                 "plate_well_count": {
                     "description": "Number of wells in the multiwell plate.",
-                    "examples": [
-                        24,
-                        96
-                    ],
                     "minimum": 1,
                     "type": [
                         "integer",
-                        "null"
-                    ]
-                },
-                "sex": {
-                    "$ref": "#/$defs/SexEnum",
-                    "description": "Biological sex of the tracked organism(s)."
-                },
-                "solvent_vehicle": {
-                    "description": "Solvent or vehicle used to dissolve the test substance.",
-                    "examples": [
-                        "DMSO 0.01%",
-                        "ethanol 0.1%",
-                        "water"
-                    ],
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "species_name": {
-                    "description": "Scientific (Latin) binomial name of the study organism",
-                    "examples": [
-                        "Danio rerio",
-                        "Mus musculus",
-                        "Daphnia magna"
-                    ],
-                    "type": "string"
-                },
-                "species_ncbi_taxon_id": {
-                    "description": "NCBI Taxonomy ID for the study organism",
-                    "examples": [
-                        "7955",
-                        "10090"
-                    ],
-                    "pattern": "^\\d+$",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "strain": {
-                    "description": "Organism strain or line",
-                    "type": [
-                        "string",
                         "null"
                     ]
                 },
@@ -758,50 +506,53 @@
                         "null"
                     ]
                 },
-                "treatment_description": {
-                    "description": "Full description of the treatment protocol.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "treatment_name": {
-                    "description": "Short label identifying the experimental treatment group, condition, or regimen.",
-                    "examples": [
-                        "diazepam 1 mg/kg",
-                        "atrazine 10 ug/L",
-                        "vehicle control"
-                    ],
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "weight_unit": {
-                    "$ref": "#/$defs/WeightUnitEnum",
-                    "description": "Body weight unit of the tracked organism(s)."
-                },
-                "weight_value": {
-                    "description": "Body weight numeric value of the tracked organism(s).",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "well_shape_bottom": {
-                    "$ref": "#/$defs/WellBottomShapeEnum",
-                    "description": "Geometric bottom shape of the wells of a multiwell plate."
-                },
                 "well_shape_cross_section": {
                     "$ref": "#/$defs/WellCrossSectionShapeEnum",
                     "description": "Geometric cross section shape of the wells of a multiwell plate."
                 }
             },
             "required": [
-                "species_name",
                 "n_individuals_total",
                 "n_individuals_per_arena",
                 "assay_type"
+            ],
+            "title": "Experiment",
+            "type": "object"
+        },
+        "ExperimentalConditions": {
+            "additionalProperties": false,
+            "description": "Biological and experimental conditions applicable to all trials in the dataset. Covers organism identity, treatment, assay design, and environmental parameters.",
+            "properties": {
+                "experiment": {
+                    "$ref": "#/$defs/Experiment",
+                    "description": "Assay design, arena configuration, and environmental parameters."
+                },
+                "experiment_notes": {
+                    "description": "Free-text notes on experimental conditions not captured by structured fields.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "manipulation": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Manipulation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Treatment and chemical exposure applied to the subjects. Omit this sub-class entirely for naive or vehicle-only datasets."
+                },
+                "subject": {
+                    "$ref": "#/$defs/Subject",
+                    "description": "Organism identity and biological attributes of the tracked subjects."
+                }
+            },
+            "required": [
+                "subject",
+                "experiment"
             ],
             "title": "ExperimentalConditions",
             "type": "object"
@@ -841,7 +592,7 @@
                 "um",
                 "mm",
                 "cm",
-                "m"
+                "meter"
             ],
             "title": "LengthUnitEnum",
             "type": "string"
@@ -856,6 +607,139 @@
             ],
             "title": "LightCycleTypeEnum",
             "type": "string"
+        },
+        "Manipulation": {
+            "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "exposure_concentration": {}
+                        },
+                        "required": [
+                            "exposure_concentration"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "exposure_concentration_unit": {}
+                        },
+                        "required": [
+                            "exposure_concentration_unit"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "exposure_compound_chebi_id": {}
+                        },
+                        "required": [
+                            "exposure_compound_chebi_id"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "exposure_compound_name": {}
+                        },
+                        "required": [
+                            "exposure_compound_name"
+                        ]
+                    }
+                }
+            ],
+            "description": "Treatment and chemical exposure information decribing pharmacological, toxicological and/or any other interventions that subjects went through. This sub-class can be omitted where no interventions were used.",
+            "properties": {
+                "control_type": {
+                    "$ref": "#/$defs/ControlTypeEnum",
+                    "description": "Type of control group used."
+                },
+                "exposure_compound_chebi_id": {
+                    "description": "ChEBI identifier for the test substance.",
+                    "pattern": "^CHEBI:\\d+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "exposure_compound_name": {
+                    "description": "Name of the chemical, drug, or substance used in the treatment or exposure.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "exposure_concentration": {
+                    "description": "Nominal exposure concentration (numeric value only; use unit field).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "exposure_concentration_unit": {
+                    "$ref": "#/$defs/ConcentrationUnitEnum",
+                    "description": "Unit for exposure concentration."
+                },
+                "exposure_duration_h": {
+                    "description": "Duration of chemical or treatment exposure in hours.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "exposure_route": {
+                    "$ref": "#/$defs/ExposureRouteEnum",
+                    "description": "Route of chemical or treatment administration."
+                },
+                "habituation_duration_min": {
+                    "description": "Duration of habituation period before recording, in minutes",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "habituation_protocol": {
+                    "description": "Description of habituation or acclimation prior to testing.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "housing_conditions": {
+                    "description": "Free-text description of animal housing conditions prior to assay.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "solvent_vehicle": {
+                    "description": "Solvent or vehicle used to dissolve the test substance.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "treatment_description": {
+                    "description": "Full description of the treatment protocol.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "treatment_name": {
+                    "description": "Short label identifying the experimental treatment group, condition, or regimen.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "well_shape_bottom": {
+                    "$ref": "#/$defs/WellBottomShapeEnum",
+                    "description": "Geometric bottom shape of the wells of a multiwell plate."
+                }
+            },
+            "title": "Manipulation",
+            "type": "object"
         },
         "MicroscopeTypeEnum": {
             "description": "OME microscope type values.",
@@ -907,11 +791,6 @@
             "properties": {
                 "confidence_interval_level": {
                     "description": "Confidence interval reported for statistical results.",
-                    "examples": [
-                        [
-                            "95% CI"
-                        ]
-                    ],
                     "items": {
                         "type": "string"
                     },
@@ -922,17 +801,6 @@
                 },
                 "effect_size_measure": {
                     "description": "Effect size measure reported to quantify the magnitude of observed effects or associations.",
-                    "examples": [
-                        [
-                            "Cohen's d",
-                            "Hedges' g",
-                            "eta-squared",
-                            "partial eta-squared",
-                            "odds ratio",
-                            "Pearson's r",
-                            "Spearman's rho"
-                        ]
-                    ],
                     "items": {
                         "type": "string"
                     },
@@ -943,10 +811,6 @@
                 },
                 "multiple_testing_correction": {
                     "description": "Procedure used to correct for multiple comparisons (if more than one hypothesis was tested).  Include the name of the method and any parameters (e.g., false\u2011discovery\u2011rate level).",
-                    "examples": [
-                        "Benjamini\u2011Hochberg FDR (q = 0.05)",
-                        "Bonferroni (\u03b1 / n = 0.001)"
-                    ],
                     "type": [
                         "string",
                         "null"
@@ -954,12 +818,6 @@
                 },
                 "sample_size_analysis": {
                     "description": "Sample size or power analysis method, software, or justification used before the study.",
-                    "examples": [
-                        [
-                            "power analysis in G*Power",
-                            "calculated using alpha=0.05 and power=0.8"
-                        ]
-                    ],
                     "items": {
                         "type": "string"
                     },
@@ -970,10 +828,6 @@
                 },
                 "significance_level": {
                     "description": "Significance threshold used for hypothesis testing (e.g., alpha).",
-                    "examples": [
-                        0.05,
-                        0.01
-                    ],
                     "maximum": 1,
                     "minimum": 0,
                     "type": [
@@ -983,15 +837,6 @@
                 },
                 "statistical_models": {
                     "description": "Statistical models used to analyse behavioral endpoints.",
-                    "examples": [
-                        [
-                            "linear mixed-effects model",
-                            "generalized linear model",
-                            "generalized additive model",
-                            "Cox proportional hazards model",
-                            "logistic regression"
-                        ]
-                    ],
                     "items": {
                         "type": "string"
                     },
@@ -1002,13 +847,6 @@
                 },
                 "statistical_software_name": {
                     "description": "Name of the software used for statistical analysis.",
-                    "examples": [
-                        "R",
-                        "GraphPad Prism",
-                        "SPSS",
-                        "SAS",
-                        "Stata"
-                    ],
                     "type": [
                         "string",
                         "null"
@@ -1023,18 +861,6 @@
                 },
                 "statistical_tests": {
                     "description": "Statistical tests applied to behavioral endpoints for hypothesis testing or inference.",
-                    "examples": [
-                        [
-                            "Student's t-test",
-                            "Mann-Whitney U test",
-                            "one-way ANOVA",
-                            "two-way ANOVA",
-                            "repeated-measures ANOVA",
-                            "Kruskal-Wallis test",
-                            "Wilcoxon signed-rank test",
-                            "Chi-square test"
-                        ]
-                    ],
                     "items": {
                         "type": "string"
                     },
@@ -1054,20 +880,176 @@
             "title": "StatisticalAnalysis",
             "type": "object"
         },
+        "Subject": {
+            "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "body_length_value": {}
+                        },
+                        "required": [
+                            "body_length_value"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "body_length_unit": {}
+                        },
+                        "required": [
+                            "body_length_unit"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "weight_value": {}
+                        },
+                        "required": [
+                            "weight_value"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "weight_unit": {}
+                        },
+                        "required": [
+                            "weight_unit"
+                        ]
+                    }
+                }
+            ],
+            "anyOf": [
+                {
+                    "properties": {
+                        "developmental_stage": {}
+                    },
+                    "required": [
+                        "developmental_stage"
+                    ]
+                },
+                {
+                    "properties": {
+                        "developmental_stage_unit": {},
+                        "developmental_stage_value": {}
+                    },
+                    "required": [
+                        "developmental_stage_value",
+                        "developmental_stage_unit"
+                    ]
+                },
+                {
+                    "properties": {
+                        "age_unit": {},
+                        "age_value": {}
+                    },
+                    "required": [
+                        "age_value",
+                        "age_unit"
+                    ]
+                }
+            ],
+            "description": "Biological identity of the organism(s) that is studied.  Contains details like taxonomy, strain, genotype, sex, age  and/or other morphometric details and measurements.",
+            "properties": {
+                "age_unit": {
+                    "$ref": "#/$defs/DevelopmentUnitEnum",
+                    "description": "Age unit of the tracked organism(s)."
+                },
+                "age_value": {
+                    "description": "Numeric age value of the tracked organism(s).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "body_length_unit": {
+                    "$ref": "#/$defs/LengthUnitEnum",
+                    "description": "Body length unit of the tracked organism(s)."
+                },
+                "body_length_value": {
+                    "description": "Body length numeric value of the tracked organism(s).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "developmental_stage": {
+                    "$ref": "#/$defs/DevelopmentalStageEnum",
+                    "description": "Developmental stage of the tracked organism(s)."
+                },
+                "developmental_stage_unit": {
+                    "$ref": "#/$defs/DevelopmentUnitEnum",
+                    "description": "Unit for developmental stage value of the tracked organism(s)."
+                },
+                "developmental_stage_value": {
+                    "description": "Numeric developmental stage value (e.g. 72 for 72 hpf) of the tracked organism(s).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "genotype": {
+                    "description": "Genotype identifier of the tracked organism(s)including  strain-specific, mutant, transgenic, or engineered genotypes.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "housing_conditions": {
+                    "description": "Free-text description of animal housing conditions prior to assay.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sex": {
+                    "$ref": "#/$defs/SexEnum",
+                    "description": "Biological sex of the tracked organism(s)."
+                },
+                "species_name": {
+                    "description": "Scientific (Latin) binomial name of the study organism",
+                    "type": "string"
+                },
+                "species_ncbi_taxon_id": {
+                    "description": "NCBI Taxonomy ID for the study organism",
+                    "pattern": "^\\d+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "strain": {
+                    "description": "Organism strain or line",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "weight_unit": {
+                    "$ref": "#/$defs/WeightUnitEnum",
+                    "description": "Body weight unit of the tracked organism(s)."
+                },
+                "weight_value": {
+                    "description": "Body weight numeric value of the tracked organism(s).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "species_name"
+            ],
+            "title": "Subject",
+            "type": "object"
+        },
         "TrackingAnalysis": {
             "additionalProperties": false,
             "description": "Tracking software identity and version, algorithm details, post-tracking computational steps and derived behavioral metrics.",
             "properties": {
                 "behavioral_metrics": {
                     "description": "List of behavioral metrics or endpoints extracted from tracking data.",
-                    "examples": [
-                        [
-                            "total distance moved",
-                            "average velocity",
-                            "time in center zone",
-                            "freezing duration"
-                        ]
-                    ],
                     "items": {
                         "type": "string"
                     },
@@ -1078,14 +1060,6 @@
                 },
                 "compute_hardware": {
                     "description": "Primary compute hardware used for tracking and analysis. Include model information when available.",
-                    "examples": [
-                        [
-                            "GPU (NVIDIA RTX 3090)",
-                            "GPU (NVIDIA A100 80GB)",
-                            "CPU (Intel Xeon Gold 6248)",
-                            "CPU (AMD Ryzen 9 7950X)"
-                        ]
-                    ],
                     "items": {
                         "type": "string"
                     },
@@ -1096,10 +1070,6 @@
                 },
                 "dropped_frames_count": {
                     "description": "Number of video frames lost or omitted during acquisition.",
-                    "examples": [
-                        0,
-                        12
-                    ],
                     "type": [
                         "integer",
                         "null"
@@ -1107,13 +1077,6 @@
                 },
                 "dropped_frames_reason": {
                     "description": "Reason for dropped or omitted frames during acquisition, recording, encoding, or quality control.",
-                    "examples": [
-                        "Camera buffer overflow",
-                        "Temporary USB bandwidth limitation",
-                        "Corrupted frames removed during quality control",
-                        "Frames dropped due to encoder performance limitations",
-                        "Network transmission interruption"
-                    ],
                     "type": [
                         "string",
                         "null"
@@ -1121,12 +1084,6 @@
                 },
                 "endpoint_definitions": {
                     "description": "Definitions and calculation criteria used for behavioral endpoints, including thresholds, zone boundaries, event definitions, and other parameters required to reproduce endpoint calculations.",
-                    "examples": [
-                        [
-                            "Freezing defined as speed < 1 mm/s for \u2265 1 s",
-                            "Center zone defined as central 50% of arena area"
-                        ]
-                    ],
                     "items": {
                         "type": "string"
                     },
@@ -1179,13 +1136,6 @@
                 },
                 "tracking_algorithm": {
                     "description": "Algorithmic approach used to detect, identify, and track organisms in video recordings. Multiple values may be provided when tracking is performed using a pipeline of methods.",
-                    "examples": [
-                        [
-                            "background subtraction",
-                            "centroid tracking",
-                            "YOLO object detection"
-                        ]
-                    ],
                     "items": {
                         "type": "string"
                     },
@@ -1196,10 +1146,6 @@
                 },
                 "tracking_confidence_threshold": {
                     "description": "Confidence or likelihood threshold used to accept detections, identities, tracks, or keypoints during tracking analysis.",
-                    "examples": [
-                        0.9,
-                        0.3
-                    ],
                     "type": [
                         "number",
                         "null"
@@ -1207,17 +1153,6 @@
                 },
                 "tracking_data_format": {
                     "description": "File format used to store tracking results, including coordinates, keypoints, identities, trajectories, annotations, or derived outputs.",
-                    "examples": [
-                        [
-                            "CSV",
-                            "HDF5",
-                            "JSON",
-                            "NWB",
-                            "DeepLabCut .h5",
-                            "SLEAP .slp",
-                            "ZebraBox PHR"
-                        ]
-                    ],
                     "items": {
                         "type": "string"
                     },
@@ -1228,10 +1163,6 @@
                 },
                 "tracking_manual_correction": {
                     "description": "Whether tracking results were manually reviewed, corrected, or curated after automated tracking.",
-                    "examples": [
-                        true,
-                        false
-                    ],
                     "type": [
                         "boolean",
                         "null"
@@ -1253,11 +1184,6 @@
                 },
                 "tracking_software_settings": {
                     "description": "Key tracking configuration parameters used during analysis, including software-specific settings required to reproduce tracking results.",
-                    "examples": [
-                        "Detection threshold=25; minimum blob size=50 px",
-                        "DeepLabCut likelihood threshold=0.9",
-                        "Interpolation enabled; gap length=5 frames"
-                    ],
                     "type": [
                         "string",
                         "null"
@@ -1587,10 +1513,6 @@
                 },
                 "camera_model": {
                     "description": "Full manufacturer model name of the camera.",
-                    "examples": [
-                        "Basler acA1300-60gc",
-                        "Logitech C920"
-                    ],
                     "type": "string"
                 },
                 "camera_position": {
@@ -1682,10 +1604,6 @@
                 },
                 "objective_magnification": {
                     "description": "Magnification of microscope objective (if applicable).",
-                    "examples": [
-                        4.0,
-                        10.0
-                    ],
                     "type": [
                         "number",
                         "null"
@@ -1718,7 +1636,7 @@
             "enum": [
                 "ug",
                 "mg",
-                "g",
+                "gram",
                 "kg"
             ],
             "title": "WeightUnitEnum",

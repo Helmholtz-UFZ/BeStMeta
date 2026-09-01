@@ -14,7 +14,7 @@ _Unit of measurement for field_of_view_width and field_of_view_height._
 
 
 
-URI: [bstm:field_of_view_unit](bstm:field_of_view_unit)
+URI: [BeStMeta:field_of_view_unit](https://w3id.org/BeStMeta/field_of_view_unit)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:field_of_view_unit](bstm:field_of_view_unit)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:field_of_view_unit |
-| native | bstm:field_of_view_unit |
+| self | BeStMeta:field_of_view_unit |
+| native | BeStMeta:field_of_view_unit |
 
 
 

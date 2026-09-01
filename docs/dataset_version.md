@@ -14,7 +14,7 @@ _Semantic version string for the dataset (e.g. 1.0.0)_
 
 
 
-URI: [bstm:dataset_version](bstm:dataset_version)
+URI: [BeStMeta:dataset_version](https://w3id.org/BeStMeta/dataset_version)
 <!-- no inheritance hierarchy -->
 
 
@@ -80,8 +80,8 @@ URI: [bstm:dataset_version](bstm:dataset_version)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:dataset_version |
-| native | bstm:dataset_version |
+| self | BeStMeta:dataset_version |
+| native | BeStMeta:dataset_version |
 | exact | pav:version, schema:version |
 
 

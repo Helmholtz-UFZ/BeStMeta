@@ -14,7 +14,7 @@ _Numeric age value of the tracked organism(s)._
 
 
 
-URI: [bstm:age_value](bstm:age_value)
+URI: [BeStMeta:age_value](https://w3id.org/BeStMeta/age_value)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:age_value](bstm:age_value)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Subject](Subject.md) | Biological identity of the organism(s) that is studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:age_value](bstm:age_value)
 | Property | Value |
 | --- | --- |
 | Range | [Float](Float.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Subject](Subject.md) |
 
 ### Cardinality and Requirements
 
@@ -73,8 +73,8 @@ URI: [bstm:age_value](bstm:age_value)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:age_value |
-| native | bstm:age_value |
+| self | BeStMeta:age_value |
+| native | BeStMeta:age_value |
 | exact | EFO:0000246 |
 
 
@@ -91,7 +91,7 @@ exact_mappings:
 - EFO:0000246
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Subject
 range: float
 
 ```

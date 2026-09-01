@@ -14,7 +14,7 @@ _Version string of the recording software._
 
 
 
-URI: [bstm:recording_software_version](bstm:recording_software_version)
+URI: [BeStMeta:recording_software_version](https://w3id.org/BeStMeta/recording_software_version)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:recording_software_version](bstm:recording_software_version)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:recording_software_version |
-| native | bstm:recording_software_version |
+| self | BeStMeta:recording_software_version |
+| native | BeStMeta:recording_software_version |
 | exact | AFR:0001700 |
 
 

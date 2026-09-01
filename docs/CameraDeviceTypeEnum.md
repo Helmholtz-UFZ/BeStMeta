@@ -15,7 +15,7 @@ _General types of imaging devices used in VTA setups._
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:CameraDeviceTypeEnum](bstm:CameraDeviceTypeEnum)
+URI: [BeStMeta:CameraDeviceTypeEnum](https://w3id.org/BeStMeta/CameraDeviceTypeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

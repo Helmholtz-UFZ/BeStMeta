@@ -14,7 +14,7 @@ _Number of frames captured per second (fps) during video recording._
 
 
 
-URI: [bstm:frame_rate](bstm:frame_rate)
+URI: [BeStMeta:frame_rate](https://w3id.org/BeStMeta/frame_rate)
 <!-- no inheritance hierarchy -->
 
 
@@ -84,8 +84,8 @@ URI: [bstm:frame_rate](bstm:frame_rate)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:frame_rate |
-| native | bstm:frame_rate |
+| self | BeStMeta:frame_rate |
+| native | BeStMeta:frame_rate |
 | exact | ebucore:frameRate |
 | close | ma:frameRate |
 

@@ -14,7 +14,7 @@ _Method or algorithm used to reduce image noise during acquisition or immediatel
 
 
 
-URI: [bstm:noise_reduction_method](bstm:noise_reduction_method)
+URI: [BeStMeta:noise_reduction_method](https://w3id.org/BeStMeta/noise_reduction_method)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:noise_reduction_method](bstm:noise_reduction_method)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:noise_reduction_method |
-| native | bstm:noise_reduction_method |
+| self | BeStMeta:noise_reduction_method |
+| native | BeStMeta:noise_reduction_method |
 
 
 

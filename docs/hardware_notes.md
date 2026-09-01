@@ -14,7 +14,7 @@ _Free-text notes on hardware configuration not captured by structured fields._
 
 
 
-URI: [bstm:hardware_notes](bstm:hardware_notes)
+URI: [BeStMeta:hardware_notes](https://w3id.org/BeStMeta/hardware_notes)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:hardware_notes](bstm:hardware_notes)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:hardware_notes |
-| native | bstm:hardware_notes |
+| self | BeStMeta:hardware_notes |
+| native | BeStMeta:hardware_notes |
 
 
 

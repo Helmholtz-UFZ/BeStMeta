@@ -14,7 +14,7 @@ _General type of imaging device._
 
 
 
-URI: [bstm:camera_device_type](bstm:camera_device_type)
+URI: [BeStMeta:camera_device_type](https://w3id.org/BeStMeta/camera_device_type)
 <!-- no inheritance hierarchy -->
 
 
@@ -74,8 +74,8 @@ URI: [bstm:camera_device_type](bstm:camera_device_type)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:camera_device_type |
-| native | bstm:camera_device_type |
+| self | BeStMeta:camera_device_type |
+| native | BeStMeta:camera_device_type |
 | broad | OBI:0000398 |
 
 

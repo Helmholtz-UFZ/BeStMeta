@@ -14,7 +14,7 @@ _Sample size or power analysis method, software, or justification used before th
 
 
 
-URI: [bstm:sample_size_analysis](bstm:sample_size_analysis)
+URI: [BeStMeta:sample_size_analysis](https://w3id.org/BeStMeta/sample_size_analysis)
 <!-- no inheritance hierarchy -->
 
 
@@ -83,8 +83,8 @@ URI: [bstm:sample_size_analysis](bstm:sample_size_analysis)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:sample_size_analysis |
-| native | bstm:sample_size_analysis |
+| self | BeStMeta:sample_size_analysis |
+| native | BeStMeta:sample_size_analysis |
 | exact | NCIT:C115467 |
 
 

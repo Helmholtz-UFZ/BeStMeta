@@ -14,7 +14,7 @@ _Key tracking configuration parameters used during analysis, including software-
 
 
 
-URI: [bstm:tracking_software_settings](bstm:tracking_software_settings)
+URI: [BeStMeta:tracking_software_settings](https://w3id.org/BeStMeta/tracking_software_settings)
 <!-- no inheritance hierarchy -->
 
 
@@ -83,8 +83,8 @@ URI: [bstm:tracking_software_settings](bstm:tracking_software_settings)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:tracking_software_settings |
-| native | bstm:tracking_software_settings |
+| self | BeStMeta:tracking_software_settings |
+| native | BeStMeta:tracking_software_settings |
 
 
 

@@ -14,7 +14,7 @@ _Name of the behavioral assay paradigm or test paradigm._
 
 
 
-URI: [bstm:assay_type](bstm:assay_type)
+URI: [BeStMeta:assay_type](https://w3id.org/BeStMeta/assay_type)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:assay_type](bstm:assay_type)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:assay_type](bstm:assay_type)
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
@@ -85,8 +85,8 @@ URI: [bstm:assay_type](bstm:assay_type)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:assay_type |
-| native | bstm:assay_type |
+| self | BeStMeta:assay_type |
+| native | BeStMeta:assay_type |
 | broad | OBI:0000070 |
 
 
@@ -109,7 +109,7 @@ broad_mappings:
 - OBI:0000070
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Experiment
 range: string
 required: true
 

@@ -14,7 +14,7 @@ _Reason for dropped or omitted frames during acquisition, recording, encoding, o
 
 
 
-URI: [bstm:dropped_frames_reason](bstm:dropped_frames_reason)
+URI: [BeStMeta:dropped_frames_reason](https://w3id.org/BeStMeta/dropped_frames_reason)
 <!-- no inheritance hierarchy -->
 
 
@@ -84,8 +84,8 @@ URI: [bstm:dropped_frames_reason](bstm:dropped_frames_reason)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:dropped_frames_reason |
-| native | bstm:dropped_frames_reason |
+| self | BeStMeta:dropped_frames_reason |
+| native | BeStMeta:dropped_frames_reason |
 
 
 

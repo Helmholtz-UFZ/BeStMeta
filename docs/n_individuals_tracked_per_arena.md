@@ -14,7 +14,7 @@ _Number of individuals actually tracked in a single arena or trial._
 
 
 
-URI: [bstm:n_individuals_tracked_per_arena](bstm:n_individuals_tracked_per_arena)
+URI: [BeStMeta:n_individuals_tracked_per_arena](https://w3id.org/BeStMeta/n_individuals_tracked_per_arena)
 <!-- no inheritance hierarchy -->
 
 
@@ -79,8 +79,8 @@ URI: [bstm:n_individuals_tracked_per_arena](bstm:n_individuals_tracked_per_arena
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:n_individuals_tracked_per_arena |
-| native | bstm:n_individuals_tracked_per_arena |
+| self | BeStMeta:n_individuals_tracked_per_arena |
+| native | BeStMeta:n_individuals_tracked_per_arena |
 | exact | BeStMeta:n_individuals_per_arena |
 
 

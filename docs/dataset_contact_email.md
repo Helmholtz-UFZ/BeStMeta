@@ -14,7 +14,7 @@ _Contact email for the dataset maintainer._
 
 
 
-URI: [bstm:dataset_contact_email](bstm:dataset_contact_email)
+URI: [BeStMeta:dataset_contact_email](https://w3id.org/BeStMeta/dataset_contact_email)
 <!-- no inheritance hierarchy -->
 
 
@@ -81,8 +81,8 @@ URI: [bstm:dataset_contact_email](bstm:dataset_contact_email)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:dataset_contact_email |
-| native | bstm:dataset_contact_email |
+| self | BeStMeta:dataset_contact_email |
+| native | BeStMeta:dataset_contact_email |
 | exact | schema:email |
 
 

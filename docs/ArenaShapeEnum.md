@@ -15,7 +15,7 @@ _Geometric shape of the test arena._
 
 <div data-search-exclude markdown="1">
 
-URI: [bstm:ArenaShapeEnum](bstm:ArenaShapeEnum)
+URI: [BeStMeta:ArenaShapeEnum](https://w3id.org/BeStMeta/ArenaShapeEnum)
 
 ## Permissible Values
 | Value | Meaning | Description |

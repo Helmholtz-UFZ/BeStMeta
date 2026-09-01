@@ -14,7 +14,7 @@ _Significance threshold used for hypothesis testing (e.g., alpha)._
 
 
 
-URI: [bstm:significance_level](bstm:significance_level)
+URI: [BeStMeta:significance_level](https://w3id.org/BeStMeta/significance_level)
 <!-- no inheritance hierarchy -->
 
 
@@ -90,8 +90,8 @@ URI: [bstm:significance_level](bstm:significance_level)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:significance_level |
-| native | bstm:significance_level |
+| self | BeStMeta:significance_level |
+| native | BeStMeta:significance_level |
 | exact | NCIT:C41265 |
 
 

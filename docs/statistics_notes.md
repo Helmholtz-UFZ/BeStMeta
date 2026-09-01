@@ -14,7 +14,7 @@ _Free-text notes on the statistical analysis not captured by structured fields._
 
 
 
-URI: [bstm:statistics_notes](bstm:statistics_notes)
+URI: [BeStMeta:statistics_notes](https://w3id.org/BeStMeta/statistics_notes)
 <!-- no inheritance hierarchy -->
 
 
@@ -73,8 +73,8 @@ URI: [bstm:statistics_notes](bstm:statistics_notes)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:statistics_notes |
-| native | bstm:statistics_notes |
+| self | BeStMeta:statistics_notes |
+| native | BeStMeta:statistics_notes |
 
 
 

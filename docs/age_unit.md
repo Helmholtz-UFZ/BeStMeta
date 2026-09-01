@@ -14,7 +14,7 @@ _Age unit of the tracked organism(s)._
 
 
 
-URI: [bstm:age_unit](bstm:age_unit)
+URI: [BeStMeta:age_unit](https://w3id.org/BeStMeta/age_unit)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [bstm:age_unit](bstm:age_unit)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Subject](Subject.md) | Biological identity of the organism(s) that is studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [bstm:age_unit](bstm:age_unit)
 | Property | Value |
 | --- | --- |
 | Range | [DevelopmentUnitEnum](DevelopmentUnitEnum.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Subject](Subject.md) |
 
 ### Cardinality and Requirements
 
@@ -73,8 +73,8 @@ URI: [bstm:age_unit](bstm:age_unit)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | bstm:age_unit |
-| native | bstm:age_unit |
+| self | BeStMeta:age_unit |
+| native | BeStMeta:age_unit |
 
 
 
@@ -88,7 +88,7 @@ description: Age unit of the tracked organism(s).
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Subject
 range: DevelopmentUnitEnum
 
 ```
