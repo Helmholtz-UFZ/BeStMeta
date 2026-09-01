@@ -156,7 +156,7 @@ URI: [bstm:AcquisitionParameters](bstm:AcquisitionParameters)
 
 | Rule Applied | Preconditions | Postconditions | Elseconditions |
 |--------------|---------------|----------------|----------------|
-| slot_conditions |```{'video_codec': {'any_of': [{'equals_string': 'FFV1'}, {'equals_string': 'RAW'}]}}``` |```{'bit_depth': {'recommended': True}}``` | |
+| slot_conditions |```{'video_codec': {'any_of': [{'equals_string': 'ffv1'}, {'equals_string': 'raw'}]}}``` |```{'bit_depth': {'recommended': True}}``` | |
 
 
 
@@ -234,8 +234,8 @@ rules:
       video_codec:
         name: video_codec
         any_of:
-        - equals_string: FFV1
-        - equals_string: RAW
+        - equals_string: ffv1
+        - equals_string: raw
   postconditions:
     slot_conditions:
       bit_depth:
@@ -565,8 +565,8 @@ rules:
       video_codec:
         name: video_codec
         any_of:
-        - equals_string: FFV1
-        - equals_string: RAW
+        - equals_string: ffv1
+        - equals_string: raw
   postconditions:
     slot_conditions:
       bit_depth:

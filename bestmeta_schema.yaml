@@ -323,8 +323,8 @@ classes:
           slot_conditions:
             video_codec:
               any_of:
-                - equals_string: FFV1
-                - equals_string: RAW
+                - equals_string: ffv1
+                - equals_string: raw
         postconditions:
           slot_conditions:
             bit_depth:
