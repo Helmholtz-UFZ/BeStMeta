@@ -8,10 +8,10 @@
                     "video_codec": {
                         "anyOf": [
                             {
-                                "const": "FFV1"
+                                "const": "ffv1"
                             },
                             {
-                                "const": "RAW"
+                                "const": "raw"
                             }
                         ]
                     }

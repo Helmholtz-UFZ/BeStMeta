@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1766 1646" width="1766" height="1646" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
-<rect x="0" y="0" width="1766" height="1646" fill="#f7f8fa"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1766 1702" width="1766" height="1702" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+<rect x="0" y="0" width="1766" height="1702" fill="#f7f8fa"/>
 <text x="883.0" y="30" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2a44">BeStMeta Metadata Schema – Slot Requirement Levels</text>
 <g font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5">
 <circle cx="40" cy="52" r="5" fill="#c0392b"/>
@@ -11,7 +11,15 @@
 <circle cx="543.6" cy="52" r="5" fill="#5b6472"/>
 <text x="554.6" y="56" fill="#2a2f3a">optional</text>
 </g>
-<text x="40" y="72" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#1f2a44">Total across all classes:   required 18   ·   recommended 78   ·   optional 49   ·   sum 145</text>
+<text x="40" y="72" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#1f2a44">Total across all classes:   required 20   ·   recommended 78   ·   optional 51   ·   sum 149</text>
+<path d="M 883.0 620 C 883.0 665.0, 195.0 665.0, 195.0 710" fill="none" stroke="#c7cdd6" stroke-width="1.4"/><circle cx="195.0" cy="710" r="3" fill="#1f2a44"/>
+<path d="M 195.0 834 C 195.0 1041.0, 539.0 1041.0, 539.0 1248" fill="none" stroke="#c7cdd6" stroke-width="1.4"/><circle cx="539.0" cy="1248" r="3" fill="#1f2a44"/>
+<path d="M 195.0 834 C 195.0 1041.0, 883.0 1041.0, 883.0 1248" fill="none" stroke="#c7cdd6" stroke-width="1.4"/><circle cx="883.0" cy="1248" r="3" fill="#1f2a44"/>
+<path d="M 195.0 834 C 195.0 1041.0, 1227.0 1041.0, 1227.0 1248" fill="none" stroke="#c7cdd6" stroke-width="1.4"/><circle cx="1227.0" cy="1248" r="3" fill="#1f2a44"/>
+<path d="M 883.0 620 C 883.0 665.0, 539.0 665.0, 539.0 710" fill="none" stroke="#c7cdd6" stroke-width="1.4"/><circle cx="539.0" cy="710" r="3" fill="#1f2a44"/>
+<path d="M 883.0 620 C 883.0 665.0, 883.0 665.0, 883.0 710" fill="none" stroke="#c7cdd6" stroke-width="1.4"/><circle cx="883.0" cy="710" r="3" fill="#1f2a44"/>
+<path d="M 883.0 620 C 883.0 665.0, 1227.0 665.0, 1227.0 710" fill="none" stroke="#c7cdd6" stroke-width="1.4"/><circle cx="1227.0" cy="710" r="3" fill="#1f2a44"/>
+<path d="M 883.0 620 C 883.0 665.0, 1571.0 665.0, 1571.0 710" fill="none" stroke="#c7cdd6" stroke-width="1.4"/><circle cx="1571.0" cy="710" r="3" fill="#1f2a44"/>
 <g>
 <rect x="713.0" y="118" width="340" height="502" rx="8" ry="8" fill="#ffffff" stroke="#c7cdd6" stroke-width="1.2"/>
 <path d="M 713.0 126 Q 713.0 118 721.0 118 L 1045.0 118 Q 1053.0 118 1053.0 126 L 1053.0 152 L 713.0 152 Z" fill="#1f2a44"/>
@@ -105,463 +113,484 @@
 <text x="1043.0" y="605.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">StatisticalAnalysis</text>
 </g>
 <text x="883.0" y="633" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10" fill="#7a8390">req 3  ·  rec 10  ·  opt 12</text>
-<path d="M 883.0 620 C 883.0 655.0, 195.0 655.0, 195.0 690" fill="none" stroke="#c7cdd6" stroke-width="1.4"/>
-<circle cx="195.0" cy="690" r="3" fill="#1f2a44"/>
 <g>
-<rect x="40" y="690" width="310" height="916" rx="8" ry="8" fill="#ffffff" stroke="#c7cdd6" stroke-width="1.2"/>
-<path d="M 40 698 Q 40 690 48 690 L 342 690 Q 350 690 350 698 L 350 724 L 40 724 Z" fill="#1f2a44"/>
-<text x="195.0" y="712.0" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">ExperimentalConditions</text>
-<circle cx="54" cy="741.0" r="3.4" fill="#c0392b"/>
-<text x="64" y="745.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">species_name</text>
-<text x="340" y="745.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="41" y="750" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="759.0" r="3.4" fill="#c0392b"/>
-<text x="64" y="763.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">n_individuals_total</text>
-<text x="340" y="763.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
-<circle cx="54" cy="777.0" r="3.4" fill="#c0392b"/>
-<text x="64" y="781.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">n_individuals_per_arena</text>
-<text x="340" y="781.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
-<rect x="41" y="786" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="795.0" r="3.4" fill="#c0392b"/>
-<text x="64" y="799.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">assay_type</text>
-<text x="340" y="799.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="54" cy="813.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="817.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">experiment_start_datetime</text>
-<text x="340" y="817.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">datetime</text>
-<rect x="41" y="822" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="831.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="835.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">experiment_end_datetime</text>
-<text x="340" y="835.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">datetime</text>
-<circle cx="54" cy="849.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="853.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">species_ncbi_taxon_id</text>
-<text x="340" y="853.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="41" y="858" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="867.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="871.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">strain</text>
-<text x="340" y="871.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="54" cy="885.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="889.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">genotype</text>
-<text x="340" y="889.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="41" y="894" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="903.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="907.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">sex</text>
-<text x="340" y="907.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">SexEnum</text>
-<circle cx="54" cy="921.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="925.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">body_length_value</text>
-<text x="340" y="925.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<rect x="41" y="930" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="939.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="943.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">body_length_unit</text>
-<text x="340" y="943.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">LengthUnitEnum</text>
-<circle cx="54" cy="957.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="961.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">arena_shape</text>
-<text x="340" y="961.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">ArenaShapeEnum</text>
-<rect x="41" y="966" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="975.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="979.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">arena_type</text>
-<text x="340" y="979.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">ArenaTypeEnum</text>
-<circle cx="54" cy="993.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="997.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">arena_length</text>
-<text x="340" y="997.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<rect x="41" y="1002" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="1011.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="1015.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">arena_length_unit</text>
-<text x="340" y="1015.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">LengthUnitEnum</text>
-<circle cx="54" cy="1029.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="1033.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">arena_width</text>
-<text x="340" y="1033.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<rect x="41" y="1038" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="1047.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="1051.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">arena_width_unit</text>
-<text x="340" y="1051.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">LengthUnitEnum</text>
-<circle cx="54" cy="1065.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="1069.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">arena_height</text>
-<text x="340" y="1069.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<rect x="41" y="1074" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="1083.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="1087.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">arena_height_unit</text>
-<text x="340" y="1087.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">LengthUnitEnum</text>
-<circle cx="54" cy="1101.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="1105.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">plate_well_count</text>
-<text x="340" y="1105.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
-<rect x="41" y="1110" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="1119.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="1123.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">well_shape_cross_section</text>
-<text x="340" y="1123.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">WellCrossSectionShapeEnum</text>
-<circle cx="54" cy="1137.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="1141.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">temperature_celsius</text>
-<text x="340" y="1141.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<rect x="41" y="1146" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="1155.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="1159.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">light_cycle_type</text>
-<text x="340" y="1159.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">LightCycleTypeEnum</text>
-<circle cx="54" cy="1173.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="1177.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">light_cycle_detail</text>
-<text x="340" y="1177.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="41" y="1182" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="1191.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="1195.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">treatment_name</text>
-<text x="340" y="1195.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="54" cy="1209.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="1213.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">treatment_description</text>
-<text x="340" y="1213.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="41" y="1218" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="1227.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="1231.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">exposure_compound_name</text>
-<text x="340" y="1231.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="54" cy="1245.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="1249.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">exposure_compound_chebi_id</text>
-<text x="340" y="1249.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="41" y="1254" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="1263.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="1267.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">exposure_concentration</text>
-<text x="340" y="1267.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<circle cx="54" cy="1281.0" r="3.4" fill="#c8790a"/>
-<text x="64" y="1285.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">exposure_concentration_unit</text>
-<text x="340" y="1285.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">ConcentrationUnitEnum</text>
-<rect x="41" y="1290" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="1299.0" r="3.4" fill="#8e5bc0"/>
-<text x="64" y="1303.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#8e5bc0">developmental_stage</text>
-<text x="340" y="1303.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">DevelopmentalStageEnum</text>
-<circle cx="54" cy="1317.0" r="3.4" fill="#8e5bc0"/>
-<text x="64" y="1321.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#8e5bc0">developmental_stage_value</text>
-<text x="340" y="1321.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<rect x="41" y="1326" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="1335.0" r="3.4" fill="#8e5bc0"/>
-<text x="64" y="1339.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#8e5bc0">developmental_stage_unit</text>
-<text x="340" y="1339.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">DevelopmentUnitEnum</text>
-<circle cx="54" cy="1353.0" r="3.4" fill="#8e5bc0"/>
-<text x="64" y="1357.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#8e5bc0">age_value</text>
-<text x="340" y="1357.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<rect x="41" y="1362" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="1371.0" r="3.4" fill="#8e5bc0"/>
-<text x="64" y="1375.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#8e5bc0">age_unit</text>
-<text x="340" y="1375.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">DevelopmentUnitEnum</text>
-<circle cx="54" cy="1389.0" r="3.4" fill="#5b6472"/>
-<text x="64" y="1393.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">weight_value</text>
-<text x="340" y="1393.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<rect x="41" y="1398" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="1407.0" r="3.4" fill="#5b6472"/>
-<text x="64" y="1411.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">weight_unit</text>
-<text x="340" y="1411.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">WeightUnitEnum</text>
-<circle cx="54" cy="1425.0" r="3.4" fill="#5b6472"/>
-<text x="64" y="1429.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">assay_description</text>
-<text x="340" y="1429.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="41" y="1434" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="1443.0" r="3.4" fill="#5b6472"/>
-<text x="64" y="1447.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">well_shape_bottom</text>
-<text x="340" y="1447.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">WellBottomShapeEnum</text>
-<circle cx="54" cy="1461.0" r="3.4" fill="#5b6472"/>
-<text x="64" y="1465.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">habituation_duration_min</text>
-<text x="340" y="1465.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<rect x="41" y="1470" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="1479.0" r="3.4" fill="#5b6472"/>
-<text x="64" y="1483.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">habituation_protocol</text>
-<text x="340" y="1483.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="54" cy="1497.0" r="3.4" fill="#5b6472"/>
-<text x="64" y="1501.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">housing_conditions</text>
-<text x="340" y="1501.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="41" y="1506" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="1515.0" r="3.4" fill="#5b6472"/>
-<text x="64" y="1519.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">exposure_route</text>
-<text x="340" y="1519.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">ExposureRouteEnum</text>
-<circle cx="54" cy="1533.0" r="3.4" fill="#5b6472"/>
-<text x="64" y="1537.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">exposure_duration_h</text>
-<text x="340" y="1537.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<rect x="41" y="1542" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="1551.0" r="3.4" fill="#5b6472"/>
-<text x="64" y="1555.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">solvent_vehicle</text>
-<text x="340" y="1555.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="54" cy="1569.0" r="3.4" fill="#5b6472"/>
-<text x="64" y="1573.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">control_type</text>
-<text x="340" y="1573.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">ControlTypeEnum</text>
-<rect x="41" y="1578" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="54" cy="1587.0" r="3.4" fill="#5b6472"/>
-<text x="64" y="1591.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">experiment_notes</text>
-<text x="340" y="1591.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="40.0" y="710" width="310" height="124" rx="8" ry="8" fill="#ffffff" stroke="#c7cdd6" stroke-width="1.2"/>
+<path d="M 40.0 718 Q 40.0 710 48.0 710 L 342.0 710 Q 350.0 710 350.0 718 L 350.0 744 L 40.0 744 Z" fill="#1f2a44"/>
+<text x="195.0" y="732.0" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">ExperimentalConditions</text>
+<circle cx="54.0" cy="761.0" r="3.4" fill="#c0392b"/>
+<text x="64.0" y="765.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">subject</text>
+<text x="340.0" y="765.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">Subject</text>
+<rect x="41.0" y="770" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="54.0" cy="779.0" r="3.4" fill="#c0392b"/>
+<text x="64.0" y="783.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">experiment</text>
+<text x="340.0" y="783.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">Experiment</text>
+<circle cx="54.0" cy="797.0" r="3.4" fill="#5b6472"/>
+<text x="64.0" y="801.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">manipulation</text>
+<text x="340.0" y="801.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">Manipulation</text>
+<rect x="41.0" y="806" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="54.0" cy="815.0" r="3.4" fill="#5b6472"/>
+<text x="64.0" y="819.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">experiment_notes</text>
+<text x="340.0" y="819.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
 </g>
-<text x="195.0" y="1619" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10" fill="#7a8390">req 4  ·  rec 27  ·  opt 17</text>
-<path d="M 883.0 620 C 883.0 655.0, 539.0 655.0, 539.0 690" fill="none" stroke="#c7cdd6" stroke-width="1.4"/>
-<circle cx="539.0" cy="690" r="3" fill="#1f2a44"/>
+<text x="195.0" y="847" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10" fill="#7a8390">req 2  ·  rec 0  ·  opt 2</text>
 <g>
-<rect x="384" y="690" width="310" height="448" rx="8" ry="8" fill="#ffffff" stroke="#c7cdd6" stroke-width="1.2"/>
-<path d="M 384 698 Q 384 690 392 690 L 686 690 Q 694 690 694 698 L 694 724 L 384 724 Z" fill="#1f2a44"/>
-<text x="539.0" y="712.0" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">VideoHardware</text>
-<circle cx="398" cy="741.0" r="3.4" fill="#c0392b"/>
-<text x="408" y="745.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">camera_count</text>
-<text x="684" y="745.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
-<rect x="385" y="750" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="398" cy="759.0" r="3.4" fill="#c0392b"/>
-<text x="408" y="763.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">camera_device_type</text>
-<text x="684" y="763.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">CameraDeviceTypeEnum</text>
-<circle cx="398" cy="777.0" r="3.4" fill="#c0392b"/>
-<text x="408" y="781.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">camera_model</text>
-<text x="684" y="781.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="385" y="786" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="398" cy="795.0" r="3.4" fill="#c0392b"/>
-<text x="408" y="799.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">camera_manufacturer</text>
-<text x="684" y="799.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="398" cy="813.0" r="3.4" fill="#c8790a"/>
-<text x="408" y="817.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">camera_sensor_type</text>
-<text x="684" y="817.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">CameraSensorTypeEnum</text>
-<rect x="385" y="822" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="398" cy="831.0" r="3.4" fill="#c8790a"/>
-<text x="408" y="835.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">camera_distance_mm</text>
-<text x="684" y="835.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<circle cx="398" cy="849.0" r="3.4" fill="#c8790a"/>
-<text x="408" y="853.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">camera_position</text>
-<text x="684" y="853.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">CameraPositionEnum</text>
-<rect x="385" y="858" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="398" cy="867.0" r="3.4" fill="#c8790a"/>
-<text x="408" y="871.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">lens_focal_length_mm</text>
-<text x="684" y="871.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<circle cx="398" cy="885.0" r="3.4" fill="#c8790a"/>
-<text x="408" y="889.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">objective_magnification</text>
-<text x="684" y="889.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<rect x="385" y="894" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="398" cy="903.0" r="3.4" fill="#c8790a"/>
-<text x="408" y="907.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">contrast_polarity</text>
-<text x="684" y="907.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">ContrastPolarityEnum</text>
-<circle cx="398" cy="921.0" r="3.4" fill="#8e5bc0"/>
-<text x="408" y="925.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#8e5bc0">field_of_view_width</text>
-<text x="684" y="925.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<rect x="385" y="930" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="398" cy="939.0" r="3.4" fill="#8e5bc0"/>
-<text x="408" y="943.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#8e5bc0">field_of_view_height</text>
-<text x="684" y="943.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<circle cx="398" cy="957.0" r="3.4" fill="#8e5bc0"/>
-<text x="408" y="961.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#8e5bc0">field_of_view_unit</text>
-<text x="684" y="961.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">LengthUnitEnum</text>
-<rect x="385" y="966" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="398" cy="975.0" r="3.4" fill="#5b6472"/>
-<text x="408" y="979.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">camera_interface</text>
-<text x="684" y="979.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">CameraInterfaceEnum</text>
-<circle cx="398" cy="993.0" r="3.4" fill="#5b6472"/>
-<text x="408" y="997.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">microscope_manufacturer</text>
-<text x="684" y="997.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="385" y="1002" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="398" cy="1011.0" r="3.4" fill="#5b6472"/>
-<text x="408" y="1015.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">microscope_model</text>
-<text x="684" y="1015.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="398" cy="1029.0" r="3.4" fill="#5b6472"/>
-<text x="408" y="1033.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">microscope_type</text>
-<text x="684" y="1033.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">MicroscopeTypeEnum</text>
-<rect x="385" y="1038" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="398" cy="1047.0" r="3.4" fill="#5b6472"/>
-<text x="408" y="1051.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">microscope_serial_number</text>
-<text x="684" y="1051.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="398" cy="1065.0" r="3.4" fill="#5b6472"/>
-<text x="408" y="1069.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">microscope_lot_number</text>
-<text x="684" y="1069.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="385" y="1074" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="398" cy="1083.0" r="3.4" fill="#5b6472"/>
-<text x="408" y="1087.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">closed_box_system_name</text>
-<text x="684" y="1087.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">ClosedBoxSystemEnum</text>
-<circle cx="398" cy="1101.0" r="3.4" fill="#5b6472"/>
-<text x="408" y="1105.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">closed_box_system_version</text>
-<text x="684" y="1105.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="385" y="1110" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="398" cy="1119.0" r="3.4" fill="#5b6472"/>
-<text x="408" y="1123.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">hardware_notes</text>
-<text x="684" y="1123.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="384.0" y="710" width="310" height="448" rx="8" ry="8" fill="#ffffff" stroke="#c7cdd6" stroke-width="1.2"/>
+<path d="M 384.0 718 Q 384.0 710 392.0 710 L 686.0 710 Q 694.0 710 694.0 718 L 694.0 744 L 384.0 744 Z" fill="#1f2a44"/>
+<text x="539.0" y="732.0" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">VideoHardware</text>
+<circle cx="398.0" cy="761.0" r="3.4" fill="#c0392b"/>
+<text x="408.0" y="765.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">camera_count</text>
+<text x="684.0" y="765.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
+<rect x="385.0" y="770" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="398.0" cy="779.0" r="3.4" fill="#c0392b"/>
+<text x="408.0" y="783.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">camera_device_type</text>
+<text x="684.0" y="783.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">CameraDeviceTypeEnum</text>
+<circle cx="398.0" cy="797.0" r="3.4" fill="#c0392b"/>
+<text x="408.0" y="801.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">camera_model</text>
+<text x="684.0" y="801.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="385.0" y="806" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="398.0" cy="815.0" r="3.4" fill="#c0392b"/>
+<text x="408.0" y="819.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">camera_manufacturer</text>
+<text x="684.0" y="819.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="398.0" cy="833.0" r="3.4" fill="#c8790a"/>
+<text x="408.0" y="837.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">camera_sensor_type</text>
+<text x="684.0" y="837.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">CameraSensorTypeEnum</text>
+<rect x="385.0" y="842" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="398.0" cy="851.0" r="3.4" fill="#c8790a"/>
+<text x="408.0" y="855.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">camera_distance_mm</text>
+<text x="684.0" y="855.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<circle cx="398.0" cy="869.0" r="3.4" fill="#c8790a"/>
+<text x="408.0" y="873.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">camera_position</text>
+<text x="684.0" y="873.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">CameraPositionEnum</text>
+<rect x="385.0" y="878" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="398.0" cy="887.0" r="3.4" fill="#c8790a"/>
+<text x="408.0" y="891.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">lens_focal_length_mm</text>
+<text x="684.0" y="891.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<circle cx="398.0" cy="905.0" r="3.4" fill="#c8790a"/>
+<text x="408.0" y="909.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">objective_magnification</text>
+<text x="684.0" y="909.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<rect x="385.0" y="914" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="398.0" cy="923.0" r="3.4" fill="#c8790a"/>
+<text x="408.0" y="927.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">contrast_polarity</text>
+<text x="684.0" y="927.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">ContrastPolarityEnum</text>
+<circle cx="398.0" cy="941.0" r="3.4" fill="#8e5bc0"/>
+<text x="408.0" y="945.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#8e5bc0">field_of_view_width</text>
+<text x="684.0" y="945.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<rect x="385.0" y="950" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="398.0" cy="959.0" r="3.4" fill="#8e5bc0"/>
+<text x="408.0" y="963.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#8e5bc0">field_of_view_height</text>
+<text x="684.0" y="963.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<circle cx="398.0" cy="977.0" r="3.4" fill="#8e5bc0"/>
+<text x="408.0" y="981.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#8e5bc0">field_of_view_unit</text>
+<text x="684.0" y="981.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">LengthUnitEnum</text>
+<rect x="385.0" y="986" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="398.0" cy="995.0" r="3.4" fill="#5b6472"/>
+<text x="408.0" y="999.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">camera_interface</text>
+<text x="684.0" y="999.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">CameraInterfaceEnum</text>
+<circle cx="398.0" cy="1013.0" r="3.4" fill="#5b6472"/>
+<text x="408.0" y="1017.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">microscope_manufacturer</text>
+<text x="684.0" y="1017.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="385.0" y="1022" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="398.0" cy="1031.0" r="3.4" fill="#5b6472"/>
+<text x="408.0" y="1035.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">microscope_model</text>
+<text x="684.0" y="1035.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="398.0" cy="1049.0" r="3.4" fill="#5b6472"/>
+<text x="408.0" y="1053.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">microscope_type</text>
+<text x="684.0" y="1053.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">MicroscopeTypeEnum</text>
+<rect x="385.0" y="1058" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="398.0" cy="1067.0" r="3.4" fill="#5b6472"/>
+<text x="408.0" y="1071.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">microscope_serial_number</text>
+<text x="684.0" y="1071.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="398.0" cy="1085.0" r="3.4" fill="#5b6472"/>
+<text x="408.0" y="1089.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">microscope_lot_number</text>
+<text x="684.0" y="1089.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="385.0" y="1094" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="398.0" cy="1103.0" r="3.4" fill="#5b6472"/>
+<text x="408.0" y="1107.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">closed_box_system_name</text>
+<text x="684.0" y="1107.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">ClosedBoxSystemEnum</text>
+<circle cx="398.0" cy="1121.0" r="3.4" fill="#5b6472"/>
+<text x="408.0" y="1125.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">closed_box_system_version</text>
+<text x="684.0" y="1125.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="385.0" y="1130" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="398.0" cy="1139.0" r="3.4" fill="#5b6472"/>
+<text x="408.0" y="1143.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">hardware_notes</text>
+<text x="684.0" y="1143.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
 </g>
-<text x="539.0" y="1151" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10" fill="#7a8390">req 4  ·  rec 8  ·  opt 10</text>
-<path d="M 883.0 620 C 883.0 655.0, 883.0 655.0, 883.0 690" fill="none" stroke="#c7cdd6" stroke-width="1.4"/>
-<circle cx="883.0" cy="690" r="3" fill="#1f2a44"/>
+<text x="539.0" y="1171" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10" fill="#7a8390">req 4  ·  rec 8  ·  opt 10</text>
 <g>
-<rect x="728" y="690" width="310" height="430" rx="8" ry="8" fill="#ffffff" stroke="#c7cdd6" stroke-width="1.2"/>
-<path d="M 728 698 Q 728 690 736 690 L 1030 690 Q 1038 690 1038 698 L 1038 724 L 728 724 Z" fill="#1f2a44"/>
-<text x="883.0" y="712.0" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">AcquisitionParameters</text>
-<circle cx="742" cy="741.0" r="3.4" fill="#c0392b"/>
-<text x="752" y="745.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">recording_duration</text>
-<text x="1028" y="745.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">duration</text>
-<rect x="729" y="750" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="742" cy="759.0" r="3.4" fill="#c0392b"/>
-<text x="752" y="763.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">recording_software_name</text>
-<text x="1028" y="763.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="742" cy="777.0" r="3.4" fill="#c0392b"/>
-<text x="752" y="781.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">recording_software_version</text>
-<text x="1028" y="781.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="729" y="786" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="742" cy="795.0" r="3.4" fill="#c0392b"/>
-<text x="752" y="799.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">frame_rate</text>
-<text x="1028" y="799.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<circle cx="742" cy="813.0" r="3.4" fill="#c0392b"/>
-<text x="752" y="817.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">video_resolution_width</text>
-<text x="1028" y="817.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
-<rect x="729" y="822" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="742" cy="831.0" r="3.4" fill="#c0392b"/>
-<text x="752" y="835.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">video_resolution_height</text>
-<text x="1028" y="835.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
-<circle cx="742" cy="849.0" r="3.4" fill="#c0392b"/>
-<text x="752" y="853.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">video_container_format</text>
-<text x="1028" y="853.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">VideoContainerEnum</text>
-<rect x="729" y="858" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="742" cy="867.0" r="3.4" fill="#c8790a"/>
-<text x="752" y="871.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">recording_start_datetime</text>
-<text x="1028" y="871.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">datetime</text>
-<circle cx="742" cy="885.0" r="3.4" fill="#c8790a"/>
-<text x="752" y="889.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">recording_end_datetime</text>
-<text x="1028" y="889.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">datetime</text>
-<rect x="729" y="894" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="742" cy="903.0" r="3.4" fill="#c8790a"/>
-<text x="752" y="907.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">illumination_type</text>
-<text x="1028" y="907.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">IlluminationTypeEnum</text>
-<circle cx="742" cy="921.0" r="3.4" fill="#c8790a"/>
-<text x="752" y="925.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">spatial_resolution</text>
-<text x="1028" y="925.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<rect x="729" y="930" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="742" cy="939.0" r="3.4" fill="#c8790a"/>
-<text x="752" y="943.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">video_codec</text>
-<text x="1028" y="943.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">VideoCodecEnum</text>
-<circle cx="742" cy="957.0" r="3.4" fill="#c8790a"/>
-<text x="752" y="961.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">exposure_time</text>
-<text x="1028" y="961.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<rect x="729" y="966" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="742" cy="975.0" r="3.4" fill="#c8790a"/>
-<text x="752" y="979.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">noise_reduction_method</text>
-<text x="1028" y="979.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="742" cy="993.0" r="3.4" fill="#8e5bc0"/>
-<text x="752" y="997.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#8e5bc0">bit_depth</text>
-<text x="1028" y="997.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
-<rect x="729" y="1002" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="742" cy="1011.0" r="3.4" fill="#5b6472"/>
-<text x="752" y="1015.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">illumination_wavelength</text>
-<text x="1028" y="1015.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<circle cx="742" cy="1029.0" r="3.4" fill="#5b6472"/>
-<text x="752" y="1033.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">illumination_illuminance</text>
-<text x="1028" y="1033.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<rect x="729" y="1038" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="742" cy="1047.0" r="3.4" fill="#5b6472"/>
-<text x="752" y="1051.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">total_frame_count</text>
-<text x="1028" y="1051.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
-<circle cx="742" cy="1065.0" r="3.4" fill="#5b6472"/>
-<text x="752" y="1069.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">color_mode</text>
-<text x="1028" y="1069.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">ColorModeEnum</text>
-<rect x="729" y="1074" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="742" cy="1083.0" r="3.4" fill="#5b6472"/>
-<text x="752" y="1087.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">gain</text>
-<text x="1028" y="1087.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="742" cy="1101.0" r="3.4" fill="#5b6472"/>
-<text x="752" y="1105.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">acquisition_notes</text>
-<text x="1028" y="1105.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="728.0" y="710" width="310" height="430" rx="8" ry="8" fill="#ffffff" stroke="#c7cdd6" stroke-width="1.2"/>
+<path d="M 728.0 718 Q 728.0 710 736.0 710 L 1030.0 710 Q 1038.0 710 1038.0 718 L 1038.0 744 L 728.0 744 Z" fill="#1f2a44"/>
+<text x="883.0" y="732.0" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">AcquisitionParameters</text>
+<circle cx="742.0" cy="761.0" r="3.4" fill="#c0392b"/>
+<text x="752.0" y="765.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">recording_duration</text>
+<text x="1028.0" y="765.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">duration</text>
+<rect x="729.0" y="770" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="779.0" r="3.4" fill="#c0392b"/>
+<text x="752.0" y="783.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">recording_software_name</text>
+<text x="1028.0" y="783.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="742.0" cy="797.0" r="3.4" fill="#c0392b"/>
+<text x="752.0" y="801.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">recording_software_version</text>
+<text x="1028.0" y="801.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="729.0" y="806" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="815.0" r="3.4" fill="#c0392b"/>
+<text x="752.0" y="819.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">frame_rate</text>
+<text x="1028.0" y="819.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<circle cx="742.0" cy="833.0" r="3.4" fill="#c0392b"/>
+<text x="752.0" y="837.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">video_resolution_width</text>
+<text x="1028.0" y="837.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
+<rect x="729.0" y="842" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="851.0" r="3.4" fill="#c0392b"/>
+<text x="752.0" y="855.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">video_resolution_height</text>
+<text x="1028.0" y="855.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
+<circle cx="742.0" cy="869.0" r="3.4" fill="#c0392b"/>
+<text x="752.0" y="873.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">video_container_format</text>
+<text x="1028.0" y="873.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">VideoContainerEnum</text>
+<rect x="729.0" y="878" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="887.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="891.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">recording_start_datetime</text>
+<text x="1028.0" y="891.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">datetime</text>
+<circle cx="742.0" cy="905.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="909.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">recording_end_datetime</text>
+<text x="1028.0" y="909.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">datetime</text>
+<rect x="729.0" y="914" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="923.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="927.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">illumination_type</text>
+<text x="1028.0" y="927.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">IlluminationTypeEnum</text>
+<circle cx="742.0" cy="941.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="945.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">spatial_resolution</text>
+<text x="1028.0" y="945.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<rect x="729.0" y="950" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="959.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="963.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">video_codec</text>
+<text x="1028.0" y="963.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">VideoCodecEnum</text>
+<circle cx="742.0" cy="977.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="981.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">exposure_time</text>
+<text x="1028.0" y="981.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<rect x="729.0" y="986" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="995.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="999.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">noise_reduction_method</text>
+<text x="1028.0" y="999.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="742.0" cy="1013.0" r="3.4" fill="#8e5bc0"/>
+<text x="752.0" y="1017.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#8e5bc0">bit_depth</text>
+<text x="1028.0" y="1017.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
+<rect x="729.0" y="1022" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="1031.0" r="3.4" fill="#5b6472"/>
+<text x="752.0" y="1035.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">illumination_wavelength</text>
+<text x="1028.0" y="1035.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<circle cx="742.0" cy="1049.0" r="3.4" fill="#5b6472"/>
+<text x="752.0" y="1053.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">illumination_illuminance</text>
+<text x="1028.0" y="1053.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<rect x="729.0" y="1058" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="1067.0" r="3.4" fill="#5b6472"/>
+<text x="752.0" y="1071.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">total_frame_count</text>
+<text x="1028.0" y="1071.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
+<circle cx="742.0" cy="1085.0" r="3.4" fill="#5b6472"/>
+<text x="752.0" y="1089.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">color_mode</text>
+<text x="1028.0" y="1089.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">ColorModeEnum</text>
+<rect x="729.0" y="1094" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="1103.0" r="3.4" fill="#5b6472"/>
+<text x="752.0" y="1107.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">gain</text>
+<text x="1028.0" y="1107.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="742.0" cy="1121.0" r="3.4" fill="#5b6472"/>
+<text x="752.0" y="1125.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">acquisition_notes</text>
+<text x="1028.0" y="1125.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
 </g>
-<text x="883.0" y="1133" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10" fill="#7a8390">req 7  ·  rec 7  ·  opt 7</text>
-<path d="M 883.0 620 C 883.0 655.0, 1227.0 655.0, 1227.0 690" fill="none" stroke="#c7cdd6" stroke-width="1.4"/>
-<circle cx="1227.0" cy="690" r="3" fill="#1f2a44"/>
+<text x="883.0" y="1153" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10" fill="#7a8390">req 7  ·  rec 7  ·  opt 7</text>
 <g>
-<rect x="1072" y="690" width="310" height="394" rx="8" ry="8" fill="#ffffff" stroke="#c7cdd6" stroke-width="1.2"/>
-<path d="M 1072 698 Q 1072 690 1080 690 L 1374 690 Q 1382 690 1382 698 L 1382 724 L 1072 724 Z" fill="#1f2a44"/>
-<text x="1227.0" y="712.0" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">TrackingAnalysis</text>
-<circle cx="1086" cy="741.0" r="3.4" fill="#c8790a"/>
-<text x="1096" y="745.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">tracking_software_type</text>
-<text x="1372" y="745.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">TrackingSoftwareTypeEnum</text>
-<rect x="1073" y="750" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="1086" cy="759.0" r="3.4" fill="#c8790a"/>
-<text x="1096" y="763.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">tracking_software_name</text>
-<text x="1372" y="763.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="1086" cy="777.0" r="3.4" fill="#c8790a"/>
-<text x="1096" y="781.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">tracking_software_version</text>
-<text x="1372" y="781.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="1073" y="786" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="1086" cy="795.0" r="3.4" fill="#c8790a"/>
-<text x="1096" y="799.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">tracking_algorithm</text>
-<text x="1372" y="799.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="1086" cy="813.0" r="3.4" fill="#c8790a"/>
-<text x="1096" y="817.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">tracking_software_settings</text>
-<text x="1372" y="817.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="1073" y="822" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="1086" cy="831.0" r="3.4" fill="#c8790a"/>
-<text x="1096" y="835.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">tracking_data_format</text>
-<text x="1372" y="835.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="1086" cy="849.0" r="3.4" fill="#c8790a"/>
-<text x="1096" y="853.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">tracking_confidence_threshold</text>
-<text x="1372" y="853.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<rect x="1073" y="858" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="1086" cy="867.0" r="3.4" fill="#c8790a"/>
-<text x="1096" y="871.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">tracking_manual_correction</text>
-<text x="1372" y="871.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">boolean</text>
-<circle cx="1086" cy="885.0" r="3.4" fill="#c8790a"/>
-<text x="1096" y="889.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">compute_hardware</text>
-<text x="1372" y="889.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="1073" y="894" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="1086" cy="903.0" r="3.4" fill="#c8790a"/>
-<text x="1096" y="907.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">preprocessing_steps</text>
-<text x="1372" y="907.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">PreprocessingStepEnum</text>
-<circle cx="1086" cy="921.0" r="3.4" fill="#c8790a"/>
-<text x="1096" y="925.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">n_individuals_tracked_per_arena</text>
-<text x="1372" y="925.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
-<rect x="1073" y="930" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="1086" cy="939.0" r="3.4" fill="#c8790a"/>
-<text x="1096" y="943.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">n_bodyparts_tracked</text>
-<text x="1372" y="943.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
-<circle cx="1086" cy="957.0" r="3.4" fill="#c8790a"/>
-<text x="1096" y="961.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">dropped_frames_count</text>
-<text x="1372" y="961.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
-<rect x="1073" y="966" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="1086" cy="975.0" r="3.4" fill="#c8790a"/>
-<text x="1096" y="979.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">frames_without_tracked_individual</text>
-<text x="1372" y="979.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<circle cx="1086" cy="993.0" r="3.4" fill="#c8790a"/>
-<text x="1096" y="997.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">frames_without_tracked_bodypart</text>
-<text x="1372" y="997.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<rect x="1073" y="1002" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="1086" cy="1011.0" r="3.4" fill="#c8790a"/>
-<text x="1096" y="1015.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">behavioral_metrics</text>
-<text x="1372" y="1015.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="1086" cy="1029.0" r="3.4" fill="#c8790a"/>
-<text x="1096" y="1033.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">endpoint_definitions</text>
-<text x="1372" y="1033.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="1073" y="1038" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="1086" cy="1047.0" r="3.4" fill="#5b6472"/>
-<text x="1096" y="1051.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">dropped_frames_reason</text>
-<text x="1372" y="1051.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="1086" cy="1065.0" r="3.4" fill="#5b6472"/>
-<text x="1096" y="1069.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">tracking_notes</text>
-<text x="1372" y="1069.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="1072.0" y="710" width="310" height="394" rx="8" ry="8" fill="#ffffff" stroke="#c7cdd6" stroke-width="1.2"/>
+<path d="M 1072.0 718 Q 1072.0 710 1080.0 710 L 1374.0 710 Q 1382.0 710 1382.0 718 L 1382.0 744 L 1072.0 744 Z" fill="#1f2a44"/>
+<text x="1227.0" y="732.0" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">TrackingAnalysis</text>
+<circle cx="1086.0" cy="761.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="765.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">tracking_software_type</text>
+<text x="1372.0" y="765.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">TrackingSoftwareTypeEnum</text>
+<rect x="1073.0" y="770" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1086.0" cy="779.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="783.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">tracking_software_name</text>
+<text x="1372.0" y="783.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="1086.0" cy="797.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="801.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">tracking_software_version</text>
+<text x="1372.0" y="801.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="1073.0" y="806" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1086.0" cy="815.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="819.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">tracking_algorithm</text>
+<text x="1372.0" y="819.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="1086.0" cy="833.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="837.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">tracking_software_settings</text>
+<text x="1372.0" y="837.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="1073.0" y="842" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1086.0" cy="851.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="855.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">tracking_data_format</text>
+<text x="1372.0" y="855.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="1086.0" cy="869.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="873.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">tracking_confidence_threshold</text>
+<text x="1372.0" y="873.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<rect x="1073.0" y="878" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1086.0" cy="887.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="891.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">tracking_manual_correction</text>
+<text x="1372.0" y="891.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">boolean</text>
+<circle cx="1086.0" cy="905.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="909.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">compute_hardware</text>
+<text x="1372.0" y="909.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="1073.0" y="914" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1086.0" cy="923.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="927.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">preprocessing_steps</text>
+<text x="1372.0" y="927.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">PreprocessingStepEnum</text>
+<circle cx="1086.0" cy="941.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="945.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">n_individuals_tracked_per_arena</text>
+<text x="1372.0" y="945.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
+<rect x="1073.0" y="950" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1086.0" cy="959.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="963.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">n_bodyparts_tracked</text>
+<text x="1372.0" y="963.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
+<circle cx="1086.0" cy="977.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="981.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">dropped_frames_count</text>
+<text x="1372.0" y="981.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
+<rect x="1073.0" y="986" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1086.0" cy="995.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="999.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">frames_without_tracked_individual</text>
+<text x="1372.0" y="999.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<circle cx="1086.0" cy="1013.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="1017.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">frames_without_tracked_bodypart</text>
+<text x="1372.0" y="1017.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<rect x="1073.0" y="1022" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1086.0" cy="1031.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="1035.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">behavioral_metrics</text>
+<text x="1372.0" y="1035.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="1086.0" cy="1049.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="1053.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">endpoint_definitions</text>
+<text x="1372.0" y="1053.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="1073.0" y="1058" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1086.0" cy="1067.0" r="3.4" fill="#5b6472"/>
+<text x="1096.0" y="1071.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">dropped_frames_reason</text>
+<text x="1372.0" y="1071.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="1086.0" cy="1085.0" r="3.4" fill="#5b6472"/>
+<text x="1096.0" y="1089.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">tracking_notes</text>
+<text x="1372.0" y="1089.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
 </g>
-<text x="1227.0" y="1097" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10" fill="#7a8390">req 0  ·  rec 17  ·  opt 2</text>
-<path d="M 883.0 620 C 883.0 655.0, 1571.0 655.0, 1571.0 690" fill="none" stroke="#c7cdd6" stroke-width="1.4"/>
-<circle cx="1571.0" cy="690" r="3" fill="#1f2a44"/>
+<text x="1227.0" y="1117" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10" fill="#7a8390">req 0  ·  rec 17  ·  opt 2</text>
 <g>
-<rect x="1416" y="690" width="310" height="232" rx="8" ry="8" fill="#ffffff" stroke="#c7cdd6" stroke-width="1.2"/>
-<path d="M 1416 698 Q 1416 690 1424 690 L 1718 690 Q 1726 690 1726 698 L 1726 724 L 1416 724 Z" fill="#1f2a44"/>
-<text x="1571.0" y="712.0" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">StatisticalAnalysis</text>
-<circle cx="1430" cy="741.0" r="3.4" fill="#c8790a"/>
-<text x="1440" y="745.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">statistical_software_name</text>
-<text x="1716" y="745.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="1417" y="750" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="1430" cy="759.0" r="3.4" fill="#c8790a"/>
-<text x="1440" y="763.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">statistical_software_version</text>
-<text x="1716" y="763.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="1430" cy="777.0" r="3.4" fill="#c8790a"/>
-<text x="1440" y="781.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">statistical_tests</text>
-<text x="1716" y="781.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="1417" y="786" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="1430" cy="795.0" r="3.4" fill="#c8790a"/>
-<text x="1440" y="799.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">statistical_models</text>
-<text x="1716" y="799.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="1430" cy="813.0" r="3.4" fill="#c8790a"/>
-<text x="1440" y="817.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">multiple_testing_correction</text>
-<text x="1716" y="817.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="1417" y="822" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="1430" cy="831.0" r="3.4" fill="#c8790a"/>
-<text x="1440" y="835.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">significance_level</text>
-<text x="1716" y="835.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
-<circle cx="1430" cy="849.0" r="3.4" fill="#c8790a"/>
-<text x="1440" y="853.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">effect_size_measure</text>
-<text x="1716" y="853.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="1417" y="858" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="1430" cy="867.0" r="3.4" fill="#c8790a"/>
-<text x="1440" y="871.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">confidence_interval_level</text>
-<text x="1716" y="871.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<circle cx="1430" cy="885.0" r="3.4" fill="#c8790a"/>
-<text x="1440" y="889.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">sample_size_analysis</text>
-<text x="1716" y="889.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
-<rect x="1417" y="894" width="308" height="18" fill="#f1f3f6"/>
-<circle cx="1430" cy="903.0" r="3.4" fill="#5b6472"/>
-<text x="1440" y="907.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">statistics_notes</text>
-<text x="1716" y="907.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="1416.0" y="710" width="310" height="232" rx="8" ry="8" fill="#ffffff" stroke="#c7cdd6" stroke-width="1.2"/>
+<path d="M 1416.0 718 Q 1416.0 710 1424.0 710 L 1718.0 710 Q 1726.0 710 1726.0 718 L 1726.0 744 L 1416.0 744 Z" fill="#1f2a44"/>
+<text x="1571.0" y="732.0" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">StatisticalAnalysis</text>
+<circle cx="1430.0" cy="761.0" r="3.4" fill="#c8790a"/>
+<text x="1440.0" y="765.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">statistical_software_name</text>
+<text x="1716.0" y="765.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="1417.0" y="770" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1430.0" cy="779.0" r="3.4" fill="#c8790a"/>
+<text x="1440.0" y="783.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">statistical_software_version</text>
+<text x="1716.0" y="783.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="1430.0" cy="797.0" r="3.4" fill="#c8790a"/>
+<text x="1440.0" y="801.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">statistical_tests</text>
+<text x="1716.0" y="801.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="1417.0" y="806" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1430.0" cy="815.0" r="3.4" fill="#c8790a"/>
+<text x="1440.0" y="819.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">statistical_models</text>
+<text x="1716.0" y="819.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="1430.0" cy="833.0" r="3.4" fill="#c8790a"/>
+<text x="1440.0" y="837.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">multiple_testing_correction</text>
+<text x="1716.0" y="837.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="1417.0" y="842" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1430.0" cy="851.0" r="3.4" fill="#c8790a"/>
+<text x="1440.0" y="855.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">significance_level</text>
+<text x="1716.0" y="855.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<circle cx="1430.0" cy="869.0" r="3.4" fill="#c8790a"/>
+<text x="1440.0" y="873.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">effect_size_measure</text>
+<text x="1716.0" y="873.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="1417.0" y="878" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1430.0" cy="887.0" r="3.4" fill="#c8790a"/>
+<text x="1440.0" y="891.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">confidence_interval_level</text>
+<text x="1716.0" y="891.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="1430.0" cy="905.0" r="3.4" fill="#c8790a"/>
+<text x="1440.0" y="909.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">sample_size_analysis</text>
+<text x="1716.0" y="909.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="1417.0" y="914" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1430.0" cy="923.0" r="3.4" fill="#5b6472"/>
+<text x="1440.0" y="927.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">statistics_notes</text>
+<text x="1716.0" y="927.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
 </g>
-<text x="1571.0" y="935" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10" fill="#7a8390">req 0  ·  rec 9  ·  opt 1</text>
+<text x="1571.0" y="955" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10" fill="#7a8390">req 0  ·  rec 9  ·  opt 1</text>
+<g>
+<rect x="384.0" y="1248" width="310" height="322" rx="8" ry="8" fill="#ffffff" stroke="#c7cdd6" stroke-width="1.2"/>
+<path d="M 384.0 1256 Q 384.0 1248 392.0 1248 L 686.0 1248 Q 694.0 1248 694.0 1256 L 694.0 1282 L 384.0 1282 Z" fill="#1f2a44"/>
+<text x="539.0" y="1270.0" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">Subject</text>
+<circle cx="398.0" cy="1299.0" r="3.4" fill="#c0392b"/>
+<text x="408.0" y="1303.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">species_name</text>
+<text x="684.0" y="1303.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="385.0" y="1308" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="398.0" cy="1317.0" r="3.4" fill="#c8790a"/>
+<text x="408.0" y="1321.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">species_ncbi_taxon_id</text>
+<text x="684.0" y="1321.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="398.0" cy="1335.0" r="3.4" fill="#c8790a"/>
+<text x="408.0" y="1339.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">strain</text>
+<text x="684.0" y="1339.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="385.0" y="1344" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="398.0" cy="1353.0" r="3.4" fill="#c8790a"/>
+<text x="408.0" y="1357.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">genotype</text>
+<text x="684.0" y="1357.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="398.0" cy="1371.0" r="3.4" fill="#c8790a"/>
+<text x="408.0" y="1375.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">sex</text>
+<text x="684.0" y="1375.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">SexEnum</text>
+<rect x="385.0" y="1380" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="398.0" cy="1389.0" r="3.4" fill="#c8790a"/>
+<text x="408.0" y="1393.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">body_length_value</text>
+<text x="684.0" y="1393.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<circle cx="398.0" cy="1407.0" r="3.4" fill="#c8790a"/>
+<text x="408.0" y="1411.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">body_length_unit</text>
+<text x="684.0" y="1411.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">LengthUnitEnum</text>
+<rect x="385.0" y="1416" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="398.0" cy="1425.0" r="3.4" fill="#5b6472"/>
+<text x="408.0" y="1429.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">housing_conditions</text>
+<text x="684.0" y="1429.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="398.0" cy="1443.0" r="3.4" fill="#8e5bc0"/>
+<text x="408.0" y="1447.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#8e5bc0">developmental_stage</text>
+<text x="684.0" y="1447.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">DevelopmentalStageEnum</text>
+<rect x="385.0" y="1452" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="398.0" cy="1461.0" r="3.4" fill="#8e5bc0"/>
+<text x="408.0" y="1465.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#8e5bc0">developmental_stage_value</text>
+<text x="684.0" y="1465.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<circle cx="398.0" cy="1479.0" r="3.4" fill="#8e5bc0"/>
+<text x="408.0" y="1483.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#8e5bc0">developmental_stage_unit</text>
+<text x="684.0" y="1483.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">DevelopmentUnitEnum</text>
+<rect x="385.0" y="1488" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="398.0" cy="1497.0" r="3.4" fill="#8e5bc0"/>
+<text x="408.0" y="1501.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#8e5bc0">age_value</text>
+<text x="684.0" y="1501.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<circle cx="398.0" cy="1515.0" r="3.4" fill="#8e5bc0"/>
+<text x="408.0" y="1519.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#8e5bc0">age_unit</text>
+<text x="684.0" y="1519.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">DevelopmentUnitEnum</text>
+<rect x="385.0" y="1524" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="398.0" cy="1533.0" r="3.4" fill="#5b6472"/>
+<text x="408.0" y="1537.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">weight_value</text>
+<text x="684.0" y="1537.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<circle cx="398.0" cy="1551.0" r="3.4" fill="#5b6472"/>
+<text x="408.0" y="1555.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">weight_unit</text>
+<text x="684.0" y="1555.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">WeightUnitEnum</text>
+</g>
+<text x="539.0" y="1583" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10" fill="#7a8390">req 1  ·  rec 6  ·  opt 8</text>
+<g>
+<rect x="728.0" y="1248" width="310" height="394" rx="8" ry="8" fill="#ffffff" stroke="#c7cdd6" stroke-width="1.2"/>
+<path d="M 728.0 1256 Q 728.0 1248 736.0 1248 L 1030.0 1248 Q 1038.0 1248 1038.0 1256 L 1038.0 1282 L 728.0 1282 Z" fill="#1f2a44"/>
+<text x="883.0" y="1270.0" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">Experiment</text>
+<circle cx="742.0" cy="1299.0" r="3.4" fill="#c0392b"/>
+<text x="752.0" y="1303.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">n_individuals_total</text>
+<text x="1028.0" y="1303.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
+<rect x="729.0" y="1308" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="1317.0" r="3.4" fill="#c0392b"/>
+<text x="752.0" y="1321.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">n_individuals_per_arena</text>
+<text x="1028.0" y="1321.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
+<circle cx="742.0" cy="1335.0" r="3.4" fill="#c0392b"/>
+<text x="752.0" y="1339.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c0392b">assay_type</text>
+<text x="1028.0" y="1339.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="729.0" y="1344" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="1353.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="1357.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">experiment_start_datetime</text>
+<text x="1028.0" y="1357.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">datetime</text>
+<circle cx="742.0" cy="1371.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="1375.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">experiment_end_datetime</text>
+<text x="1028.0" y="1375.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">datetime</text>
+<rect x="729.0" y="1380" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="1389.0" r="3.4" fill="#5b6472"/>
+<text x="752.0" y="1393.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">assay_description</text>
+<text x="1028.0" y="1393.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="742.0" cy="1407.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="1411.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">arena_shape</text>
+<text x="1028.0" y="1411.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">ArenaShapeEnum</text>
+<rect x="729.0" y="1416" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="1425.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="1429.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">arena_type</text>
+<text x="1028.0" y="1429.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">ArenaTypeEnum</text>
+<circle cx="742.0" cy="1443.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="1447.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">arena_length</text>
+<text x="1028.0" y="1447.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<rect x="729.0" y="1452" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="1461.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="1465.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">arena_length_unit</text>
+<text x="1028.0" y="1465.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">LengthUnitEnum</text>
+<circle cx="742.0" cy="1479.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="1483.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">arena_width</text>
+<text x="1028.0" y="1483.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<rect x="729.0" y="1488" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="1497.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="1501.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">arena_width_unit</text>
+<text x="1028.0" y="1501.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">LengthUnitEnum</text>
+<circle cx="742.0" cy="1515.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="1519.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">arena_height</text>
+<text x="1028.0" y="1519.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<rect x="729.0" y="1524" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="1533.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="1537.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">arena_height_unit</text>
+<text x="1028.0" y="1537.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">LengthUnitEnum</text>
+<circle cx="742.0" cy="1551.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="1555.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">plate_well_count</text>
+<text x="1028.0" y="1555.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">integer</text>
+<rect x="729.0" y="1560" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="1569.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="1573.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">well_shape_cross_section</text>
+<text x="1028.0" y="1573.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">WellCrossSectionShapeEnum</text>
+<circle cx="742.0" cy="1587.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="1591.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">temperature_celsius</text>
+<text x="1028.0" y="1591.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<rect x="729.0" y="1596" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="742.0" cy="1605.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="1609.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">light_cycle_type</text>
+<text x="1028.0" y="1609.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">LightCycleTypeEnum</text>
+<circle cx="742.0" cy="1623.0" r="3.4" fill="#c8790a"/>
+<text x="752.0" y="1627.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">light_cycle_detail</text>
+<text x="1028.0" y="1627.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+</g>
+<text x="883.0" y="1655" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10" fill="#7a8390">req 3  ·  rec 15  ·  opt 1</text>
+<g>
+<rect x="1072.0" y="1248" width="310" height="304" rx="8" ry="8" fill="#ffffff" stroke="#c7cdd6" stroke-width="1.2"/>
+<path d="M 1072.0 1256 Q 1072.0 1248 1080.0 1248 L 1374.0 1248 Q 1382.0 1248 1382.0 1256 L 1382.0 1282 L 1072.0 1282 Z" fill="#1f2a44"/>
+<text x="1227.0" y="1270.0" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">Manipulation</text>
+<circle cx="1086.0" cy="1299.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="1303.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">treatment_name</text>
+<text x="1372.0" y="1303.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="1073.0" y="1308" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1086.0" cy="1317.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="1321.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">treatment_description</text>
+<text x="1372.0" y="1321.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="1086.0" cy="1335.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="1339.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">exposure_compound_name</text>
+<text x="1372.0" y="1339.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="1073.0" y="1344" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1086.0" cy="1353.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="1357.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">exposure_compound_chebi_id</text>
+<text x="1372.0" y="1357.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="1086.0" cy="1371.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="1375.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">exposure_concentration</text>
+<text x="1372.0" y="1375.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<rect x="1073.0" y="1380" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1086.0" cy="1389.0" r="3.4" fill="#c8790a"/>
+<text x="1096.0" y="1393.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#c8790a">exposure_concentration_unit</text>
+<text x="1372.0" y="1393.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">ConcentrationUnitEnum</text>
+<circle cx="1086.0" cy="1407.0" r="3.4" fill="#5b6472"/>
+<text x="1096.0" y="1411.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">well_shape_bottom</text>
+<text x="1372.0" y="1411.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">WellBottomShapeEnum</text>
+<rect x="1073.0" y="1416" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1086.0" cy="1425.0" r="3.4" fill="#5b6472"/>
+<text x="1096.0" y="1429.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">habituation_duration_min</text>
+<text x="1372.0" y="1429.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<circle cx="1086.0" cy="1443.0" r="3.4" fill="#5b6472"/>
+<text x="1096.0" y="1447.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">habituation_protocol</text>
+<text x="1372.0" y="1447.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="1073.0" y="1452" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1086.0" cy="1461.0" r="3.4" fill="#5b6472"/>
+<text x="1096.0" y="1465.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">housing_conditions</text>
+<text x="1372.0" y="1465.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<circle cx="1086.0" cy="1479.0" r="3.4" fill="#5b6472"/>
+<text x="1096.0" y="1483.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">exposure_route</text>
+<text x="1372.0" y="1483.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">ExposureRouteEnum</text>
+<rect x="1073.0" y="1488" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1086.0" cy="1497.0" r="3.4" fill="#5b6472"/>
+<text x="1096.0" y="1501.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">exposure_duration_h</text>
+<text x="1372.0" y="1501.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">float</text>
+<circle cx="1086.0" cy="1515.0" r="3.4" fill="#5b6472"/>
+<text x="1096.0" y="1519.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">solvent_vehicle</text>
+<text x="1372.0" y="1519.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">string</text>
+<rect x="1073.0" y="1524" width="308" height="18" fill="#f1f3f6"/>
+<circle cx="1086.0" cy="1533.0" r="3.4" fill="#5b6472"/>
+<text x="1096.0" y="1537.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="10.3" fill="#5b6472">control_type</text>
+<text x="1372.0" y="1537.0" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.3" font-style="italic" fill="#7a8390">ControlTypeEnum</text>
+</g>
+<text x="1227.0" y="1565" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10" fill="#7a8390">req 0  ·  rec 6  ·  opt 8</text>
 </svg>
