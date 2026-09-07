@@ -67,7 +67,7 @@ classes:
       Top-level study and provenance metadata for a VTA dataset.
       One record per publication or deposited dataset. Contains
       identifying, licensing, and bibliographic information.
-    slots:     
+    slots:
       # required
       - dataset_id
       - dataset_title
@@ -93,11 +93,14 @@ classes:
       - dataset_notes
       # --- Nested classes ---
       - experimental_conditions
-      - video_hardware
-      - acquisition_parameters
+      - hardware_and_acquisition
       - tracking_analysis
       - statistical_analysis
     tree_root: true
+
+################################
+### Experimental Conditions ####
+################################
 
   ExperimentalConditions:
     description: >-
@@ -110,12 +113,11 @@ classes:
       #optional
       - manipulation
       - experiment_notes
-      
-      
+
   Subject:
     description: >-
-        Biological identity of the organism(s) that is studied. 
-        Contains details like taxonomy, strain, genotype, sex, age 
+        Biological identity of the organism(s) that is studied.
+        Contains details like taxonomy, strain, genotype, sex, age
         and/or other morphometric details and measurements.
     slots:
       # required
@@ -137,10 +139,11 @@ classes:
       # optional
       - weight_value
       - weight_unit
-      
-      # At least one of: developmental_stage, developmental_stage_value+unit, 
+
+
+    # At least one of: developmental_stage, developmental_stage_value+unit, 
     # or age_value+unit must be provided  
-    any_of: 
+    any_of:
       - slot_conditions:
           developmental_stage:
             required: true
@@ -164,8 +167,8 @@ classes:
         postconditions:
           slot_conditions:
             body_length_unit:
-              required: true 
-      
+              required: true
+
       - description: weight_value requires weight_unit
         preconditions:
           slot_conditions:
@@ -174,8 +177,8 @@ classes:
         postconditions:
           slot_conditions:
             weight_unit:
-              required: true  
-         
+              required: true
+
   Experiment:
     description: >-
         Defines experimental context in which the subjects were studied.
@@ -205,7 +208,7 @@ classes:
       - light_cycle_detail
       # optional   
       - assay_description
-      
+
     rules:
       - description: arena_length requires arena_length_unit
         preconditions:
@@ -246,8 +249,8 @@ classes:
           slot_conditions:
             light_cycle_detail:
               required: true
-              
-              
+
+
   Manipulation:
     description: >-
          Treatment and chemical exposure information decribing pharmacological,
@@ -258,20 +261,20 @@ classes:
         - treatment_name
         - treatment_description
         - exposure_compound_name
-        - exposure_compound_chebi_id  
+        - exposure_compound_chebi_id
         - exposure_concentration
         - exposure_concentration_unit
         # optional            
         - well_shape_bottom
         - habituation_duration_min
-        - habituation_protocol      
+        - habituation_protocol
         - housing_conditions
         - exposure_route
         - exposure_duration_h
         - solvent_vehicle
         - control_type
-        
-        
+
+
     rules:
       - description: >-
           exposure_concentration requires exposure_concentration_unit.
@@ -283,7 +286,7 @@ classes:
           slot_conditions:
             exposure_concentration_unit:
               required: true
- 
+
       - description: >-
           exposure_compound_name is recommended when
           exposure_compound_chebi_id is provided.
@@ -295,44 +298,137 @@ classes:
           slot_conditions:
             exposure_compound_name:
               recommended: true
-      
-          
-  VideoHardware:
+
+################################
+### Hardware and Acquisition ###
+################################
+
+  HardwareandAcquisition:
+    description: >-
+      Defines video hardware configuration (camera or microscope) and
+      acquisiiton or recording parameters used during experiments.
+    #tree_root: true
+    slots:
+      # required
+      - hardware
+      - acquisition
+      # optional
+      - hardware_acquisition_notes
+
+  Hardware:
     description: >-
       Camera systems, optical configuration, and physical recording
       infrastructure used in the VTA. Documents instrument identity and
       optical specifications.
     slots:
-      # required
+      # discriminatior - required
+      - device_type
+      # required if device_type == camera
       - camera_count
-      - camera_device_type
+      - camera_type
       - camera_model
       - camera_manufacturer
-      # recommended
-      - camera_sensor_type
-      - camera_distance_mm
-      - camera_position
-      - lens_focal_length_mm
-      - objective_magnification
-      - contrast_polarity
-      # conditionally required
-      - field_of_view_width
-      - field_of_view_height 
-      - field_of_view_unit
-      # optional
-      - camera_interface
+      # required if device_type == microscope
+      #- microscope_views ###number of views
       - microscope_manufacturer
       - microscope_model
       - microscope_type
+      # required if device_type == closed_box_system
+      - closed_box_system_name
+      # required if device_type == in_house_system
+      - in_house_system_description
+      # scale-defining fields (requiredness governed by rules below)
+      - field_of_view_width
+      - field_of_view_height
+      - field_of_view_unit
+      - objective_magnification
+      # recommended, contextual across device types
+      - camera_position
+      - camera_distance_mm
+      - lens_focal_length_mm
+      - camera_sensor_type
+      - contrast_polarity
+      - closed_box_system_version
+      - well_plate_format
+      - subjects_per_field_of_view
+      - in_house_system_components
+      - in_house_system_designer
+      # optional
+      - camera_interface
       - microscope_serial_number
       - microscope_lot_number
-      ## Closed-box system
-      - closed_box_system_name
-      - closed_box_system_version
       - hardware_notes
+    
     rules:
-      - description: Field of view width, height, and unit should be reported together.
+
+      # ---------- CAMERA ----------
+      - description: >-
+          When device_type is camera, camera identity fields and field of
+          view are required, since the user directly controls and can
+          measure the optical setup.
         preconditions:
+          slot_conditions:
+            device_type:
+              equals_string: camera
+        postconditions:
+          slot_conditions:
+            camera_count:
+              value_presence: PRESENT
+            camera_type:
+              value_presence: PRESENT
+            camera_model:
+              value_presence: PRESENT
+            camera_manufacturer:
+              value_presence: PRESENT
+            field_of_view_width:
+              value_presence: PRESENT
+            field_of_view_height:
+              value_presence: PRESENT
+            field_of_view_unit:
+              value_presence: PRESENT
+
+      - description: >-
+          When device_type is camera, additional descriptive fields are
+          recommended but not required.
+        preconditions:
+          slot_conditions:
+            device_type:
+              equals_string: camera
+        postconditions:
+          slot_conditions:
+            camera_position:
+              recommended: true
+            camera_distance_mm:
+              recommended: true
+            lens_focal_length_mm:
+              recommended: true
+            camera_sensor_type:
+              recommended: true
+
+      # ---------- MICROSCOPE ----------
+      - description: >-
+          When device_type is microscope, microscope identity fields are
+          required.
+        preconditions:
+          slot_conditions:
+            device_type:
+              equals_string: microscope
+        postconditions:
+          slot_conditions:
+            microscope_manufacturer:
+              value_presence: PRESENT
+            microscope_model:
+              value_presence: PRESENT
+            microscope_type:
+              value_presence: PRESENT
+
+      - description: >-
+          If field of view is reported for a microscope, width, height,
+          and unit must all be present together.
+        preconditions:
+          slot_conditions:
+            device_type:
+              equals_string: microscope
           any_of:
             - slot_conditions:
                 field_of_view_width:
@@ -349,15 +445,133 @@ classes:
             field_of_view_unit:
               value_presence: PRESENT
 
-  AcquisitionParameters: 
+      - description: >-
+          When device_type is microscope, field of view, objective
+          magnification, and contrast polarity are recommended but not
+          required.
+        preconditions:
+          slot_conditions:
+            device_type:
+              equals_string: microscope
+        postconditions:
+          slot_conditions:
+            field_of_view_width:
+              recommended: true
+            field_of_view_height:
+              recommended: true
+            field_of_view_unit:
+              recommended: true
+            objective_magnification:
+              recommended: true
+            contrast_polarity:
+              recommended: true
+
+      # ---------- CLOSED-BOX SYSTEM ----------
+      - description: >-
+          When device_type is closed_box_system, the system name is
+          required. Field of view is not required, since proprietary
+          multi-well/plate-based systems (e.g. ecotox zebrafish platforms)
+          often have a fixed, manufacturer-defined optical path that the
+          end user cannot measure or does not control.
+        preconditions:
+          slot_conditions:
+            device_type:
+              equals_string: closed_box_system
+        postconditions:
+          slot_conditions:
+            closed_box_system_name:
+              value_presence: PRESENT
+
+      - description: >-
+          If field of view is reported for a closed-box system, width,
+          height, and unit must all be present together.
+        preconditions:
+          slot_conditions:
+            device_type:
+              equals_string: closed_box_system
+          any_of:
+            - slot_conditions:
+                field_of_view_width:
+                  value_presence: PRESENT
+            - slot_conditions:
+                field_of_view_height:
+                  value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            field_of_view_width:
+              value_presence: PRESENT
+            field_of_view_height:
+              value_presence: PRESENT
+            field_of_view_unit:
+              value_presence: PRESENT
+
+      - description: >-
+          When device_type is closed_box_system, the system version,
+          field of view, and well/plate-related fields are recommended
+          but not required.
+        preconditions:
+          slot_conditions:
+            device_type:
+              equals_string: closed_box_system
+        postconditions:
+          slot_conditions:
+            closed_box_system_version:
+              recommended: true
+            field_of_view_width:
+              recommended: true
+            field_of_view_height:
+              recommended: true
+            field_of_view_unit:
+              recommended: true
+            well_plate_format:
+              recommended: true
+            subjects_per_field_of_view:
+              recommended: true
+
+      # ---------- IN-HOUSE SYSTEM ----------
+      - description: >-
+          When device_type is in_house_system, a description of the
+          custom setup and field of view are required, since the builder
+          directly controls and should know the optical configuration.
+        preconditions:
+          slot_conditions:
+            device_type:
+              equals_string: in_house_system
+        postconditions:
+          slot_conditions:
+            in_house_system_description:
+              value_presence: PRESENT
+            field_of_view_width:
+              value_presence: PRESENT
+            field_of_view_height:
+              value_presence: PRESENT
+            field_of_view_unit:
+              value_presence: PRESENT
+
+      - description: >-
+          When device_type is in_house_system, listing components and
+          the designer is recommended for reproducibility.
+        preconditions:
+          slot_conditions:
+            device_type:
+              equals_string: in_house_system
+        postconditions:
+          slot_conditions:
+            in_house_system_components:
+              recommended: true
+            in_house_system_designer:
+              recommended: true
+
+  Acquisition:
     description: >-
-      Video acquisition and recording parameters.
+      Video acquisition and recording parameters, including timing
+      encoding and illumination details.
     slots:
       # required
       - recording_duration
       - recording_software_name
       - recording_software_version
-      - frame_rate 
+      - frame_rate
       - video_resolution_width
       - video_resolution_height
       - video_container_format
@@ -368,7 +582,7 @@ classes:
       - spatial_resolution
       - video_codec
       - exposure_time
-      - noise_reduction_method 
+      - noise_reduction_method
       # conditionally required  
       - bit_depth
       # opional
@@ -377,7 +591,7 @@ classes:
       - total_frame_count
       - color_mode
       - gain
-      - acquisition_notes 
+      - acquisition_notes
 
     rules:
       - description: Bit depth should be reported when it is available for lossless or uncompressed video.
@@ -391,6 +605,10 @@ classes:
           slot_conditions:
             bit_depth:
               recommended: true
+              
+##########################
+### Tracking Analysis ###
+#########################
 
   TrackingAnalysis:
     description: >-
@@ -418,8 +636,12 @@ classes:
       # optional
       - dropped_frames_reason
       - tracking_notes
+      
+############################
+### Statistical Analysis ###
+############################
 
-  StatisticalAnalysis:   
+  StatisticalAnalysis:
     description: >-
       Information describing the statistical analysis of behavioral data,
       including statistical tests, models, significance criteria,
@@ -438,17 +660,24 @@ classes:
       - sample_size_analysis
       # optional
       - statistics_notes
-
+      
+#####################################################################################
+### SLOTS ###
+#####################################################################################
 # --- slots ---
 slots:
+
+##########################
 # --- VTADataset slots ---
+##########################
+
   dataset_id:
     description: Unique identifier for the dataset or study package.
     identifier: true
     required: true
     exact_mappings:
       - dcterms:identifier
- 
+
   dataset_title:
     description: Descriptive title of the dataset.
     required: true
@@ -498,7 +727,7 @@ slots:
     exact_mappings:
       - dcterms:creator
       - schema:creator
-  
+
   dataset_creator_orcid:
     description: ORCID identifier of the dataset creator.
     required: false
@@ -517,8 +746,8 @@ slots:
     description: Contact email for the dataset maintainer.
     pattern: '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
     exact_mappings:
-      - schema:email  
-  
+      - schema:email
+
   research_domain:
     description: Primary research domain of this study.
     range: string
@@ -532,7 +761,7 @@ slots:
     required: false
     recommended: true
     range: string
-  
+
   raw_data_repository_url:
     description: URL of the repository record or landing page.
     required: false
@@ -548,7 +777,7 @@ slots:
     recommended: true
     range: string
     multivalued: true
-    
+
   dataset_version:
     description: Semantic version string for the dataset (e.g. 1.0.0)
     required: false
@@ -556,12 +785,12 @@ slots:
     exact_mappings:
       - pav:version
       - schema:version
-  
+
   dataset_created_date:
     description: Date when the dataset was created (YYYY-MM-DD)
     range: date
     required: false
-    exact_mappings: 
+    exact_mappings:
       - dcterms:created
 
   raw_tracking_data_doi:
@@ -592,27 +821,25 @@ slots:
     required: false
     range: uri
     pattern: "^https://doi\\.org/10\\.\\d{4,9}/[-._;()+/:A-Za-z0-9%]+$"
-  
+
   dataset_notes:
     description: Free-text notes on the dataset not captured by structured fields.
     required: false
     range: string
-    
+
   # Nested class slots
   experimental_conditions:
     description: Biological and experimental conditions for this dataset
     range: ExperimentalConditions
     inlined: true
 
-  video_hardware:
-    description: Camera and hardware configuration
-    range: VideoHardware
+  hardware_and_acquisition:
+    description: >-
+      Hardware and acquisition configuration used to record the video
+      dataset.
+    range: HardwareandAcquisition
     inlined: true
-
-  acquisition_parameters:
-    description: Video acquisition and recording settings
-    range: AcquisitionParameters
-    inlined: true
+    
 
   tracking_analysis:
     description: Tracking software and analysis configuration
@@ -652,7 +879,10 @@ slots:
     range: string
 
 
+######################################
 # --- ExperimentalConditions slots ---
+######################################
+
   species_name:
     description: Scientific (Latin) binomial name of the study organism
     required: true
@@ -664,18 +894,18 @@ slots:
       - value: "Danio rerio"
       - value: "Mus musculus"
       - value: "Daphnia magna"
-  
+
   n_individuals_total:
     description: Total number of individuals used in the experiment.
     range: integer
     required: true
-  
+
   n_individuals_per_arena:
     description: Number of individuals tested simultaneously in the arena.
     required: true
     range: integer
     minimum_value: 1
-  
+
   assay_type:
     description: Name of the behavioral assay paradigm or test paradigm.
     required: true
@@ -684,7 +914,7 @@ slots:
       - value: "light-dark transition"
       - value: "elevated plus maze"
       - value: "locomotor activity assay"
-      - value: "chemobehavioral assay"    
+      - value: "chemobehavioral assay"
     broad_mappings:
       - OBI:0000070
 
@@ -693,13 +923,13 @@ slots:
     range: datetime
     required: false
     recommended: true
-  
+
   experiment_end_datetime:
     description: Date and time at which the experiment ended.
     range: datetime
     required: false
     recommended: true
-  
+
   species_ncbi_taxon_id:
     description: NCBI Taxonomy ID for the study organism
     required: false
@@ -723,7 +953,7 @@ slots:
 
   genotype:
     description: >-
-      Genotype identifier of the tracked organism(s)including 
+      Genotype identifier of the tracked organism(s) including
       strain-specific, mutant, transgenic, or engineered genotypes.
     range: string
     required: false
@@ -733,7 +963,7 @@ slots:
       - GENO:0000536
     annotations:
       source_ontology: GENO
-  
+
   sex:
     description: Biological sex of the tracked organism(s).
     required: false
@@ -764,19 +994,19 @@ slots:
     range: ArenaShapeEnum
     broad_mappings:
       - OBI:0000968
-  
-  arena_type: 
+
+  arena_type:
     description: Type of the test arena, e.g., open field, multiwell plate or elevated plus maze.
     required: false
     recommended: true
     range: ArenaTypeEnum
-  
+
   arena_length:
     description: Length of the arena along one axis.
     required: false
     recommended: true
     range: float
-  
+
   arena_length_unit:
     description: Unit of measurement for arena_length.
     required: false
@@ -788,7 +1018,7 @@ slots:
     required: false
     recommended: true
     range: float
-  
+
   arena_width_unit:
     description: Unit of measurement for arena_width.
     required: false
@@ -800,13 +1030,13 @@ slots:
     required: false
     recommended: true
     range: float
-  
+
   arena_height_unit:
     description: Unit of measurement for arena_height.
     required: false
     recommended: true
     range: LengthUnitEnum
-  
+
   plate_well_count:
     description: Number of wells in the multiwell plate.
     required: false
@@ -824,7 +1054,7 @@ slots:
     required: false
     recommended: true
     range: WellCrossSectionShapeEnum
-  
+
   temperature_celsius:
     description: Water or ambient temperature during the recording in degrees Celsius
     range: float
@@ -832,7 +1062,7 @@ slots:
     recommended: true
     unit:
       ucum_code:  Cel
-  
+
   light_cycle_type:
     description: Standardized category of the light-dark cycle.
     required: false
@@ -884,7 +1114,7 @@ slots:
     examples:
       - value: "CHEBI:15930"   # atrazine
       - value: "CHEBI:49575"  # diazepam
-    
+
   exposure_concentration:
     description: Nominal exposure concentration (numeric value only; use unit field).
     required: false
@@ -898,13 +1128,13 @@ slots:
     required: false
     recommended: true
     range: ConcentrationUnitEnum
-  
+
   developmental_stage:
     description: Developmental stage of the tracked organism(s).
     range: DevelopmentalStageEnum
     exact_mappings:
       - EFO:0000399
-  
+
   developmental_stage_value:
     description: Numeric developmental stage value (e.g. 72 for 72 hpf) of the tracked organism(s).
     range: float
@@ -914,29 +1144,29 @@ slots:
   developmental_stage_unit:
     description: Unit for developmental stage value of the tracked organism(s).
     range: DevelopmentUnitEnum
-  
+
   age_value:
     description: Numeric age value of the tracked organism(s).
     range: float
     exact_mappings:
-      - EFO:0000246 
+      - EFO:0000246
 
   age_unit:
     description: Age unit of the tracked organism(s).
     range: DevelopmentUnitEnum
-  
+
   weight_value:
     description: Body weight numeric value of the tracked organism(s).
     required: false
     range: float
-    exact_mappings: 
+    exact_mappings:
       - EFO:0004338
 
   weight_unit:
     description: Body weight unit of the tracked organism(s).
     required: false
     range: WeightUnitEnum
- 
+
   assay_description:
     description: Free-text description of the assay protocol
     required: false
@@ -986,7 +1216,7 @@ slots:
     examples:
       - value: "DMSO 0.01%"
       - value: "ethanol 0.1%"
-      - value: "water" 
+      - value: "water"
 
   control_type:
     description: Type of control group used.
@@ -994,18 +1224,74 @@ slots:
     range: ControlTypeEnum
     exact_mappings:
       - NCIT:C178849
+<<<<<<< Updated upstream
   
+=======
 
-# --- VideoHardware slots ---
+  subject:
+    description: The organism(s) studied under these experimental conditions.
+    range: Subject
+    required: true
+
+  experiment:
+    description: The experimental setup and environment for this dataset's trials.
+    range: Experiment
+    required: true
+
+  manipulation:
+    description: >-
+      Any intervention applied to the subjects. Omitted when no
+      treatment or exposure was used.
+    range: Manipulation
+    required: false
+
+  experiment_notes:
+    description: Free-text notes on the overall experimental conditions.
+    required: false
+    range: string
+>>>>>>> Stashed changes
+
+###################################################################################
+# --- Hardware and Acquisition slots --
+###################################################################################
+  hardware:
+    range: Hardware
+    required: true
+    inlined: true
+    description: Hardware configuration used to record the video.
+
+  acquisition:
+    range: Acquisition
+    required: true
+    inlined: true
+    description: Acquisition/recording parameters for the video.
+
+  hardware_acquisition_notes:
+    range: string
+    description: >-
+      Free-text catch-all for additional context about the hardware and
+      acquisition setup as a whole that does not fit within hardware_notes
+      or acquisition_notes specifically (e.g. deviations from standard
+      protocol, or setup issues spanning both hardware and acquisition).
+      
+# --- hardware slots --- #
+
+  device_type:
+    description: >-
+      Indicates the category of imaging system used; determines which
+      additional hardware fields are required or recommended.
+    range: DeviceTypeEnum
+    required: true
+
   camera_count:
     description: Number of cameras used simultaneously.
     required: true
     range: integer
 
-  camera_device_type:
+  camera_type:
     description: General type of imaging device.
     required: true
-    range: CameraDeviceTypeEnum
+    range: CameraTypeEnum
     broad_mappings:
       - OBI:0000398
 
@@ -1029,7 +1315,7 @@ slots:
     required: false
     recommended: true
     range: CameraSensorTypeEnum
- 
+
   camera_distance_mm:
     description: Distance from camera lens to the arena floor in millimetres.
     required: false
@@ -1046,7 +1332,7 @@ slots:
 
   lens_focal_length_mm:
     description: >-
-      Focal length of the imaging lens in millimetres; 
+      Focal length of the imaging lens in millimetres;
       applicable to camera or microscope optics when reported.
     required: false
     recommended: true
@@ -1075,7 +1361,7 @@ slots:
     required: false
     recommended: true
     range: ContrastPolarityEnum
-  
+
   field_of_view_width:
     description: Numeric value of horizontal field of view covered by the camera.
     required: false
@@ -1087,16 +1373,16 @@ slots:
     required: false
     recommended: true
     range: float
-    
+
   field_of_view_unit:
     description: Unit of measurement for field_of_view_width and field_of_view_height.
     range: LengthUnitEnum
-  
+
   camera_interface:
     description: Interface standard used for communication between the camera and the acquisition system.
     required: false
     range: CameraInterfaceEnum
- 
+
   microscope_manufacturer:
     description: Manufacturer of the microscope.
     required: false
@@ -1104,21 +1390,21 @@ slots:
     exact_mappings:
       - OME:Manufacturer
       - schema:manufacturer
-  
+
   microscope_model:
     description: Model name or identifier of the microscope.
     required: false
     range: string
     exact_mappings:
       - OME:Model
-  
+
   microscope_type:
     description: Microscope configuration according to the OME microscope type classification.
     required: false
     range: MicroscopeTypeEnum
     exact_mappings:
       - OME:Type
-  
+
   microscope_serial_number:
     description: Serial number of the microscope.
     required: false
@@ -1132,7 +1418,20 @@ slots:
     range: string
     exact_mappings:
       - OME:LotNumber
-  
+      
+  well_plate_format:
+    range: WellPlateFormatEnum
+    description: >-
+      Format of the multi-well plate used in a closed-box imaging system
+      (e.g. "96-well", "24-well"), when applicable.
+      
+  subjects_per_field_of_view:
+    range: integer
+    description: >-
+      Number of individual subjects (e.g. wells, organisms, larvae)
+      visible within a single field of view or camera frame, when
+      applicable.
+
   closed_box_system_name:
     description: >-
       Name of the integrated commercial closed-box tracking system.
@@ -1144,13 +1443,32 @@ slots:
     description: Hardware version or model number of the closed-box system.
     required: false
     range: string
+    
+  in_house_system_description:
+    range: string
+    description: >-
+      Free-text description of the custom-built imaging system, including
+      how the components are assembled and used.
+
+  in_house_system_components:
+    range: string
+    multivalued: true
+    description: >-
+      List of key hardware components used in the custom-built system
+      (e.g. camera sensor, lens, illumination source, mounting hardware).
+
+  in_house_system_designer:
+    range: string
+    description: >-
+      Lab, person, or institution that designed or built the in-house
+      system.
 
   hardware_notes:
     description: Free-text notes on hardware configuration not captured by structured fields.
     required: false
     range: string
 
-# --- AcquisitionParameters slots ---
+# --- acquisition slots ---
   recording_duration:
     description: Total duration of the video recording in ISO 8601 duration format.
     required: true
@@ -1167,12 +1485,12 @@ slots:
       - value: "PT45S"
         description: 45 seconds
     notes:
-      - Use ISO 8601 duration format.  
+      - Use ISO 8601 duration format.
 
   recording_software_name:
     description: Name of the software used to record the video.
     required: true
-    range: string                                                 
+    range: string
     exact_mappings:
       - AFR:0002802
 
@@ -1221,13 +1539,13 @@ slots:
     notes:
       - Report the container format, not the codec.
       - Codec is captured separately in video_codec.
-  
+
   recording_start_datetime:
     description: Date and time at which acquisition of the video recording began.
     range: datetime
     required: false
     recommended: true
-  
+
   recording_end_datetime:
     description: Date and time at which acquisition of the video recording ended.
     range: datetime
@@ -1237,11 +1555,11 @@ slots:
   illumination_type:
     description: Type of illumination used during recording.
     required: false
-    recommended: true 
+    recommended: true
     range: IlluminationTypeEnum
     exact_mappings:
       - MIxS:0000769
-   
+
   spatial_resolution:
     description: Physical size represented by one pixel at the observation plane.
     required: false
@@ -1291,7 +1609,7 @@ slots:
       - value: "16"
     notes:
       - Common values are 8-bit and 16-bit.
- 
+
   illumination_wavelength:
     description: >-
       Peak wavelength of the illumination source in nanometres.
@@ -1304,7 +1622,7 @@ slots:
       - AFR:0001159
     close_mappings:
       - PATO:0001242
-  
+
   illumination_illuminance:
     description: Illuminance at the recording arena or observation surface.
     required: false
@@ -1339,7 +1657,7 @@ slots:
       Affects tracking algorithm behavior and file size.
     required: false
     range: ColorModeEnum
- 
+
   gain:
     description: Camera gain setting at the time of recording.
     required: false
@@ -1358,12 +1676,12 @@ slots:
       required: false
       recommended: true
       range: TrackingSoftwareTypeEnum
-      
+
   tracking_software_name:
       description: Name of the software used for tracking.
       required: false
       recommended: true
-      range: string                                                 
+      range: string
       exact_mappings:
         - AFR:0002802
 
@@ -1402,7 +1720,7 @@ slots:
       - value: "Detection threshold=25; minimum blob size=50 px"
       - value: "DeepLabCut likelihood threshold=0.9"
       - value: "Interpolation enabled; gap length=5 frames"
-    
+
   tracking_data_format:
     description: >-
       File format used to store tracking results, including coordinates,
@@ -1422,7 +1740,7 @@ slots:
     notes:
       - Report the output format of the tracking results, not the raw video container.
       - Use this for coordinate/keypoint files and derived tracking outputs.
-    
+
   tracking_confidence_threshold:
     description: >-
       Confidence or likelihood threshold used to accept detections,
@@ -1446,7 +1764,7 @@ slots:
       - value: "false"
     notes:
       - Use true if outputs were manually curated, corrected, or quality-checked by a human after automated tracking.
-      
+
   compute_hardware:
     description: >-
       Primary compute hardware used for tracking and analysis.
@@ -1489,7 +1807,7 @@ slots:
     notes:
     - For centroid tracking, use 1.
     - For pose-estimation approaches, report the number of tracked landmarks.
-    
+
   dropped_frames_count:
     description: Number of video frames lost or omitted during acquisition.
     required: false
@@ -1529,7 +1847,7 @@ slots:
       - value: "average velocity"
       - value: "time in center zone"
       - value: "freezing duration"
-    
+
   endpoint_definitions:
     description: >-
       Definitions and calculation criteria used for behavioral endpoints,
@@ -1560,15 +1878,15 @@ slots:
     description: Free-text notes on the tracking analysis not captured by structured fields.
     required: false
     range: string
-    
+
 # --- StatisticalAnalysis slots ---
   statistical_software_name:
     description: Name of the software used for statistical analysis.
     required: false
     recommended: true
-    range: string                                                 
+    range: string
     exact_mappings:
-      - AFR:0002802 
+      - AFR:0002802
     examples:
       - value: "R"
       - value: "GraphPad Prism"
@@ -1607,7 +1925,7 @@ slots:
       - NCIT:C53228
     notes:
       - Multiple tests may be listed if different endpoints were analysed with different methods.
-  
+
   statistical_models: ## maybe remove this slot and put it together with "statistical_test"/"statistical_methods"
     description: Statistical models used to analyse behavioral endpoints.
     required: false
@@ -1622,7 +1940,7 @@ slots:
       - value: "generalized additive model"
       - value: "Cox proportional hazards model"
       - value: "logistic regression"
-    
+
   multiple_testing_correction:
     description: >-
       Procedure used to correct for multiple comparisons (if more than one
@@ -1691,13 +2009,17 @@ slots:
       - value: "calculated using alpha=0.05 and power=0.8"
     exact_mappings:
       - NCIT:C115467
-  
+
   statistics_notes:
     description: Free-text notes on the statistical analysis not captured by structured fields.
     required: false
     range: string
-    
+
+
+###########################################################################################################
 # --- Enums ---
+###########################################################################################################
+
 enums:
 
   SexEnum:
@@ -1717,7 +2039,7 @@ enums:
       larval:
       juvenile:
       adult:
-      embryonic:       
+      embryonic:
       pupal:
       subadult:
 
@@ -1736,7 +2058,7 @@ enums:
         meaning: UO:0000035
       years:
         meaning: UO:0000036
-    
+
   LengthUnitEnum:
     description: Units of length, ranging from micrometers to meters.
     permissible_values:
@@ -1762,25 +2084,25 @@ enums:
         aliases: ["g"]
       kg:
         meaning: UO:0000009
-  
+
   ArenaShapeEnum:
     description: Geometric shape of the test arena. ## get feedback if the values are suitable
     permissible_values:
-      circular:  
+      circular:
       rectangular:
-      square: 
+      square:
       plus_maze:
       y_maze:
-      t_maze: 
+      t_maze:
       other:
-  
+
   ArenaTypeEnum:
     description: Type of the test arena, e.g., open field, multiwell plate or elevated plus maze.
     permissible_values:
       open_field:
       plus_maze:
       y_maze:
-      t_maze: 
+      t_maze:
       multiwell_plate:
       light_dark_box:
       elevated_plus_maze:
@@ -1793,7 +2115,7 @@ enums:
       square:
       other:
 
-  WellBottomShapeEnum: 
+  WellBottomShapeEnum:
     description: Geometric bottom shape of the wells of a multiwell plate.
     permissible_values:
       flat_bottom:
@@ -1803,7 +2125,7 @@ enums:
       v_bottom:
         description: V-shaped or conical well bottom.
       other:
-  
+
   LightCycleTypeEnum:
     description: Standardized light-dark cycle types.
     permissible_values:
@@ -1837,6 +2159,24 @@ enums:
       topical:
       inhalation:
       other:
+      
+  DeviceTypeEnum:
+    description: Category of recording system used to record the videos.
+    permissible_values:
+      camera:
+        description: A standalone camera system.
+      microscope:
+        description: A microscope-integrated imaging system.
+      closed_box_system:
+        description: >-
+          A commercial, integrated/closed-box imaging system where individual
+          camera or microscope specs are not user-accessible (e.g. a
+          proprietary multi-well plate-based VTA device used in ecotox
+          screening, such as DanioVision or ZebraBox).
+      in_house_system:
+        description: >-
+          A custom-built or lab-assembled imaging system not corresponding
+          to a single off-the-shelf camera or microscope product.
 
   ControlTypeEnum:
     description: Type of control condition used in the experiment for comparison against treated groups.
@@ -1849,39 +2189,59 @@ enums:
       untreated_control:
       other:
 
-  CameraDeviceTypeEnum:
-    description: General types of imaging devices used in VTA setups.
-    permissible_values:
-      digital_camera:
-        meaning: OBI:0001048
-      usb_camera:
-      microscope_camera:
-        meaning: SNOMED:706582001
-      smartphone:
-        meaning: SNOMED:733681009
-      other:
-    
   CameraSensorTypeEnum:
     description: Image sensor technologies used in cameras.
     permissible_values:
       ccd:
         meaning: CHMO:0002245
-      cmos: 
+      cmos:
       scmos:
       emccd:
-      other:  
-
-  CameraInterfaceEnum:
-    description: >-
-      Hardware or connection interface used to transfer data from the camera to the recording system.
-    permissible_values:
-      usb:
-      ethernet:
-      ip:
-      camera_link:
-      coaxpress:
-      hdmi:
       other:
+      
+  CameraTypeEnum:
+    description: Type of camera used to record the videos.
+    permissible_values:
+      machine_vision_camera:
+        description: Industrial/scientific machine vision camera (e.g. Basler, FLIR).
+      webcam:
+        description: Consumer-grade webcam.
+      smartphone_camera:
+        description: Camera integrated into a smartphone or tablet.
+      action_camera:
+        description: Ruggedized action camera (e.g. GoPro-type device).
+      dslr_mirrorless_camera:
+        description: DSLR or mirrorless consumer/prosumer camera.
+      thermal_camera:
+        description: Infrared/thermal imaging camera.
+      other:
+        description: Camera type not covered by other enum values.
+        
+  CameraInterfaceEnum:
+    description: Data interface used to connect the camera to a recording system.
+    permissible_values:
+      usb2:
+        description: USB 2.0 interface.
+      usb3:
+        description: USB 3.0 / USB 3.1 / USB 3.2 interface.
+      gige:
+        description: Gigabit Ethernet (GigE Vision) interface.
+      camera_link:
+        description: Camera Link interface, commonly used in machine vision.
+      coaxpress:
+        description: CoaXPress high-speed coaxial interface.
+      firewire:
+        description: IEEE 1394 (FireWire) interface.
+      hdmi:
+        description: HDMI video output interface.
+      wireless:
+        description: Wireless connection (e.g. Wi-Fi, Bluetooth).
+      internal_integrated:
+        description: >-
+          Camera is internally integrated into the recording device with
+          no external interface (e.g. smartphone camera, closed-box system).
+      other:
+        description: Interface type not covered by other enum values.
 
   CameraPositionEnum:
     description: Position of the camera relative to the arena used to record the tracked organism(s).
@@ -1891,7 +2251,7 @@ enums:
       lateral:
         description: Camera positioned horizontally from the side.
       other:
-  
+
   MicroscopeTypeEnum:
     description: OME microscope type values.
     exact_mappings:
@@ -1905,7 +2265,7 @@ enums:
 
   ClosedBoxSystemEnum:
     description: >-
-      Commercial closed-box system used for recording and tracking the organism(s) 
+      Commercial closed-box system used for recording and tracking the organism(s)
       in a controlled environment.
     permissible_values:
       zebrabox:
@@ -1913,6 +2273,24 @@ enums:
       toxmate:
       noldus_phenotyper:
       other:
+      
+  WellPlateFormatEnum:
+    description: Type of well plate used in a closed box system.
+    permissible_values:
+      well_6:
+        description: 6-well plate.
+      well_12:
+        description: 12-well plate.
+      well_24:
+        description: 24-well plate.
+      well_48:
+        description: 48-well plate.
+      well_96:
+        description: 96-well plate.
+      well_384:
+        description: 384-well plate.
+      other:
+        description: Plate format not covered by other enum values.
 
   IlluminationTypeEnum:
     description: Technology type of the light source used during video recording.
@@ -1931,7 +2309,7 @@ enums:
         description: No active illumination.
       other:
         description: Other illumination type; describe in acquisition_notes.
-  
+
   ColorModeEnum:
     description: Color mode of the video recording.
     permissible_values:
@@ -2013,8 +2391,8 @@ enums:
       image_stabilization:
         description: Correction of camera movement between frames.
       other:
-        description: Other preprocessing step, describe in notes. 
-        
+        description: Other preprocessing step, describe in notes.
+
   TrackingSoftwareTypeEnum:
     description: Type of tracking software used.
     permissible_values:

@@ -6,7 +6,7 @@ search:
 # Slot: experiment 
 
 
-_Assay design, arena configuration, and environmental parameters._
+_The experimental setup and environment for this dataset's trials._
 
 
 
@@ -85,14 +85,13 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 <details>
 ```yaml
 name: experiment
-description: Assay design, arena configuration, and environmental parameters.
+description: The experimental setup and environment for this dataset's trials.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
 - ExperimentalConditions
 range: Experiment
 required: true
-inlined: true
 
 ```
 </details></div>

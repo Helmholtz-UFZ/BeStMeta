@@ -25,7 +25,7 @@ URI: [BeStMeta:exposure_time](https://w3id.org/BeStMeta/exposure_time)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AcquisitionParameters](AcquisitionParameters.md) | Video acquisition and recording parameters |  no  |
+| [Acquisition](Acquisition.md) | Video acquisition and recording parameters, including timing encoding and ill... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [BeStMeta:exposure_time](https://w3id.org/BeStMeta/exposure_time)
 | Property | Value |
 | --- | --- |
 | Range | [Float](Float.md) |
-| Domain Of | [AcquisitionParameters](AcquisitionParameters.md) |
+| Domain Of | [Acquisition](Acquisition.md) |
 
 ### Cardinality and Requirements
 
@@ -102,7 +102,7 @@ exact_mappings:
 - REPRODUCEME:ExposureTime
 rank: 1000
 domain_of:
-- AcquisitionParameters
+- Acquisition
 range: float
 required: false
 recommended: true

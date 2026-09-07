@@ -6,7 +6,7 @@ search:
 # Class: Subject 
 
 
-_Biological identity of the organism(s) that is studied.  Contains details like taxonomy, strain, genotype, sex, age  and/or other morphometric details and measurements._
+_Biological identity of the organism(s) that is studied. Contains details like taxonomy, strain, genotype, sex, age and/or other morphometric details and measurements._
 
 
 
@@ -123,7 +123,7 @@ URI: [BeStMeta:Subject](https://w3id.org/BeStMeta/Subject)
 | [species_name](species_name.md) | 1 <br/> [String](String.md) | Scientific (Latin) binomial name of the study organism | direct |
 | [species_ncbi_taxon_id](species_ncbi_taxon_id.md) | 0..1 _recommended_ <br/> [String](String.md) | NCBI Taxonomy ID for the study organism | direct |
 | [strain](strain.md) | 0..1 _recommended_ <br/> [String](String.md) | Organism strain or line | direct |
-| [genotype](genotype.md) | 0..1 _recommended_ <br/> [String](String.md) | Genotype identifier of the tracked organism(s)including  strain-specific, mut... | direct |
+| [genotype](genotype.md) | 0..1 _recommended_ <br/> [String](String.md) | Genotype identifier of the tracked organism(s) including strain-specific, mut... | direct |
 | [sex](sex.md) | 0..1 _recommended_ <br/> [SexEnum](SexEnum.md) | Biological sex of the tracked organism(s) | direct |
 | [body_length_value](body_length_value.md) | 0..1 _recommended_ <br/> [Float](Float.md) | Body length numeric value of the tracked organism(s) | direct |
 | [body_length_unit](body_length_unit.md) | 0..1 _recommended_ <br/> [LengthUnitEnum](LengthUnitEnum.md) | Body length unit of the tracked organism(s) | direct |
@@ -231,8 +231,8 @@ The class must satisfy at least one of:
 <details>
 ```yaml
 name: Subject
-description: Biological identity of the organism(s) that is studied.  Contains details
-  like taxonomy, strain, genotype, sex, age  and/or other morphometric details and
+description: Biological identity of the organism(s) that is studied. Contains details
+  like taxonomy, strain, genotype, sex, age and/or other morphometric details and
   measurements.
 from_schema: https://w3id.org/bestmeta/schema
 slots:
@@ -302,8 +302,8 @@ any_of:
 <details>
 ```yaml
 name: Subject
-description: Biological identity of the organism(s) that is studied.  Contains details
-  like taxonomy, strain, genotype, sex, age  and/or other morphometric details and
+description: Biological identity of the organism(s) that is studied. Contains details
+  like taxonomy, strain, genotype, sex, age and/or other morphometric details and
   measurements.
 from_schema: https://w3id.org/bestmeta/schema
 attributes:
@@ -361,7 +361,7 @@ attributes:
       source_ontology:
         tag: source_ontology
         value: GENO
-    description: Genotype identifier of the tracked organism(s)including  strain-specific,
+    description: Genotype identifier of the tracked organism(s) including strain-specific,
       mutant, transgenic, or engineered genotypes.
     from_schema: https://w3id.org/bestmeta/schema
     exact_mappings:

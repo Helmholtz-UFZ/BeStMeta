@@ -25,7 +25,7 @@ URI: [BeStMeta:gain](https://w3id.org/BeStMeta/gain)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AcquisitionParameters](AcquisitionParameters.md) | Video acquisition and recording parameters |  no  |
+| [Acquisition](Acquisition.md) | Video acquisition and recording parameters, including timing encoding and ill... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [BeStMeta:gain](https://w3id.org/BeStMeta/gain)
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [AcquisitionParameters](AcquisitionParameters.md) |
+| Domain Of | [Acquisition](Acquisition.md) |
 
 ### Cardinality and Requirements
 
@@ -91,7 +91,7 @@ exact_mappings:
 - AFQ:0000201
 rank: 1000
 domain_of:
-- AcquisitionParameters
+- Acquisition
 range: string
 required: false
 

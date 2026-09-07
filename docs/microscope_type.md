@@ -25,7 +25,7 @@ URI: [BeStMeta:microscope_type](https://w3id.org/BeStMeta/microscope_type)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [VideoHardware](VideoHardware.md) | Camera systems, optical configuration, and physical recording infrastructure ... |  no  |
+| [Hardware](Hardware.md) | Camera systems, optical configuration, and physical recording infrastructure ... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [BeStMeta:microscope_type](https://w3id.org/BeStMeta/microscope_type)
 | Property | Value |
 | --- | --- |
 | Range | [MicroscopeTypeEnum](MicroscopeTypeEnum.md) |
-| Domain Of | [VideoHardware](VideoHardware.md) |
+| Domain Of | [Hardware](Hardware.md) |
 
 ### Cardinality and Requirements
 
@@ -91,7 +91,7 @@ exact_mappings:
 - OME:Type
 rank: 1000
 domain_of:
-- VideoHardware
+- Hardware
 range: MicroscopeTypeEnum
 required: false
 

@@ -25,7 +25,7 @@ URI: [BeStMeta:microscope_serial_number](https://w3id.org/BeStMeta/microscope_se
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [VideoHardware](VideoHardware.md) | Camera systems, optical configuration, and physical recording infrastructure ... |  no  |
+| [Hardware](Hardware.md) | Camera systems, optical configuration, and physical recording infrastructure ... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [BeStMeta:microscope_serial_number](https://w3id.org/BeStMeta/microscope_se
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [VideoHardware](VideoHardware.md) |
+| Domain Of | [Hardware](Hardware.md) |
 
 ### Cardinality and Requirements
 
@@ -91,7 +91,7 @@ exact_mappings:
 - OME:SerialNumber
 rank: 1000
 domain_of:
-- VideoHardware
+- Hardware
 range: string
 required: false
 

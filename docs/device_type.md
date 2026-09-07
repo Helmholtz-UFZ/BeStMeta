@@ -3,10 +3,10 @@ search:
   boost: 5.0
 ---
 
-# Slot: camera_interface 
+# Slot: device_type 
 
 
-_Interface standard used for communication between the camera and the acquisition system._
+_Indicates the category of imaging system used; determines which additional hardware fields are required or recommended._
 
 
 
@@ -14,7 +14,7 @@ _Interface standard used for communication between the camera and the acquisitio
 
 
 
-URI: [BeStMeta:camera_interface](https://w3id.org/BeStMeta/camera_interface)
+URI: [BeStMeta:device_type](https://w3id.org/BeStMeta/device_type)
 <!-- no inheritance hierarchy -->
 
 
@@ -38,13 +38,14 @@ URI: [BeStMeta:camera_interface](https://w3id.org/BeStMeta/camera_interface)
 
 | Property | Value |
 | --- | --- |
-| Range | [CameraInterfaceEnum](CameraInterfaceEnum.md) |
+| Range | [DeviceTypeEnum](DeviceTypeEnum.md) |
 | Domain Of | [Hardware](Hardware.md) |
 
 ### Cardinality and Requirements
 
 | Property | Value |
 | --- | --- |
+| Required | Yes |
 
 
 
@@ -73,8 +74,8 @@ URI: [BeStMeta:camera_interface](https://w3id.org/BeStMeta/camera_interface)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | BeStMeta:camera_interface |
-| native | BeStMeta:camera_interface |
+| self | BeStMeta:device_type |
+| native | BeStMeta:device_type |
 
 
 
@@ -83,15 +84,15 @@ URI: [BeStMeta:camera_interface](https://w3id.org/BeStMeta/camera_interface)
 
 <details>
 ```yaml
-name: camera_interface
-description: Interface standard used for communication between the camera and the
-  acquisition system.
+name: device_type
+description: Indicates the category of imaging system used; determines which additional
+  hardware fields are required or recommended.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
 - Hardware
-range: CameraInterfaceEnum
-required: false
+range: DeviceTypeEnum
+required: true
 
 ```
 </details></div>

@@ -25,7 +25,7 @@ URI: [BeStMeta:illumination_type](https://w3id.org/BeStMeta/illumination_type)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AcquisitionParameters](AcquisitionParameters.md) | Video acquisition and recording parameters |  no  |
+| [Acquisition](Acquisition.md) | Video acquisition and recording parameters, including timing encoding and ill... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [BeStMeta:illumination_type](https://w3id.org/BeStMeta/illumination_type)
 | Property | Value |
 | --- | --- |
 | Range | [IlluminationTypeEnum](IlluminationTypeEnum.md) |
-| Domain Of | [AcquisitionParameters](AcquisitionParameters.md) |
+| Domain Of | [Acquisition](Acquisition.md) |
 
 ### Cardinality and Requirements
 
@@ -92,7 +92,7 @@ exact_mappings:
 - MIxS:0000769
 rank: 1000
 domain_of:
-- AcquisitionParameters
+- Acquisition
 range: IlluminationTypeEnum
 required: false
 recommended: true

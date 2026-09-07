@@ -25,7 +25,7 @@ URI: [BeStMeta:illumination_wavelength](https://w3id.org/BeStMeta/illumination_w
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AcquisitionParameters](AcquisitionParameters.md) | Video acquisition and recording parameters |  no  |
+| [Acquisition](Acquisition.md) | Video acquisition and recording parameters, including timing encoding and ill... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [BeStMeta:illumination_wavelength](https://w3id.org/BeStMeta/illumination_w
 | Property | Value |
 | --- | --- |
 | Range | [Float](Float.md) |
-| Domain Of | [AcquisitionParameters](AcquisitionParameters.md) |
+| Domain Of | [Acquisition](Acquisition.md) |
 
 ### Cardinality and Requirements
 
@@ -105,7 +105,7 @@ close_mappings:
 - PATO:0001242
 rank: 1000
 domain_of:
-- AcquisitionParameters
+- Acquisition
 range: float
 required: false
 unit:

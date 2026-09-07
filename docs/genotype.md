@@ -6,7 +6,7 @@ search:
 # Slot: genotype 
 
 
-_Genotype identifier of the tracked organism(s)including  strain-specific, mutant, transgenic, or engineered genotypes._
+_Genotype identifier of the tracked organism(s) including strain-specific, mutant, transgenic, or engineered genotypes._
 
 
 
@@ -97,7 +97,7 @@ annotations:
   source_ontology:
     tag: source_ontology
     value: GENO
-description: Genotype identifier of the tracked organism(s)including  strain-specific,
+description: Genotype identifier of the tracked organism(s) including strain-specific,
   mutant, transgenic, or engineered genotypes.
 from_schema: https://w3id.org/bestmeta/schema
 exact_mappings:
