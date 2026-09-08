@@ -3,10 +3,10 @@ search:
   boost: 5.0
 ---
 
-# Slot: camera_interface 
+# Slot: in_house_system_description 
 
 
-_Interface standard used for communication between the camera and the acquisition system._
+_Free-text description of the custom-built imaging system, including how the components are assembled and used._
 
 
 
@@ -14,7 +14,7 @@ _Interface standard used for communication between the camera and the acquisitio
 
 
 
-URI: [BeStMeta:camera_interface](https://w3id.org/BeStMeta/camera_interface)
+URI: [BeStMeta:in_house_system_description](https://w3id.org/BeStMeta/in_house_system_description)
 <!-- no inheritance hierarchy -->
 
 
@@ -38,7 +38,7 @@ URI: [BeStMeta:camera_interface](https://w3id.org/BeStMeta/camera_interface)
 
 | Property | Value |
 | --- | --- |
-| Range | [CameraInterfaceEnum](CameraInterfaceEnum.md) |
+| Range | [String](String.md) |
 | Domain Of | [Hardware](Hardware.md) |
 
 ### Cardinality and Requirements
@@ -73,8 +73,8 @@ URI: [BeStMeta:camera_interface](https://w3id.org/BeStMeta/camera_interface)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | BeStMeta:camera_interface |
-| native | BeStMeta:camera_interface |
+| self | BeStMeta:in_house_system_description |
+| native | BeStMeta:in_house_system_description |
 
 
 
@@ -83,15 +83,14 @@ URI: [BeStMeta:camera_interface](https://w3id.org/BeStMeta/camera_interface)
 
 <details>
 ```yaml
-name: camera_interface
-description: Interface standard used for communication between the camera and the
-  acquisition system.
+name: in_house_system_description
+description: Free-text description of the custom-built imaging system, including how
+  the components are assembled and used.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
 - Hardware
-range: CameraInterfaceEnum
-required: false
+range: string
 
 ```
 </details></div>

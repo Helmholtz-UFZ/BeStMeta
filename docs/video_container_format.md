@@ -25,7 +25,7 @@ URI: [BeStMeta:video_container_format](https://w3id.org/BeStMeta/video_container
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AcquisitionParameters](AcquisitionParameters.md) | Video acquisition and recording parameters |  no  |
+| [Acquisition](Acquisition.md) | Video acquisition and recording parameters, including timing encoding and ill... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [BeStMeta:video_container_format](https://w3id.org/BeStMeta/video_container
 | Property | Value |
 | --- | --- |
 | Range | [VideoContainerEnum](VideoContainerEnum.md) |
-| Domain Of | [AcquisitionParameters](AcquisitionParameters.md) |
+| Domain Of | [Acquisition](Acquisition.md) |
 
 ### Cardinality and Requirements
 
@@ -100,7 +100,7 @@ exact_mappings:
 - ebucore:hasContainerFormat
 rank: 1000
 domain_of:
-- AcquisitionParameters
+- Acquisition
 range: VideoContainerEnum
 required: true
 

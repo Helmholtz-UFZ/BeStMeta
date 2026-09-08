@@ -25,7 +25,7 @@ URI: [BeStMeta:spatial_resolution](https://w3id.org/BeStMeta/spatial_resolution)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AcquisitionParameters](AcquisitionParameters.md) | Video acquisition and recording parameters |  no  |
+| [Acquisition](Acquisition.md) | Video acquisition and recording parameters, including timing encoding and ill... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [BeStMeta:spatial_resolution](https://w3id.org/BeStMeta/spatial_resolution)
 | Property | Value |
 | --- | --- |
 | Range | [Float](Float.md) |
-| Domain Of | [AcquisitionParameters](AcquisitionParameters.md) |
+| Domain Of | [Acquisition](Acquisition.md) |
 
 ### Cardinality and Requirements
 
@@ -102,7 +102,7 @@ close_mappings:
 - dicom:SpatialResolution
 rank: 1000
 domain_of:
-- AcquisitionParameters
+- Acquisition
 range: float
 required: false
 recommended: true

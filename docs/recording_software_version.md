@@ -25,7 +25,7 @@ URI: [BeStMeta:recording_software_version](https://w3id.org/BeStMeta/recording_s
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AcquisitionParameters](AcquisitionParameters.md) | Video acquisition and recording parameters |  no  |
+| [Acquisition](Acquisition.md) | Video acquisition and recording parameters, including timing encoding and ill... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [BeStMeta:recording_software_version](https://w3id.org/BeStMeta/recording_s
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [AcquisitionParameters](AcquisitionParameters.md) |
+| Domain Of | [Acquisition](Acquisition.md) |
 
 ### Cardinality and Requirements
 
@@ -92,7 +92,7 @@ exact_mappings:
 - AFR:0001700
 rank: 1000
 domain_of:
-- AcquisitionParameters
+- Acquisition
 range: string
 required: true
 

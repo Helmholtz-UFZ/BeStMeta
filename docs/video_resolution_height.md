@@ -25,7 +25,7 @@ URI: [BeStMeta:video_resolution_height](https://w3id.org/BeStMeta/video_resoluti
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AcquisitionParameters](AcquisitionParameters.md) | Video acquisition and recording parameters |  no  |
+| [Acquisition](Acquisition.md) | Video acquisition and recording parameters, including timing encoding and ill... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [BeStMeta:video_resolution_height](https://w3id.org/BeStMeta/video_resoluti
 | Property | Value |
 | --- | --- |
 | Range | [Integer](Integer.md) |
-| Domain Of | [AcquisitionParameters](AcquisitionParameters.md) |
+| Domain Of | [Acquisition](Acquisition.md) |
 
 ### Cardinality and Requirements
 
@@ -102,7 +102,7 @@ close_mappings:
 - ebucore:height
 rank: 1000
 domain_of:
-- AcquisitionParameters
+- Acquisition
 range: integer
 required: true
 unit:

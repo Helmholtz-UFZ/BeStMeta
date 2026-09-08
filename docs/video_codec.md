@@ -25,7 +25,7 @@ URI: [BeStMeta:video_codec](https://w3id.org/BeStMeta/video_codec)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AcquisitionParameters](AcquisitionParameters.md) | Video acquisition and recording parameters |  no  |
+| [Acquisition](Acquisition.md) | Video acquisition and recording parameters, including timing encoding and ill... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [BeStMeta:video_codec](https://w3id.org/BeStMeta/video_codec)
 | Property | Value |
 | --- | --- |
 | Range | [VideoCodecEnum](VideoCodecEnum.md) |
-| Domain Of | [AcquisitionParameters](AcquisitionParameters.md) |
+| Domain Of | [Acquisition](Acquisition.md) |
 
 ### Cardinality and Requirements
 
@@ -102,7 +102,7 @@ exact_mappings:
 - ebucore:codecName
 rank: 1000
 domain_of:
-- AcquisitionParameters
+- Acquisition
 range: VideoCodecEnum
 required: false
 recommended: true

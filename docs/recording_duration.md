@@ -25,7 +25,7 @@ URI: [BeStMeta:recording_duration](https://w3id.org/BeStMeta/recording_duration)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AcquisitionParameters](AcquisitionParameters.md) | Video acquisition and recording parameters |  no  |
+| [Acquisition](Acquisition.md) | Video acquisition and recording parameters, including timing encoding and ill... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [BeStMeta:recording_duration](https://w3id.org/BeStMeta/recording_duration)
 | Property | Value |
 | --- | --- |
 | Range | [Duration](Duration.md) |
-| Domain Of | [AcquisitionParameters](AcquisitionParameters.md) |
+| Domain Of | [Acquisition](Acquisition.md) |
 
 ### Cardinality and Requirements
 
@@ -117,7 +117,7 @@ close_mappings:
 - schema:duration
 rank: 1000
 domain_of:
-- AcquisitionParameters
+- Acquisition
 range: duration
 required: true
 

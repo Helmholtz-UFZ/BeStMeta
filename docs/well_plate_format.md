@@ -3,10 +3,10 @@ search:
   boost: 5.0
 ---
 
-# Slot: camera_interface 
+# Slot: well_plate_format 
 
 
-_Interface standard used for communication between the camera and the acquisition system._
+_Format of the multi-well plate used in a closed-box imaging system (e.g. "96-well", "24-well"), when applicable._
 
 
 
@@ -14,7 +14,7 @@ _Interface standard used for communication between the camera and the acquisitio
 
 
 
-URI: [BeStMeta:camera_interface](https://w3id.org/BeStMeta/camera_interface)
+URI: [BeStMeta:well_plate_format](https://w3id.org/BeStMeta/well_plate_format)
 <!-- no inheritance hierarchy -->
 
 
@@ -38,7 +38,7 @@ URI: [BeStMeta:camera_interface](https://w3id.org/BeStMeta/camera_interface)
 
 | Property | Value |
 | --- | --- |
-| Range | [CameraInterfaceEnum](CameraInterfaceEnum.md) |
+| Range | [WellPlateFormatEnum](WellPlateFormatEnum.md) |
 | Domain Of | [Hardware](Hardware.md) |
 
 ### Cardinality and Requirements
@@ -73,8 +73,8 @@ URI: [BeStMeta:camera_interface](https://w3id.org/BeStMeta/camera_interface)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | BeStMeta:camera_interface |
-| native | BeStMeta:camera_interface |
+| self | BeStMeta:well_plate_format |
+| native | BeStMeta:well_plate_format |
 
 
 
@@ -83,15 +83,14 @@ URI: [BeStMeta:camera_interface](https://w3id.org/BeStMeta/camera_interface)
 
 <details>
 ```yaml
-name: camera_interface
-description: Interface standard used for communication between the camera and the
-  acquisition system.
+name: well_plate_format
+description: Format of the multi-well plate used in a closed-box imaging system (e.g.
+  "96-well", "24-well"), when applicable.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
 - Hardware
-range: CameraInterfaceEnum
-required: false
+range: WellPlateFormatEnum
 
 ```
 </details></div>

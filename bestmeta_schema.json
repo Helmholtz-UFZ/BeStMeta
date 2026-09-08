@@ -1,8 +1,8 @@
 {
     "$defs": {
-        "AcquisitionParameters": {
+        "Acquisition": {
             "additionalProperties": false,
-            "description": "Video acquisition and recording parameters.",
+            "description": "Video acquisition and recording parameters, including timing encoding and illumination details.",
             "if": {
                 "properties": {
                     "video_codec": {
@@ -159,7 +159,7 @@
                     "bit_depth"
                 ]
             },
-            "title": "AcquisitionParameters",
+            "title": "Acquisition",
             "type": "object"
         },
         "ArenaShapeEnum": {
@@ -191,27 +191,18 @@
             "title": "ArenaTypeEnum",
             "type": "string"
         },
-        "CameraDeviceTypeEnum": {
-            "description": "General types of imaging devices used in VTA setups.",
-            "enum": [
-                "digital_camera",
-                "usb_camera",
-                "microscope_camera",
-                "smartphone",
-                "other"
-            ],
-            "title": "CameraDeviceTypeEnum",
-            "type": "string"
-        },
         "CameraInterfaceEnum": {
-            "description": "Hardware or connection interface used to transfer data from the camera to the recording system.",
+            "description": "Data interface used to connect the camera to a recording system.",
             "enum": [
-                "usb",
-                "ethernet",
-                "ip",
+                "usb2",
+                "usb3",
+                "gige",
                 "camera_link",
                 "coaxpress",
+                "firewire",
                 "hdmi",
+                "wireless",
+                "internal_integrated",
                 "other"
             ],
             "title": "CameraInterfaceEnum",
@@ -239,8 +230,22 @@
             "title": "CameraSensorTypeEnum",
             "type": "string"
         },
+        "CameraTypeEnum": {
+            "description": "Type of camera used to record the videos.",
+            "enum": [
+                "machine_vision_camera",
+                "webcam",
+                "smartphone_camera",
+                "action_camera",
+                "dslr_mirrorless_camera",
+                "thermal_camera",
+                "other"
+            ],
+            "title": "CameraTypeEnum",
+            "type": "string"
+        },
         "ClosedBoxSystemEnum": {
-            "description": "Commercial closed-box system used for recording and tracking the organism(s)  in a controlled environment.",
+            "description": "Commercial closed-box system used for recording and tracking the organism(s) in a controlled environment.",
             "enum": [
                 "zebrabox",
                 "daniovision",
@@ -321,6 +326,17 @@
                 "subadult"
             ],
             "title": "DevelopmentalStageEnum",
+            "type": "string"
+        },
+        "DeviceTypeEnum": {
+            "description": "Category of recording system used to record the videos.",
+            "enum": [
+                "camera",
+                "microscope",
+                "closed_box_system",
+                "in_house_system"
+            ],
+            "title": "DeviceTypeEnum",
             "type": "string"
         },
         "Experiment": {
@@ -525,10 +541,10 @@
             "properties": {
                 "experiment": {
                     "$ref": "#/$defs/Experiment",
-                    "description": "Assay design, arena configuration, and environmental parameters."
+                    "description": "The experimental setup and environment for this dataset's trials."
                 },
                 "experiment_notes": {
-                    "description": "Free-text notes on experimental conditions not captured by structured fields.",
+                    "description": "Free-text notes on the overall experimental conditions.",
                     "type": [
                         "string",
                         "null"
@@ -543,11 +559,11 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Treatment and chemical exposure applied to the subjects. Omit this sub-class entirely for naive or vehicle-only datasets."
+                    "description": "Any intervention applied to the subjects. Omitted when no treatment or exposure was used."
                 },
                 "subject": {
                     "$ref": "#/$defs/Subject",
-                    "description": "Organism identity and biological attributes of the tracked subjects."
+                    "description": "The organism(s) studied under these experimental conditions."
                 }
             },
             "required": [
@@ -571,6 +587,505 @@
             ],
             "title": "ExposureRouteEnum",
             "type": "string"
+        },
+        "Hardware": {
+            "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "device_type": {
+                                "const": "camera"
+                            }
+                        },
+                        "required": [
+                            "device_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "camera_count": {},
+                            "camera_manufacturer": {},
+                            "camera_model": {},
+                            "camera_type": {},
+                            "field_of_view_height": {},
+                            "field_of_view_unit": {},
+                            "field_of_view_width": {}
+                        },
+                        "required": [
+                            "camera_count",
+                            "camera_type",
+                            "camera_model",
+                            "camera_manufacturer",
+                            "field_of_view_width",
+                            "field_of_view_height",
+                            "field_of_view_unit"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "device_type": {
+                                "const": "camera"
+                            }
+                        },
+                        "required": [
+                            "device_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "camera_distance_mm": {},
+                            "camera_position": {},
+                            "camera_sensor_type": {},
+                            "lens_focal_length_mm": {}
+                        },
+                        "required": [
+                            "camera_position",
+                            "camera_distance_mm",
+                            "lens_focal_length_mm",
+                            "camera_sensor_type"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "device_type": {
+                                "const": "microscope"
+                            }
+                        },
+                        "required": [
+                            "device_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "microscope_manufacturer": {},
+                            "microscope_model": {},
+                            "microscope_type": {}
+                        },
+                        "required": [
+                            "microscope_manufacturer",
+                            "microscope_model",
+                            "microscope_type"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "anyOf": [
+                            {
+                                "properties": {
+                                    "field_of_view_width": {}
+                                },
+                                "required": [
+                                    "field_of_view_width"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "field_of_view_height": {}
+                                },
+                                "required": [
+                                    "field_of_view_height"
+                                ]
+                            }
+                        ],
+                        "properties": {
+                            "device_type": {
+                                "const": "microscope"
+                            }
+                        },
+                        "required": [
+                            "device_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "field_of_view_height": {},
+                            "field_of_view_unit": {},
+                            "field_of_view_width": {}
+                        },
+                        "required": [
+                            "field_of_view_width",
+                            "field_of_view_height",
+                            "field_of_view_unit"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "device_type": {
+                                "const": "microscope"
+                            }
+                        },
+                        "required": [
+                            "device_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "contrast_polarity": {},
+                            "field_of_view_height": {},
+                            "field_of_view_unit": {},
+                            "field_of_view_width": {},
+                            "objective_magnification": {}
+                        },
+                        "required": [
+                            "field_of_view_width",
+                            "field_of_view_height",
+                            "field_of_view_unit",
+                            "objective_magnification",
+                            "contrast_polarity"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "device_type": {
+                                "const": "closed_box_system"
+                            }
+                        },
+                        "required": [
+                            "device_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "closed_box_system_name": {}
+                        },
+                        "required": [
+                            "closed_box_system_name"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "anyOf": [
+                            {
+                                "properties": {
+                                    "field_of_view_width": {}
+                                },
+                                "required": [
+                                    "field_of_view_width"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "field_of_view_height": {}
+                                },
+                                "required": [
+                                    "field_of_view_height"
+                                ]
+                            }
+                        ],
+                        "properties": {
+                            "device_type": {
+                                "const": "closed_box_system"
+                            }
+                        },
+                        "required": [
+                            "device_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "field_of_view_height": {},
+                            "field_of_view_unit": {},
+                            "field_of_view_width": {}
+                        },
+                        "required": [
+                            "field_of_view_width",
+                            "field_of_view_height",
+                            "field_of_view_unit"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "device_type": {
+                                "const": "closed_box_system"
+                            }
+                        },
+                        "required": [
+                            "device_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "closed_box_system_version": {},
+                            "field_of_view_height": {},
+                            "field_of_view_unit": {},
+                            "field_of_view_width": {},
+                            "subjects_per_field_of_view": {},
+                            "well_plate_format": {}
+                        },
+                        "required": [
+                            "closed_box_system_version",
+                            "field_of_view_width",
+                            "field_of_view_height",
+                            "field_of_view_unit",
+                            "well_plate_format",
+                            "subjects_per_field_of_view"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "device_type": {
+                                "const": "in_house_system"
+                            }
+                        },
+                        "required": [
+                            "device_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "field_of_view_height": {},
+                            "field_of_view_unit": {},
+                            "field_of_view_width": {},
+                            "in_house_system_description": {}
+                        },
+                        "required": [
+                            "in_house_system_description",
+                            "field_of_view_width",
+                            "field_of_view_height",
+                            "field_of_view_unit"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "device_type": {
+                                "const": "in_house_system"
+                            }
+                        },
+                        "required": [
+                            "device_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "in_house_system_components": {
+                                "items": {},
+                                "type": "array"
+                            },
+                            "in_house_system_designer": {}
+                        },
+                        "required": [
+                            "in_house_system_components",
+                            "in_house_system_designer"
+                        ]
+                    }
+                }
+            ],
+            "description": "Camera systems, optical configuration, and physical recording infrastructure used in the VTA. Documents instrument identity and optical specifications.",
+            "properties": {
+                "camera_count": {
+                    "description": "Number of cameras used simultaneously.",
+                    "type": "integer"
+                },
+                "camera_distance_mm": {
+                    "description": "Distance from camera lens to the arena floor in millimetres.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "camera_interface": {
+                    "$ref": "#/$defs/CameraInterfaceEnum",
+                    "description": "Interface standard used for communication between the camera and the acquisition system."
+                },
+                "camera_manufacturer": {
+                    "description": "Manufacturer of the camera.",
+                    "type": "string"
+                },
+                "camera_model": {
+                    "description": "Full manufacturer model name of the camera.",
+                    "type": "string"
+                },
+                "camera_position": {
+                    "$ref": "#/$defs/CameraPositionEnum",
+                    "description": "Position of the camera relative to the arena."
+                },
+                "camera_sensor_type": {
+                    "$ref": "#/$defs/CameraSensorTypeEnum",
+                    "description": "Image sensor technology."
+                },
+                "camera_type": {
+                    "$ref": "#/$defs/CameraTypeEnum",
+                    "description": "General type of imaging device."
+                },
+                "closed_box_system_name": {
+                    "$ref": "#/$defs/ClosedBoxSystemEnum",
+                    "description": "Name of the integrated commercial closed-box tracking system. (e.g. ZebraBox, DanioVision, ToxMate, PhenoTyper)."
+                },
+                "closed_box_system_version": {
+                    "description": "Hardware version or model number of the closed-box system.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "contrast_polarity": {
+                    "$ref": "#/$defs/ContrastPolarityEnum",
+                    "description": "Contrast relationship between the tracked object and the background; indicates whether the subject appears bright on a dark background or dark on a bright background in the recorded video."
+                },
+                "device_type": {
+                    "$ref": "#/$defs/DeviceTypeEnum",
+                    "description": "Indicates the category of imaging system used; determines which additional hardware fields are required or recommended."
+                },
+                "field_of_view_height": {
+                    "description": "Numeric value of vertical field of view covered by the camera.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "field_of_view_unit": {
+                    "$ref": "#/$defs/LengthUnitEnum",
+                    "description": "Unit of measurement for field_of_view_width and field_of_view_height."
+                },
+                "field_of_view_width": {
+                    "description": "Numeric value of horizontal field of view covered by the camera.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "hardware_notes": {
+                    "description": "Free-text notes on hardware configuration not captured by structured fields.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "in_house_system_components": {
+                    "description": "List of key hardware components used in the custom-built system (e.g. camera sensor, lens, illumination source, mounting hardware).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "in_house_system_description": {
+                    "description": "Free-text description of the custom-built imaging system, including how the components are assembled and used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "in_house_system_designer": {
+                    "description": "Lab, person, or institution that designed or built the in-house system.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "lens_focal_length_mm": {
+                    "description": "Focal length of the imaging lens in millimetres; applicable to camera or microscope optics when reported.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "microscope_lot_number": {
+                    "description": "Lot number of the microscope.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "microscope_manufacturer": {
+                    "description": "Manufacturer of the microscope.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "microscope_model": {
+                    "description": "Model name or identifier of the microscope.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "microscope_serial_number": {
+                    "description": "Serial number of the microscope.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "microscope_type": {
+                    "$ref": "#/$defs/MicroscopeTypeEnum",
+                    "description": "Microscope configuration according to the OME microscope type classification."
+                },
+                "objective_magnification": {
+                    "description": "Magnification of microscope objective (if applicable).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "subjects_per_field_of_view": {
+                    "description": "Number of individual subjects (e.g. wells, organisms, larvae) visible within a single field of view or camera frame, when applicable.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "well_plate_format": {
+                    "$ref": "#/$defs/WellPlateFormatEnum",
+                    "description": "Format of the multi-well plate used in a closed-box imaging system (e.g. \"96-well\", \"24-well\"), when applicable."
+                }
+            },
+            "required": [
+                "device_type",
+                "camera_count",
+                "camera_type",
+                "camera_model",
+                "camera_manufacturer"
+            ],
+            "title": "Hardware",
+            "type": "object"
+        },
+        "HardwareandAcquisition": {
+            "additionalProperties": false,
+            "description": "Defines video hardware configuration (camera or microscope) and acquisiiton or recording parameters used during experiments.",
+            "properties": {
+                "acquisition": {
+                    "$ref": "#/$defs/Acquisition",
+                    "description": "Acquisition/recording parameters for the video."
+                },
+                "hardware": {
+                    "$ref": "#/$defs/Hardware",
+                    "description": "Hardware configuration used to record the video."
+                },
+                "hardware_acquisition_notes": {
+                    "description": "Free-text catch-all for additional context about the hardware and acquisition setup as a whole that does not fit within hardware_notes or acquisition_notes specifically (e.g. deviations from standard protocol, or setup issues spanning both hardware and acquisition).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "hardware",
+                "acquisition"
+            ],
+            "title": "HardwareandAcquisition",
+            "type": "object"
         },
         "IlluminationTypeEnum": {
             "description": "Technology type of the light source used during video recording.",
@@ -950,7 +1465,7 @@
                     ]
                 }
             ],
-            "description": "Biological identity of the organism(s) that is studied.  Contains details like taxonomy, strain, genotype, sex, age  and/or other morphometric details and measurements.",
+            "description": "Biological identity of the organism(s) that is studied. Contains details like taxonomy, strain, genotype, sex, age and/or other morphometric details and measurements.",
             "properties": {
                 "age_unit": {
                     "$ref": "#/$defs/DevelopmentUnitEnum",
@@ -990,7 +1505,7 @@
                     ]
                 },
                 "genotype": {
-                    "description": "Genotype identifier of the tracked organism(s)including  strain-specific, mutant, transgenic, or engineered genotypes.",
+                    "description": "Genotype identifier of the tracked organism(s) including strain-specific, mutant, transgenic, or engineered genotypes.",
                     "type": [
                         "string",
                         "null"
@@ -1219,17 +1734,6 @@
             "additionalProperties": false,
             "description": "Top-level study and provenance metadata for a VTA dataset. One record per publication or deposited dataset. Contains identifying, licensing, and bibliographic information.",
             "properties": {
-                "acquisition_parameters": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/AcquisitionParameters"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Video acquisition and recording settings"
-                },
                 "analysis_code_doi": {
                     "description": "DOI of the deposited analysis code.",
                     "format": "uri",
@@ -1346,6 +1850,17 @@
                     ],
                     "description": "Biological and experimental conditions for this dataset"
                 },
+                "hardware_and_acquisition": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/HardwareandAcquisition"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Hardware and acquisition configuration used to record the video dataset."
+                },
                 "publication_doi": {
                     "description": "DOI of the publication associated with the dataset.",
                     "format": "uri",
@@ -1417,17 +1932,6 @@
                         }
                     ],
                     "description": "Tracking software and analysis configuration"
-                },
-                "video_hardware": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/VideoHardware"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Camera and hardware configuration"
                 }
             },
             "required": [
@@ -1464,173 +1968,6 @@
             "title": "VideoContainerEnum",
             "type": "string"
         },
-        "VideoHardware": {
-            "additionalProperties": false,
-            "description": "Camera systems, optical configuration, and physical recording infrastructure used in the VTA. Documents instrument identity and optical specifications.",
-            "if": {
-                "anyOf": [
-                    {
-                        "properties": {
-                            "field_of_view_width": {}
-                        },
-                        "required": [
-                            "field_of_view_width"
-                        ]
-                    },
-                    {
-                        "properties": {
-                            "field_of_view_height": {}
-                        },
-                        "required": [
-                            "field_of_view_height"
-                        ]
-                    }
-                ]
-            },
-            "properties": {
-                "camera_count": {
-                    "description": "Number of cameras used simultaneously.",
-                    "type": "integer"
-                },
-                "camera_device_type": {
-                    "$ref": "#/$defs/CameraDeviceTypeEnum",
-                    "description": "General type of imaging device."
-                },
-                "camera_distance_mm": {
-                    "description": "Distance from camera lens to the arena floor in millimetres.",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "camera_interface": {
-                    "$ref": "#/$defs/CameraInterfaceEnum",
-                    "description": "Interface standard used for communication between the camera and the acquisition system."
-                },
-                "camera_manufacturer": {
-                    "description": "Manufacturer of the camera.",
-                    "type": "string"
-                },
-                "camera_model": {
-                    "description": "Full manufacturer model name of the camera.",
-                    "type": "string"
-                },
-                "camera_position": {
-                    "$ref": "#/$defs/CameraPositionEnum",
-                    "description": "Position of the camera relative to the arena."
-                },
-                "camera_sensor_type": {
-                    "$ref": "#/$defs/CameraSensorTypeEnum",
-                    "description": "Image sensor technology."
-                },
-                "closed_box_system_name": {
-                    "$ref": "#/$defs/ClosedBoxSystemEnum",
-                    "description": "Name of the integrated commercial closed-box tracking system. (e.g. ZebraBox, DanioVision, ToxMate, PhenoTyper)."
-                },
-                "closed_box_system_version": {
-                    "description": "Hardware version or model number of the closed-box system.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "contrast_polarity": {
-                    "$ref": "#/$defs/ContrastPolarityEnum",
-                    "description": "Contrast relationship between the tracked object and the background; indicates whether the subject appears bright on a dark background or dark on a bright background in the recorded video."
-                },
-                "field_of_view_height": {
-                    "description": "Numeric value of vertical field of view covered by the camera.",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "field_of_view_unit": {
-                    "$ref": "#/$defs/LengthUnitEnum",
-                    "description": "Unit of measurement for field_of_view_width and field_of_view_height."
-                },
-                "field_of_view_width": {
-                    "description": "Numeric value of horizontal field of view covered by the camera.",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "hardware_notes": {
-                    "description": "Free-text notes on hardware configuration not captured by structured fields.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "lens_focal_length_mm": {
-                    "description": "Focal length of the imaging lens in millimetres;  applicable to camera or microscope optics when reported.",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "microscope_lot_number": {
-                    "description": "Lot number of the microscope.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "microscope_manufacturer": {
-                    "description": "Manufacturer of the microscope.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "microscope_model": {
-                    "description": "Model name or identifier of the microscope.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "microscope_serial_number": {
-                    "description": "Serial number of the microscope.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "microscope_type": {
-                    "$ref": "#/$defs/MicroscopeTypeEnum",
-                    "description": "Microscope configuration according to the OME microscope type classification."
-                },
-                "objective_magnification": {
-                    "description": "Magnification of microscope objective (if applicable).",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "camera_count",
-                "camera_device_type",
-                "camera_model",
-                "camera_manufacturer"
-            ],
-            "then": {
-                "properties": {
-                    "field_of_view_height": {},
-                    "field_of_view_unit": {},
-                    "field_of_view_width": {}
-                },
-                "required": [
-                    "field_of_view_width",
-                    "field_of_view_height",
-                    "field_of_view_unit"
-                ]
-            },
-            "title": "VideoHardware",
-            "type": "object"
-        },
         "WeightUnitEnum": {
             "description": "Units of mass used to express weight measurements, ranging from micrograms to kilograms.",
             "enum": [
@@ -1662,6 +1999,20 @@
             ],
             "title": "WellCrossSectionShapeEnum",
             "type": "string"
+        },
+        "WellPlateFormatEnum": {
+            "description": "Type of well plate used in a closed box system.",
+            "enum": [
+                "well_6",
+                "well_12",
+                "well_24",
+                "well_48",
+                "well_96",
+                "well_384",
+                "other"
+            ],
+            "title": "WellPlateFormatEnum",
+            "type": "string"
         }
     },
     "$id": "https://w3id.org/bestmeta/schema",
@@ -1670,17 +2021,6 @@
     "description": "Top-level study and provenance metadata for a VTA dataset. One record per publication or deposited dataset. Contains identifying, licensing, and bibliographic information.",
     "metamodel_version": "1.11.0",
     "properties": {
-        "acquisition_parameters": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/AcquisitionParameters"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "description": "Video acquisition and recording settings"
-        },
         "analysis_code_doi": {
             "description": "DOI of the deposited analysis code.",
             "format": "uri",
@@ -1797,6 +2137,17 @@
             ],
             "description": "Biological and experimental conditions for this dataset"
         },
+        "hardware_and_acquisition": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/HardwareandAcquisition"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "Hardware and acquisition configuration used to record the video dataset."
+        },
         "publication_doi": {
             "description": "DOI of the publication associated with the dataset.",
             "format": "uri",
@@ -1868,17 +2219,6 @@
                 }
             ],
             "description": "Tracking software and analysis configuration"
-        },
-        "video_hardware": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/VideoHardware"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "description": "Camera and hardware configuration"
         }
     },
     "required": [

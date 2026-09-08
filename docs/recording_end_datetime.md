@@ -25,7 +25,7 @@ URI: [BeStMeta:recording_end_datetime](https://w3id.org/BeStMeta/recording_end_d
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AcquisitionParameters](AcquisitionParameters.md) | Video acquisition and recording parameters |  no  |
+| [Acquisition](Acquisition.md) | Video acquisition and recording parameters, including timing encoding and ill... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [BeStMeta:recording_end_datetime](https://w3id.org/BeStMeta/recording_end_d
 | Property | Value |
 | --- | --- |
 | Range | [Datetime](Datetime.md) |
-| Domain Of | [AcquisitionParameters](AcquisitionParameters.md) |
+| Domain Of | [Acquisition](Acquisition.md) |
 
 ### Cardinality and Requirements
 
@@ -89,7 +89,7 @@ description: Date and time at which acquisition of the video recording ended.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- AcquisitionParameters
+- Acquisition
 range: datetime
 required: false
 recommended: true

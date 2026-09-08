@@ -25,7 +25,7 @@ URI: [BeStMeta:closed_box_system_name](https://w3id.org/BeStMeta/closed_box_syst
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [VideoHardware](VideoHardware.md) | Camera systems, optical configuration, and physical recording infrastructure ... |  no  |
+| [Hardware](Hardware.md) | Camera systems, optical configuration, and physical recording infrastructure ... |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [BeStMeta:closed_box_system_name](https://w3id.org/BeStMeta/closed_box_syst
 | Property | Value |
 | --- | --- |
 | Range | [ClosedBoxSystemEnum](ClosedBoxSystemEnum.md) |
-| Domain Of | [VideoHardware](VideoHardware.md) |
+| Domain Of | [Hardware](Hardware.md) |
 
 ### Cardinality and Requirements
 
@@ -89,7 +89,7 @@ description: Name of the integrated commercial closed-box tracking system. (e.g.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- VideoHardware
+- Hardware
 range: ClosedBoxSystemEnum
 required: false
 

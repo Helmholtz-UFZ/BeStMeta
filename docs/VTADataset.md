@@ -24,17 +24,6 @@ URI: [BeStMeta:VTADataset](https://w3id.org/BeStMeta/VTADataset)
  classDiagram
     class VTADataset
     click VTADataset href "../VTADataset/"
-      VTADataset : acquisition_parameters
-        
-          
-    
-        
-        
-        VTADataset --> "0..1" AcquisitionParameters : acquisition_parameters
-        click AcquisitionParameters href "../AcquisitionParameters/"
-    
-
-        
       VTADataset : analysis_code_doi
         
       VTADataset : analysis_code_repository
@@ -74,6 +63,17 @@ URI: [BeStMeta:VTADataset](https://w3id.org/BeStMeta/VTADataset)
     
 
         
+      VTADataset : hardware_and_acquisition
+        
+          
+    
+        
+        
+        VTADataset --> "0..1" HardwareandAcquisition : hardware_and_acquisition
+        click HardwareandAcquisition href "../HardwareandAcquisition/"
+    
+
+        
       VTADataset : publication_doi
         
       VTADataset : raw_data_repository
@@ -105,17 +105,6 @@ URI: [BeStMeta:VTADataset](https://w3id.org/BeStMeta/VTADataset)
         
         VTADataset --> "0..1" TrackingAnalysis : tracking_analysis
         click TrackingAnalysis href "../TrackingAnalysis/"
-    
-
-        
-      VTADataset : video_hardware
-        
-          
-    
-        
-        
-        VTADataset --> "0..1" VideoHardware : video_hardware
-        click VideoHardware href "../VideoHardware/"
     
 
         
@@ -159,8 +148,7 @@ URI: [BeStMeta:VTADataset](https://w3id.org/BeStMeta/VTADataset)
 | [analysis_code_doi](analysis_code_doi.md) | 0..1 <br/> [Uri](Uri.md) | DOI of the deposited analysis code | direct |
 | [dataset_notes](dataset_notes.md) | 0..1 <br/> [String](String.md) | Free-text notes on the dataset not captured by structured fields | direct |
 | [experimental_conditions](experimental_conditions.md) | 0..1 <br/> [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions for this dataset | direct |
-| [video_hardware](video_hardware.md) | 0..1 <br/> [VideoHardware](VideoHardware.md) | Camera and hardware configuration | direct |
-| [acquisition_parameters](acquisition_parameters.md) | 0..1 <br/> [AcquisitionParameters](AcquisitionParameters.md) | Video acquisition and recording settings | direct |
+| [hardware_and_acquisition](hardware_and_acquisition.md) | 0..1 <br/> [HardwareandAcquisition](HardwareandAcquisition.md) | Hardware and acquisition configuration used to record the video dataset | direct |
 | [tracking_analysis](tracking_analysis.md) | 0..1 <br/> [TrackingAnalysis](TrackingAnalysis.md) | Tracking software and analysis configuration | direct |
 | [statistical_analysis](statistical_analysis.md) | 0..1 <br/> [StatisticalAnalysis](StatisticalAnalysis.md) | Statistical analysis for this dataset | direct |
 
@@ -239,8 +227,7 @@ slots:
 - analysis_code_doi
 - dataset_notes
 - experimental_conditions
-- video_hardware
-- acquisition_parameters
+- hardware_and_acquisition
 - tracking_analysis
 - statistical_analysis
 tree_root: true
@@ -530,25 +517,15 @@ attributes:
     - VTADataset
     range: ExperimentalConditions
     inlined: true
-  video_hardware:
-    name: video_hardware
-    description: Camera and hardware configuration
+  hardware_and_acquisition:
+    name: hardware_and_acquisition
+    description: Hardware and acquisition configuration used to record the video dataset.
     from_schema: https://w3id.org/bestmeta/schema
     rank: 1000
     owner: VTADataset
     domain_of:
     - VTADataset
-    range: VideoHardware
-    inlined: true
-  acquisition_parameters:
-    name: acquisition_parameters
-    description: Video acquisition and recording settings
-    from_schema: https://w3id.org/bestmeta/schema
-    rank: 1000
-    owner: VTADataset
-    domain_of:
-    - VTADataset
-    range: AcquisitionParameters
+    range: HardwareandAcquisition
     inlined: true
   tracking_analysis:
     name: tracking_analysis
