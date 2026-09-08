@@ -6,7 +6,7 @@ search:
 # Slot: subject 
 
 
-_The organism(s) studied under these experimental conditions._
+_Organism identity and biological attributes of the tracked subjects._
 
 
 
@@ -85,13 +85,14 @@ URI: [BeStMeta:subject](https://w3id.org/BeStMeta/subject)
 <details>
 ```yaml
 name: subject
-description: The organism(s) studied under these experimental conditions.
+description: Organism identity and biological attributes of the tracked subjects.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
 - ExperimentalConditions
 range: Subject
 required: true
+inlined: true
 
 ```
 </details></div>

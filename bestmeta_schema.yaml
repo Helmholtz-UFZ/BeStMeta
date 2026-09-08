@@ -120,6 +120,8 @@ classes:
         Contains details like taxonomy, strain, genotype, sex, age
         and/or other morphometric details and measurements.
     slots:
+      # discriminator -- required
+      - subject_type
       # required
       - species_name
       # recommended
@@ -159,6 +161,19 @@ classes:
             required: true
 
     rules:
+    
+      - description: >-
+          When subject_type is organism, sex is a recommended field. 
+        preconditions:
+          slot_conditions:
+            subject_type:
+              equals_string: organism
+        postconditions:
+          slot_conditions:
+            sex:
+              recommended: true
+
+        
       - description: body_length_value requires body_length_unit
         preconditions:
           slot_conditions:
@@ -298,6 +313,16 @@ classes:
           slot_conditions:
             exposure_compound_name:
               recommended: true
+              
+  DeviceTypeMixin:
+    description: >-
+      Reusable slot bundle providing device_type, allowing multiple
+      classes (e.g. Hardware, TrackingAnalysis) to independently branch
+      their validation rules based on the type of imaging system used,
+      without requiring cross-class rule evaluation.
+    mixin: true
+    slots:
+      - device_type
 
 ################################
 ### Hardware and Acquisition ###
@@ -320,9 +345,10 @@ classes:
       Camera systems, optical configuration, and physical recording
       infrastructure used in the VTA. Documents instrument identity and
       optical specifications.
-    slots:
+    mixins:
       # discriminatior - required
-      - device_type
+      - DeviceTypeMixin
+    slots:
       # required if device_type == camera
       - camera_count
       - camera_type
@@ -614,12 +640,16 @@ classes:
     description: >-
       Tracking software identity and version, algorithm details,
       post-tracking computational steps and derived behavioral metrics.
+    mixins:
+      - DeviceTypeMixin
     slots:
+      # required
+      - tracking_software_name
+      # conditionally required
+      - tracking_algorithm
       # recommended
       - tracking_software_type
-      - tracking_software_name
       - tracking_software_version
-      - tracking_algorithm
       - tracking_software_settings
       - tracking_data_format
       - tracking_confidence_threshold
@@ -636,6 +666,41 @@ classes:
       # optional
       - dropped_frames_reason
       - tracking_notes
+      
+    rules:
+
+      - description: >-
+          [ALGORITHM - required for camera/microscope] Tracking algorithm
+          is required for camera and microscope systems, where the
+          algorithm used is knowable and documentable.
+        preconditions:
+          slot_conditions:
+            device_type:
+              any_of:
+                - equals_string: camera
+                - equals_string: microscope
+        postconditions:
+          slot_conditions:
+            tracking_algorithm:
+              value_presence: PRESENT
+
+      - description: >-
+          [ALGORITHM - recommended for closed-box/in-house] When
+          device_type is closed_box_system or in_house_system, tracking
+          algorithm is recommended but not required. Closed-box systems
+          often don't disclose their underlying algorithm; in-house
+          systems may use informal or evolving methods not yet formally
+          documented.
+        preconditions:
+          slot_conditions:
+            device_type:
+              any_of:
+                - equals_string: closed_box_system
+                - equals_string: in_house_system
+        postconditions:
+          slot_conditions:
+            tracking_algorithm:
+              recommended: true
       
 ############################
 ### Statistical Analysis ###
@@ -882,6 +947,14 @@ slots:
 ######################################
 # --- ExperimentalConditions slots ---
 ######################################
+
+  subject_type:
+    range: SubjectTypeEnum
+    required: true
+    description: >-
+      Indicates whether the subject being tracked is a whole organism or
+      a cell/cell culture; determines which biological identity fields
+      are applicable.
 
   species_name:
     description: Scientific (Latin) binomial name of the study organism
@@ -1224,32 +1297,28 @@ slots:
     range: ControlTypeEnum
     exact_mappings:
       - NCIT:C178849
-<<<<<<< Updated upstream
-  
-=======
 
-  subject:
-    description: The organism(s) studied under these experimental conditions.
-    range: Subject
-    required: true
+  #subject:
+   # description: The organism(s) studied under these experimental conditions.
+    #range: Subject
+ #   required: true
+#
+  #experiment:
+   # description: The experimental setup and environment for this dataset's trials.
+    #range: Experiment
+    #required: true
 
-  experiment:
-    description: The experimental setup and environment for this dataset's trials.
-    range: Experiment
-    required: true
+ # manipulation:
+  #  description: >-
+   #   Any intervention applied to the subjects. Omitted when no
+    #  treatment or exposure was used.
+    #range: Manipulation
+    #required: false
 
-  manipulation:
-    description: >-
-      Any intervention applied to the subjects. Omitted when no
-      treatment or exposure was used.
-    range: Manipulation
-    required: false
-
-  experiment_notes:
-    description: Free-text notes on the overall experimental conditions.
-    required: false
-    range: string
->>>>>>> Stashed changes
+  #experiment_notes:
+   # description: Free-text notes on the overall experimental conditions.
+    #required: false
+    #range: string
 
 ###################################################################################
 # --- Hardware and Acquisition slots --
@@ -1275,13 +1344,13 @@ slots:
       protocol, or setup issues spanning both hardware and acquisition).
       
 # --- hardware slots --- #
-
+    
   device_type:
-    description: >-
-      Indicates the category of imaging system used; determines which
-      additional hardware fields are required or recommended.
     range: DeviceTypeEnum
     required: true
+    description: >-
+      Indicates the category of imaging system used; determines which
+      additional hardware or tracking fields are required or recommended.
 
   camera_count:
     description: Number of cameras used simultaneously.
@@ -1679,8 +1748,8 @@ slots:
 
   tracking_software_name:
       description: Name of the software used for tracking.
-      required: false
-      recommended: true
+      required: true
+      recommended: false
       range: string
       exact_mappings:
         - AFR:0002802
@@ -2021,6 +2090,19 @@ slots:
 ###########################################################################################################
 
 enums:
+
+  SubjectTypeEnum:
+    description: >-
+      Indicates whether the tracked subject is a whole organism or a
+      cell/cell culture, since some biological identity fields (e.g. sex,
+      developmental stage) only apply to whole organisms.
+    permissible_values:
+      organism:
+        description: A whole living organism (e.g. zebrafish, mouse, insect).
+      cell:
+        description: >-
+          A cell, cell culture, or cell line (e.g. in vitro cell tracking,
+          organoid).
 
   SexEnum:
     description: Biological sex of the study subjects

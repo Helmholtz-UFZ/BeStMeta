@@ -6,7 +6,7 @@ search:
 # Slot: manipulation 
 
 
-_Any intervention applied to the subjects. Omitted when no treatment or exposure was used._
+_Treatment and chemical exposure applied to the subjects. Omit this sub-class entirely for naive or vehicle-only datasets._
 
 
 
@@ -84,14 +84,15 @@ URI: [BeStMeta:manipulation](https://w3id.org/BeStMeta/manipulation)
 <details>
 ```yaml
 name: manipulation
-description: Any intervention applied to the subjects. Omitted when no treatment or
-  exposure was used.
+description: Treatment and chemical exposure applied to the subjects. Omit this sub-class
+  entirely for naive or vehicle-only datasets.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
 - ExperimentalConditions
 range: Manipulation
 required: false
+inlined: true
 
 ```
 </details></div>

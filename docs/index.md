@@ -13,6 +13,7 @@ Name: bestmeta
 | Class | Description |
 | --- | --- |
 | [Acquisition](Acquisition.md) | Video acquisition and recording parameters, including timing encoding and ill... |
+| [DeviceTypeMixin](DeviceTypeMixin.md) | Reusable slot bundle providing device_type, allowing multiple classes (e |
 | [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |
 | [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |
 | [Hardware](Hardware.md) | Camera systems, optical configuration, and physical recording infrastructure ... |
@@ -84,9 +85,9 @@ Name: bestmeta
 | [dropped_frames_reason](dropped_frames_reason.md) | Reason for dropped or omitted frames during acquisition, recording, encoding,... |
 | [effect_size_measure](effect_size_measure.md) | Effect size measure reported to quantify the magnitude of observed effects or... |
 | [endpoint_definitions](endpoint_definitions.md) | Definitions and calculation criteria used for behavioral endpoints, including... |
-| [experiment](experiment.md) | The experimental setup and environment for this dataset's trials |
+| [experiment](experiment.md) | Assay design, arena configuration, and environmental parameters |
 | [experiment_end_datetime](experiment_end_datetime.md) | Date and time at which the experiment ended |
-| [experiment_notes](experiment_notes.md) | Free-text notes on the overall experimental conditions |
+| [experiment_notes](experiment_notes.md) | Free-text notes on experimental conditions not captured by structured fields |
 | [experiment_start_datetime](experiment_start_datetime.md) | Date and time at which the experiment began |
 | [experimental_conditions](experimental_conditions.md) | Biological and experimental conditions for this dataset |
 | [exposure_compound_chebi_id](exposure_compound_chebi_id.md) | ChEBI identifier for the test substance |
@@ -120,7 +121,7 @@ Name: bestmeta
 | [lens_focal_length_mm](lens_focal_length_mm.md) | Focal length of the imaging lens in millimetres; applicable to camera or micr... |
 | [light_cycle_detail](light_cycle_detail.md) | Free-text description of the light-dark cycle |
 | [light_cycle_type](light_cycle_type.md) | Standardized category of the light-dark cycle |
-| [manipulation](manipulation.md) | Any intervention applied to the subjects |
+| [manipulation](manipulation.md) | Treatment and chemical exposure applied to the subjects |
 | [microscope_lot_number](microscope_lot_number.md) | Lot number of the microscope |
 | [microscope_manufacturer](microscope_manufacturer.md) | Manufacturer of the microscope |
 | [microscope_model](microscope_model.md) | Model name or identifier of the microscope |
@@ -160,7 +161,8 @@ Name: bestmeta
 | [statistical_tests](statistical_tests.md) | Statistical tests applied to behavioral endpoints for hypothesis testing or i... |
 | [statistics_notes](statistics_notes.md) | Free-text notes on the statistical analysis not captured by structured fields |
 | [strain](strain.md) | Organism strain or line |
-| [subject](subject.md) | The organism(s) studied under these experimental conditions |
+| [subject](subject.md) | Organism identity and biological attributes of the tracked subjects |
+| [subject_type](subject_type.md) | Indicates whether the subject being tracked is a whole organism or a cell/cel... |
 | [subjects_per_field_of_view](subjects_per_field_of_view.md) | Number of individual subjects (e |
 | [temperature_celsius](temperature_celsius.md) | Water or ambient temperature during the recording in degrees Celsius |
 | [total_frame_count](total_frame_count.md) | Total number of frames in the video |
@@ -212,6 +214,7 @@ Name: bestmeta
 | [MicroscopeTypeEnum](MicroscopeTypeEnum.md) | OME microscope type values |
 | [PreprocessingStepEnum](PreprocessingStepEnum.md) | Type of preprocessing step applied to the video data prior to tracking or ana... |
 | [SexEnum](SexEnum.md) | Biological sex of the study subjects |
+| [SubjectTypeEnum](SubjectTypeEnum.md) | Indicates whether the tracked subject is a whole organism or a cell/cell cult... |
 | [TrackingSoftwareTypeEnum](TrackingSoftwareTypeEnum.md) | Type of tracking software used |
 | [VideoCodecEnum](VideoCodecEnum.md) | Video compression codec used for recording |
 | [VideoContainerEnum](VideoContainerEnum.md) | Video file container format |

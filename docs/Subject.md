@@ -95,6 +95,17 @@ URI: [BeStMeta:Subject](https://w3id.org/BeStMeta/Subject)
         
       Subject : strain
         
+      Subject : subject_type
+        
+          
+    
+        
+        
+        Subject --> "1" SubjectTypeEnum : subject_type
+        click SubjectTypeEnum href "../SubjectTypeEnum/"
+    
+
+        
       Subject : weight_unit
         
           
@@ -120,6 +131,7 @@ URI: [BeStMeta:Subject](https://w3id.org/BeStMeta/Subject)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
+| [subject_type](subject_type.md) | 1 <br/> [SubjectTypeEnum](SubjectTypeEnum.md) | Indicates whether the subject being tracked is a whole organism or a cell/cel... | direct |
 | [species_name](species_name.md) | 1 <br/> [String](String.md) | Scientific (Latin) binomial name of the study organism | direct |
 | [species_ncbi_taxon_id](species_ncbi_taxon_id.md) | 0..1 _recommended_ <br/> [String](String.md) | NCBI Taxonomy ID for the study organism | direct |
 | [strain](strain.md) | 0..1 _recommended_ <br/> [String](String.md) | Organism strain or line | direct |
@@ -169,6 +181,14 @@ The class must satisfy at least one of:
 
 
 ## Rules
+
+
+### 
+
+| Rule Applied | Preconditions | Postconditions | Elseconditions |
+|--------------|---------------|----------------|----------------|
+| slot_conditions |```{'subject_type': {'equals_string': 'organism'}}``` |```{'sex': {'recommended': True}}``` | |
+
 
 
 ### 
@@ -236,6 +256,7 @@ description: Biological identity of the organism(s) that is studied. Contains de
   measurements.
 from_schema: https://w3id.org/bestmeta/schema
 slots:
+- subject_type
 - species_name
 - species_ncbi_taxon_id
 - strain
@@ -252,6 +273,17 @@ slots:
 - weight_value
 - weight_unit
 rules:
+- preconditions:
+    slot_conditions:
+      subject_type:
+        name: subject_type
+        equals_string: organism
+  postconditions:
+    slot_conditions:
+      sex:
+        name: sex
+        recommended: true
+  description: 'When subject_type is organism, sex is a recommended field. '
 - preconditions:
     slot_conditions:
       body_length_value:
@@ -307,6 +339,17 @@ description: Biological identity of the organism(s) that is studied. Contains de
   measurements.
 from_schema: https://w3id.org/bestmeta/schema
 attributes:
+  subject_type:
+    name: subject_type
+    description: Indicates whether the subject being tracked is a whole organism or
+      a cell/cell culture; determines which biological identity fields are applicable.
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Subject
+    domain_of:
+    - Subject
+    range: SubjectTypeEnum
+    required: true
   species_name:
     name: species_name
     description: Scientific (Latin) binomial name of the study organism
@@ -500,6 +543,17 @@ attributes:
     range: WeightUnitEnum
     required: false
 rules:
+- preconditions:
+    slot_conditions:
+      subject_type:
+        name: subject_type
+        equals_string: organism
+  postconditions:
+    slot_conditions:
+      sex:
+        name: sex
+        recommended: true
+  description: 'When subject_type is organism, sex is a recommended field. '
 - preconditions:
     slot_conditions:
       body_length_value:

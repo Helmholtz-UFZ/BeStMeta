@@ -24,9 +24,23 @@ URI: [BeStMeta:TrackingAnalysis](https://w3id.org/BeStMeta/TrackingAnalysis)
  classDiagram
     class TrackingAnalysis
     click TrackingAnalysis href "../TrackingAnalysis/"
+      DeviceTypeMixin <|-- TrackingAnalysis
+        click DeviceTypeMixin href "../DeviceTypeMixin/"
+      
       TrackingAnalysis : behavioral_metrics
         
       TrackingAnalysis : compute_hardware
+        
+      TrackingAnalysis : device_type
+        
+          
+    
+        
+        
+        TrackingAnalysis --> "1" DeviceTypeEnum : device_type
+        click DeviceTypeEnum href "../DeviceTypeEnum/"
+    
+
         
       TrackingAnalysis : dropped_frames_count
         
@@ -86,16 +100,19 @@ URI: [BeStMeta:TrackingAnalysis](https://w3id.org/BeStMeta/TrackingAnalysis)
 
 
 
-<!-- no inheritance hierarchy -->
+
+## Inheritance
+* **TrackingAnalysis** [ [DeviceTypeMixin](DeviceTypeMixin.md)]
+
 
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [tracking_software_type](tracking_software_type.md) | 0..1 _recommended_ <br/> [TrackingSoftwareTypeEnum](TrackingSoftwareTypeEnum.md) | Indicates whether the tracking analysis was performed using a custom software... | direct |
-| [tracking_software_name](tracking_software_name.md) | 0..1 _recommended_ <br/> [String](String.md) | Name of the software used for tracking | direct |
-| [tracking_software_version](tracking_software_version.md) | 0..1 _recommended_ <br/> [String](String.md) | Version string of the tracking software | direct |
+| [tracking_software_name](tracking_software_name.md) | 1 <br/> [String](String.md) | Name of the software used for tracking | direct |
 | [tracking_algorithm](tracking_algorithm.md) | * _recommended_ <br/> [String](String.md) | Algorithmic approach used to detect, identify, and track organisms in video r... | direct |
+| [tracking_software_type](tracking_software_type.md) | 0..1 _recommended_ <br/> [TrackingSoftwareTypeEnum](TrackingSoftwareTypeEnum.md) | Indicates whether the tracking analysis was performed using a custom software... | direct |
+| [tracking_software_version](tracking_software_version.md) | 0..1 _recommended_ <br/> [String](String.md) | Version string of the tracking software | direct |
 | [tracking_software_settings](tracking_software_settings.md) | 0..1 _recommended_ <br/> [String](String.md) | Key tracking configuration parameters used during analysis, including softwar... | direct |
 | [tracking_data_format](tracking_data_format.md) | * _recommended_ <br/> [String](String.md) | File format used to store tracking results, including coordinates, keypoints,... | direct |
 | [tracking_confidence_threshold](tracking_confidence_threshold.md) | 0..1 _recommended_ <br/> [Float](Float.md) | Confidence or likelihood threshold used to accept detections, identities, tra... | direct |
@@ -111,6 +128,7 @@ URI: [BeStMeta:TrackingAnalysis](https://w3id.org/BeStMeta/TrackingAnalysis)
 | [endpoint_definitions](endpoint_definitions.md) | * _recommended_ <br/> [String](String.md) | Definitions and calculation criteria used for behavioral endpoints, including... | direct |
 | [dropped_frames_reason](dropped_frames_reason.md) | 0..1 <br/> [String](String.md) | Reason for dropped or omitted frames during acquisition, recording, encoding,... | direct |
 | [tracking_notes](tracking_notes.md) | 0..1 <br/> [String](String.md) | Free-text notes on the tracking analysis not captured by structured fields | direct |
+| [device_type](device_type.md) | 1 <br/> [DeviceTypeEnum](DeviceTypeEnum.md) | Indicates the category of imaging system used; determines which additional ha... | [DeviceTypeMixin](DeviceTypeMixin.md) |
 
 
 
@@ -121,6 +139,26 @@ URI: [BeStMeta:TrackingAnalysis](https://w3id.org/BeStMeta/TrackingAnalysis)
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [VTADataset](VTADataset.md) | [tracking_analysis](tracking_analysis.md) | range | [TrackingAnalysis](TrackingAnalysis.md) |
+
+
+
+
+## Rules
+
+
+### 
+
+| Rule Applied | Preconditions | Postconditions | Elseconditions |
+|--------------|---------------|----------------|----------------|
+| slot_conditions |```{'device_type': {'any_of': [{'equals_string': 'camera'}, {'equals_string': 'microscope'}]}}``` |```{'tracking_algorithm': {'value_presence': 'PRESENT'}}``` | |
+
+
+
+### 
+
+| Rule Applied | Preconditions | Postconditions | Elseconditions |
+|--------------|---------------|----------------|----------------|
+| slot_conditions |```{'device_type': {'any_of': [{'equals_string': 'closed_box_system'}, {'equals_string': 'in_house_system'}]}}``` |```{'tracking_algorithm': {'recommended': True}}``` | |
 
 
 
@@ -171,11 +209,13 @@ name: TrackingAnalysis
 description: Tracking software identity and version, algorithm details, post-tracking
   computational steps and derived behavioral metrics.
 from_schema: https://w3id.org/bestmeta/schema
+mixins:
+- DeviceTypeMixin
 slots:
-- tracking_software_type
 - tracking_software_name
-- tracking_software_version
 - tracking_algorithm
+- tracking_software_type
+- tracking_software_version
 - tracking_software_settings
 - tracking_data_format
 - tracking_confidence_threshold
@@ -191,6 +231,38 @@ slots:
 - endpoint_definitions
 - dropped_frames_reason
 - tracking_notes
+rules:
+- preconditions:
+    slot_conditions:
+      device_type:
+        name: device_type
+        any_of:
+        - equals_string: camera
+        - equals_string: microscope
+  postconditions:
+    slot_conditions:
+      tracking_algorithm:
+        name: tracking_algorithm
+        value_presence: PRESENT
+  description: '[ALGORITHM - required for camera/microscope] Tracking algorithm is
+    required for camera and microscope systems, where the algorithm used is knowable
+    and documentable.'
+- preconditions:
+    slot_conditions:
+      device_type:
+        name: device_type
+        any_of:
+        - equals_string: closed_box_system
+        - equals_string: in_house_system
+  postconditions:
+    slot_conditions:
+      tracking_algorithm:
+        name: tracking_algorithm
+        recommended: true
+  description: '[ALGORITHM - recommended for closed-box/in-house] When device_type
+    is closed_box_system or in_house_system, tracking algorithm is recommended but
+    not required. Closed-box systems often don''t disclose their underlying algorithm;
+    in-house systems may use informal or evolving methods not yet formally documented.'
 
 ```
 </details>
@@ -203,19 +275,9 @@ name: TrackingAnalysis
 description: Tracking software identity and version, algorithm details, post-tracking
   computational steps and derived behavioral metrics.
 from_schema: https://w3id.org/bestmeta/schema
+mixins:
+- DeviceTypeMixin
 attributes:
-  tracking_software_type:
-    name: tracking_software_type
-    description: Indicates whether the tracking analysis was performed using a custom
-      software or a standard package or software
-    from_schema: https://w3id.org/bestmeta/schema
-    rank: 1000
-    owner: TrackingAnalysis
-    domain_of:
-    - TrackingAnalysis
-    range: TrackingSoftwareTypeEnum
-    required: false
-    recommended: true
   tracking_software_name:
     name: tracking_software_name
     description: Name of the software used for tracking.
@@ -227,21 +289,8 @@ attributes:
     domain_of:
     - TrackingAnalysis
     range: string
-    required: false
-    recommended: true
-  tracking_software_version:
-    name: tracking_software_version
-    description: Version string of the tracking software.
-    from_schema: https://w3id.org/bestmeta/schema
-    exact_mappings:
-    - AFR:0001700
-    rank: 1000
-    owner: TrackingAnalysis
-    domain_of:
-    - TrackingAnalysis
-    range: string
-    required: false
-    recommended: true
+    required: true
+    recommended: false
   tracking_algorithm:
     name: tracking_algorithm
     description: Algorithmic approach used to detect, identify, and track organisms
@@ -260,6 +309,31 @@ attributes:
     required: false
     recommended: true
     multivalued: true
+  tracking_software_type:
+    name: tracking_software_type
+    description: Indicates whether the tracking analysis was performed using a custom
+      software or a standard package or software
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: TrackingAnalysis
+    domain_of:
+    - TrackingAnalysis
+    range: TrackingSoftwareTypeEnum
+    required: false
+    recommended: true
+  tracking_software_version:
+    name: tracking_software_version
+    description: Version string of the tracking software.
+    from_schema: https://w3id.org/bestmeta/schema
+    exact_mappings:
+    - AFR:0001700
+    rank: 1000
+    owner: TrackingAnalysis
+    domain_of:
+    - TrackingAnalysis
+    range: string
+    required: false
+    recommended: true
   tracking_software_settings:
     name: tracking_software_settings
     description: Key tracking configuration parameters used during analysis, including
@@ -499,6 +573,49 @@ attributes:
     - TrackingAnalysis
     range: string
     required: false
+  device_type:
+    name: device_type
+    description: Indicates the category of imaging system used; determines which additional
+      hardware or tracking fields are required or recommended.
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: TrackingAnalysis
+    domain_of:
+    - DeviceTypeMixin
+    range: DeviceTypeEnum
+    required: true
+rules:
+- preconditions:
+    slot_conditions:
+      device_type:
+        name: device_type
+        any_of:
+        - equals_string: camera
+        - equals_string: microscope
+  postconditions:
+    slot_conditions:
+      tracking_algorithm:
+        name: tracking_algorithm
+        value_presence: PRESENT
+  description: '[ALGORITHM - required for camera/microscope] Tracking algorithm is
+    required for camera and microscope systems, where the algorithm used is knowable
+    and documentable.'
+- preconditions:
+    slot_conditions:
+      device_type:
+        name: device_type
+        any_of:
+        - equals_string: closed_box_system
+        - equals_string: in_house_system
+  postconditions:
+    slot_conditions:
+      tracking_algorithm:
+        name: tracking_algorithm
+        recommended: true
+  description: '[ALGORITHM - recommended for closed-box/in-house] When device_type
+    is closed_box_system or in_house_system, tracking algorithm is recommended but
+    not required. Closed-box systems often don''t disclose their underlying algorithm;
+    in-house systems may use informal or evolving methods not yet formally documented.'
 
 ```
 </details></div>
