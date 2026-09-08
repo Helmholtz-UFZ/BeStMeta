@@ -107,6 +107,7 @@ classes:
       Biological and experimental conditions applicable to all trials in
       the dataset. Covers organism identity, treatment, assay design,
       and environmental parameters.
+    abstract: true
     slots:
       - subject
       - experiment
@@ -625,8 +626,8 @@ classes:
           slot_conditions:
             video_codec:
               any_of:
-                - equals_string: FFV1
-                - equals_string: RAW
+                - equals_string: ffv1
+                - equals_string: raw
         postconditions:
           slot_conditions:
             bit_depth:
@@ -915,34 +916,6 @@ slots:
     description: Statistical analysis for this dataset
     range: StatisticalAnalysis
     inlined: true
-    
-    
-# --- ExperimentalConditions sub-classes ---
-  subject:
-    description: Organism identity and biological attributes of the tracked subjects.
-    range: Subject
-    required: true
-    inlined: true
- 
-  experiment:
-    description: Assay design, arena configuration, and environmental parameters.
-    range: Experiment
-    required: true
-    inlined: true
- 
-  manipulation:
-    description: >-
-      Treatment and chemical exposure applied to the subjects.
-      Omit this sub-class entirely for naive or vehicle-only datasets.
-    range: Manipulation
-    required: false
-    inlined: true
- 
-  experiment_notes:
-    description: Free-text notes on experimental conditions not captured by structured fields.
-    required: false
-    range: string
-
 
 ######################################
 # --- ExperimentalConditions slots ---
@@ -1296,29 +1269,31 @@ slots:
     required: false
     range: ControlTypeEnum
     exact_mappings:
-      - NCIT:C178849
+      - NCIT:C178849 
+  
+  subject:
+    description: The organism(s) studied under these experimental conditions.
+    range: Subject
+    required: true
+  
 
-  #subject:
-   # description: The organism(s) studied under these experimental conditions.
-    #range: Subject
- #   required: true
-#
-  #experiment:
-   # description: The experimental setup and environment for this dataset's trials.
-    #range: Experiment
-    #required: true
+  experiment:
+    description: The experimental setup and environment for this dataset's trials.
+    range: Experiment
+    required: true
 
- # manipulation:
-  #  description: >-
-   #   Any intervention applied to the subjects. Omitted when no
-    #  treatment or exposure was used.
-    #range: Manipulation
-    #required: false
+  manipulation:
+    description: >-
+      Any intervention applied to the subjects. Omitted when no
+      treatment or exposure was used.
+    range: Manipulation
+    required: false
 
-  #experiment_notes:
-   # description: Free-text notes on the overall experimental conditions.
-    #required: false
-    #range: string
+  experiment_notes:
+    description: Free-text notes on the overall experimental conditions.
+    required: false
+    range: string
+
 
 ###################################################################################
 # --- Hardware and Acquisition slots --

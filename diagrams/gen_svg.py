@@ -2,6 +2,12 @@
 """
 Reads the BeStMeta LinkML schema and generates a color-coded ER-style SVG diagram,
 marking each slot as required / recommended / optional / conditional.
+
+The schema is nested: the root class (VTADataset) references child classes via
+inlined slots, and those children may in turn reference further sub-classes
+(e.g. ExperimentalConditions -> Subject / Experiment / Manipulation). This script
+walks that reference graph recursively and lays the classes out level by level,
+so every nesting depth is shown and connected to its parent.
 """
 
 from linkml_runtime import SchemaView
@@ -24,7 +30,8 @@ CONDITIONAL_SLOTS = {
 # ---------------------------------------------------------------------------
 # load schema and derive slots
 # ---------------------------------------------------------------------------
-sv = SchemaView(SCHEMA_PATH)
+sv = SchemaView(SCHEMA_PATH) # loads schema and creates a SchemaView for querying it
+ALL_CLASSES = set(sv.all_classes().keys()) # creates set of class names
 
 # derive requirement level
 def slot_status(slot):
@@ -48,15 +55,46 @@ def class_rows(class_name):
         rows.append((slot.name, slot_range(slot), slot_status(slot)))
     return rows
 
-# root class
-VTADataset = class_rows(ROOT_CLASS)
+# Names of the child classes referenced (via inlined slots) by a given class,
+# in schema order, excluding the class itself to avoid trivial self-loops.
+def child_classes_of(class_name):
+    children = []
+    for slot in sv.class_induced_slots(class_name):
+        if slot.range in ALL_CLASSES and slot.range != class_name:
+            children.append(slot.range)
+    return children
 
-# automatically find child classes: all ranges of the root that are themselves classes
-all_classes = set(sv.all_classes().keys())
-CLASSES = []
-for slot in sv.class_induced_slots(ROOT_CLASS):
-    if slot.range in all_classes and slot.range != ROOT_CLASS:
-        CLASSES.append((slot.range, class_rows(slot.range)))
+# ---------------------------------------------------------------------------
+# Build the class hierarchy by walking references recursively.
+# Each node: {"name", "rows", "children": [...], "depth"}. A class is only
+# expanded once (first occurrence wins) so a shared/reused class can't create
+# an infinite loop.
+# ---------------------------------------------------------------------------
+def build_tree(class_name, depth, seen):
+    node = {
+        "name": class_name,
+        "rows": class_rows(class_name),
+        "depth": depth,
+        "children": [],
+    }
+    if class_name in seen:
+        return node
+    seen.add(class_name)
+    for child in child_classes_of(class_name):
+        node["children"].append(build_tree(child, depth + 1, seen))
+    return node
+
+ROOT_NODE = build_tree(ROOT_CLASS, 0, set())
+
+# Flatten the tree into levels (depth -> list of nodes, left-to-right order).
+def collect_levels(node, levels):
+    levels.setdefault(node["depth"], []).append(node)
+    for child in node["children"]:
+        collect_levels(child, levels)
+
+LEVELS = {}
+collect_levels(ROOT_NODE, LEVELS)
+MAX_DEPTH = max(LEVELS.keys())
 
 # ---------------------------------------------------------------------------
 # Style tokens
@@ -86,6 +124,8 @@ GAP_X = 34
 MARGIN = 40
 ROOT_W = 340
 ROOT_GAP_Y = 70
+LEVEL_GAP_Y = 70          # vertical gap between hierarchy levels
+COUNTS_SPACE = 20         # room under a box for its "req/rec/opt" summary line
 
 def status_color(status):
     if status.endswith("*"):
@@ -160,26 +200,58 @@ def count_status(rows):
             counts[base] += 1
     return counts
 
+def connector(cx1, cy1, cx2, cy2):
+    """Smooth vertical S-curve from a parent's bottom to a child's top, plus a dot."""
+    mid_y = (cy1 + cy2) / 2
+    return (f'<path d="M {cx1} {cy1} C {cx1} {mid_y}, {cx2} {mid_y}, {cx2} {cy2}" '
+            f'fill="none" stroke="{COL_BORDER}" stroke-width="1.4"/>'
+            f'<circle cx="{cx2}" cy="{cy2}" r="3" fill="{COL_HEADER_BG}"/>')
+
 def build():
-    all_boxes = [(ROOT_CLASS, VTADataset)] + CLASSES
-    total = {"req": 0, "rec": 0, "opt": 0}
+    # ---- aggregate per-class and total counts ------------------------------
     per_class_counts = {}
-    for name, rows in all_boxes:
-        c = count_status(rows)
-        per_class_counts[name] = c
-        for k in total:
-            total[k] += c[k]
-    col_heights = [box_height(len(rows)) for _, rows in CLASSES]
-    n = len(CLASSES)
-    total_w = MARGIN * 2 + n * BOX_W + (n - 1) * GAP_X
-    max_col_h = max(col_heights) if col_heights else 0
+    total = {"req": 0, "rec": 0, "opt": 0}
+    for depth_nodes in LEVELS.values():
+        for node in depth_nodes:
+            c = count_status(node["rows"])
+            per_class_counts[node["name"]] = c
+            for k in total:
+                total[k] += c[k]
 
-    root_h = box_height(len(VTADataset))
-    root_x = (total_w - ROOT_W) / 2
-    root_y = MARGIN + 78
-    children_y = root_y + root_h + ROOT_GAP_Y
-    total_h = children_y + max_col_h + MARGIN
+    # ---- geometry: lay out each level as a centered horizontal row ---------
+    # A node's width: root uses ROOT_W, everything else BOX_W.
+    def node_w(node):
+        return ROOT_W if node["depth"] == 0 else BOX_W
 
+    # Total row width for a level (boxes + gaps between them).
+    def level_width(nodes):
+        return sum(node_w(n) for n in nodes) + GAP_X * (len(nodes) - 1)
+
+    widest = max(level_width(nodes) for nodes in LEVELS.values())
+    total_w = MARGIN * 2 + widest
+
+    # Assign x/y to every node, level by level. Each level is centered.
+    # y of a level = previous level y + tallest box on previous level
+    #                + room for the counts line + LEVEL_GAP_Y.
+    header_offset = MARGIN + 78          # space for title/legend/totals at top
+    positions = {}                        # node name -> (x, y, w, h)
+    level_top = header_offset
+    for depth in range(MAX_DEPTH + 1):
+        nodes = LEVELS[depth]
+        row_w = level_width(nodes)
+        x = MARGIN + (widest - row_w) / 2
+        max_h = 0
+        for node in nodes:
+            w = node_w(node)
+            h = box_height(len(node["rows"]))
+            positions[node["name"]] = (x, level_top, w, h)
+            max_h = max(max_h, h)
+            x += w + GAP_X
+        level_top += max_h + COUNTS_SPACE + LEVEL_GAP_Y
+
+    total_h = level_top - LEVEL_GAP_Y + MARGIN
+
+    # ---- start assembling the SVG ------------------------------------------
     parts = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {total_w} {total_h}" '
              f'width="{total_w}" height="{total_h}" font-family="{FONT_FAMILY}">']
     parts.append(f'<rect x="0" y="0" width="{total_w}" height="{total_h}" fill="{COL_PAGE_BG}"/>')
@@ -187,30 +259,33 @@ def build():
                  f'font-weight="700" fill="#1f2a44">BeStMeta Metadata Schema \u2013 Slot Requirement Levels</text>')
     parts.append(render_legend(MARGIN, 52))
     total_line = (f"Total across all classes:   "
-                    f"required {total['req']}   ·   "
-                    f"recommended {total['rec']}   ·   "
-                    f"optional {total['opt']}   ·   "
-                    f"sum {total['req']+total['rec']+total['opt']}")
+                  f"required {total['req']}   ·   "
+                  f"recommended {total['rec']}   ·   "
+                  f"optional {total['opt']}   ·   "
+                  f"sum {total['req']+total['rec']+total['opt']}")
     parts.append(f'<text x="{MARGIN}" y="72" font-family="{FONT_FAMILY}" font-size="12.5" '
                  f'font-weight="600" fill="#1f2a44">{esc(total_line)}</text>')
-    root_svg,root_h = render_class_box(root_x, root_y, ROOT_CLASS, VTADataset,
-                                        width=ROOT_W, counts=per_class_counts[ROOT_CLASS])
-    parts.append(root_svg)
 
-    x = MARGIN
-    for (title, rows), h in zip(CLASSES, col_heights):
-        cx1 = root_x + ROOT_W / 2
-        cy1 = root_y + root_h
-        cx2 = x + BOX_W / 2
-        cy2 = children_y
-        mid_y = (cy1 + cy2) / 2
-        parts.append(f'<path d="M {cx1} {cy1} C {cx1} {mid_y}, {cx2} {mid_y}, {cx2} {cy2}" '
-                     f'fill="none" stroke="{COL_BORDER}" stroke-width="1.4"/>')
-        parts.append(f'<circle cx="{cx2}" cy="{cy2}" r="3" fill="{COL_HEADER_BG}"/>')
-        box_svg, _ = render_class_box(x, children_y, title, rows,
-                                      counts=per_class_counts[title])
-        parts.append(box_svg)
-        x += BOX_W + GAP_X
+    # ---- draw connectors first (so boxes sit on top of the lines) ----------
+    def draw_edges(node):
+        px, py, pw, ph = positions[node["name"]]
+        cx1 = px + pw / 2
+        cy1 = py + ph
+        for child in node["children"]:
+            cxx, cyy, cw, ch = positions[child["name"]]
+            cx2 = cxx + cw / 2
+            cy2 = cyy
+            parts.append(connector(cx1, cy1, cx2, cy2))
+            draw_edges(child)
+    draw_edges(ROOT_NODE)
+
+    # ---- draw the boxes ----------------------------------------------------
+    for depth in range(MAX_DEPTH + 1):
+        for node in LEVELS[depth]:
+            x, y, w, h = positions[node["name"]]
+            box_svg, _ = render_class_box(x, y, node["name"], node["rows"],
+                                          width=w, counts=per_class_counts[node["name"]])
+            parts.append(box_svg)
 
     parts.append('</svg>')
     return "\n".join(parts)
