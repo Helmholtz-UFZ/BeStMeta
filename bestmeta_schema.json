@@ -339,6 +339,21 @@
             "title": "DeviceTypeEnum",
             "type": "string"
         },
+        "DeviceTypeMixin": {
+            "additionalProperties": false,
+            "description": "Reusable slot bundle providing device_type, allowing multiple classes (e.g. Hardware, TrackingAnalysis) to independently branch their validation rules based on the type of imaging system used, without requiring cross-class rule evaluation.",
+            "properties": {
+                "device_type": {
+                    "$ref": "#/$defs/DeviceTypeEnum",
+                    "description": "Indicates the category of imaging system used; determines which additional hardware or tracking fields are required or recommended."
+                }
+            },
+            "required": [
+                "device_type"
+            ],
+            "title": "DeviceTypeMixin",
+            "type": "object"
+        },
         "Experiment": {
             "additionalProperties": false,
             "allOf": [
@@ -541,10 +556,10 @@
             "properties": {
                 "experiment": {
                     "$ref": "#/$defs/Experiment",
-                    "description": "The experimental setup and environment for this dataset's trials."
+                    "description": "Assay design, arena configuration, and environmental parameters."
                 },
                 "experiment_notes": {
-                    "description": "Free-text notes on the overall experimental conditions.",
+                    "description": "Free-text notes on experimental conditions not captured by structured fields.",
                     "type": [
                         "string",
                         "null"
@@ -559,11 +574,11 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Any intervention applied to the subjects. Omitted when no treatment or exposure was used."
+                    "description": "Treatment and chemical exposure applied to the subjects. Omit this sub-class entirely for naive or vehicle-only datasets."
                 },
                 "subject": {
                     "$ref": "#/$defs/Subject",
-                    "description": "The organism(s) studied under these experimental conditions."
+                    "description": "Organism identity and biological attributes of the tracked subjects."
                 }
             },
             "required": [
@@ -941,7 +956,7 @@
                 },
                 "device_type": {
                     "$ref": "#/$defs/DeviceTypeEnum",
-                    "description": "Indicates the category of imaging system used; determines which additional hardware fields are required or recommended."
+                    "description": "Indicates the category of imaging system used; determines which additional hardware or tracking fields are required or recommended."
                 },
                 "field_of_view_height": {
                     "description": "Numeric value of vertical field of view covered by the camera.",
@@ -1051,11 +1066,11 @@
                 }
             },
             "required": [
-                "device_type",
                 "camera_count",
                 "camera_type",
                 "camera_model",
-                "camera_manufacturer"
+                "camera_manufacturer",
+                "device_type"
             ],
             "title": "Hardware",
             "type": "object"
@@ -1401,6 +1416,26 @@
                 {
                     "if": {
                         "properties": {
+                            "subject_type": {
+                                "const": "organism"
+                            }
+                        },
+                        "required": [
+                            "subject_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "sex": {}
+                        },
+                        "required": [
+                            "sex"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
                             "body_length_value": {}
                         },
                         "required": [
@@ -1541,6 +1576,10 @@
                         "null"
                     ]
                 },
+                "subject_type": {
+                    "$ref": "#/$defs/SubjectTypeEnum",
+                    "description": "Indicates whether the subject being tracked is a whole organism or a cell/cell culture; determines which biological identity fields are applicable."
+                },
                 "weight_unit": {
                     "$ref": "#/$defs/WeightUnitEnum",
                     "description": "Body weight unit of the tracked organism(s)."
@@ -1554,13 +1593,85 @@
                 }
             },
             "required": [
+                "subject_type",
                 "species_name"
             ],
             "title": "Subject",
             "type": "object"
         },
+        "SubjectTypeEnum": {
+            "description": "Indicates whether the tracked subject is a whole organism or a cell/cell culture, since some biological identity fields (e.g. sex, developmental stage) only apply to whole organisms.",
+            "enum": [
+                "organism",
+                "cell"
+            ],
+            "title": "SubjectTypeEnum",
+            "type": "string"
+        },
         "TrackingAnalysis": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "device_type": {
+                                "anyOf": [
+                                    {
+                                        "const": "camera"
+                                    },
+                                    {
+                                        "const": "microscope"
+                                    }
+                                ]
+                            }
+                        },
+                        "required": [
+                            "device_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "tracking_algorithm": {
+                                "items": {},
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "tracking_algorithm"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "device_type": {
+                                "anyOf": [
+                                    {
+                                        "const": "closed_box_system"
+                                    },
+                                    {
+                                        "const": "in_house_system"
+                                    }
+                                ]
+                            }
+                        },
+                        "required": [
+                            "device_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "tracking_algorithm": {
+                                "items": {},
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "tracking_algorithm"
+                        ]
+                    }
+                }
+            ],
             "description": "Tracking software identity and version, algorithm details, post-tracking computational steps and derived behavioral metrics.",
             "properties": {
                 "behavioral_metrics": {
@@ -1582,6 +1693,10 @@
                         "array",
                         "null"
                     ]
+                },
+                "device_type": {
+                    "$ref": "#/$defs/DeviceTypeEnum",
+                    "description": "Indicates the category of imaging system used; determines which additional hardware or tracking fields are required or recommended."
                 },
                 "dropped_frames_count": {
                     "description": "Number of video frames lost or omitted during acquisition.",
@@ -1692,10 +1807,7 @@
                 },
                 "tracking_software_name": {
                     "description": "Name of the software used for tracking.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "tracking_software_settings": {
                     "description": "Key tracking configuration parameters used during analysis, including software-specific settings required to reproduce tracking results.",
@@ -1716,6 +1828,10 @@
                     ]
                 }
             },
+            "required": [
+                "tracking_software_name",
+                "device_type"
+            ],
             "title": "TrackingAnalysis",
             "type": "object"
         },

@@ -24,6 +24,9 @@ URI: [BeStMeta:Hardware](https://w3id.org/BeStMeta/Hardware)
  classDiagram
     class Hardware
     click Hardware href "../Hardware/"
+      DeviceTypeMixin <|-- Hardware
+        click DeviceTypeMixin href "../DeviceTypeMixin/"
+      
       Hardware : camera_count
         
       Hardware : camera_distance_mm
@@ -176,13 +179,15 @@ URI: [BeStMeta:Hardware](https://w3id.org/BeStMeta/Hardware)
 
 
 
-<!-- no inheritance hierarchy -->
+
+## Inheritance
+* **Hardware** [ [DeviceTypeMixin](DeviceTypeMixin.md)]
+
 
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [device_type](device_type.md) | 1 <br/> [DeviceTypeEnum](DeviceTypeEnum.md) | Indicates the category of imaging system used; determines which additional ha... | direct |
 | [camera_count](camera_count.md) | 1 <br/> [Integer](Integer.md) | Number of cameras used simultaneously | direct |
 | [camera_type](camera_type.md) | 1 <br/> [CameraTypeEnum](CameraTypeEnum.md) | General type of imaging device | direct |
 | [camera_model](camera_model.md) | 1 <br/> [String](String.md) | Full manufacturer model name of the camera | direct |
@@ -210,6 +215,7 @@ URI: [BeStMeta:Hardware](https://w3id.org/BeStMeta/Hardware)
 | [microscope_serial_number](microscope_serial_number.md) | 0..1 <br/> [String](String.md) | Serial number of the microscope | direct |
 | [microscope_lot_number](microscope_lot_number.md) | 0..1 <br/> [String](String.md) | Lot number of the microscope | direct |
 | [hardware_notes](hardware_notes.md) | 0..1 <br/> [String](String.md) | Free-text notes on hardware configuration not captured by structured fields | direct |
+| [device_type](device_type.md) | 1 <br/> [DeviceTypeEnum](DeviceTypeEnum.md) | Indicates the category of imaging system used; determines which additional ha... | [DeviceTypeMixin](DeviceTypeMixin.md) |
 
 
 
@@ -356,8 +362,9 @@ name: Hardware
 description: Camera systems, optical configuration, and physical recording infrastructure
   used in the VTA. Documents instrument identity and optical specifications.
 from_schema: https://w3id.org/bestmeta/schema
+mixins:
+- DeviceTypeMixin
 slots:
-- device_type
 - camera_count
 - camera_type
 - camera_model
@@ -622,18 +629,9 @@ name: Hardware
 description: Camera systems, optical configuration, and physical recording infrastructure
   used in the VTA. Documents instrument identity and optical specifications.
 from_schema: https://w3id.org/bestmeta/schema
+mixins:
+- DeviceTypeMixin
 attributes:
-  device_type:
-    name: device_type
-    description: Indicates the category of imaging system used; determines which additional
-      hardware fields are required or recommended.
-    from_schema: https://w3id.org/bestmeta/schema
-    rank: 1000
-    owner: Hardware
-    domain_of:
-    - Hardware
-    range: DeviceTypeEnum
-    required: true
   camera_count:
     name: camera_count
     description: Number of cameras used simultaneously.
@@ -948,6 +946,17 @@ attributes:
     - Hardware
     range: string
     required: false
+  device_type:
+    name: device_type
+    description: Indicates the category of imaging system used; determines which additional
+      hardware or tracking fields are required or recommended.
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Hardware
+    domain_of:
+    - DeviceTypeMixin
+    range: DeviceTypeEnum
+    required: true
 rules:
 - preconditions:
     slot_conditions:

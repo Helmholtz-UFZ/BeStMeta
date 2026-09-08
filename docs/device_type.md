@@ -6,7 +6,7 @@ search:
 # Slot: device_type 
 
 
-_Indicates the category of imaging system used; determines which additional hardware fields are required or recommended._
+_Indicates the category of imaging system used; determines which additional hardware or tracking fields are required or recommended._
 
 
 
@@ -25,7 +25,9 @@ URI: [BeStMeta:device_type](https://w3id.org/BeStMeta/device_type)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [DeviceTypeMixin](DeviceTypeMixin.md) | Reusable slot bundle providing device_type, allowing multiple classes (e |  no  |
 | [Hardware](Hardware.md) | Camera systems, optical configuration, and physical recording infrastructure ... |  no  |
+| [TrackingAnalysis](TrackingAnalysis.md) | Tracking software identity and version, algorithm details, post-tracking comp... |  no  |
 
 
 
@@ -39,7 +41,7 @@ URI: [BeStMeta:device_type](https://w3id.org/BeStMeta/device_type)
 | Property | Value |
 | --- | --- |
 | Range | [DeviceTypeEnum](DeviceTypeEnum.md) |
-| Domain Of | [Hardware](Hardware.md) |
+| Domain Of | [DeviceTypeMixin](DeviceTypeMixin.md) |
 
 ### Cardinality and Requirements
 
@@ -86,11 +88,11 @@ URI: [BeStMeta:device_type](https://w3id.org/BeStMeta/device_type)
 ```yaml
 name: device_type
 description: Indicates the category of imaging system used; determines which additional
-  hardware fields are required or recommended.
+  hardware or tracking fields are required or recommended.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- Hardware
+- DeviceTypeMixin
 range: DeviceTypeEnum
 required: true
 

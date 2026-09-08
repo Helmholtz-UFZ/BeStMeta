@@ -45,7 +45,7 @@ URI: [BeStMeta:tracking_software_name](https://w3id.org/BeStMeta/tracking_softwa
 
 | Property | Value |
 | --- | --- |
-| Recommended | Yes |
+| Required | Yes |
 
 
 
@@ -94,8 +94,8 @@ rank: 1000
 domain_of:
 - TrackingAnalysis
 range: string
-required: false
-recommended: true
+required: true
+recommended: false
 
 ```
 </details></div>
