@@ -1724,7 +1724,6 @@ slots:
   tracking_software_name:
       description: Name of the software used for tracking.
       required: true
-      recommended: false
       range: string
       exact_mappings:
         - AFR:0002802
@@ -2265,6 +2264,7 @@ enums:
         description: Consumer-grade webcam.
       smartphone_camera:
         description: Camera integrated into a smartphone or tablet.
+        meaning: SNOMED:733681009
       action_camera:
         description: Ruggedized action camera (e.g. GoPro-type device).
       dslr_mirrorless_camera:
