@@ -3,10 +3,10 @@ search:
   boost: 5.0
 ---
 
-# Slot: tracking_software_name 
+# Slot: mortality_notes 
 
 
-_Name of the software used for tracking._
+_Free-test notes on any deaths that occured during the trial.  This can be used to provide additional context about mortality._
 
 
 
@@ -14,7 +14,7 @@ _Name of the software used for tracking._
 
 
 
-URI: [BeStMeta:tracking_software_name](https://w3id.org/BeStMeta/tracking_software_name)
+URI: [BeStMeta:mortality_notes](https://w3id.org/BeStMeta/mortality_notes)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [BeStMeta:tracking_software_name](https://w3id.org/BeStMeta/tracking_softwa
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TrackingAnalysis](TrackingAnalysis.md) | Tracking software identity and version, algorithm details, post-tracking comp... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -39,13 +39,12 @@ URI: [BeStMeta:tracking_software_name](https://w3id.org/BeStMeta/tracking_softwa
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [TrackingAnalysis](TrackingAnalysis.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
 | Property | Value |
 | --- | --- |
-| Required | Yes |
 
 
 
@@ -74,9 +73,8 @@ URI: [BeStMeta:tracking_software_name](https://w3id.org/BeStMeta/tracking_softwa
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | BeStMeta:tracking_software_name |
-| native | BeStMeta:tracking_software_name |
-| exact | AFR:0002802 |
+| self | BeStMeta:mortality_notes |
+| native | BeStMeta:mortality_notes |
 
 
 
@@ -85,16 +83,14 @@ URI: [BeStMeta:tracking_software_name](https://w3id.org/BeStMeta/tracking_softwa
 
 <details>
 ```yaml
-name: tracking_software_name
-description: Name of the software used for tracking.
+name: mortality_notes
+description: Free-test notes on any deaths that occured during the trial.  This can
+  be used to provide additional context about mortality.
 from_schema: https://w3id.org/bestmeta/schema
-exact_mappings:
-- AFR:0002802
 rank: 1000
 domain_of:
-- TrackingAnalysis
+- Experiment
 range: string
-required: true
 
 ```
 </details></div>

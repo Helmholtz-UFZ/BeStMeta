@@ -22,7 +22,7 @@ URI: [BeStMeta:CameraTypeEnum](https://w3id.org/BeStMeta/CameraTypeEnum)
 | --- | --- | --- |
 | machine_vision_camera | None | Industrial/scientific machine vision camera (e |
 | webcam | None | Consumer-grade webcam |
-| smartphone_camera | None | Camera integrated into a smartphone or tablet |
+| smartphone_camera | SNOMED:733681009 | Camera integrated into a smartphone or tablet |
 | action_camera | None | Ruggedized action camera (e |
 | dslr_mirrorless_camera | None | DSLR or mirrorless consumer/prosumer camera |
 | thermal_camera | None | Infrared/thermal imaging camera |
@@ -80,6 +80,7 @@ permissible_values:
   smartphone_camera:
     text: smartphone_camera
     description: Camera integrated into a smartphone or tablet.
+    meaning: SNOMED:733681009
   action_camera:
     text: action_camera
     description: Ruggedized action camera (e.g. GoPro-type device).

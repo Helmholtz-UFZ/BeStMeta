@@ -112,6 +112,7 @@ classes:
       - subject
       - experiment
       #optional
+      - environmental_conditions
       - manipulation
       - experiment_notes
 
@@ -125,6 +126,7 @@ classes:
       - subject_type
       # required
       - species_name
+      - n_individuals_represented
       # recommended
       - species_ncbi_taxon_id
       - strain
@@ -133,6 +135,7 @@ classes:
       - body_length_value
       - body_length_unit
       - housing_conditions
+      - subject_colour
       # conditionally required
       - developmental_stage
       - developmental_stage_value
@@ -208,7 +211,6 @@ classes:
       # recommended
       - experiment_start_datetime
       - experiment_end_datetime
-      - assay_description
       - arena_shape
       - arena_type
       - arena_length
@@ -222,8 +224,13 @@ classes:
       - temperature_celsius
       - light_cycle_type
       - light_cycle_detail
+      - mortality
+      # conditionally required
+      - n_individuals_start
+      - n_individuals_end
       # optional   
       - assay_description
+      - mortality_notes
 
     rules:
       - description: arena_length requires arena_length_unit
@@ -265,7 +272,40 @@ classes:
           slot_conditions:
             light_cycle_detail:
               required: true
+              
+      - description: when mortality is true, counts of individuals at the start and end are required
+        preconditions: 
+          slot_conditions: 
+            mortality: 
+              equals_expression: "true"
+        postconditions:
+          slot_conditions:
+            n_individuals_start:
+              required: true
+            n_individuals_end:
+              required: true
 
+
+  EnvironmentalConditions:
+    description: >-
+      Environmental conditions and husbandry parameters for the experiments.
+    slots:
+      - feed_type
+      - water_ph
+      - water_temperature
+      - water_temperature_unit
+      
+    rules:
+      - description: water temperature requires water temperature unit
+        preconditions:
+          slot_conditions:
+            water_temperature:
+              required: true
+        postconditions:
+          slot_conditions:
+            water_temperature_unit:
+              required: true
+              
 
   Manipulation:
     description: >-
@@ -280,6 +320,7 @@ classes:
         - exposure_compound_chebi_id
         - exposure_concentration
         - exposure_concentration_unit
+        - exposure_type
         # optional            
         - well_shape_bottom
         - habituation_duration_min
@@ -928,6 +969,25 @@ slots:
       Indicates whether the subject being tracked is a whole organism or
       a cell/cell culture; determines which biological identity fields
       are applicable.
+      
+  subject:
+    description: >-
+      Indicates if a single animals or multiple animals are used, it could be 1 for single-animal models
+      or well plate studie, >1 for mult--animal rodent studies                    
+    multivalued: true
+    inlined: true
+    required: true
+    range: Subject
+    
+  subject_colour: 
+    description: Indicates the colour of the subject. This is useful for tracking.
+    range: string
+    
+  n_individuals_represented:
+    description: >-
+      Represents the toal number of individual subjects in a given subject entry.
+      Use a value greater than one to show its a homogenous subjects. Defaults to one (when omitted)
+    range: integer
 
   species_name:
     description: Scientific (Latin) binomial name of the study organism
@@ -940,11 +1000,27 @@ slots:
       - value: "Danio rerio"
       - value: "Mus musculus"
       - value: "Daphnia magna"
+      
 
   n_individuals_total:
     description: Total number of individuals used in the experiment.
     range: integer
     required: true
+    
+  mortality:
+    description: Indicates whether a subject died during the course of the experiment.
+    required: false
+    recommended: true
+    range: boolean
+    
+  n_individuals_start:
+    description: Number of individuals at the start of the experiment/trial.
+    range: integer
+    
+  n_individuals_end:
+    description: Number of individuals at the end of the experiment/trial.
+    range: integer
+    
 
   n_individuals_per_arena:
     description: Number of individuals tested simultaneously in the arena.
@@ -1148,6 +1224,13 @@ slots:
     range: string
     exact_mappings:
       - EDAM.DATA:0997
+      
+      
+  exposure_type:
+    description: It indicates the type of exposure (Acute or chronic)
+    required: false
+    recommended: true
+    range: ExposureTypeEnum
 
   exposure_compound_chebi_id:
     description: ChEBI identifier for the test substance.
@@ -1270,12 +1353,31 @@ slots:
     range: ControlTypeEnum
     exact_mappings:
       - NCIT:C178849 
-  
-  subject:
-    description: The organism(s) studied under these experimental conditions.
-    range: Subject
-    required: true
-  
+      
+  feed_type: 
+    description: Type of feed provided to the subject(s).
+    range: string
+    
+  water_ph:
+    description: pH of the water in housing/experimnetal conditions
+    range: float
+    
+  water_temperature:
+    description: The temperature of the water during the experiment
+    range: float
+    
+  water_temperature_unit:
+    description: The unit of the water temperature.
+    range: TemperatureUnitEnum
+    
+      
+  environmental_conditions:
+    description: >-
+      Environmental conditions during the experiment, including water chemistry, 
+      feed, and other details.
+    range: EnvironmentalConditions
+    required: false
+    recommended: true  
 
   experiment:
     description: The experimental setup and environment for this dataset's trials.
@@ -1292,6 +1394,12 @@ slots:
   experiment_notes:
     description: Free-text notes on the overall experimental conditions.
     required: false
+    range: string
+    
+  mortality_notes: 
+    description: >-
+      Free-test notes on any deaths that occured during the trial. 
+      This can be used to provide additional context about mortality.
     range: string
 
 
@@ -2216,6 +2324,14 @@ enums:
       inhalation:
       other:
       
+  ExposureTypeEnum:
+    description: Category for the duration of treatment/manipulation
+    permissible_values:
+      acute:
+        description: Short-time, typically exposed only once
+      chronic:
+        description: Long-term, repeated, continuous exposure
+      
   DeviceTypeEnum:
     description: Category of recording system used to record the videos.
     permissible_values:
@@ -2348,6 +2464,16 @@ enums:
         description: 384-well plate.
       other:
         description: Plate format not covered by other enum values.
+        
+  TemperatureUnitEnum:
+    description: Unit of temperature measurement
+    permissible_values:
+      celsius:
+        description: Degree Celsius
+      fahrenheit:
+        description: Degree Fahrenheit
+      kelvin:
+        description: Kelvin
 
   IlluminationTypeEnum:
     description: Technology type of the light source used during video recording.

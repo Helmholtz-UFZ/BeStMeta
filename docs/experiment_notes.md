@@ -6,7 +6,7 @@ search:
 # Slot: experiment_notes 
 
 
-_Free-text notes on experimental conditions not captured by structured fields._
+_Free-text notes on the overall experimental conditions._
 
 
 
@@ -84,8 +84,7 @@ URI: [BeStMeta:experiment_notes](https://w3id.org/BeStMeta/experiment_notes)
 <details>
 ```yaml
 name: experiment_notes
-description: Free-text notes on experimental conditions not captured by structured
-  fields.
+description: Free-text notes on the overall experimental conditions.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:

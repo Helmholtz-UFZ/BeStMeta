@@ -13,6 +13,8 @@ _Biological and experimental conditions applicable to all trials in the dataset.
 <div data-search-exclude markdown="1">
 
 
+* __NOTE__: this is an abstract class and should not be instantiated directly
+
 
 URI: [BeStMeta:ExperimentalConditions](https://w3id.org/BeStMeta/ExperimentalConditions)
 
@@ -24,6 +26,17 @@ URI: [BeStMeta:ExperimentalConditions](https://w3id.org/BeStMeta/ExperimentalCon
  classDiagram
     class ExperimentalConditions
     click ExperimentalConditions href "../ExperimentalConditions/"
+      ExperimentalConditions : environmental_conditions
+        
+          
+    
+        
+        
+        ExperimentalConditions --> "0..1 _recommended_" EnvironmentalConditions : environmental_conditions
+        click EnvironmentalConditions href "../EnvironmentalConditions/"
+    
+
+        
       ExperimentalConditions : experiment
         
           
@@ -54,7 +67,7 @@ URI: [BeStMeta:ExperimentalConditions](https://w3id.org/BeStMeta/ExperimentalCon
     
         
         
-        ExperimentalConditions --> "1" Subject : subject
+        ExperimentalConditions --> "1..*" Subject : subject
         click Subject href "../Subject/"
     
 
@@ -71,10 +84,11 @@ URI: [BeStMeta:ExperimentalConditions](https://w3id.org/BeStMeta/ExperimentalCon
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [subject](subject.md) | 1 <br/> [Subject](Subject.md) | Organism identity and biological attributes of the tracked subjects | direct |
-| [experiment](experiment.md) | 1 <br/> [Experiment](Experiment.md) | Assay design, arena configuration, and environmental parameters | direct |
-| [manipulation](manipulation.md) | 0..1 <br/> [Manipulation](Manipulation.md) | Treatment and chemical exposure applied to the subjects | direct |
-| [experiment_notes](experiment_notes.md) | 0..1 <br/> [String](String.md) | Free-text notes on experimental conditions not captured by structured fields | direct |
+| [subject](subject.md) | 1..* <br/> [Subject](Subject.md) | Indicates if a single animals or multiple animals are used, it could be 1 for... | direct |
+| [experiment](experiment.md) | 1 <br/> [Experiment](Experiment.md) | The experimental setup and environment for this dataset's trials | direct |
+| [environmental_conditions](environmental_conditions.md) | 0..1 _recommended_ <br/> [EnvironmentalConditions](EnvironmentalConditions.md) | Environmental conditions during the experiment, including water chemistry,  f... | direct |
+| [manipulation](manipulation.md) | 0..1 <br/> [Manipulation](Manipulation.md) | Any intervention applied to the subjects | direct |
+| [experiment_notes](experiment_notes.md) | 0..1 <br/> [String](String.md) | Free-text notes on the overall experimental conditions | direct |
 
 
 
@@ -135,9 +149,11 @@ name: ExperimentalConditions
 description: Biological and experimental conditions applicable to all trials in the
   dataset. Covers organism identity, treatment, assay design, and environmental parameters.
 from_schema: https://w3id.org/bestmeta/schema
+abstract: true
 slots:
 - subject
 - experiment
+- environmental_conditions
 - manipulation
 - experiment_notes
 
@@ -152,10 +168,13 @@ name: ExperimentalConditions
 description: Biological and experimental conditions applicable to all trials in the
   dataset. Covers organism identity, treatment, assay design, and environmental parameters.
 from_schema: https://w3id.org/bestmeta/schema
+abstract: true
 attributes:
   subject:
     name: subject
-    description: Organism identity and biological attributes of the tracked subjects.
+    description: 'Indicates if a single animals or multiple animals are used, it could
+      be 1 for single-animal models or well plate studie, >1 for mult--animal rodent
+      studies                    '
     from_schema: https://w3id.org/bestmeta/schema
     rank: 1000
     owner: ExperimentalConditions
@@ -163,10 +182,11 @@ attributes:
     - ExperimentalConditions
     range: Subject
     required: true
+    multivalued: true
     inlined: true
   experiment:
     name: experiment
-    description: Assay design, arena configuration, and environmental parameters.
+    description: The experimental setup and environment for this dataset's trials.
     from_schema: https://w3id.org/bestmeta/schema
     rank: 1000
     owner: ExperimentalConditions
@@ -174,11 +194,22 @@ attributes:
     - ExperimentalConditions
     range: Experiment
     required: true
-    inlined: true
+  environmental_conditions:
+    name: environmental_conditions
+    description: Environmental conditions during the experiment, including water chemistry,  feed,
+      and other details.
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: ExperimentalConditions
+    domain_of:
+    - ExperimentalConditions
+    range: EnvironmentalConditions
+    required: false
+    recommended: true
   manipulation:
     name: manipulation
-    description: Treatment and chemical exposure applied to the subjects. Omit this
-      sub-class entirely for naive or vehicle-only datasets.
+    description: Any intervention applied to the subjects. Omitted when no treatment
+      or exposure was used.
     from_schema: https://w3id.org/bestmeta/schema
     rank: 1000
     owner: ExperimentalConditions
@@ -186,11 +217,9 @@ attributes:
     - ExperimentalConditions
     range: Manipulation
     required: false
-    inlined: true
   experiment_notes:
     name: experiment_notes
-    description: Free-text notes on experimental conditions not captured by structured
-      fields.
+    description: Free-text notes on the overall experimental conditions.
     from_schema: https://w3id.org/bestmeta/schema
     rank: 1000
     owner: ExperimentalConditions

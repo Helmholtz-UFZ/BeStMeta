@@ -3,10 +3,10 @@ search:
   boost: 5.0
 ---
 
-# Slot: tracking_software_name 
+# Slot: feed_type 
 
 
-_Name of the software used for tracking._
+_Type of feed provided to the subject(s)._
 
 
 
@@ -14,7 +14,7 @@ _Name of the software used for tracking._
 
 
 
-URI: [BeStMeta:tracking_software_name](https://w3id.org/BeStMeta/tracking_software_name)
+URI: [BeStMeta:feed_type](https://w3id.org/BeStMeta/feed_type)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [BeStMeta:tracking_software_name](https://w3id.org/BeStMeta/tracking_softwa
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [TrackingAnalysis](TrackingAnalysis.md) | Tracking software identity and version, algorithm details, post-tracking comp... |  no  |
+| [EnvironmentalConditions](EnvironmentalConditions.md) | Environmental conditions and husbandry parameters for the experiments |  no  |
 
 
 
@@ -39,13 +39,12 @@ URI: [BeStMeta:tracking_software_name](https://w3id.org/BeStMeta/tracking_softwa
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [TrackingAnalysis](TrackingAnalysis.md) |
+| Domain Of | [EnvironmentalConditions](EnvironmentalConditions.md) |
 
 ### Cardinality and Requirements
 
 | Property | Value |
 | --- | --- |
-| Required | Yes |
 
 
 
@@ -74,9 +73,8 @@ URI: [BeStMeta:tracking_software_name](https://w3id.org/BeStMeta/tracking_softwa
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | BeStMeta:tracking_software_name |
-| native | BeStMeta:tracking_software_name |
-| exact | AFR:0002802 |
+| self | BeStMeta:feed_type |
+| native | BeStMeta:feed_type |
 
 
 
@@ -85,16 +83,13 @@ URI: [BeStMeta:tracking_software_name](https://w3id.org/BeStMeta/tracking_softwa
 
 <details>
 ```yaml
-name: tracking_software_name
-description: Name of the software used for tracking.
+name: feed_type
+description: Type of feed provided to the subject(s).
 from_schema: https://w3id.org/bestmeta/schema
-exact_mappings:
-- AFR:0002802
 rank: 1000
 domain_of:
-- TrackingAnalysis
+- EnvironmentalConditions
 range: string
-required: true
 
 ```
 </details></div>

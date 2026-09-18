@@ -3,10 +3,10 @@ search:
   boost: 5.0
 ---
 
-# Slot: experiment 
+# Slot: environmental_conditions 
 
 
-_The experimental setup and environment for this dataset's trials._
+_Environmental conditions during the experiment, including water chemistry,  feed, and other details._
 
 
 
@@ -14,7 +14,7 @@ _The experimental setup and environment for this dataset's trials._
 
 
 
-URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
+URI: [BeStMeta:environmental_conditions](https://w3id.org/BeStMeta/environmental_conditions)
 <!-- no inheritance hierarchy -->
 
 
@@ -38,14 +38,14 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 | Property | Value |
 | --- | --- |
-| Range | [Experiment](Experiment.md) |
+| Range | [EnvironmentalConditions](EnvironmentalConditions.md) |
 | Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
 
 ### Cardinality and Requirements
 
 | Property | Value |
 | --- | --- |
-| Required | Yes |
+| Recommended | Yes |
 
 
 
@@ -74,8 +74,8 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | BeStMeta:experiment |
-| native | BeStMeta:experiment |
+| self | BeStMeta:environmental_conditions |
+| native | BeStMeta:environmental_conditions |
 
 
 
@@ -84,14 +84,16 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 <details>
 ```yaml
-name: experiment
-description: The experimental setup and environment for this dataset's trials.
+name: environmental_conditions
+description: Environmental conditions during the experiment, including water chemistry,  feed,
+  and other details.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
 - ExperimentalConditions
-range: Experiment
-required: true
+range: EnvironmentalConditions
+required: false
+recommended: true
 
 ```
 </details></div>
