@@ -89,6 +89,17 @@ URI: [BeStMeta:Experiment](https://w3id.org/BeStMeta/Experiment)
         
       Experiment : assay_type
         
+      Experiment : environmental_conditions
+        
+          
+    
+        
+        
+        Experiment --> "0..1 _recommended_" EnvironmentalConditions : environmental_conditions
+        click EnvironmentalConditions href "../EnvironmentalConditions/"
+    
+
+        
       Experiment : experiment_end_datetime
         
       Experiment : experiment_start_datetime
@@ -166,6 +177,7 @@ URI: [BeStMeta:Experiment](https://w3id.org/BeStMeta/Experiment)
 | [mortality](mortality.md) | 0..1 _recommended_ <br/> [Boolean](Boolean.md) | Indicates whether a subject died during the course of the experiment | direct |
 | [n_individuals_start](n_individuals_start.md) | 0..1 <br/> [Integer](Integer.md) | Number of individuals at the start of the experiment/trial | direct |
 | [n_individuals_end](n_individuals_end.md) | 0..1 <br/> [Integer](Integer.md) | Number of individuals at the end of the experiment/trial | direct |
+| [environmental_conditions](environmental_conditions.md) | 0..1 _recommended_ <br/> [EnvironmentalConditions](EnvironmentalConditions.md) | Environmental conditions during the experiment, including water chemistry,  f... | direct |
 | [assay_description](assay_description.md) | 0..1 <br/> [String](String.md) | Free-text description of the assay protocol | direct |
 | [mortality_notes](mortality_notes.md) | 0..1 <br/> [String](String.md) | Free-test notes on any deaths that occured during the trial | direct |
 
@@ -295,6 +307,7 @@ slots:
 - mortality
 - n_individuals_start
 - n_individuals_end
+- environmental_conditions
 - assay_description
 - mortality_notes
 rules:
@@ -617,6 +630,18 @@ attributes:
     domain_of:
     - Experiment
     range: integer
+  environmental_conditions:
+    name: environmental_conditions
+    description: Environmental conditions during the experiment, including water chemistry,  feed,
+      and other details.
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Experiment
+    domain_of:
+    - Experiment
+    range: EnvironmentalConditions
+    required: false
+    recommended: true
   assay_description:
     name: assay_description
     description: Free-text description of the assay protocol

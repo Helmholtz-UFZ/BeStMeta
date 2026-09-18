@@ -25,7 +25,7 @@ URI: [BeStMeta:environmental_conditions](https://w3id.org/BeStMeta/environmental
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [BeStMeta:environmental_conditions](https://w3id.org/BeStMeta/environmental
 | Property | Value |
 | --- | --- |
 | Range | [EnvironmentalConditions](EnvironmentalConditions.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
@@ -90,7 +90,7 @@ description: Environmental conditions during the experiment, including water che
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
+- Experiment
 range: EnvironmentalConditions
 required: false
 recommended: true

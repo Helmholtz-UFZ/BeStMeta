@@ -66,7 +66,7 @@ URI: [BeStMeta:EnvironmentalConditions](https://w3id.org/BeStMeta/EnvironmentalC
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | [environmental_conditions](environmental_conditions.md) | range | [EnvironmentalConditions](EnvironmentalConditions.md) |
+| [Experiment](Experiment.md) | [environmental_conditions](environmental_conditions.md) | range | [EnvironmentalConditions](EnvironmentalConditions.md) |
 
 
 
