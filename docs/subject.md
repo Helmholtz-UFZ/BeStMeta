@@ -6,7 +6,7 @@ search:
 # Slot: subject 
 
 
-_Organism identity and biological attributes of the tracked subjects._
+_Indicates if a single animals or multiple animals are used, it could be 1 for single-animal models or well plate studie, >1 for mult--animal rodent studies                    _
 
 
 
@@ -46,6 +46,7 @@ URI: [BeStMeta:subject](https://w3id.org/BeStMeta/subject)
 | Property | Value |
 | --- | --- |
 | Required | Yes |
+| Multivalued | Yes |
 
 
 
@@ -85,13 +86,15 @@ URI: [BeStMeta:subject](https://w3id.org/BeStMeta/subject)
 <details>
 ```yaml
 name: subject
-description: Organism identity and biological attributes of the tracked subjects.
+description: 'Indicates if a single animals or multiple animals are used, it could
+  be 1 for single-animal models or well plate studie, >1 for mult--animal rodent studies                    '
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
 - ExperimentalConditions
 range: Subject
 required: true
+multivalued: true
 inlined: true
 
 ```

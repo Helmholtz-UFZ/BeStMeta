@@ -354,6 +354,55 @@
             "title": "DeviceTypeMixin",
             "type": "object"
         },
+        "EnvironmentalConditions": {
+            "additionalProperties": false,
+            "description": "Environmental conditions and husbandry parameters for the experiments.",
+            "if": {
+                "properties": {
+                    "water_temperature": {}
+                },
+                "required": [
+                    "water_temperature"
+                ]
+            },
+            "properties": {
+                "feed_type": {
+                    "description": "Type of feed provided to the subject(s).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "water_ph": {
+                    "description": "pH of the water in housing/experimnetal conditions",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "water_temperature": {
+                    "description": "The temperature of the water during the experiment",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "water_temperature_unit": {
+                    "$ref": "#/$defs/TemperatureUnitEnum",
+                    "description": "The unit of the water temperature."
+                }
+            },
+            "then": {
+                "properties": {
+                    "water_temperature_unit": {}
+                },
+                "required": [
+                    "water_temperature_unit"
+                ]
+            },
+            "title": "EnvironmentalConditions",
+            "type": "object"
+        },
         "Experiment": {
             "additionalProperties": false,
             "allOf": [
@@ -428,6 +477,26 @@
                         },
                         "required": [
                             "light_cycle_detail"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "mortality": {}
+                        },
+                        "required": [
+                            "mortality"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "n_individuals_end": {},
+                            "n_individuals_start": {}
+                        },
+                        "required": [
+                            "n_individuals_start",
+                            "n_individuals_end"
                         ]
                     }
                 }
@@ -513,10 +582,38 @@
                     "$ref": "#/$defs/LightCycleTypeEnum",
                     "description": "Standardized category of the light-dark cycle."
                 },
+                "mortality": {
+                    "description": "Indicates whether a subject died during the course of the experiment.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "mortality_notes": {
+                    "description": "Free-test notes on any deaths that occured during the trial.  This can be used to provide additional context about mortality.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "n_individuals_end": {
+                    "description": "Number of individuals at the end of the experiment/trial.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "n_individuals_per_arena": {
                     "description": "Number of individuals tested simultaneously in the arena.",
                     "minimum": 1,
                     "type": "integer"
+                },
+                "n_individuals_start": {
+                    "description": "Number of individuals at the start of the experiment/trial.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
                 "n_individuals_total": {
                     "description": "Total number of individuals used in the experiment.",
@@ -554,12 +651,23 @@
             "additionalProperties": false,
             "description": "Biological and experimental conditions applicable to all trials in the dataset. Covers organism identity, treatment, assay design, and environmental parameters.",
             "properties": {
+                "environmental_conditions": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/EnvironmentalConditions"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Environmental conditions during the experiment, including water chemistry,  feed, and other details."
+                },
                 "experiment": {
                     "$ref": "#/$defs/Experiment",
-                    "description": "Assay design, arena configuration, and environmental parameters."
+                    "description": "The experimental setup and environment for this dataset's trials."
                 },
                 "experiment_notes": {
-                    "description": "Free-text notes on experimental conditions not captured by structured fields.",
+                    "description": "Free-text notes on the overall experimental conditions.",
                     "type": [
                         "string",
                         "null"
@@ -574,11 +682,14 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Treatment and chemical exposure applied to the subjects. Omit this sub-class entirely for naive or vehicle-only datasets."
+                    "description": "Any intervention applied to the subjects. Omitted when no treatment or exposure was used."
                 },
                 "subject": {
-                    "$ref": "#/$defs/Subject",
-                    "description": "Organism identity and biological attributes of the tracked subjects."
+                    "description": "Indicates if a single animals or multiple animals are used, it could be 1 for single-animal models or well plate studie, >1 for mult--animal rodent studies                    ",
+                    "items": {
+                        "$ref": "#/$defs/Subject"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
@@ -601,6 +712,15 @@
                 "other"
             ],
             "title": "ExposureRouteEnum",
+            "type": "string"
+        },
+        "ExposureTypeEnum": {
+            "description": "Category for the duration of treatment/manipulation",
+            "enum": [
+                "acute",
+                "chronic"
+            ],
+            "title": "ExposureTypeEnum",
             "type": "string"
         },
         "Hardware": {
@@ -1221,6 +1341,10 @@
                     "$ref": "#/$defs/ExposureRouteEnum",
                     "description": "Route of chemical or treatment administration."
                 },
+                "exposure_type": {
+                    "$ref": "#/$defs/ExposureTypeEnum",
+                    "description": "It indicates the type of exposure (Acute or chronic)"
+                },
                 "habituation_duration_min": {
                     "description": "Duration of habituation period before recording, in minutes",
                     "type": [
@@ -1553,6 +1677,13 @@
                         "null"
                     ]
                 },
+                "n_individuals_represented": {
+                    "description": "Represents the toal number of individual subjects in a given subject entry. Use a value greater than one to show its a homogenous subjects. Defaults to one (when omitted)",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "sex": {
                     "$ref": "#/$defs/SexEnum",
                     "description": "Biological sex of the tracked organism(s)."
@@ -1571,6 +1702,13 @@
                 },
                 "strain": {
                     "description": "Organism strain or line",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "subject_colour": {
+                    "description": "Indicates the colour of the subject. This is useful for tracking.",
                     "type": [
                         "string",
                         "null"
@@ -1606,6 +1744,16 @@
                 "cell"
             ],
             "title": "SubjectTypeEnum",
+            "type": "string"
+        },
+        "TemperatureUnitEnum": {
+            "description": "Unit of temperature measurement",
+            "enum": [
+                "celsius",
+                "fahrenheit",
+                "kelvin"
+            ],
+            "title": "TemperatureUnitEnum",
             "type": "string"
         },
         "TrackingAnalysis": {

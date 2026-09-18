@@ -65,6 +65,17 @@ URI: [BeStMeta:Manipulation](https://w3id.org/BeStMeta/Manipulation)
     
 
         
+      Manipulation : exposure_type
+        
+          
+    
+        
+        
+        Manipulation --> "0..1 _recommended_" ExposureTypeEnum : exposure_type
+        click ExposureTypeEnum href "../ExposureTypeEnum/"
+    
+
+        
       Manipulation : habituation_duration_min
         
       Manipulation : habituation_protocol
@@ -106,6 +117,7 @@ URI: [BeStMeta:Manipulation](https://w3id.org/BeStMeta/Manipulation)
 | [exposure_compound_chebi_id](exposure_compound_chebi_id.md) | 0..1 _recommended_ <br/> [String](String.md) | ChEBI identifier for the test substance | direct |
 | [exposure_concentration](exposure_concentration.md) | 0..1 _recommended_ <br/> [Float](Float.md) | Nominal exposure concentration (numeric value only; use unit field) | direct |
 | [exposure_concentration_unit](exposure_concentration_unit.md) | 0..1 _recommended_ <br/> [ConcentrationUnitEnum](ConcentrationUnitEnum.md) | Unit for exposure concentration | direct |
+| [exposure_type](exposure_type.md) | 0..1 _recommended_ <br/> [ExposureTypeEnum](ExposureTypeEnum.md) | It indicates the type of exposure (Acute or chronic) | direct |
 | [well_shape_bottom](well_shape_bottom.md) | 0..1 <br/> [WellBottomShapeEnum](WellBottomShapeEnum.md) | Geometric bottom shape of the wells of a multiwell plate | direct |
 | [habituation_duration_min](habituation_duration_min.md) | 0..1 <br/> [Float](Float.md) | Duration of habituation period before recording, in minutes | direct |
 | [habituation_protocol](habituation_protocol.md) | 0..1 <br/> [String](String.md) | Description of habituation or acclimation prior to testing | direct |
@@ -202,6 +214,7 @@ slots:
 - exposure_compound_chebi_id
 - exposure_concentration
 - exposure_concentration_unit
+- exposure_type
 - well_shape_bottom
 - habituation_duration_min
 - habituation_protocol
@@ -330,6 +343,17 @@ attributes:
     domain_of:
     - Manipulation
     range: ConcentrationUnitEnum
+    required: false
+    recommended: true
+  exposure_type:
+    name: exposure_type
+    description: It indicates the type of exposure (Acute or chronic)
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Manipulation
+    domain_of:
+    - Manipulation
+    range: ExposureTypeEnum
     required: false
     recommended: true
   well_shape_bottom:

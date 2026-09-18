@@ -290,7 +290,6 @@ attributes:
     - TrackingAnalysis
     range: string
     required: true
-    recommended: false
   tracking_algorithm:
     name: tracking_algorithm
     description: Algorithmic approach used to detect, identify, and track organisms

@@ -3,10 +3,10 @@ search:
   boost: 5.0
 ---
 
-# Slot: experiment 
+# Slot: water_ph 
 
 
-_The experimental setup and environment for this dataset's trials._
+_pH of the water in housing/experimnetal conditions_
 
 
 
@@ -14,7 +14,7 @@ _The experimental setup and environment for this dataset's trials._
 
 
 
-URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
+URI: [BeStMeta:water_ph](https://w3id.org/BeStMeta/water_ph)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [EnvironmentalConditions](EnvironmentalConditions.md) | Environmental conditions and husbandry parameters for the experiments |  no  |
 
 
 
@@ -38,14 +38,13 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 | Property | Value |
 | --- | --- |
-| Range | [Experiment](Experiment.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Range | [Float](Float.md) |
+| Domain Of | [EnvironmentalConditions](EnvironmentalConditions.md) |
 
 ### Cardinality and Requirements
 
 | Property | Value |
 | --- | --- |
-| Required | Yes |
 
 
 
@@ -74,8 +73,8 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | BeStMeta:experiment |
-| native | BeStMeta:experiment |
+| self | BeStMeta:water_ph |
+| native | BeStMeta:water_ph |
 
 
 
@@ -84,14 +83,13 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 <details>
 ```yaml
-name: experiment
-description: The experimental setup and environment for this dataset's trials.
+name: water_ph
+description: pH of the water in housing/experimnetal conditions
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
-range: Experiment
-required: true
+- EnvironmentalConditions
+range: float
 
 ```
 </details></div>

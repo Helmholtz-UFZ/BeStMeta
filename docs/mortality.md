@@ -3,10 +3,10 @@ search:
   boost: 5.0
 ---
 
-# Slot: experiment 
+# Slot: mortality 
 
 
-_The experimental setup and environment for this dataset's trials._
+_Indicates whether a subject died during the course of the experiment._
 
 
 
@@ -14,7 +14,7 @@ _The experimental setup and environment for this dataset's trials._
 
 
 
-URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
+URI: [BeStMeta:mortality](https://w3id.org/BeStMeta/mortality)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -38,14 +38,14 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 | Property | Value |
 | --- | --- |
-| Range | [Experiment](Experiment.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Range | [Boolean](Boolean.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
 | Property | Value |
 | --- | --- |
-| Required | Yes |
+| Recommended | Yes |
 
 
 
@@ -74,8 +74,8 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | BeStMeta:experiment |
-| native | BeStMeta:experiment |
+| self | BeStMeta:mortality |
+| native | BeStMeta:mortality |
 
 
 
@@ -84,14 +84,15 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 <details>
 ```yaml
-name: experiment
-description: The experimental setup and environment for this dataset's trials.
+name: mortality
+description: Indicates whether a subject died during the course of the experiment.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
-range: Experiment
-required: true
+- Experiment
+range: boolean
+required: false
+recommended: true
 
 ```
 </details></div>

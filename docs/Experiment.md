@@ -106,7 +106,15 @@ URI: [BeStMeta:Experiment](https://w3id.org/BeStMeta/Experiment)
     
 
         
+      Experiment : mortality
+        
+      Experiment : mortality_notes
+        
+      Experiment : n_individuals_end
+        
       Experiment : n_individuals_per_arena
+        
+      Experiment : n_individuals_start
         
       Experiment : n_individuals_total
         
@@ -142,7 +150,6 @@ URI: [BeStMeta:Experiment](https://w3id.org/BeStMeta/Experiment)
 | [assay_type](assay_type.md) | 1 <br/> [String](String.md) | Name of the behavioral assay paradigm or test paradigm | direct |
 | [experiment_start_datetime](experiment_start_datetime.md) | 0..1 _recommended_ <br/> [Datetime](Datetime.md) | Date and time at which the experiment began | direct |
 | [experiment_end_datetime](experiment_end_datetime.md) | 0..1 _recommended_ <br/> [Datetime](Datetime.md) | Date and time at which the experiment ended | direct |
-| [assay_description](assay_description.md) | 0..1 <br/> [String](String.md) | Free-text description of the assay protocol | direct |
 | [arena_shape](arena_shape.md) | 0..1 _recommended_ <br/> [ArenaShapeEnum](ArenaShapeEnum.md) | Geometric shape of the test arena | direct |
 | [arena_type](arena_type.md) | 0..1 _recommended_ <br/> [ArenaTypeEnum](ArenaTypeEnum.md) | Type of the test arena, e | direct |
 | [arena_length](arena_length.md) | 0..1 _recommended_ <br/> [Float](Float.md) | Length of the arena along one axis | direct |
@@ -156,7 +163,11 @@ URI: [BeStMeta:Experiment](https://w3id.org/BeStMeta/Experiment)
 | [temperature_celsius](temperature_celsius.md) | 0..1 _recommended_ <br/> [Float](Float.md) | Water or ambient temperature during the recording in degrees Celsius | direct |
 | [light_cycle_type](light_cycle_type.md) | 0..1 _recommended_ <br/> [LightCycleTypeEnum](LightCycleTypeEnum.md) | Standardized category of the light-dark cycle | direct |
 | [light_cycle_detail](light_cycle_detail.md) | 0..1 _recommended_ <br/> [String](String.md) | Free-text description of the light-dark cycle | direct |
+| [mortality](mortality.md) | 0..1 _recommended_ <br/> [Boolean](Boolean.md) | Indicates whether a subject died during the course of the experiment | direct |
+| [n_individuals_start](n_individuals_start.md) | 0..1 <br/> [Integer](Integer.md) | Number of individuals at the start of the experiment/trial | direct |
+| [n_individuals_end](n_individuals_end.md) | 0..1 <br/> [Integer](Integer.md) | Number of individuals at the end of the experiment/trial | direct |
 | [assay_description](assay_description.md) | 0..1 <br/> [String](String.md) | Free-text description of the assay protocol | direct |
+| [mortality_notes](mortality_notes.md) | 0..1 <br/> [String](String.md) | Free-test notes on any deaths that occured during the trial | direct |
 
 
 
@@ -203,6 +214,14 @@ URI: [BeStMeta:Experiment](https://w3id.org/BeStMeta/Experiment)
 | Rule Applied | Preconditions | Postconditions | Elseconditions |
 |--------------|---------------|----------------|----------------|
 | slot_conditions |```{'light_cycle_type': {'equals_string': 'cyclic_ld'}}``` |```{'light_cycle_detail': {'required': True}}``` | |
+
+
+
+### 
+
+| Rule Applied | Preconditions | Postconditions | Elseconditions |
+|--------------|---------------|----------------|----------------|
+| slot_conditions |```{'mortality': {'equals_expression': 'true'}}``` |```{'n_individuals_start': {'required': True}, 'n_individuals_end': {'required': True}}``` | |
 
 
 
@@ -260,7 +279,6 @@ slots:
 - assay_type
 - experiment_start_datetime
 - experiment_end_datetime
-- assay_description
 - arena_shape
 - arena_type
 - arena_length
@@ -274,7 +292,11 @@ slots:
 - temperature_celsius
 - light_cycle_type
 - light_cycle_detail
+- mortality
+- n_individuals_start
+- n_individuals_end
 - assay_description
+- mortality_notes
 rules:
 - preconditions:
     slot_conditions:
@@ -320,6 +342,21 @@ rules:
         name: light_cycle_detail
         required: true
   description: If light_cycle_type is cyclic_ld, light_cycle_detail should be provided.
+- preconditions:
+    slot_conditions:
+      mortality:
+        name: mortality
+        equals_expression: 'true'
+  postconditions:
+    slot_conditions:
+      n_individuals_start:
+        name: n_individuals_start
+        required: true
+      n_individuals_end:
+        name: n_individuals_end
+        required: true
+  description: when mortality is true, counts of individuals at the start and end
+    are required
 
 ```
 </details>
@@ -395,16 +432,6 @@ attributes:
     range: datetime
     required: false
     recommended: true
-  assay_description:
-    name: assay_description
-    description: Free-text description of the assay protocol
-    from_schema: https://w3id.org/bestmeta/schema
-    rank: 1000
-    owner: Experiment
-    domain_of:
-    - Experiment
-    range: string
-    required: false
   arena_shape:
     name: arena_shape
     description: Geometric shape of the test arena.
@@ -561,6 +588,55 @@ attributes:
     range: string
     required: false
     recommended: true
+  mortality:
+    name: mortality
+    description: Indicates whether a subject died during the course of the experiment.
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Experiment
+    domain_of:
+    - Experiment
+    range: boolean
+    required: false
+    recommended: true
+  n_individuals_start:
+    name: n_individuals_start
+    description: Number of individuals at the start of the experiment/trial.
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Experiment
+    domain_of:
+    - Experiment
+    range: integer
+  n_individuals_end:
+    name: n_individuals_end
+    description: Number of individuals at the end of the experiment/trial.
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Experiment
+    domain_of:
+    - Experiment
+    range: integer
+  assay_description:
+    name: assay_description
+    description: Free-text description of the assay protocol
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Experiment
+    domain_of:
+    - Experiment
+    range: string
+    required: false
+  mortality_notes:
+    name: mortality_notes
+    description: Free-test notes on any deaths that occured during the trial.  This
+      can be used to provide additional context about mortality.
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Experiment
+    domain_of:
+    - Experiment
+    range: string
 rules:
 - preconditions:
     slot_conditions:
@@ -606,6 +682,21 @@ rules:
         name: light_cycle_detail
         required: true
   description: If light_cycle_type is cyclic_ld, light_cycle_detail should be provided.
+- preconditions:
+    slot_conditions:
+      mortality:
+        name: mortality
+        equals_expression: 'true'
+  postconditions:
+    slot_conditions:
+      n_individuals_start:
+        name: n_individuals_start
+        required: true
+      n_individuals_end:
+        name: n_individuals_end
+        required: true
+  description: when mortality is true, counts of individuals at the start and end
+    are required
 
 ```
 </details></div>

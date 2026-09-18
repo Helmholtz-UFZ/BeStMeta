@@ -3,10 +3,10 @@ search:
   boost: 5.0
 ---
 
-# Slot: experiment 
+# Slot: n_individuals_start 
 
 
-_The experimental setup and environment for this dataset's trials._
+_Number of individuals at the start of the experiment/trial._
 
 
 
@@ -14,7 +14,7 @@ _The experimental setup and environment for this dataset's trials._
 
 
 
-URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
+URI: [BeStMeta:n_individuals_start](https://w3id.org/BeStMeta/n_individuals_start)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -38,14 +38,13 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 | Property | Value |
 | --- | --- |
-| Range | [Experiment](Experiment.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Range | [Integer](Integer.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
 | Property | Value |
 | --- | --- |
-| Required | Yes |
 
 
 
@@ -74,8 +73,8 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | BeStMeta:experiment |
-| native | BeStMeta:experiment |
+| self | BeStMeta:n_individuals_start |
+| native | BeStMeta:n_individuals_start |
 
 
 
@@ -84,14 +83,13 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 <details>
 ```yaml
-name: experiment
-description: The experimental setup and environment for this dataset's trials.
+name: n_individuals_start
+description: Number of individuals at the start of the experiment/trial.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
-range: Experiment
-required: true
+- Experiment
+range: integer
 
 ```
 </details></div>

@@ -78,6 +78,8 @@ URI: [BeStMeta:Subject](https://w3id.org/BeStMeta/Subject)
         
       Subject : housing_conditions
         
+      Subject : n_individuals_represented
+        
       Subject : sex
         
           
@@ -94,6 +96,8 @@ URI: [BeStMeta:Subject](https://w3id.org/BeStMeta/Subject)
       Subject : species_ncbi_taxon_id
         
       Subject : strain
+        
+      Subject : subject_colour
         
       Subject : subject_type
         
@@ -133,6 +137,7 @@ URI: [BeStMeta:Subject](https://w3id.org/BeStMeta/Subject)
 | ---  | --- | --- | --- |
 | [subject_type](subject_type.md) | 1 <br/> [SubjectTypeEnum](SubjectTypeEnum.md) | Indicates whether the subject being tracked is a whole organism or a cell/cel... | direct |
 | [species_name](species_name.md) | 1 <br/> [String](String.md) | Scientific (Latin) binomial name of the study organism | direct |
+| [n_individuals_represented](n_individuals_represented.md) | 0..1 <br/> [Integer](Integer.md) | Represents the toal number of individual subjects in a given subject entry | direct |
 | [species_ncbi_taxon_id](species_ncbi_taxon_id.md) | 0..1 _recommended_ <br/> [String](String.md) | NCBI Taxonomy ID for the study organism | direct |
 | [strain](strain.md) | 0..1 _recommended_ <br/> [String](String.md) | Organism strain or line | direct |
 | [genotype](genotype.md) | 0..1 _recommended_ <br/> [String](String.md) | Genotype identifier of the tracked organism(s) including strain-specific, mut... | direct |
@@ -140,6 +145,7 @@ URI: [BeStMeta:Subject](https://w3id.org/BeStMeta/Subject)
 | [body_length_value](body_length_value.md) | 0..1 _recommended_ <br/> [Float](Float.md) | Body length numeric value of the tracked organism(s) | direct |
 | [body_length_unit](body_length_unit.md) | 0..1 _recommended_ <br/> [LengthUnitEnum](LengthUnitEnum.md) | Body length unit of the tracked organism(s) | direct |
 | [housing_conditions](housing_conditions.md) | 0..1 <br/> [String](String.md) | Free-text description of animal housing conditions prior to assay | direct |
+| [subject_colour](subject_colour.md) | 0..1 <br/> [String](String.md) | Indicates the colour of the subject | direct |
 | [developmental_stage](developmental_stage.md) | 0..1 <br/> [DevelopmentalStageEnum](DevelopmentalStageEnum.md) | Developmental stage of the tracked organism(s) | direct |
 | [developmental_stage_value](developmental_stage_value.md) | 0..1 <br/> [Float](Float.md) | Numeric developmental stage value (e | direct |
 | [developmental_stage_unit](developmental_stage_unit.md) | 0..1 <br/> [DevelopmentUnitEnum](DevelopmentUnitEnum.md) | Unit for developmental stage value of the tracked organism(s) | direct |
@@ -258,6 +264,7 @@ from_schema: https://w3id.org/bestmeta/schema
 slots:
 - subject_type
 - species_name
+- n_individuals_represented
 - species_ncbi_taxon_id
 - strain
 - genotype
@@ -265,6 +272,7 @@ slots:
 - body_length_value
 - body_length_unit
 - housing_conditions
+- subject_colour
 - developmental_stage
 - developmental_stage_value
 - developmental_stage_unit
@@ -367,6 +375,17 @@ attributes:
     - Subject
     range: string
     required: true
+  n_individuals_represented:
+    name: n_individuals_represented
+    description: Represents the toal number of individual subjects in a given subject
+      entry. Use a value greater than one to show its a homogenous subjects. Defaults
+      to one (when omitted)
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Subject
+    domain_of:
+    - Subject
+    range: integer
   species_ncbi_taxon_id:
     name: species_ncbi_taxon_id
     description: NCBI Taxonomy ID for the study organism
@@ -468,6 +487,15 @@ attributes:
     - Manipulation
     range: string
     required: false
+  subject_colour:
+    name: subject_colour
+    description: Indicates the colour of the subject. This is useful for tracking.
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Subject
+    domain_of:
+    - Subject
+    range: string
   developmental_stage:
     name: developmental_stage
     description: Developmental stage of the tracked organism(s).

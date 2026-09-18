@@ -3,10 +3,10 @@ search:
   boost: 5.0
 ---
 
-# Slot: experiment 
+# Slot: exposure_type 
 
 
-_The experimental setup and environment for this dataset's trials._
+_It indicates the type of exposure (Acute or chronic)_
 
 
 
@@ -14,7 +14,7 @@ _The experimental setup and environment for this dataset's trials._
 
 
 
-URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
+URI: [BeStMeta:exposure_type](https://w3id.org/BeStMeta/exposure_type)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |  no  |
+| [Manipulation](Manipulation.md) | Treatment and chemical exposure information decribing pharmacological, toxico... |  no  |
 
 
 
@@ -38,14 +38,14 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 | Property | Value |
 | --- | --- |
-| Range | [Experiment](Experiment.md) |
-| Domain Of | [ExperimentalConditions](ExperimentalConditions.md) |
+| Range | [ExposureTypeEnum](ExposureTypeEnum.md) |
+| Domain Of | [Manipulation](Manipulation.md) |
 
 ### Cardinality and Requirements
 
 | Property | Value |
 | --- | --- |
-| Required | Yes |
+| Recommended | Yes |
 
 
 
@@ -74,8 +74,8 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | BeStMeta:experiment |
-| native | BeStMeta:experiment |
+| self | BeStMeta:exposure_type |
+| native | BeStMeta:exposure_type |
 
 
 
@@ -84,14 +84,15 @@ URI: [BeStMeta:experiment](https://w3id.org/BeStMeta/experiment)
 
 <details>
 ```yaml
-name: experiment
-description: The experimental setup and environment for this dataset's trials.
+name: exposure_type
+description: It indicates the type of exposure (Acute or chronic)
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- ExperimentalConditions
-range: Experiment
-required: true
+- Manipulation
+range: ExposureTypeEnum
+required: false
+recommended: true
 
 ```
 </details></div>

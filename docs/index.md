@@ -14,6 +14,7 @@ Name: bestmeta
 | --- | --- |
 | [Acquisition](Acquisition.md) | Video acquisition and recording parameters, including timing encoding and ill... |
 | [DeviceTypeMixin](DeviceTypeMixin.md) | Reusable slot bundle providing device_type, allowing multiple classes (e |
+| [EnvironmentalConditions](EnvironmentalConditions.md) | Environmental conditions and husbandry parameters for the experiments |
 | [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |
 | [ExperimentalConditions](ExperimentalConditions.md) | Biological and experimental conditions applicable to all trials in the datase... |
 | [Hardware](Hardware.md) | Camera systems, optical configuration, and physical recording infrastructure ... |
@@ -85,9 +86,10 @@ Name: bestmeta
 | [dropped_frames_reason](dropped_frames_reason.md) | Reason for dropped or omitted frames during acquisition, recording, encoding,... |
 | [effect_size_measure](effect_size_measure.md) | Effect size measure reported to quantify the magnitude of observed effects or... |
 | [endpoint_definitions](endpoint_definitions.md) | Definitions and calculation criteria used for behavioral endpoints, including... |
-| [experiment](experiment.md) | Assay design, arena configuration, and environmental parameters |
+| [environmental_conditions](environmental_conditions.md) | Environmental conditions during the experiment, including water chemistry,  f... |
+| [experiment](experiment.md) | The experimental setup and environment for this dataset's trials |
 | [experiment_end_datetime](experiment_end_datetime.md) | Date and time at which the experiment ended |
-| [experiment_notes](experiment_notes.md) | Free-text notes on experimental conditions not captured by structured fields |
+| [experiment_notes](experiment_notes.md) | Free-text notes on the overall experimental conditions |
 | [experiment_start_datetime](experiment_start_datetime.md) | Date and time at which the experiment began |
 | [experimental_conditions](experimental_conditions.md) | Biological and experimental conditions for this dataset |
 | [exposure_compound_chebi_id](exposure_compound_chebi_id.md) | ChEBI identifier for the test substance |
@@ -97,6 +99,8 @@ Name: bestmeta
 | [exposure_duration_h](exposure_duration_h.md) | Duration of chemical or treatment exposure in hours |
 | [exposure_route](exposure_route.md) | Route of chemical or treatment administration |
 | [exposure_time](exposure_time.md) | Camera sensor exposure time per frame |
+| [exposure_type](exposure_type.md) | It indicates the type of exposure (Acute or chronic) |
+| [feed_type](feed_type.md) | Type of feed provided to the subject(s) |
 | [field_of_view_height](field_of_view_height.md) | Numeric value of vertical field of view covered by the camera |
 | [field_of_view_unit](field_of_view_unit.md) | Unit of measurement for field_of_view_width and field_of_view_height |
 | [field_of_view_width](field_of_view_width.md) | Numeric value of horizontal field of view covered by the camera |
@@ -121,15 +125,20 @@ Name: bestmeta
 | [lens_focal_length_mm](lens_focal_length_mm.md) | Focal length of the imaging lens in millimetres; applicable to camera or micr... |
 | [light_cycle_detail](light_cycle_detail.md) | Free-text description of the light-dark cycle |
 | [light_cycle_type](light_cycle_type.md) | Standardized category of the light-dark cycle |
-| [manipulation](manipulation.md) | Treatment and chemical exposure applied to the subjects |
+| [manipulation](manipulation.md) | Any intervention applied to the subjects |
 | [microscope_lot_number](microscope_lot_number.md) | Lot number of the microscope |
 | [microscope_manufacturer](microscope_manufacturer.md) | Manufacturer of the microscope |
 | [microscope_model](microscope_model.md) | Model name or identifier of the microscope |
 | [microscope_serial_number](microscope_serial_number.md) | Serial number of the microscope |
 | [microscope_type](microscope_type.md) | Microscope configuration according to the OME microscope type classification |
+| [mortality](mortality.md) | Indicates whether a subject died during the course of the experiment |
+| [mortality_notes](mortality_notes.md) | Free-test notes on any deaths that occured during the trial |
 | [multiple_testing_correction](multiple_testing_correction.md) | Procedure used to correct for multiple comparisons (if more than one hypothes... |
 | [n_bodyparts_tracked](n_bodyparts_tracked.md) | Number of body parts or keypoints tracked per individual |
+| [n_individuals_end](n_individuals_end.md) | Number of individuals at the end of the experiment/trial |
 | [n_individuals_per_arena](n_individuals_per_arena.md) | Number of individuals tested simultaneously in the arena |
+| [n_individuals_represented](n_individuals_represented.md) | Represents the toal number of individual subjects in a given subject entry |
+| [n_individuals_start](n_individuals_start.md) | Number of individuals at the start of the experiment/trial |
 | [n_individuals_total](n_individuals_total.md) | Total number of individuals used in the experiment |
 | [n_individuals_tracked_per_arena](n_individuals_tracked_per_arena.md) | Number of individuals actually tracked in a single arena or trial |
 | [noise_reduction_method](noise_reduction_method.md) | Method or algorithm used to reduce image noise during acquisition or immediat... |
@@ -161,7 +170,8 @@ Name: bestmeta
 | [statistical_tests](statistical_tests.md) | Statistical tests applied to behavioral endpoints for hypothesis testing or i... |
 | [statistics_notes](statistics_notes.md) | Free-text notes on the statistical analysis not captured by structured fields |
 | [strain](strain.md) | Organism strain or line |
-| [subject](subject.md) | Organism identity and biological attributes of the tracked subjects |
+| [subject](subject.md) | Indicates if a single animals or multiple animals are used, it could be 1 for... |
+| [subject_colour](subject_colour.md) | Indicates the colour of the subject |
 | [subject_type](subject_type.md) | Indicates whether the subject being tracked is a whole organism or a cell/cel... |
 | [subjects_per_field_of_view](subjects_per_field_of_view.md) | Number of individual subjects (e |
 | [temperature_celsius](temperature_celsius.md) | Water or ambient temperature during the recording in degrees Celsius |
@@ -182,6 +192,9 @@ Name: bestmeta
 | [video_container_format](video_container_format.md) | File container format of the recorded video |
 | [video_resolution_height](video_resolution_height.md) | Vertical pixel count of the recorded video |
 | [video_resolution_width](video_resolution_width.md) | Horizontal pixel count of the recorded video |
+| [water_ph](water_ph.md) | pH of the water in housing/experimnetal conditions |
+| [water_temperature](water_temperature.md) | The temperature of the water during the experiment |
+| [water_temperature_unit](water_temperature_unit.md) | The unit of the water temperature |
 | [weight_unit](weight_unit.md) | Body weight unit of the tracked organism(s) |
 | [weight_value](weight_value.md) | Body weight numeric value of the tracked organism(s) |
 | [well_plate_format](well_plate_format.md) | Format of the multi-well plate used in a closed-box imaging system (e |
@@ -208,6 +221,7 @@ Name: bestmeta
 | [DevelopmentUnitEnum](DevelopmentUnitEnum.md) | Units of time used to express the developmental age of an organism |
 | [DeviceTypeEnum](DeviceTypeEnum.md) | Category of recording system used to record the videos |
 | [ExposureRouteEnum](ExposureRouteEnum.md) | Route of chemical or treatment exposure |
+| [ExposureTypeEnum](ExposureTypeEnum.md) | Category for the duration of treatment/manipulation |
 | [IlluminationTypeEnum](IlluminationTypeEnum.md) | Technology type of the light source used during video recording |
 | [LengthUnitEnum](LengthUnitEnum.md) | Units of length, ranging from micrometers to meters |
 | [LightCycleTypeEnum](LightCycleTypeEnum.md) | Standardized light-dark cycle types |
@@ -215,6 +229,7 @@ Name: bestmeta
 | [PreprocessingStepEnum](PreprocessingStepEnum.md) | Type of preprocessing step applied to the video data prior to tracking or ana... |
 | [SexEnum](SexEnum.md) | Biological sex of the study subjects |
 | [SubjectTypeEnum](SubjectTypeEnum.md) | Indicates whether the tracked subject is a whole organism or a cell/cell cult... |
+| [TemperatureUnitEnum](TemperatureUnitEnum.md) | Unit of temperature measurement |
 | [TrackingSoftwareTypeEnum](TrackingSoftwareTypeEnum.md) | Type of tracking software used |
 | [VideoCodecEnum](VideoCodecEnum.md) | Video compression codec used for recording |
 | [VideoContainerEnum](VideoContainerEnum.md) | Video file container format |
