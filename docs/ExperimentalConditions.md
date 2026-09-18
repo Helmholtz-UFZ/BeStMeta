@@ -26,17 +26,6 @@ URI: [BeStMeta:ExperimentalConditions](https://w3id.org/BeStMeta/ExperimentalCon
  classDiagram
     class ExperimentalConditions
     click ExperimentalConditions href "../ExperimentalConditions/"
-      ExperimentalConditions : environmental_conditions
-        
-          
-    
-        
-        
-        ExperimentalConditions --> "0..1 _recommended_" EnvironmentalConditions : environmental_conditions
-        click EnvironmentalConditions href "../EnvironmentalConditions/"
-    
-
-        
       ExperimentalConditions : experiment
         
           
@@ -86,7 +75,6 @@ URI: [BeStMeta:ExperimentalConditions](https://w3id.org/BeStMeta/ExperimentalCon
 | ---  | --- | --- | --- |
 | [subject](subject.md) | 1..* <br/> [Subject](Subject.md) | Indicates if a single animals or multiple animals are used, it could be 1 for... | direct |
 | [experiment](experiment.md) | 1 <br/> [Experiment](Experiment.md) | The experimental setup and environment for this dataset's trials | direct |
-| [environmental_conditions](environmental_conditions.md) | 0..1 _recommended_ <br/> [EnvironmentalConditions](EnvironmentalConditions.md) | Environmental conditions during the experiment, including water chemistry,  f... | direct |
 | [manipulation](manipulation.md) | 0..1 <br/> [Manipulation](Manipulation.md) | Any intervention applied to the subjects | direct |
 | [experiment_notes](experiment_notes.md) | 0..1 <br/> [String](String.md) | Free-text notes on the overall experimental conditions | direct |
 
@@ -153,7 +141,6 @@ abstract: true
 slots:
 - subject
 - experiment
-- environmental_conditions
 - manipulation
 - experiment_notes
 
@@ -194,18 +181,6 @@ attributes:
     - ExperimentalConditions
     range: Experiment
     required: true
-  environmental_conditions:
-    name: environmental_conditions
-    description: Environmental conditions during the experiment, including water chemistry,  feed,
-      and other details.
-    from_schema: https://w3id.org/bestmeta/schema
-    rank: 1000
-    owner: ExperimentalConditions
-    domain_of:
-    - ExperimentalConditions
-    range: EnvironmentalConditions
-    required: false
-    recommended: true
   manipulation:
     name: manipulation
     description: Any intervention applied to the subjects. Omitted when no treatment

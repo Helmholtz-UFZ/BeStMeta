@@ -555,6 +555,17 @@
                     "description": "Name of the behavioral assay paradigm or test paradigm.",
                     "type": "string"
                 },
+                "environmental_conditions": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/EnvironmentalConditions"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Environmental conditions during the experiment, including water chemistry,  feed, and other details."
+                },
                 "experiment_end_datetime": {
                     "description": "Date and time at which the experiment ended.",
                     "format": "date-time",
@@ -651,17 +662,6 @@
             "additionalProperties": false,
             "description": "Biological and experimental conditions applicable to all trials in the dataset. Covers organism identity, treatment, assay design, and environmental parameters.",
             "properties": {
-                "environmental_conditions": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/EnvironmentalConditions"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Environmental conditions during the experiment, including water chemistry,  feed, and other details."
-                },
                 "experiment": {
                     "$ref": "#/$defs/Experiment",
                     "description": "The experimental setup and environment for this dataset's trials."

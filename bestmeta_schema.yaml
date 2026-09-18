@@ -98,6 +98,15 @@ classes:
       - statistical_analysis
     tree_root: true
 
+  DeviceTypeMixin:
+    description: >-
+      Reusable slot bundle providing device_type, allowing multiple
+      classes (e.g. Hardware, TrackingAnalysis) to independently branch
+      their validation rules based on the type of imaging system used,
+      without requiring cross-class rule evaluation.
+    mixin: true
+    slots:
+      - device_type
 ################################
 ### Experimental Conditions ####
 ################################
@@ -112,7 +121,6 @@ classes:
       - subject
       - experiment
       #optional
-      - environmental_conditions
       - manipulation
       - experiment_notes
 
@@ -229,6 +237,7 @@ classes:
       - n_individuals_start
       - n_individuals_end
       # optional   
+      - environmental_conditions
       - assay_description
       - mortality_notes
 
@@ -356,15 +365,7 @@ classes:
             exposure_compound_name:
               recommended: true
               
-  DeviceTypeMixin:
-    description: >-
-      Reusable slot bundle providing device_type, allowing multiple
-      classes (e.g. Hardware, TrackingAnalysis) to independently branch
-      their validation rules based on the type of imaging system used,
-      without requiring cross-class rule evaluation.
-    mixin: true
-    slots:
-      - device_type
+  
 
 ################################
 ### Hardware and Acquisition ###

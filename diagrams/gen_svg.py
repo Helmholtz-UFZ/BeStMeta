@@ -8,15 +8,34 @@ inlined slots, and those children may in turn reference further sub-classes
 (e.g. ExperimentalConditions -> Subject / Experiment / Manipulation). This script
 walks that reference graph recursively and lays the classes out level by level,
 so every nesting depth is shown and connected to its parent.
+
+Path resolution
+----------------
+By default, paths are resolved relative to this script's own location on disk
+(via Path(__file__).resolve().parent), NOT the current working directory. That
+means it works correctly no matter where you `cd` to before running it, and no
+matter whose machine / checkout it lives in.
+
+  project_root/
+    bestmeta_schema.yaml   <- default schema location (one level above script)
+    diagrams/              <- default output location
+    scripts/
+      generate_bestmeta_diagram.py   <- this file
+
+If your layout differs, override any of these on the command line:
+
+    python generate_bestmeta_diagram.py --root /path/to/project
+    python generate_bestmeta_diagram.py --schema /path/to/bestmeta_schema.yaml
+    python generate_bestmeta_diagram.py --outdir /path/to/output/folder
 """
 
-from linkml_runtime import SchemaView
+import argparse
 from pathlib import Path
 
+from linkml_runtime import SchemaView
 
-SCRIPT_DIR = Path(__file__).resolve().parent
-SCHEMA_PATH = str(SCRIPT_DIR.parent / "bestmeta_schema.yaml")
-ROOT_CLASS = "VTADataset" 
+
+ROOT_CLASS = "VTADataset"
 
 # Slots that are conditionally required via rules/any_of → get the "*" status.
 # This info isn't captured in a single slot flag, so maintain it manually here.
@@ -26,75 +45,6 @@ CONDITIONAL_SLOTS = {
     "field_of_view_width", "field_of_view_height", "field_of_view_unit",
     "bit_depth",
 }
-
-# ---------------------------------------------------------------------------
-# load schema and derive slots
-# ---------------------------------------------------------------------------
-sv = SchemaView(SCHEMA_PATH) # loads schema and creates a SchemaView for querying it
-ALL_CLASSES = set(sv.all_classes().keys()) # creates set of class names
-
-# derive requirement level
-def slot_status(slot):
-    base = "opt"
-    if getattr(slot, "required", False):
-        base = "req"
-    elif getattr(slot, "recommended", False):
-        base = "rec"
-    if slot.name in CONDITIONAL_SLOTS:
-        return base + "*" 
-    return base
-
-# return slot range
-def slot_range(slot):
-    return slot.range if slot.range else "string"
-
-# Return a list of (name, range, status) tuples for all slots of a class, in schema order.
-def class_rows(class_name):
-    rows = []
-    for slot in sv.class_induced_slots(class_name):
-        rows.append((slot.name, slot_range(slot), slot_status(slot)))
-    return rows
-
-# Names of the child classes referenced (via inlined slots) by a given class,
-# in schema order, excluding the class itself to avoid trivial self-loops.
-def child_classes_of(class_name):
-    children = []
-    for slot in sv.class_induced_slots(class_name):
-        if slot.range in ALL_CLASSES and slot.range != class_name:
-            children.append(slot.range)
-    return children
-
-# ---------------------------------------------------------------------------
-# Build the class hierarchy by walking references recursively.
-# Each node: {"name", "rows", "children": [...], "depth"}. A class is only
-# expanded once (first occurrence wins) so a shared/reused class can't create
-# an infinite loop.
-# ---------------------------------------------------------------------------
-def build_tree(class_name, depth, seen):
-    node = {
-        "name": class_name,
-        "rows": class_rows(class_name),
-        "depth": depth,
-        "children": [],
-    }
-    if class_name in seen:
-        return node
-    seen.add(class_name)
-    for child in child_classes_of(class_name):
-        node["children"].append(build_tree(child, depth + 1, seen))
-    return node
-
-ROOT_NODE = build_tree(ROOT_CLASS, 0, set())
-
-# Flatten the tree into levels (depth -> list of nodes, left-to-right order).
-def collect_levels(node, levels):
-    levels.setdefault(node["depth"], []).append(node)
-    for child in node["children"]:
-        collect_levels(child, levels)
-
-LEVELS = {}
-collect_levels(ROOT_NODE, LEVELS)
-MAX_DEPTH = max(LEVELS.keys())
 
 # ---------------------------------------------------------------------------
 # Style tokens
@@ -127,6 +77,106 @@ ROOT_GAP_Y = 70
 LEVEL_GAP_Y = 70          # vertical gap between hierarchy levels
 COUNTS_SPACE = 20         # room under a box for its "req/rec/opt" summary line
 
+
+# ---------------------------------------------------------------------------
+# CLI / path resolution
+# ---------------------------------------------------------------------------
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Generate a color-coded ER-style SVG diagram from the BeStMeta LinkML schema."
+    )
+    parser.add_argument(
+        "--root", type=Path, default=None,
+        help="Project root directory (expected to contain bestmeta_schema.yaml and a "
+             "diagrams/ folder). Defaults to the parent directory of this script."
+    )
+    parser.add_argument(
+        "--schema", type=Path, default=None,
+        help="Explicit path to the schema YAML file. Overrides --root for this purpose."
+    )
+    parser.add_argument(
+        "--outdir", type=Path, default=None,
+        help="Directory to write the output SVG into. Overrides --root for this purpose."
+    )
+    parser.add_argument(
+        "--outfile", type=str, default="bestmeta_diagram.svg",
+        help="Output SVG filename (default: bestmeta_diagram.svg)."
+    )
+    return parser.parse_args()
+
+
+def resolve_paths(args):
+    """Figure out schema_path and out_dir from CLI args, always anchored to
+    this script's own location on disk (not the caller's cwd) unless the
+    person explicitly overrides them."""
+    script_dir = Path(__file__).resolve().parent
+    root = args.root.resolve() if args.root else script_dir.parent
+
+    schema_path = args.schema.resolve() if args.schema else (root / "bestmeta_schema.yaml").resolve()
+    out_dir = args.outdir.resolve() if args.outdir else (root / "diagrams").resolve()
+
+    return schema_path, out_dir
+
+
+# ---------------------------------------------------------------------------
+# Schema-derived helpers (all take `sv` / `all_classes` explicitly now,
+# rather than relying on module-level globals, so they're safe to call
+# after paths are resolved at runtime)
+# ---------------------------------------------------------------------------
+def slot_status(slot):
+    base = "opt"
+    if getattr(slot, "required", False):
+        base = "req"
+    elif getattr(slot, "recommended", False):
+        base = "rec"
+    if slot.name in CONDITIONAL_SLOTS:
+        return base + "*"
+    return base
+
+
+def slot_range(slot):
+    return slot.range if slot.range else "string"
+
+
+def class_rows(sv, class_name):
+    rows = []
+    for slot in sv.class_induced_slots(class_name):
+        rows.append((slot.name, slot_range(slot), slot_status(slot)))
+    return rows
+
+
+def child_classes_of(sv, all_classes, class_name):
+    children = []
+    for slot in sv.class_induced_slots(class_name):
+        if slot.range in all_classes and slot.range != class_name:
+            children.append(slot.range)
+    return children
+
+
+def build_tree(sv, all_classes, class_name, depth, seen):
+    node = {
+        "name": class_name,
+        "rows": class_rows(sv, class_name),
+        "depth": depth,
+        "children": [],
+    }
+    if class_name in seen:
+        return node
+    seen.add(class_name)
+    for child in child_classes_of(sv, all_classes, class_name):
+        node["children"].append(build_tree(sv, all_classes, child, depth + 1, seen))
+    return node
+
+
+def collect_levels(node, levels):
+    levels.setdefault(node["depth"], []).append(node)
+    for child in node["children"]:
+        collect_levels(child, levels)
+
+
+# ---------------------------------------------------------------------------
+# Rendering helpers
+# ---------------------------------------------------------------------------
 def status_color(status):
     if status.endswith("*"):
         return COL_COND
@@ -136,11 +186,14 @@ def status_color(status):
         return COL_REC
     return COL_OPT
 
+
 def esc(s):
     return str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
+
 def box_height(n_rows):
     return HEADER_H + PAD_TOP + n_rows * ROW_H + PAD_BOTTOM
+
 
 def render_class_box(x, y, title, rows, width=BOX_W, counts=None):
     h = box_height(len(rows))
@@ -174,6 +227,7 @@ def render_class_box(x, y, title, rows, width=BOX_W, counts=None):
                    f'{esc(summary)}</text>')
     return "\n".join(svg), h
 
+
 def render_legend(x, y):
     items = [
         (COL_REQ, "required"),
@@ -190,7 +244,7 @@ def render_legend(x, y):
     svg.append('</g>')
     return "\n".join(svg)
 
-# counts requirement levels of slots
+
 def count_status(rows):
     """Count req / rec / opt slots in a class (conditional '*' counts by its base status)."""
     counts = {"req": 0, "rec": 0, "opt": 0}
@@ -200,6 +254,7 @@ def count_status(rows):
             counts[base] += 1
     return counts
 
+
 def connector(cx1, cy1, cx2, cy2):
     """Smooth vertical S-curve from a parent's bottom to a child's top, plus a dot."""
     mid_y = (cy1 + cy2) / 2
@@ -207,11 +262,12 @@ def connector(cx1, cy1, cx2, cy2):
             f'fill="none" stroke="{COL_BORDER}" stroke-width="1.4"/>'
             f'<circle cx="{cx2}" cy="{cy2}" r="3" fill="{COL_HEADER_BG}"/>')
 
-def build():
+
+def build(root_node, levels, max_depth):
     # ---- aggregate per-class and total counts ------------------------------
     per_class_counts = {}
     total = {"req": 0, "rec": 0, "opt": 0}
-    for depth_nodes in LEVELS.values():
+    for depth_nodes in levels.values():
         for node in depth_nodes:
             c = count_status(node["rows"])
             per_class_counts[node["name"]] = c
@@ -219,25 +275,20 @@ def build():
                 total[k] += c[k]
 
     # ---- geometry: lay out each level as a centered horizontal row ---------
-    # A node's width: root uses ROOT_W, everything else BOX_W.
     def node_w(node):
         return ROOT_W if node["depth"] == 0 else BOX_W
 
-    # Total row width for a level (boxes + gaps between them).
     def level_width(nodes):
         return sum(node_w(n) for n in nodes) + GAP_X * (len(nodes) - 1)
 
-    widest = max(level_width(nodes) for nodes in LEVELS.values())
+    widest = max(level_width(nodes) for nodes in levels.values())
     total_w = MARGIN * 2 + widest
 
-    # Assign x/y to every node, level by level. Each level is centered.
-    # y of a level = previous level y + tallest box on previous level
-    #                + room for the counts line + LEVEL_GAP_Y.
     header_offset = MARGIN + 78          # space for title/legend/totals at top
     positions = {}                        # node name -> (x, y, w, h)
     level_top = header_offset
-    for depth in range(MAX_DEPTH + 1):
-        nodes = LEVELS[depth]
+    for depth in range(max_depth + 1):
+        nodes = levels[depth]
         row_w = level_width(nodes)
         x = MARGIN + (widest - row_w) / 2
         max_h = 0
@@ -277,11 +328,11 @@ def build():
             cy2 = cyy
             parts.append(connector(cx1, cy1, cx2, cy2))
             draw_edges(child)
-    draw_edges(ROOT_NODE)
+    draw_edges(root_node)
 
     # ---- draw the boxes ----------------------------------------------------
-    for depth in range(MAX_DEPTH + 1):
-        for node in LEVELS[depth]:
+    for depth in range(max_depth + 1):
+        for node in levels[depth]:
             x, y, w, h = positions[node["name"]]
             box_svg, _ = render_class_box(x, y, node["name"], node["rows"],
                                           width=w, counts=per_class_counts[node["name"]])
@@ -290,10 +341,40 @@ def build():
     parts.append('</svg>')
     return "\n".join(parts)
 
-if __name__ == "__main__":
-    svg = build()
-    out_path = "diagrams/bestmeta_diagram.svg"
-    with open(out_path, "w", encoding="utf-8") as f:
-        f.write(svg)
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+def main():
+    args = parse_args()
+    schema_path, out_dir = resolve_paths(args)
+
+    if not schema_path.exists():
+        raise FileNotFoundError(
+            f"Schema not found at: {schema_path}\n"
+            f"Pass --schema /path/to/bestmeta_schema.yaml or --root /path/to/project "
+            f"to point at the correct location."
+        )
+
+    sv = SchemaView(str(schema_path))
+    all_classes = set(sv.all_classes().keys())
+
+    root_node = build_tree(sv, all_classes, ROOT_CLASS, 0, set())
+
+    levels = {}
+    collect_levels(root_node, levels)
+    max_depth = max(levels.keys())
+
+    svg = build(root_node, levels, max_depth)
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / args.outfile
+    out_path.write_text(svg, encoding="utf-8")
+
+    print("schema read from:", schema_path)
     print("written:", out_path)
     print("length:", len(svg))
+
+
+if __name__ == "__main__":
+    main()
