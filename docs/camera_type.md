@@ -45,7 +45,6 @@ URI: [BeStMeta:camera_type](https://w3id.org/BeStMeta/camera_type)
 
 | Property | Value |
 | --- | --- |
-| Required | Yes |
 
 
 
@@ -94,7 +93,7 @@ rank: 1000
 domain_of:
 - Hardware
 range: CameraTypeEnum
-required: true
+required: false
 
 ```
 </details></div>

@@ -30,7 +30,7 @@ URI: [BeStMeta:Manipulation](https://w3id.org/BeStMeta/Manipulation)
     
         
         
-        Manipulation --> "0..1" ControlTypeEnum : control_type
+        Manipulation --> "*" ControlTypeEnum : control_type
         click ControlTypeEnum href "../ControlTypeEnum/"
     
 
@@ -52,7 +52,18 @@ URI: [BeStMeta:Manipulation](https://w3id.org/BeStMeta/Manipulation)
     
 
         
-      Manipulation : exposure_duration_h
+      Manipulation : exposure_duration
+        
+      Manipulation : exposure_duration_unit
+        
+          
+    
+        
+        
+        Manipulation --> "0..1" TimeUnitEnum : exposure_duration_unit
+        click TimeUnitEnum href "../TimeUnitEnum/"
+    
+
         
       Manipulation : exposure_route
         
@@ -76,7 +87,18 @@ URI: [BeStMeta:Manipulation](https://w3id.org/BeStMeta/Manipulation)
     
 
         
-      Manipulation : habituation_duration_min
+      Manipulation : habituation_duration
+        
+      Manipulation : habituation_duration_unit
+        
+          
+    
+        
+        
+        Manipulation --> "0..1" TimeUnitEnum : habituation_duration_unit
+        click TimeUnitEnum href "../TimeUnitEnum/"
+    
+
         
       Manipulation : habituation_protocol
         
@@ -119,13 +141,15 @@ URI: [BeStMeta:Manipulation](https://w3id.org/BeStMeta/Manipulation)
 | [exposure_concentration_unit](exposure_concentration_unit.md) | 0..1 _recommended_ <br/> [ConcentrationUnitEnum](ConcentrationUnitEnum.md) | Unit for exposure concentration | direct |
 | [exposure_type](exposure_type.md) | 0..1 _recommended_ <br/> [ExposureTypeEnum](ExposureTypeEnum.md) | It indicates the type of exposure (Acute or chronic) | direct |
 | [well_shape_bottom](well_shape_bottom.md) | 0..1 <br/> [WellBottomShapeEnum](WellBottomShapeEnum.md) | Geometric bottom shape of the wells of a multiwell plate | direct |
-| [habituation_duration_min](habituation_duration_min.md) | 0..1 <br/> [Float](Float.md) | Duration of habituation period before recording, in minutes | direct |
+| [habituation_duration](habituation_duration.md) | 0..1 <br/> [Float](Float.md) | Duration of habituation period before recording | direct |
+| [habituation_duration_unit](habituation_duration_unit.md) | 0..1 <br/> [TimeUnitEnum](TimeUnitEnum.md) | Unit of measurement used to measure habituation duration | direct |
 | [habituation_protocol](habituation_protocol.md) | 0..1 <br/> [String](String.md) | Description of habituation or acclimation prior to testing | direct |
 | [housing_conditions](housing_conditions.md) | 0..1 <br/> [String](String.md) | Free-text description of animal housing conditions prior to assay | direct |
 | [exposure_route](exposure_route.md) | 0..1 <br/> [ExposureRouteEnum](ExposureRouteEnum.md) | Route of chemical or treatment administration | direct |
-| [exposure_duration_h](exposure_duration_h.md) | 0..1 <br/> [Float](Float.md) | Duration of chemical or treatment exposure in hours | direct |
+| [exposure_duration](exposure_duration.md) | 0..1 <br/> [Float](Float.md) | Duration of chemical or treatment exposure in hours | direct |
+| [exposure_duration_unit](exposure_duration_unit.md) | 0..1 <br/> [TimeUnitEnum](TimeUnitEnum.md) | Unit of measurement used to report exposure duration | direct |
 | [solvent_vehicle](solvent_vehicle.md) | 0..1 <br/> [String](String.md) | Solvent or vehicle used to dissolve the test substance | direct |
-| [control_type](control_type.md) | 0..1 <br/> [ControlTypeEnum](ControlTypeEnum.md) | Type of control group used | direct |
+| [control_type](control_type.md) | * <br/> [ControlTypeEnum](ControlTypeEnum.md) | Type of control group used | direct |
 
 
 
@@ -156,6 +180,22 @@ URI: [BeStMeta:Manipulation](https://w3id.org/BeStMeta/Manipulation)
 | Rule Applied | Preconditions | Postconditions | Elseconditions |
 |--------------|---------------|----------------|----------------|
 | slot_conditions |```{'exposure_compound_chebi_id': {'value_presence': 'PRESENT'}}``` |```{'exposure_compound_name': {'recommended': True}}``` | |
+
+
+
+### 
+
+| Rule Applied | Preconditions | Postconditions | Elseconditions |
+|--------------|---------------|----------------|----------------|
+| slot_conditions |```{'habituation_duration': {'value_presence': 'PRESENT'}}``` |```{'habituation_duration_unit': {'required': True}}``` | |
+
+
+
+### 
+
+| Rule Applied | Preconditions | Postconditions | Elseconditions |
+|--------------|---------------|----------------|----------------|
+| slot_conditions |```{'exposure_duration': {'value_presence': 'PRESENT'}}``` |```{'exposure_duration_unit': {'required': True}}``` | |
 
 
 
@@ -216,11 +256,13 @@ slots:
 - exposure_concentration_unit
 - exposure_type
 - well_shape_bottom
-- habituation_duration_min
+- habituation_duration
+- habituation_duration_unit
 - habituation_protocol
 - housing_conditions
 - exposure_route
-- exposure_duration_h
+- exposure_duration
+- exposure_duration_unit
 - solvent_vehicle
 - control_type
 rules:
@@ -247,6 +289,28 @@ rules:
         recommended: true
   description: exposure_compound_name is recommended when exposure_compound_chebi_id
     is provided.
+- preconditions:
+    slot_conditions:
+      habituation_duration:
+        name: habituation_duration
+        value_presence: PRESENT
+  postconditions:
+    slot_conditions:
+      habituation_duration_unit:
+        name: habituation_duration_unit
+        required: true
+  description: habituation_duration requires habituation_duration_unit
+- preconditions:
+    slot_conditions:
+      exposure_duration:
+        name: exposure_duration
+        value_presence: PRESENT
+  postconditions:
+    slot_conditions:
+      exposure_duration_unit:
+        name: exposure_duration_unit
+        required: true
+  description: exposure_duration requires exposure_duration_unit
 
 ```
 </details>
@@ -366,9 +430,9 @@ attributes:
     - Manipulation
     range: WellBottomShapeEnum
     required: false
-  habituation_duration_min:
-    name: habituation_duration_min
-    description: Duration of habituation period before recording, in minutes
+  habituation_duration:
+    name: habituation_duration
+    description: Duration of habituation period before recording.
     from_schema: https://w3id.org/bestmeta/schema
     rank: 1000
     owner: Manipulation
@@ -376,8 +440,16 @@ attributes:
     - Manipulation
     range: float
     required: false
-    unit:
-      ucum_code: min
+  habituation_duration_unit:
+    name: habituation_duration_unit
+    description: Unit of measurement used to measure habituation duration
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Manipulation
+    domain_of:
+    - Manipulation
+    range: TimeUnitEnum
+    required: false
   habituation_protocol:
     name: habituation_protocol
     description: Description of habituation or acclimation prior to testing.
@@ -413,8 +485,8 @@ attributes:
     - Manipulation
     range: ExposureRouteEnum
     required: false
-  exposure_duration_h:
-    name: exposure_duration_h
+  exposure_duration:
+    name: exposure_duration
     description: Duration of chemical or treatment exposure in hours.
     from_schema: https://w3id.org/bestmeta/schema
     rank: 1000
@@ -423,8 +495,16 @@ attributes:
     - Manipulation
     range: float
     required: false
-    unit:
-      ucum_code: h
+  exposure_duration_unit:
+    name: exposure_duration_unit
+    description: Unit of measurement used to report exposure duration.
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Manipulation
+    domain_of:
+    - Manipulation
+    range: TimeUnitEnum
+    required: false
   solvent_vehicle:
     name: solvent_vehicle
     description: Solvent or vehicle used to dissolve the test substance.
@@ -451,6 +531,7 @@ attributes:
     - Manipulation
     range: ControlTypeEnum
     required: false
+    multivalued: true
 rules:
 - preconditions:
     slot_conditions:
@@ -475,6 +556,28 @@ rules:
         recommended: true
   description: exposure_compound_name is recommended when exposure_compound_chebi_id
     is provided.
+- preconditions:
+    slot_conditions:
+      habituation_duration:
+        name: habituation_duration
+        value_presence: PRESENT
+  postconditions:
+    slot_conditions:
+      habituation_duration_unit:
+        name: habituation_duration_unit
+        required: true
+  description: habituation_duration requires habituation_duration_unit
+- preconditions:
+    slot_conditions:
+      exposure_duration:
+        name: exposure_duration
+        value_presence: PRESENT
+  postconditions:
+    slot_conditions:
+      exposure_duration_unit:
+        name: exposure_duration_unit
+        required: true
+  description: exposure_duration requires exposure_duration_unit
 
 ```
 </details></div>

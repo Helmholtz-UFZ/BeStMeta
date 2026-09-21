@@ -3,10 +3,10 @@ search:
   boost: 5.0
 ---
 
-# Slot: light_cycle_type 
+# Slot: arena_diameter 
 
 
-_Standardized category of the light-dark cycle._
+_The diameter of the arena, for aquatic assays._
 
 
 
@@ -14,7 +14,7 @@ _Standardized category of the light-dark cycle._
 
 
 
-URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
+URI: [BeStMeta:arena_diameter](https://w3id.org/BeStMeta/arena_diameter)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EnvironmentalConditions](EnvironmentalConditions.md) | Environmental conditions and husbandry parameters for the experiments |  no  |
+| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
 
 
 
@@ -38,8 +38,8 @@ URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
 
 | Property | Value |
 | --- | --- |
-| Range | [LightCycleTypeEnum](LightCycleTypeEnum.md) |
-| Domain Of | [EnvironmentalConditions](EnvironmentalConditions.md) |
+| Range | [Float](Float.md) |
+| Domain Of | [Experiment](Experiment.md) |
 
 ### Cardinality and Requirements
 
@@ -74,8 +74,8 @@ URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | BeStMeta:light_cycle_type |
-| native | BeStMeta:light_cycle_type |
+| self | BeStMeta:arena_diameter |
+| native | BeStMeta:arena_diameter |
 
 
 
@@ -84,13 +84,13 @@ URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
 
 <details>
 ```yaml
-name: light_cycle_type
-description: Standardized category of the light-dark cycle.
+name: arena_diameter
+description: The diameter of the arena, for aquatic assays.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- EnvironmentalConditions
-range: LightCycleTypeEnum
+- Experiment
+range: float
 required: false
 recommended: true
 

@@ -24,6 +24,7 @@ URI: [BeStMeta:LengthUnitEnum](https://w3id.org/BeStMeta/LengthUnitEnum)
 | mm | UO:0000016 |  |
 | cm | UO:0000015 |  |
 | meter | UO:0000008 |  |
+| pixels | None |  |
 
 
 
@@ -33,9 +34,13 @@ URI: [BeStMeta:LengthUnitEnum](https://w3id.org/BeStMeta/LengthUnitEnum)
 | Name | Description |
 | ---  | --- |
 | [body_length_unit](body_length_unit.md) | Body length unit of the tracked organism(s) |
-| [arena_length_unit](arena_length_unit.md) | Unit of measurement for arena_length |
-| [arena_width_unit](arena_width_unit.md) | Unit of measurement for arena_width |
-| [arena_height_unit](arena_height_unit.md) | Unit of measurement for arena_height |
+| [arena_length_unit](arena_length_unit.md) | Unit of measurement for the length of the arena |
+| [arena_width_unit](arena_width_unit.md) | Unit of measurement for the width of the arena |
+| [arena_height_unit](arena_height_unit.md) | Unit of measurement for the height of the arena |
+| [arena_diameter_unit](arena_diameter_unit.md) | Unit of measurement for the diameter of the arena |
+| [water_depth_unit](water_depth_unit.md) | Unit of measurement for the depth of water |
+| [camera_distance_unit](camera_distance_unit.md) | Unit of measurement for camera distance |
+| [lens_focal_length_unit](lens_focal_length_unit.md) | Unit of measurement for focal length of lens (microscope) |
 | [field_of_view_unit](field_of_view_unit.md) | Unit of measurement for field_of_view_width and field_of_view_height |
 
 
@@ -86,6 +91,10 @@ permissible_values:
     meaning: UO:0000008
     aliases:
     - m
+  pixels:
+    text: pixels
+    aliases:
+    - px
 
 ```
 </details>

@@ -25,7 +25,7 @@ URI: [BeStMeta:light_cycle_detail](https://w3id.org/BeStMeta/light_cycle_detail)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Experiment](Experiment.md) | Defines experimental context in which the subjects were studied |  no  |
+| [EnvironmentalConditions](EnvironmentalConditions.md) | Environmental conditions and husbandry parameters for the experiments |  no  |
 
 
 
@@ -39,7 +39,7 @@ URI: [BeStMeta:light_cycle_detail](https://w3id.org/BeStMeta/light_cycle_detail)
 | Property | Value |
 | --- | --- |
 | Range | [String](String.md) |
-| Domain Of | [Experiment](Experiment.md) |
+| Domain Of | [EnvironmentalConditions](EnvironmentalConditions.md) |
 
 ### Cardinality and Requirements
 
@@ -92,7 +92,7 @@ exact_mappings:
 - MESH:D017440
 rank: 1000
 domain_of:
-- Experiment
+- EnvironmentalConditions
 range: string
 required: false
 recommended: true

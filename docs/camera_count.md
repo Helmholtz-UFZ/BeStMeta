@@ -45,7 +45,6 @@ URI: [BeStMeta:camera_count](https://w3id.org/BeStMeta/camera_count)
 
 | Property | Value |
 | --- | --- |
-| Required | Yes |
 
 
 
@@ -91,7 +90,7 @@ rank: 1000
 domain_of:
 - Hardware
 range: integer
-required: true
+required: false
 
 ```
 </details></div>

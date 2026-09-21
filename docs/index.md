@@ -38,14 +38,16 @@ Name: bestmeta
 | [analysis_code_doi](analysis_code_doi.md) | DOI of the deposited analysis code |
 | [analysis_code_repository](analysis_code_repository.md) | Repository where analysis code is hosted |
 | [analysis_code_repository_url](analysis_code_repository_url.md) | URL of the code repository |
+| [arena_diameter](arena_diameter.md) | The diameter of the arena, for aquatic assays |
+| [arena_diameter_unit](arena_diameter_unit.md) | Unit of measurement for the diameter of the arena |
 | [arena_height](arena_height.md) | Height of the arena, when applicable |
-| [arena_height_unit](arena_height_unit.md) | Unit of measurement for arena_height |
+| [arena_height_unit](arena_height_unit.md) | Unit of measurement for the height of the arena |
 | [arena_length](arena_length.md) | Length of the arena along one axis |
-| [arena_length_unit](arena_length_unit.md) | Unit of measurement for arena_length |
+| [arena_length_unit](arena_length_unit.md) | Unit of measurement for the length of the arena |
 | [arena_shape](arena_shape.md) | Geometric shape of the test arena |
 | [arena_type](arena_type.md) | Type of the test arena, e |
 | [arena_width](arena_width.md) | Width of the arena along one axis |
-| [arena_width_unit](arena_width_unit.md) | Unit of measurement for arena_width |
+| [arena_width_unit](arena_width_unit.md) | Unit of measurement for the width of the arena |
 | [assay_description](assay_description.md) | Free-text description of the assay protocol |
 | [assay_type](assay_type.md) | Name of the behavioral assay paradigm or test paradigm |
 | [behavioral_metrics](behavioral_metrics.md) | List of behavioral metrics or endpoints extracted from tracking data |
@@ -53,7 +55,8 @@ Name: bestmeta
 | [body_length_unit](body_length_unit.md) | Body length unit of the tracked organism(s) |
 | [body_length_value](body_length_value.md) | Body length numeric value of the tracked organism(s) |
 | [camera_count](camera_count.md) | Number of cameras used simultaneously |
-| [camera_distance_mm](camera_distance_mm.md) | Distance from camera lens to the arena floor in millimetres |
+| [camera_distance](camera_distance.md) | Distance from camera lens to the arena floor |
+| [camera_distance_unit](camera_distance_unit.md) | Unit of measurement for camera distance |
 | [camera_interface](camera_interface.md) | Interface standard used for communication between the camera and the acquisit... |
 | [camera_manufacturer](camera_manufacturer.md) | Manufacturer of the camera |
 | [camera_model](camera_model.md) | Full manufacturer model name of the camera |
@@ -96,7 +99,8 @@ Name: bestmeta
 | [exposure_compound_name](exposure_compound_name.md) | Name of the chemical, drug, or substance used in the treatment or exposure |
 | [exposure_concentration](exposure_concentration.md) | Nominal exposure concentration (numeric value only; use unit field) |
 | [exposure_concentration_unit](exposure_concentration_unit.md) | Unit for exposure concentration |
-| [exposure_duration_h](exposure_duration_h.md) | Duration of chemical or treatment exposure in hours |
+| [exposure_duration](exposure_duration.md) | Duration of chemical or treatment exposure in hours |
+| [exposure_duration_unit](exposure_duration_unit.md) | Unit of measurement used to report exposure duration |
 | [exposure_route](exposure_route.md) | Route of chemical or treatment administration |
 | [exposure_time](exposure_time.md) | Camera sensor exposure time per frame |
 | [exposure_type](exposure_type.md) | It indicates the type of exposure (Acute or chronic) |
@@ -109,20 +113,23 @@ Name: bestmeta
 | [frames_without_tracked_individual](frames_without_tracked_individual.md) | Percentage of frames in which no individual was tracked |
 | [gain](gain.md) | Camera gain setting at the time of recording |
 | [genotype](genotype.md) | Genotype identifier of the tracked organism(s) including strain-specific, mut... |
-| [habituation_duration_min](habituation_duration_min.md) | Duration of habituation period before recording, in minutes |
+| [habituation_duration](habituation_duration.md) | Duration of habituation period before recording |
+| [habituation_duration_unit](habituation_duration_unit.md) | Unit of measurement used to measure habituation duration |
 | [habituation_protocol](habituation_protocol.md) | Description of habituation or acclimation prior to testing |
 | [hardware](hardware.md) | Hardware configuration used to record the video |
 | [hardware_acquisition_notes](hardware_acquisition_notes.md) | Free-text catch-all for additional context about the hardware and acquisition... |
 | [hardware_and_acquisition](hardware_and_acquisition.md) | Hardware and acquisition configuration used to record the video dataset |
 | [hardware_notes](hardware_notes.md) | Free-text notes on hardware configuration not captured by structured fields |
 | [housing_conditions](housing_conditions.md) | Free-text description of animal housing conditions prior to assay |
+| [humidity](humidity.md) | Relative humidity where experiment was conducted (or the experiment area) |
 | [illumination_illuminance](illumination_illuminance.md) | Illuminance at the recording arena or observation surface |
 | [illumination_type](illumination_type.md) | Type of illumination used during recording |
 | [illumination_wavelength](illumination_wavelength.md) | Peak wavelength of the illumination source in nanometres |
 | [in_house_system_components](in_house_system_components.md) | List of key hardware components used in the custom-built system (e |
 | [in_house_system_description](in_house_system_description.md) | Free-text description of the custom-built imaging system, including how the c... |
 | [in_house_system_designer](in_house_system_designer.md) | Lab, person, or institution that designed or built the in-house system |
-| [lens_focal_length_mm](lens_focal_length_mm.md) | Focal length of the imaging lens in millimetres; applicable to camera or micr... |
+| [lens_focal_length](lens_focal_length.md) | Focal length of the imaging lens in millimetres; applicable to camera or micr... |
+| [lens_focal_length_unit](lens_focal_length_unit.md) | Unit of measurement for focal length of lens (microscope) |
 | [light_cycle_detail](light_cycle_detail.md) | Free-text description of the light-dark cycle |
 | [light_cycle_type](light_cycle_type.md) | Standardized category of the light-dark cycle |
 | [manipulation](manipulation.md) | Any intervention applied to the subjects |
@@ -174,7 +181,6 @@ Name: bestmeta
 | [subject_colour](subject_colour.md) | Indicates the colour of the subject |
 | [subject_type](subject_type.md) | Indicates whether the subject being tracked is a whole organism or a cell/cel... |
 | [subjects_per_field_of_view](subjects_per_field_of_view.md) | Number of individual subjects (e |
-| [temperature_celsius](temperature_celsius.md) | Water or ambient temperature during the recording in degrees Celsius |
 | [total_frame_count](total_frame_count.md) | Total number of frames in the video |
 | [tracking_algorithm](tracking_algorithm.md) | Algorithmic approach used to detect, identify, and track organisms in video r... |
 | [tracking_analysis](tracking_analysis.md) | Tracking software and analysis configuration |
@@ -192,6 +198,8 @@ Name: bestmeta
 | [video_container_format](video_container_format.md) | File container format of the recorded video |
 | [video_resolution_height](video_resolution_height.md) | Vertical pixel count of the recorded video |
 | [video_resolution_width](video_resolution_width.md) | Horizontal pixel count of the recorded video |
+| [water_depth](water_depth.md) | The depth of the water used for aquatic essays |
+| [water_depth_unit](water_depth_unit.md) | Unit of measurement for the depth of water |
 | [water_ph](water_ph.md) | pH of the water in housing/experimnetal conditions |
 | [water_temperature](water_temperature.md) | The temperature of the water during the experiment |
 | [water_temperature_unit](water_temperature_unit.md) | The unit of the water temperature |
@@ -230,6 +238,7 @@ Name: bestmeta
 | [SexEnum](SexEnum.md) | Biological sex of the study subjects |
 | [SubjectTypeEnum](SubjectTypeEnum.md) | Indicates whether the tracked subject is a whole organism or a cell/cell cult... |
 | [TemperatureUnitEnum](TemperatureUnitEnum.md) | Unit of temperature measurement |
+| [TimeUnitEnum](TimeUnitEnum.md) | Unit of time measurement, mapped to UCUM (Unified Code for Units of Measure) ... |
 | [TrackingSoftwareTypeEnum](TrackingSoftwareTypeEnum.md) | Type of tracking software used |
 | [VideoCodecEnum](VideoCodecEnum.md) | Video compression codec used for recording |
 | [VideoContainerEnum](VideoContainerEnum.md) | Video file container format |

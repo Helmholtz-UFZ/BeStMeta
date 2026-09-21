@@ -45,7 +45,6 @@ URI: [BeStMeta:camera_manufacturer](https://w3id.org/BeStMeta/camera_manufacture
 
 | Property | Value |
 | --- | --- |
-| Required | Yes |
 
 
 
@@ -94,7 +93,7 @@ rank: 1000
 domain_of:
 - Hardware
 range: string
-required: true
+required: false
 
 ```
 </details></div>

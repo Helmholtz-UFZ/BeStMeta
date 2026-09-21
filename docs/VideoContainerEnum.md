@@ -22,7 +22,9 @@ URI: [BeStMeta:VideoContainerEnum](https://w3id.org/BeStMeta/VideoContainerEnum)
 | --- | --- | --- |
 | mp4 | None | MPEG-4 container |
 | avi | None | Audio Video Interleave |
+| hdf5 | None | Hierarchical Data Format Version 5 |
 | mov | None | Apple QuickTime container |
+| image_seq | None | a folder containing series of images (eg- png, jpeg etc) |
 | other | None | Other container format; describe in acquisition_notes |
 
 
@@ -74,9 +76,15 @@ permissible_values:
   avi:
     text: avi
     description: Audio Video Interleave.
+  hdf5:
+    text: hdf5
+    description: Hierarchical Data Format Version 5
   mov:
     text: mov
     description: Apple QuickTime container.
+  image_seq:
+    text: image_seq
+    description: a folder containing series of images (eg- png, jpeg etc)
   other:
     text: other
     description: Other container format; describe in acquisition_notes.

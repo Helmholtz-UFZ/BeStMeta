@@ -45,6 +45,13 @@ URI: [BeStMeta:n_individuals_represented](https://w3id.org/BeStMeta/n_individual
 
 | Property | Value |
 | --- | --- |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| If Absent | `int(1)` |
+
+
 
 
 
@@ -89,6 +96,7 @@ description: Represents the toal number of individual subjects in a given subjec
   to one (when omitted)
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
+ifabsent: int(1)
 domain_of:
 - Subject
 range: integer
