@@ -6,7 +6,7 @@ search:
 # Slot: subject 
 
 
-_Indicates if a single animals or multiple animals are used, it could be 1 for single-animal models or well plate studie, >1 for mult--animal rodent studies                    _
+_Indicates if a single animals or multiple animals are used, it could be 1 for single-animal models or well plate studies, >1 for multi-animal rodent studies                    _
 
 
 
@@ -87,7 +87,8 @@ URI: [BeStMeta:subject](https://w3id.org/BeStMeta/subject)
 ```yaml
 name: subject
 description: 'Indicates if a single animals or multiple animals are used, it could
-  be 1 for single-animal models or well plate studie, >1 for mult--animal rodent studies                    '
+  be 1 for single-animal models or well plate studies, >1 for multi-animal rodent
+  studies                    '
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:

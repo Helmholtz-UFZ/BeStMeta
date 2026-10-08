@@ -46,6 +46,11 @@ URI: [BeStMeta:tracking_manual_correction](https://w3id.org/BeStMeta/tracking_ma
 | Property | Value |
 | --- | --- |
 | Recommended | Yes |
+### Slot Characteristics
+
+| Property | Value |
+| --- | --- |
+| If Absent | `false` |
 
 
 
@@ -55,12 +60,6 @@ URI: [BeStMeta:tracking_manual_correction](https://w3id.org/BeStMeta/tracking_ma
 
 
 
-## Examples
-
-| Value |
-| --- |
-| true |
-| false |
 
 ## Notes
 
@@ -102,11 +101,9 @@ description: Whether tracking results were manually reviewed, corrected, or cura
 notes:
 - Use true if outputs were manually curated, corrected, or quality-checked by a human
   after automated tracking.
-examples:
-- value: 'true'
-- value: 'false'
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
+ifabsent: 'false'
 domain_of:
 - TrackingAnalysis
 range: boolean

@@ -29,7 +29,18 @@ URI: [BeStMeta:Hardware](https://w3id.org/BeStMeta/Hardware)
       
       Hardware : camera_count
         
-      Hardware : camera_distance_mm
+      Hardware : camera_distance
+        
+      Hardware : camera_distance_unit
+        
+          
+    
+        
+        
+        Hardware --> "0..1 _recommended_" LengthUnitEnum : camera_distance_unit
+        click LengthUnitEnum href "../LengthUnitEnum/"
+    
+
         
       Hardware : camera_interface
         
@@ -52,7 +63,7 @@ URI: [BeStMeta:Hardware](https://w3id.org/BeStMeta/Hardware)
     
         
         
-        Hardware --> "0..1 _recommended_" CameraPositionEnum : camera_position
+        Hardware --> "* _recommended_" CameraPositionEnum : camera_position
         click CameraPositionEnum href "../CameraPositionEnum/"
     
 
@@ -74,7 +85,7 @@ URI: [BeStMeta:Hardware](https://w3id.org/BeStMeta/Hardware)
     
         
         
-        Hardware --> "1" CameraTypeEnum : camera_type
+        Hardware --> "0..1" CameraTypeEnum : camera_type
         click CameraTypeEnum href "../CameraTypeEnum/"
     
 
@@ -137,7 +148,18 @@ URI: [BeStMeta:Hardware](https://w3id.org/BeStMeta/Hardware)
         
       Hardware : in_house_system_designer
         
-      Hardware : lens_focal_length_mm
+      Hardware : lens_focal_length
+        
+      Hardware : lens_focal_length_unit
+        
+          
+    
+        
+        
+        Hardware --> "0..1 _recommended_" LengthUnitEnum : lens_focal_length_unit
+        click LengthUnitEnum href "../LengthUnitEnum/"
+    
+
         
       Hardware : microscope_lot_number
         
@@ -188,10 +210,10 @@ URI: [BeStMeta:Hardware](https://w3id.org/BeStMeta/Hardware)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [camera_count](camera_count.md) | 1 <br/> [Integer](Integer.md) | Number of cameras used simultaneously | direct |
-| [camera_type](camera_type.md) | 1 <br/> [CameraTypeEnum](CameraTypeEnum.md) | General type of imaging device | direct |
-| [camera_model](camera_model.md) | 1 <br/> [String](String.md) | Full manufacturer model name of the camera | direct |
-| [camera_manufacturer](camera_manufacturer.md) | 1 <br/> [String](String.md) | Manufacturer of the camera | direct |
+| [camera_count](camera_count.md) | 0..1 <br/> [Integer](Integer.md) | Number of cameras used simultaneously | direct |
+| [camera_type](camera_type.md) | 0..1 <br/> [CameraTypeEnum](CameraTypeEnum.md) | General type of imaging device | direct |
+| [camera_model](camera_model.md) | 0..1 <br/> [String](String.md) | Full manufacturer model name of the camera | direct |
+| [camera_manufacturer](camera_manufacturer.md) | 0..1 <br/> [String](String.md) | Manufacturer of the camera | direct |
 | [microscope_manufacturer](microscope_manufacturer.md) | 0..1 <br/> [String](String.md) | Manufacturer of the microscope | direct |
 | [microscope_model](microscope_model.md) | 0..1 <br/> [String](String.md) | Model name or identifier of the microscope | direct |
 | [microscope_type](microscope_type.md) | 0..1 <br/> [MicroscopeTypeEnum](MicroscopeTypeEnum.md) | Microscope configuration according to the OME microscope type classification | direct |
@@ -201,9 +223,11 @@ URI: [BeStMeta:Hardware](https://w3id.org/BeStMeta/Hardware)
 | [field_of_view_height](field_of_view_height.md) | 0..1 _recommended_ <br/> [Float](Float.md) | Numeric value of vertical field of view covered by the camera | direct |
 | [field_of_view_unit](field_of_view_unit.md) | 0..1 <br/> [LengthUnitEnum](LengthUnitEnum.md) | Unit of measurement for field_of_view_width and field_of_view_height | direct |
 | [objective_magnification](objective_magnification.md) | 0..1 _recommended_ <br/> [Float](Float.md) | Magnification of microscope objective (if applicable) | direct |
-| [camera_position](camera_position.md) | 0..1 _recommended_ <br/> [CameraPositionEnum](CameraPositionEnum.md) | Position of the camera relative to the arena | direct |
-| [camera_distance_mm](camera_distance_mm.md) | 0..1 _recommended_ <br/> [Float](Float.md) | Distance from camera lens to the arena floor in millimetres | direct |
-| [lens_focal_length_mm](lens_focal_length_mm.md) | 0..1 _recommended_ <br/> [Float](Float.md) | Focal length of the imaging lens in millimetres; applicable to camera or micr... | direct |
+| [camera_position](camera_position.md) | * _recommended_ <br/> [CameraPositionEnum](CameraPositionEnum.md) | Position of the camera relative to the arena | direct |
+| [camera_distance](camera_distance.md) | 0..1 <br/> [Float](Float.md) | Distance from camera lens to the arena floor | direct |
+| [camera_distance_unit](camera_distance_unit.md) | 0..1 _recommended_ <br/> [LengthUnitEnum](LengthUnitEnum.md) | Unit of measurement for camera distance | direct |
+| [lens_focal_length](lens_focal_length.md) | 0..1 <br/> [Float](Float.md) | Focal length of the imaging lens in millimetres; applicable to camera or micr... | direct |
+| [lens_focal_length_unit](lens_focal_length_unit.md) | 0..1 _recommended_ <br/> [LengthUnitEnum](LengthUnitEnum.md) | Unit of measurement for focal length of lens (microscope) | direct |
 | [camera_sensor_type](camera_sensor_type.md) | 0..1 _recommended_ <br/> [CameraSensorTypeEnum](CameraSensorTypeEnum.md) | Image sensor technology | direct |
 | [contrast_polarity](contrast_polarity.md) | 0..1 _recommended_ <br/> [ContrastPolarityEnum](ContrastPolarityEnum.md) | Contrast relationship between the tracked object and the background; indicate... | direct |
 | [closed_box_system_version](closed_box_system_version.md) | 0..1 <br/> [String](String.md) | Hardware version or model number of the closed-box system | direct |
@@ -237,6 +261,22 @@ URI: [BeStMeta:Hardware](https://w3id.org/BeStMeta/Hardware)
 
 | Rule Applied | Preconditions | Postconditions | Elseconditions |
 |--------------|---------------|----------------|----------------|
+| slot_conditions |```{'camera_distance': {'value_presence': 'PRESENT'}}``` |```{'camera_distance_unit': {'required': True}}``` | |
+
+
+
+### 
+
+| Rule Applied | Preconditions | Postconditions | Elseconditions |
+|--------------|---------------|----------------|----------------|
+| slot_conditions |```{'lens_focal_length': {'value_presence': 'PRESENT'}}``` |```{'lens_focal_length_unit': {'required': True}}``` | |
+
+
+
+### 
+
+| Rule Applied | Preconditions | Postconditions | Elseconditions |
+|--------------|---------------|----------------|----------------|
 | slot_conditions |```{'device_type': {'equals_string': 'camera'}}``` |```{'camera_count': {'value_presence': 'PRESENT'}, 'camera_type': {'value_presence': 'PRESENT'}, 'camera_model': {'value_presence': 'PRESENT'}, 'camera_manufacturer': {'value_presence': 'PRESENT'}, 'field_of_view_width': {'value_presence': 'PRESENT'}, 'field_of_view_height': {'value_presence': 'PRESENT'}, 'field_of_view_unit': {'value_presence': 'PRESENT'}}``` | |
 
 
@@ -245,7 +285,7 @@ URI: [BeStMeta:Hardware](https://w3id.org/BeStMeta/Hardware)
 
 | Rule Applied | Preconditions | Postconditions | Elseconditions |
 |--------------|---------------|----------------|----------------|
-| slot_conditions |```{'device_type': {'equals_string': 'camera'}}``` |```{'camera_position': {'recommended': True}, 'camera_distance_mm': {'recommended': True}, 'lens_focal_length_mm': {'recommended': True}, 'camera_sensor_type': {'recommended': True}}``` | |
+| slot_conditions |```{'device_type': {'equals_string': 'camera'}}``` |```{'camera_position': {'recommended': True}, 'camera_distance': {'recommended': True}, 'lens_focal_length': {'recommended': True}, 'camera_sensor_type': {'recommended': True}}``` | |
 
 
 
@@ -379,8 +419,10 @@ slots:
 - field_of_view_unit
 - objective_magnification
 - camera_position
-- camera_distance_mm
-- lens_focal_length_mm
+- camera_distance
+- camera_distance_unit
+- lens_focal_length
+- lens_focal_length_unit
 - camera_sensor_type
 - contrast_polarity
 - closed_box_system_version
@@ -393,6 +435,28 @@ slots:
 - microscope_lot_number
 - hardware_notes
 rules:
+- preconditions:
+    slot_conditions:
+      camera_distance:
+        name: camera_distance
+        value_presence: PRESENT
+  postconditions:
+    slot_conditions:
+      camera_distance_unit:
+        name: camera_distance_unit
+        required: true
+  description: camera_distance requires camera_distance_unit
+- preconditions:
+    slot_conditions:
+      lens_focal_length:
+        name: lens_focal_length
+        value_presence: PRESENT
+  postconditions:
+    slot_conditions:
+      lens_focal_length_unit:
+        name: lens_focal_length_unit
+        required: true
+  description: lens_focal_length requires lens_focal_length_unit
 - preconditions:
     slot_conditions:
       device_type:
@@ -433,11 +497,11 @@ rules:
       camera_position:
         name: camera_position
         recommended: true
-      camera_distance_mm:
-        name: camera_distance_mm
+      camera_distance:
+        name: camera_distance
         recommended: true
-      lens_focal_length_mm:
-        name: lens_focal_length_mm
+      lens_focal_length:
+        name: lens_focal_length
         recommended: true
       camera_sensor_type:
         name: camera_sensor_type
@@ -641,7 +705,7 @@ attributes:
     domain_of:
     - Hardware
     range: integer
-    required: true
+    required: false
   camera_type:
     name: camera_type
     description: General type of imaging device.
@@ -653,7 +717,7 @@ attributes:
     domain_of:
     - Hardware
     range: CameraTypeEnum
-    required: true
+    required: false
   camera_model:
     name: camera_model
     description: Full manufacturer model name of the camera.
@@ -666,7 +730,7 @@ attributes:
     domain_of:
     - Hardware
     range: string
-    required: true
+    required: false
   camera_manufacturer:
     name: camera_manufacturer
     description: Manufacturer of the camera.
@@ -678,7 +742,7 @@ attributes:
     domain_of:
     - Hardware
     range: string
-    required: true
+    required: false
   microscope_manufacturer:
     name: microscope_manufacturer
     description: Manufacturer of the microscope.
@@ -797,9 +861,10 @@ attributes:
     range: CameraPositionEnum
     required: false
     recommended: true
-  camera_distance_mm:
-    name: camera_distance_mm
-    description: Distance from camera lens to the arena floor in millimetres.
+    multivalued: true
+  camera_distance:
+    name: camera_distance
+    description: Distance from camera lens to the arena floor.
     from_schema: https://w3id.org/bestmeta/schema
     rank: 1000
     owner: Hardware
@@ -807,25 +872,39 @@ attributes:
     - Hardware
     range: float
     required: false
+  camera_distance_unit:
+    name: camera_distance_unit
+    description: Unit of measurement for camera distance.
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Hardware
+    domain_of:
+    - Hardware
+    range: LengthUnitEnum
+    required: false
     recommended: true
-    unit:
-      ucum_code: mm
-  lens_focal_length_mm:
-    name: lens_focal_length_mm
+  lens_focal_length:
+    name: lens_focal_length
     description: Focal length of the imaging lens in millimetres; applicable to camera
       or microscope optics when reported.
     from_schema: https://w3id.org/bestmeta/schema
-    exact_mappings:
-    - AFQ:0000062
     rank: 1000
     owner: Hardware
     domain_of:
     - Hardware
     range: float
     required: false
+  lens_focal_length_unit:
+    name: lens_focal_length_unit
+    description: Unit of measurement for focal length of lens (microscope)
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Hardware
+    domain_of:
+    - Hardware
+    range: LengthUnitEnum
+    required: false
     recommended: true
-    unit:
-      ucum_code: mm
   camera_sensor_type:
     name: camera_sensor_type
     description: Image sensor technology.
@@ -960,6 +1039,28 @@ attributes:
 rules:
 - preconditions:
     slot_conditions:
+      camera_distance:
+        name: camera_distance
+        value_presence: PRESENT
+  postconditions:
+    slot_conditions:
+      camera_distance_unit:
+        name: camera_distance_unit
+        required: true
+  description: camera_distance requires camera_distance_unit
+- preconditions:
+    slot_conditions:
+      lens_focal_length:
+        name: lens_focal_length
+        value_presence: PRESENT
+  postconditions:
+    slot_conditions:
+      lens_focal_length_unit:
+        name: lens_focal_length_unit
+        required: true
+  description: lens_focal_length requires lens_focal_length_unit
+- preconditions:
+    slot_conditions:
       device_type:
         name: device_type
         equals_string: camera
@@ -998,11 +1099,11 @@ rules:
       camera_position:
         name: camera_position
         recommended: true
-      camera_distance_mm:
-        name: camera_distance_mm
+      camera_distance:
+        name: camera_distance
         recommended: true
-      lens_focal_length_mm:
-        name: lens_focal_length_mm
+      lens_focal_length:
+        name: lens_focal_length
         recommended: true
       camera_sensor_type:
         name: camera_sensor_type

@@ -179,13 +179,17 @@
         "ArenaTypeEnum": {
             "description": "Type of the test arena, e.g., open field, multiwell plate or elevated plus maze.",
             "enum": [
+                "petridish",
+                "aquarium",
                 "open_field",
+                "home_cage",
                 "plus_maze",
                 "y_maze",
                 "t_maze",
                 "multiwell_plate",
                 "light_dark_box",
                 "elevated_plus_maze",
+                "custom",
                 "other"
             ],
             "title": "ArenaTypeEnum",
@@ -296,7 +300,9 @@
                 "naive_control",
                 "sham_control",
                 "positive_control",
+                "negative_control",
                 "untreated_control",
+                "historical_control",
                 "other"
             ],
             "title": "ControlTypeEnum",
@@ -356,15 +362,47 @@
         },
         "EnvironmentalConditions": {
             "additionalProperties": false,
-            "description": "Environmental conditions and husbandry parameters for the experiments.",
-            "if": {
-                "properties": {
-                    "water_temperature": {}
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "water_temperature": {}
+                        },
+                        "required": [
+                            "water_temperature"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "water_temperature_unit": {}
+                        },
+                        "required": [
+                            "water_temperature_unit"
+                        ]
+                    }
                 },
-                "required": [
-                    "water_temperature"
-                ]
-            },
+                {
+                    "if": {
+                        "properties": {
+                            "light_cycle_type": {
+                                "const": "cyclic_ld"
+                            }
+                        },
+                        "required": [
+                            "light_cycle_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "light_cycle_detail": {}
+                        },
+                        "required": [
+                            "light_cycle_detail"
+                        ]
+                    }
+                }
+            ],
+            "description": "Environmental conditions and husbandry parameters for the experiments.",
             "properties": {
                 "feed_type": {
                     "description": "Type of feed provided to the subject(s).",
@@ -372,6 +410,24 @@
                         "string",
                         "null"
                     ]
+                },
+                "humidity": {
+                    "description": "Relative humidity where experiment was conducted (or the experiment area).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "light_cycle_detail": {
+                    "description": "Free-text description of the light-dark cycle.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "light_cycle_type": {
+                    "$ref": "#/$defs/LightCycleTypeEnum",
+                    "description": "Standardized category of the light-dark cycle."
                 },
                 "water_ph": {
                     "description": "pH of the water in housing/experimnetal conditions",
@@ -391,14 +447,6 @@
                     "$ref": "#/$defs/TemperatureUnitEnum",
                     "description": "The unit of the water temperature."
                 }
-            },
-            "then": {
-                "properties": {
-                    "water_temperature_unit": {}
-                },
-                "required": [
-                    "water_temperature_unit"
-                ]
             },
             "title": "EnvironmentalConditions",
             "type": "object"
@@ -463,20 +511,36 @@
                 {
                     "if": {
                         "properties": {
-                            "light_cycle_type": {
-                                "const": "cyclic_ld"
-                            }
+                            "arena_diameter": {}
                         },
                         "required": [
-                            "light_cycle_type"
+                            "arena_diameter"
                         ]
                     },
                     "then": {
                         "properties": {
-                            "light_cycle_detail": {}
+                            "arena_diameter_unit": {}
                         },
                         "required": [
-                            "light_cycle_detail"
+                            "arena_diameter_unit"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "water_depth": {}
+                        },
+                        "required": [
+                            "water_depth"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "water_depth_unit": {}
+                        },
+                        "required": [
+                            "water_depth_unit"
                         ]
                     }
                 },
@@ -503,6 +567,17 @@
             ],
             "description": "Defines experimental context in which the subjects were studied. Covers environmental parameters like study counts, arena geometry, temperature, multi well plate details etc.",
             "properties": {
+                "arena_diameter": {
+                    "description": "The diameter of the arena, for aquatic assays.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "arena_diameter_unit": {
+                    "$ref": "#/$defs/LengthUnitEnum",
+                    "description": "Unit of measurement for the diameter of the arena"
+                },
                 "arena_height": {
                     "description": "Height of the arena, when applicable.",
                     "type": [
@@ -512,7 +587,7 @@
                 },
                 "arena_height_unit": {
                     "$ref": "#/$defs/LengthUnitEnum",
-                    "description": "Unit of measurement for arena_height."
+                    "description": "Unit of measurement for the height of the arena."
                 },
                 "arena_length": {
                     "description": "Length of the arena along one axis.",
@@ -523,7 +598,7 @@
                 },
                 "arena_length_unit": {
                     "$ref": "#/$defs/LengthUnitEnum",
-                    "description": "Unit of measurement for arena_length."
+                    "description": "Unit of measurement for the length of the arena."
                 },
                 "arena_shape": {
                     "$ref": "#/$defs/ArenaShapeEnum",
@@ -542,7 +617,7 @@
                 },
                 "arena_width_unit": {
                     "$ref": "#/$defs/LengthUnitEnum",
-                    "description": "Unit of measurement for arena_width."
+                    "description": "Unit of measurement for the width of the arena."
                 },
                 "assay_description": {
                     "description": "Free-text description of the assay protocol",
@@ -581,17 +656,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "light_cycle_detail": {
-                    "description": "Free-text description of the light-dark cycle.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "light_cycle_type": {
-                    "$ref": "#/$defs/LightCycleTypeEnum",
-                    "description": "Standardized category of the light-dark cycle."
                 },
                 "mortality": {
                     "description": "Indicates whether a subject died during the course of the experiment.",
@@ -638,12 +702,16 @@
                         "null"
                     ]
                 },
-                "temperature_celsius": {
-                    "description": "Water or ambient temperature during the recording in degrees Celsius",
+                "water_depth": {
+                    "description": "The depth of the water used for aquatic essays",
                     "type": [
                         "number",
                         "null"
                     ]
+                },
+                "water_depth_unit": {
+                    "$ref": "#/$defs/LengthUnitEnum",
+                    "description": "Unit of measurement for the depth of water"
                 },
                 "well_shape_cross_section": {
                     "$ref": "#/$defs/WellCrossSectionShapeEnum",
@@ -685,7 +753,7 @@
                     "description": "Any intervention applied to the subjects. Omitted when no treatment or exposure was used."
                 },
                 "subject": {
-                    "description": "Indicates if a single animals or multiple animals are used, it could be 1 for single-animal models or well plate studie, >1 for mult--animal rodent studies                    ",
+                    "description": "Indicates if a single animals or multiple animals are used, it could be 1 for single-animal models or well plate studies, >1 for multi-animal rodent studies                    ",
                     "items": {
                         "$ref": "#/$defs/Subject"
                     },
@@ -726,6 +794,42 @@
         "Hardware": {
             "additionalProperties": false,
             "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "camera_distance": {}
+                        },
+                        "required": [
+                            "camera_distance"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "camera_distance_unit": {}
+                        },
+                        "required": [
+                            "camera_distance_unit"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "lens_focal_length": {}
+                        },
+                        "required": [
+                            "lens_focal_length"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "lens_focal_length_unit": {}
+                        },
+                        "required": [
+                            "lens_focal_length_unit"
+                        ]
+                    }
+                },
                 {
                     "if": {
                         "properties": {
@@ -771,15 +875,18 @@
                     },
                     "then": {
                         "properties": {
-                            "camera_distance_mm": {},
-                            "camera_position": {},
+                            "camera_distance": {},
+                            "camera_position": {
+                                "items": {},
+                                "type": "array"
+                            },
                             "camera_sensor_type": {},
-                            "lens_focal_length_mm": {}
+                            "lens_focal_length": {}
                         },
                         "required": [
                             "camera_position",
-                            "camera_distance_mm",
-                            "lens_focal_length_mm",
+                            "camera_distance",
+                            "lens_focal_length",
                             "camera_sensor_type"
                         ]
                     }
@@ -1026,14 +1133,21 @@
             "properties": {
                 "camera_count": {
                     "description": "Number of cameras used simultaneously.",
-                    "type": "integer"
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
-                "camera_distance_mm": {
-                    "description": "Distance from camera lens to the arena floor in millimetres.",
+                "camera_distance": {
+                    "description": "Distance from camera lens to the arena floor.",
                     "type": [
                         "number",
                         "null"
                     ]
+                },
+                "camera_distance_unit": {
+                    "$ref": "#/$defs/LengthUnitEnum",
+                    "description": "Unit of measurement for camera distance."
                 },
                 "camera_interface": {
                     "$ref": "#/$defs/CameraInterfaceEnum",
@@ -1041,15 +1155,27 @@
                 },
                 "camera_manufacturer": {
                     "description": "Manufacturer of the camera.",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "camera_model": {
                     "description": "Full manufacturer model name of the camera.",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "camera_position": {
-                    "$ref": "#/$defs/CameraPositionEnum",
-                    "description": "Position of the camera relative to the arena."
+                    "description": "Position of the camera relative to the arena.",
+                    "items": {
+                        "$ref": "#/$defs/CameraPositionEnum"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "camera_sensor_type": {
                     "$ref": "#/$defs/CameraSensorTypeEnum",
@@ -1127,12 +1253,16 @@
                         "null"
                     ]
                 },
-                "lens_focal_length_mm": {
+                "lens_focal_length": {
                     "description": "Focal length of the imaging lens in millimetres; applicable to camera or microscope optics when reported.",
                     "type": [
                         "number",
                         "null"
                     ]
+                },
+                "lens_focal_length_unit": {
+                    "$ref": "#/$defs/LengthUnitEnum",
+                    "description": "Unit of measurement for focal length of lens (microscope)"
                 },
                 "microscope_lot_number": {
                     "description": "Lot number of the microscope.",
@@ -1186,10 +1316,6 @@
                 }
             },
             "required": [
-                "camera_count",
-                "camera_type",
-                "camera_model",
-                "camera_manufacturer",
                 "device_type"
             ],
             "title": "Hardware",
@@ -1242,7 +1368,8 @@
                 "um",
                 "mm",
                 "cm",
-                "meter"
+                "meter",
+                "pixels"
             ],
             "title": "LengthUnitEnum",
             "type": "string"
@@ -1296,13 +1423,55 @@
                             "exposure_compound_name"
                         ]
                     }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "habituation_duration": {}
+                        },
+                        "required": [
+                            "habituation_duration"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "habituation_duration_unit": {}
+                        },
+                        "required": [
+                            "habituation_duration_unit"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "exposure_duration": {}
+                        },
+                        "required": [
+                            "exposure_duration"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "exposure_duration_unit": {}
+                        },
+                        "required": [
+                            "exposure_duration_unit"
+                        ]
+                    }
                 }
             ],
             "description": "Treatment and chemical exposure information decribing pharmacological, toxicological and/or any other interventions that subjects went through. This sub-class can be omitted where no interventions were used.",
             "properties": {
                 "control_type": {
-                    "$ref": "#/$defs/ControlTypeEnum",
-                    "description": "Type of control group used."
+                    "description": "Type of control group used.",
+                    "items": {
+                        "$ref": "#/$defs/ControlTypeEnum"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "exposure_compound_chebi_id": {
                     "description": "ChEBI identifier for the test substance.",
@@ -1330,12 +1499,16 @@
                     "$ref": "#/$defs/ConcentrationUnitEnum",
                     "description": "Unit for exposure concentration."
                 },
-                "exposure_duration_h": {
+                "exposure_duration": {
                     "description": "Duration of chemical or treatment exposure in hours.",
                     "type": [
                         "number",
                         "null"
                     ]
+                },
+                "exposure_duration_unit": {
+                    "$ref": "#/$defs/TimeUnitEnum",
+                    "description": "Unit of measurement used to report exposure duration."
                 },
                 "exposure_route": {
                     "$ref": "#/$defs/ExposureRouteEnum",
@@ -1345,12 +1518,16 @@
                     "$ref": "#/$defs/ExposureTypeEnum",
                     "description": "It indicates the type of exposure (Acute or chronic)"
                 },
-                "habituation_duration_min": {
-                    "description": "Duration of habituation period before recording, in minutes",
+                "habituation_duration": {
+                    "description": "Duration of habituation period before recording.",
                     "type": [
                         "number",
                         "null"
                     ]
+                },
+                "habituation_duration_unit": {
+                    "$ref": "#/$defs/TimeUnitEnum",
+                    "description": "Unit of measurement used to measure habituation duration"
                 },
                 "habituation_protocol": {
                     "description": "Description of habituation or acclimation prior to testing.",
@@ -1432,6 +1609,7 @@
             "enum": [
                 "male",
                 "female",
+                "hermaphrodite",
                 "mixed",
                 "unknown",
                 "not_applicable"
@@ -1540,6 +1718,48 @@
                 {
                     "if": {
                         "properties": {
+                            "subject_type": {}
+                        },
+                        "required": [
+                            "subject_type"
+                        ]
+                    },
+                    "then": {
+                        "anyOf": [
+                            {
+                                "properties": {
+                                    "developmental_stage": {}
+                                },
+                                "required": [
+                                    "developmental_stage"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "developmental_stage_unit": {},
+                                    "developmental_stage_value": {}
+                                },
+                                "required": [
+                                    "developmental_stage_value",
+                                    "developmental_stage_unit"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "age_unit": {},
+                                    "age_value": {}
+                                },
+                                "required": [
+                                    "age_value",
+                                    "age_unit"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
                             "subject_type": {
                                 "const": "organism"
                             }
@@ -1592,36 +1812,6 @@
                             "weight_unit"
                         ]
                     }
-                }
-            ],
-            "anyOf": [
-                {
-                    "properties": {
-                        "developmental_stage": {}
-                    },
-                    "required": [
-                        "developmental_stage"
-                    ]
-                },
-                {
-                    "properties": {
-                        "developmental_stage_unit": {},
-                        "developmental_stage_value": {}
-                    },
-                    "required": [
-                        "developmental_stage_value",
-                        "developmental_stage_unit"
-                    ]
-                },
-                {
-                    "properties": {
-                        "age_unit": {},
-                        "age_value": {}
-                    },
-                    "required": [
-                        "age_value",
-                        "age_unit"
-                    ]
                 }
             ],
             "description": "Biological identity of the organism(s) that is studied. Contains details like taxonomy, strain, genotype, sex, age and/or other morphometric details and measurements.",
@@ -1754,6 +1944,21 @@
                 "kelvin"
             ],
             "title": "TemperatureUnitEnum",
+            "type": "string"
+        },
+        "TimeUnitEnum": {
+            "description": "Unit of time measurement, mapped to UCUM (Unified Code for Units of Measure) codes.",
+            "enum": [
+                "milliseconds",
+                "seconds",
+                "minutes",
+                "hours",
+                "days",
+                "weeks",
+                "months",
+                "years"
+            ],
+            "title": "TimeUnitEnum",
             "type": "string"
         },
         "TrackingAnalysis": {
@@ -2226,7 +2431,9 @@
             "enum": [
                 "mp4",
                 "avi",
+                "hdf5",
                 "mov",
+                "image_seq",
                 "other"
             ],
             "title": "VideoContainerEnum",

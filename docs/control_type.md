@@ -45,6 +45,7 @@ URI: [BeStMeta:control_type](https://w3id.org/BeStMeta/control_type)
 
 | Property | Value |
 | --- | --- |
+| Multivalued | Yes |
 
 
 
@@ -94,6 +95,7 @@ domain_of:
 - Manipulation
 range: ControlTypeEnum
 required: false
+multivalued: true
 
 ```
 </details></div>

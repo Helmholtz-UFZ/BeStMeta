@@ -45,7 +45,6 @@ URI: [BeStMeta:camera_model](https://w3id.org/BeStMeta/camera_model)
 
 | Property | Value |
 | --- | --- |
-| Required | Yes |
 
 
 
@@ -102,7 +101,7 @@ rank: 1000
 domain_of:
 - Hardware
 range: string
-required: true
+required: false
 
 ```
 </details></div>

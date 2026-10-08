@@ -6,7 +6,7 @@ search:
 # Slot: arena_height_unit 
 
 
-_Unit of measurement for arena_height._
+_Unit of measurement for the height of the arena._
 
 
 
@@ -85,7 +85,7 @@ URI: [BeStMeta:arena_height_unit](https://w3id.org/BeStMeta/arena_height_unit)
 <details>
 ```yaml
 name: arena_height_unit
-description: Unit of measurement for arena_height.
+description: Unit of measurement for the height of the arena.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:

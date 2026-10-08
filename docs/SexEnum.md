@@ -22,6 +22,7 @@ URI: [BeStMeta:SexEnum](https://w3id.org/BeStMeta/SexEnum)
 | --- | --- | --- |
 | male | None |  |
 | female | None |  |
+| hermaphrodite | None |  |
 | mixed | None | Mixed male and female in same group |
 | unknown | None |  |
 | not_applicable | None | e |
@@ -73,6 +74,8 @@ permissible_values:
     text: male
   female:
     text: female
+  hermaphrodite:
+    text: hermaphrodite
   mixed:
     text: mixed
     description: Mixed male and female in same group.

@@ -24,6 +24,19 @@ URI: [BeStMeta:Experiment](https://w3id.org/BeStMeta/Experiment)
  classDiagram
     class Experiment
     click Experiment href "../Experiment/"
+      Experiment : arena_diameter
+        
+      Experiment : arena_diameter_unit
+        
+          
+    
+        
+        
+        Experiment --> "0..1 _recommended_" LengthUnitEnum : arena_diameter_unit
+        click LengthUnitEnum href "../LengthUnitEnum/"
+    
+
+        
       Experiment : arena_height
         
       Experiment : arena_height_unit
@@ -104,19 +117,6 @@ URI: [BeStMeta:Experiment](https://w3id.org/BeStMeta/Experiment)
         
       Experiment : experiment_start_datetime
         
-      Experiment : light_cycle_detail
-        
-      Experiment : light_cycle_type
-        
-          
-    
-        
-        
-        Experiment --> "0..1 _recommended_" LightCycleTypeEnum : light_cycle_type
-        click LightCycleTypeEnum href "../LightCycleTypeEnum/"
-    
-
-        
       Experiment : mortality
         
       Experiment : mortality_notes
@@ -131,7 +131,18 @@ URI: [BeStMeta:Experiment](https://w3id.org/BeStMeta/Experiment)
         
       Experiment : plate_well_count
         
-      Experiment : temperature_celsius
+      Experiment : water_depth
+        
+      Experiment : water_depth_unit
+        
+          
+    
+        
+        
+        Experiment --> "0..1 _recommended_" LengthUnitEnum : water_depth_unit
+        click LengthUnitEnum href "../LengthUnitEnum/"
+    
+
         
       Experiment : well_shape_cross_section
         
@@ -164,16 +175,17 @@ URI: [BeStMeta:Experiment](https://w3id.org/BeStMeta/Experiment)
 | [arena_shape](arena_shape.md) | 0..1 _recommended_ <br/> [ArenaShapeEnum](ArenaShapeEnum.md) | Geometric shape of the test arena | direct |
 | [arena_type](arena_type.md) | 0..1 _recommended_ <br/> [ArenaTypeEnum](ArenaTypeEnum.md) | Type of the test arena, e | direct |
 | [arena_length](arena_length.md) | 0..1 _recommended_ <br/> [Float](Float.md) | Length of the arena along one axis | direct |
-| [arena_length_unit](arena_length_unit.md) | 0..1 _recommended_ <br/> [LengthUnitEnum](LengthUnitEnum.md) | Unit of measurement for arena_length | direct |
+| [arena_length_unit](arena_length_unit.md) | 0..1 _recommended_ <br/> [LengthUnitEnum](LengthUnitEnum.md) | Unit of measurement for the length of the arena | direct |
 | [arena_width](arena_width.md) | 0..1 _recommended_ <br/> [Float](Float.md) | Width of the arena along one axis | direct |
-| [arena_width_unit](arena_width_unit.md) | 0..1 _recommended_ <br/> [LengthUnitEnum](LengthUnitEnum.md) | Unit of measurement for arena_width | direct |
+| [arena_width_unit](arena_width_unit.md) | 0..1 _recommended_ <br/> [LengthUnitEnum](LengthUnitEnum.md) | Unit of measurement for the width of the arena | direct |
 | [arena_height](arena_height.md) | 0..1 _recommended_ <br/> [Float](Float.md) | Height of the arena, when applicable | direct |
-| [arena_height_unit](arena_height_unit.md) | 0..1 _recommended_ <br/> [LengthUnitEnum](LengthUnitEnum.md) | Unit of measurement for arena_height | direct |
+| [arena_height_unit](arena_height_unit.md) | 0..1 _recommended_ <br/> [LengthUnitEnum](LengthUnitEnum.md) | Unit of measurement for the height of the arena | direct |
+| [arena_diameter](arena_diameter.md) | 0..1 _recommended_ <br/> [Float](Float.md) | The diameter of the arena, for aquatic assays | direct |
+| [arena_diameter_unit](arena_diameter_unit.md) | 0..1 _recommended_ <br/> [LengthUnitEnum](LengthUnitEnum.md) | Unit of measurement for the diameter of the arena | direct |
+| [water_depth](water_depth.md) | 0..1 _recommended_ <br/> [Float](Float.md) | The depth of the water used for aquatic essays | direct |
+| [water_depth_unit](water_depth_unit.md) | 0..1 _recommended_ <br/> [LengthUnitEnum](LengthUnitEnum.md) | Unit of measurement for the depth of water | direct |
 | [plate_well_count](plate_well_count.md) | 0..1 _recommended_ <br/> [Integer](Integer.md) | Number of wells in the multiwell plate | direct |
 | [well_shape_cross_section](well_shape_cross_section.md) | 0..1 _recommended_ <br/> [WellCrossSectionShapeEnum](WellCrossSectionShapeEnum.md) | Geometric cross section shape of the wells of a multiwell plate | direct |
-| [temperature_celsius](temperature_celsius.md) | 0..1 _recommended_ <br/> [Float](Float.md) | Water or ambient temperature during the recording in degrees Celsius | direct |
-| [light_cycle_type](light_cycle_type.md) | 0..1 _recommended_ <br/> [LightCycleTypeEnum](LightCycleTypeEnum.md) | Standardized category of the light-dark cycle | direct |
-| [light_cycle_detail](light_cycle_detail.md) | 0..1 _recommended_ <br/> [String](String.md) | Free-text description of the light-dark cycle | direct |
 | [mortality](mortality.md) | 0..1 _recommended_ <br/> [Boolean](Boolean.md) | Indicates whether a subject died during the course of the experiment | direct |
 | [n_individuals_start](n_individuals_start.md) | 0..1 <br/> [Integer](Integer.md) | Number of individuals at the start of the experiment/trial | direct |
 | [n_individuals_end](n_individuals_end.md) | 0..1 <br/> [Integer](Integer.md) | Number of individuals at the end of the experiment/trial | direct |
@@ -225,7 +237,15 @@ URI: [BeStMeta:Experiment](https://w3id.org/BeStMeta/Experiment)
 
 | Rule Applied | Preconditions | Postconditions | Elseconditions |
 |--------------|---------------|----------------|----------------|
-| slot_conditions |```{'light_cycle_type': {'equals_string': 'cyclic_ld'}}``` |```{'light_cycle_detail': {'required': True}}``` | |
+| slot_conditions |```{'arena_diameter': {'value_presence': 'PRESENT'}}``` |```{'arena_diameter_unit': {'required': True}}``` | |
+
+
+
+### 
+
+| Rule Applied | Preconditions | Postconditions | Elseconditions |
+|--------------|---------------|----------------|----------------|
+| slot_conditions |```{'water_depth': {'value_presence': 'PRESENT'}}``` |```{'water_depth_unit': {'required': True}}``` | |
 
 
 
@@ -299,11 +319,12 @@ slots:
 - arena_width_unit
 - arena_height
 - arena_height_unit
+- arena_diameter
+- arena_diameter_unit
+- water_depth
+- water_depth_unit
 - plate_well_count
 - well_shape_cross_section
-- temperature_celsius
-- light_cycle_type
-- light_cycle_detail
 - mortality
 - n_individuals_start
 - n_individuals_end
@@ -346,15 +367,26 @@ rules:
   description: arena_height requires arena_height_unit
 - preconditions:
     slot_conditions:
-      light_cycle_type:
-        name: light_cycle_type
-        equals_string: cyclic_ld
+      arena_diameter:
+        name: arena_diameter
+        value_presence: PRESENT
   postconditions:
     slot_conditions:
-      light_cycle_detail:
-        name: light_cycle_detail
+      arena_diameter_unit:
+        name: arena_diameter_unit
         required: true
-  description: If light_cycle_type is cyclic_ld, light_cycle_detail should be provided.
+  description: arena_diameter requires arena_diameter_unit
+- preconditions:
+    slot_conditions:
+      water_depth:
+        name: water_depth
+        value_presence: PRESENT
+  postconditions:
+    slot_conditions:
+      water_depth_unit:
+        name: water_depth_unit
+        required: true
+  description: water_depth requires water_depth_unit
 - preconditions:
     slot_conditions:
       mortality:
@@ -483,7 +515,7 @@ attributes:
     recommended: true
   arena_length_unit:
     name: arena_length_unit
-    description: Unit of measurement for arena_length.
+    description: Unit of measurement for the length of the arena.
     from_schema: https://w3id.org/bestmeta/schema
     rank: 1000
     owner: Experiment
@@ -505,7 +537,7 @@ attributes:
     recommended: true
   arena_width_unit:
     name: arena_width_unit
-    description: Unit of measurement for arena_width.
+    description: Unit of measurement for the width of the arena.
     from_schema: https://w3id.org/bestmeta/schema
     rank: 1000
     owner: Experiment
@@ -527,7 +559,51 @@ attributes:
     recommended: true
   arena_height_unit:
     name: arena_height_unit
-    description: Unit of measurement for arena_height.
+    description: Unit of measurement for the height of the arena.
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Experiment
+    domain_of:
+    - Experiment
+    range: LengthUnitEnum
+    required: false
+    recommended: true
+  arena_diameter:
+    name: arena_diameter
+    description: The diameter of the arena, for aquatic assays.
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Experiment
+    domain_of:
+    - Experiment
+    range: float
+    required: false
+    recommended: true
+  arena_diameter_unit:
+    name: arena_diameter_unit
+    description: Unit of measurement for the diameter of the arena
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Experiment
+    domain_of:
+    - Experiment
+    range: LengthUnitEnum
+    required: false
+    recommended: true
+  water_depth:
+    name: water_depth
+    description: The depth of the water used for aquatic essays
+    from_schema: https://w3id.org/bestmeta/schema
+    rank: 1000
+    owner: Experiment
+    domain_of:
+    - Experiment
+    range: float
+    required: false
+    recommended: true
+  water_depth_unit:
+    name: water_depth_unit
+    description: Unit of measurement for the depth of water
     from_schema: https://w3id.org/bestmeta/schema
     rank: 1000
     owner: Experiment
@@ -562,43 +638,6 @@ attributes:
     domain_of:
     - Experiment
     range: WellCrossSectionShapeEnum
-    required: false
-    recommended: true
-  temperature_celsius:
-    name: temperature_celsius
-    description: Water or ambient temperature during the recording in degrees Celsius
-    from_schema: https://w3id.org/bestmeta/schema
-    rank: 1000
-    owner: Experiment
-    domain_of:
-    - Experiment
-    range: float
-    required: false
-    recommended: true
-    unit:
-      ucum_code: Cel
-  light_cycle_type:
-    name: light_cycle_type
-    description: Standardized category of the light-dark cycle.
-    from_schema: https://w3id.org/bestmeta/schema
-    rank: 1000
-    owner: Experiment
-    domain_of:
-    - Experiment
-    range: LightCycleTypeEnum
-    required: false
-    recommended: true
-  light_cycle_detail:
-    name: light_cycle_detail
-    description: Free-text description of the light-dark cycle.
-    from_schema: https://w3id.org/bestmeta/schema
-    exact_mappings:
-    - MESH:D017440
-    rank: 1000
-    owner: Experiment
-    domain_of:
-    - Experiment
-    range: string
     required: false
     recommended: true
   mortality:
@@ -698,15 +737,26 @@ rules:
   description: arena_height requires arena_height_unit
 - preconditions:
     slot_conditions:
-      light_cycle_type:
-        name: light_cycle_type
-        equals_string: cyclic_ld
+      arena_diameter:
+        name: arena_diameter
+        value_presence: PRESENT
   postconditions:
     slot_conditions:
-      light_cycle_detail:
-        name: light_cycle_detail
+      arena_diameter_unit:
+        name: arena_diameter_unit
         required: true
-  description: If light_cycle_type is cyclic_ld, light_cycle_detail should be provided.
+  description: arena_diameter requires arena_diameter_unit
+- preconditions:
+    slot_conditions:
+      water_depth:
+        name: water_depth
+        value_presence: PRESENT
+  postconditions:
+    slot_conditions:
+      water_depth_unit:
+        name: water_depth_unit
+        required: true
+  description: water_depth requires water_depth_unit
 - preconditions:
     slot_conditions:
       mortality:

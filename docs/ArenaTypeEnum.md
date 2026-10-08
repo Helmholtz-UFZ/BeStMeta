@@ -20,13 +20,17 @@ URI: [BeStMeta:ArenaTypeEnum](https://w3id.org/BeStMeta/ArenaTypeEnum)
 ## Permissible Values
 | Value | Meaning | Description |
 | --- | --- | --- |
+| petridish | None |  |
+| aquarium | None |  |
 | open_field | None |  |
+| home_cage | None |  |
 | plus_maze | None |  |
 | y_maze | None |  |
 | t_maze | None |  |
 | multiwell_plate | None |  |
 | light_dark_box | None |  |
 | elevated_plus_maze | None |  |
+| custom | None |  |
 | other | None |  |
 
 
@@ -73,8 +77,14 @@ description: Type of the test arena, e.g., open field, multiwell plate or elevat
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 permissible_values:
+  petridish:
+    text: petridish
+  aquarium:
+    text: aquarium
   open_field:
     text: open_field
+  home_cage:
+    text: home_cage
   plus_maze:
     text: plus_maze
   y_maze:
@@ -87,6 +97,8 @@ permissible_values:
     text: light_dark_box
   elevated_plus_maze:
     text: elevated_plus_maze
+  custom:
+    text: custom
   other:
     text: other
 

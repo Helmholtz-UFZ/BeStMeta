@@ -154,25 +154,6 @@ URI: [BeStMeta:Subject](https://w3id.org/BeStMeta/Subject)
 | [weight_value](weight_value.md) | 0..1 <br/> [Float](Float.md) | Body weight numeric value of the tracked organism(s) | direct |
 | [weight_unit](weight_unit.md) | 0..1 <br/> [WeightUnitEnum](WeightUnitEnum.md) | Body weight unit of the tracked organism(s) | direct |
 
-<details>
-<summary>Expressions & Logic</summary>
-#### Any Of
-
-The class must satisfy at least one of:
-- AnonymousClassExpression({
-  'slot_conditions': {'developmental_stage': SlotDefinition({'name': 'developmental_stage', 'required': True})}
-})
-- AnonymousClassExpression({
-  'slot_conditions': {'developmental_stage_value': SlotDefinition({'name': 'developmental_stage_value', 'required': True}),
-    'developmental_stage_unit': SlotDefinition({'name': 'developmental_stage_unit', 'required': True})}
-})
-- AnonymousClassExpression({
-  'slot_conditions': {'age_value': SlotDefinition({'name': 'age_value', 'required': True}),
-    'age_unit': SlotDefinition({'name': 'age_unit', 'required': True})}
-})
-
-</details>
-
 
 
 
@@ -187,6 +168,14 @@ The class must satisfy at least one of:
 
 
 ## Rules
+
+
+### 
+
+| Rule Applied | Preconditions | Postconditions | Elseconditions |
+|--------------|---------------|----------------|----------------|
+| slot_conditions |```{'subject_type': {'value_presence': 'PRESENT'}}``` | | |
+
 
 
 ### 
@@ -285,6 +274,33 @@ rules:
     slot_conditions:
       subject_type:
         name: subject_type
+        value_presence: PRESENT
+  postconditions:
+    any_of:
+    - slot_conditions:
+        developmental_stage:
+          name: developmental_stage
+          value_presence: PRESENT
+    - slot_conditions:
+        developmental_stage_value:
+          name: developmental_stage_value
+          value_presence: PRESENT
+        developmental_stage_unit:
+          name: developmental_stage_unit
+          value_presence: PRESENT
+    - slot_conditions:
+        age_value:
+          name: age_value
+          value_presence: PRESENT
+        age_unit:
+          name: age_unit
+          value_presence: PRESENT
+  description: 'At least one of: developmental_stage, developmental_stage_value+unit,  or
+    age_value+unit must be provided'
+- preconditions:
+    slot_conditions:
+      subject_type:
+        name: subject_type
         equals_string: organism
   postconditions:
     slot_conditions:
@@ -314,25 +330,6 @@ rules:
         name: weight_unit
         required: true
   description: weight_value requires weight_unit
-any_of:
-- slot_conditions:
-    developmental_stage:
-      name: developmental_stage
-      required: true
-- slot_conditions:
-    developmental_stage_value:
-      name: developmental_stage_value
-      required: true
-    developmental_stage_unit:
-      name: developmental_stage_unit
-      required: true
-- slot_conditions:
-    age_value:
-      name: age_value
-      required: true
-    age_unit:
-      name: age_unit
-      required: true
 
 ```
 </details>
@@ -382,6 +379,7 @@ attributes:
       to one (when omitted)
     from_schema: https://w3id.org/bestmeta/schema
     rank: 1000
+    ifabsent: int(1)
     owner: Subject
     domain_of:
     - Subject
@@ -575,6 +573,33 @@ rules:
     slot_conditions:
       subject_type:
         name: subject_type
+        value_presence: PRESENT
+  postconditions:
+    any_of:
+    - slot_conditions:
+        developmental_stage:
+          name: developmental_stage
+          value_presence: PRESENT
+    - slot_conditions:
+        developmental_stage_value:
+          name: developmental_stage_value
+          value_presence: PRESENT
+        developmental_stage_unit:
+          name: developmental_stage_unit
+          value_presence: PRESENT
+    - slot_conditions:
+        age_value:
+          name: age_value
+          value_presence: PRESENT
+        age_unit:
+          name: age_unit
+          value_presence: PRESENT
+  description: 'At least one of: developmental_stage, developmental_stage_value+unit,  or
+    age_value+unit must be provided'
+- preconditions:
+    slot_conditions:
+      subject_type:
+        name: subject_type
         equals_string: organism
   postconditions:
     slot_conditions:
@@ -604,25 +629,6 @@ rules:
         name: weight_unit
         required: true
   description: weight_value requires weight_unit
-any_of:
-- slot_conditions:
-    developmental_stage:
-      name: developmental_stage
-      required: true
-- slot_conditions:
-    developmental_stage_value:
-      name: developmental_stage_value
-      required: true
-    developmental_stage_unit:
-      name: developmental_stage_unit
-      required: true
-- slot_conditions:
-    age_value:
-      name: age_value
-      required: true
-    age_unit:
-      name: age_unit
-      required: true
 
 ```
 </details></div>

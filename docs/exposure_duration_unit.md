@@ -3,10 +3,10 @@ search:
   boost: 5.0
 ---
 
-# Slot: light_cycle_type 
+# Slot: exposure_duration_unit 
 
 
-_Standardized category of the light-dark cycle._
+_Unit of measurement used to report exposure duration._
 
 
 
@@ -14,7 +14,7 @@ _Standardized category of the light-dark cycle._
 
 
 
-URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
+URI: [BeStMeta:exposure_duration_unit](https://w3id.org/BeStMeta/exposure_duration_unit)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EnvironmentalConditions](EnvironmentalConditions.md) | Environmental conditions and husbandry parameters for the experiments |  no  |
+| [Manipulation](Manipulation.md) | Treatment and chemical exposure information decribing pharmacological, toxico... |  no  |
 
 
 
@@ -38,14 +38,13 @@ URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
 
 | Property | Value |
 | --- | --- |
-| Range | [LightCycleTypeEnum](LightCycleTypeEnum.md) |
-| Domain Of | [EnvironmentalConditions](EnvironmentalConditions.md) |
+| Range | [TimeUnitEnum](TimeUnitEnum.md) |
+| Domain Of | [Manipulation](Manipulation.md) |
 
 ### Cardinality and Requirements
 
 | Property | Value |
 | --- | --- |
-| Recommended | Yes |
 
 
 
@@ -74,8 +73,8 @@ URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | BeStMeta:light_cycle_type |
-| native | BeStMeta:light_cycle_type |
+| self | BeStMeta:exposure_duration_unit |
+| native | BeStMeta:exposure_duration_unit |
 
 
 
@@ -84,15 +83,14 @@ URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
 
 <details>
 ```yaml
-name: light_cycle_type
-description: Standardized category of the light-dark cycle.
+name: exposure_duration_unit
+description: Unit of measurement used to report exposure duration.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- EnvironmentalConditions
-range: LightCycleTypeEnum
+- Manipulation
+range: TimeUnitEnum
 required: false
-recommended: true
 
 ```
 </details></div>

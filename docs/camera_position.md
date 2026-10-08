@@ -46,6 +46,7 @@ URI: [BeStMeta:camera_position](https://w3id.org/BeStMeta/camera_position)
 | Property | Value |
 | --- | --- |
 | Recommended | Yes |
+| Multivalued | Yes |
 
 
 
@@ -93,6 +94,7 @@ domain_of:
 range: CameraPositionEnum
 required: false
 recommended: true
+multivalued: true
 
 ```
 </details></div>

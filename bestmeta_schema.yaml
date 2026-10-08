@@ -51,6 +51,7 @@ prefixes:
   UO:         http://purl.obolibrary.org/obo/UO_
   XCO:        http://purl.obolibrary.org/obo/XCO_
   xsd:        http://www.w3.org/2001/XMLSchema#
+  UCUM:       https://units-of-measurement.org/
 
 default_prefix: BeStMeta
 default_range: string
@@ -116,7 +117,6 @@ classes:
       Biological and experimental conditions applicable to all trials in
       the dataset. Covers organism identity, treatment, assay design,
       and environmental parameters.
-    abstract: true
     slots:
       - subject
       - experiment
@@ -157,22 +157,32 @@ classes:
 
     # At least one of: developmental_stage, developmental_stage_value+unit, 
     # or age_value+unit must be provided  
-    any_of:
-      - slot_conditions:
-          developmental_stage:
-            required: true
-      - slot_conditions:
-          developmental_stage_value:
-            required: true
-          developmental_stage_unit:
-            required: true
-      - slot_conditions:
-          age_value:
-            required: true
-          age_unit:
-            required: true
 
     rules:
+    
+      - description: >-
+          At least one of: developmental_stage, developmental_stage_value+unit, 
+          or age_value+unit must be provided
+        preconditions:
+          slot_conditions:
+            subject_type:
+              value_presence: PRESENT
+        postconditions:
+          any_of:
+            - slot_conditions:
+                developmental_stage:
+                  value_presence: PRESENT
+            - slot_conditions:
+                developmental_stage_value:
+                  value_presence: PRESENT
+                developmental_stage_unit:
+                  value_presence: PRESENT
+            - slot_conditions:
+                age_value:
+                  value_presence: PRESENT
+                age_unit:
+                  value_presence: PRESENT 
+    
     
       - description: >-
           When subject_type is organism, sex is a recommended field. 
@@ -227,11 +237,12 @@ classes:
       - arena_width_unit
       - arena_height
       - arena_height_unit
+      - arena_diameter
+      - arena_diameter_unit
+      - water_depth
+      - water_depth_unit
       - plate_well_count
       - well_shape_cross_section
-      - temperature_celsius
-      - light_cycle_type
-      - light_cycle_detail
       - mortality
       # conditionally required
       - n_individuals_start
@@ -271,16 +282,27 @@ classes:
           slot_conditions:
             arena_height_unit:
               required: true
-
-      - description: If light_cycle_type is cyclic_ld, light_cycle_detail should be provided.
+           
+      - description: arena_diameter requires arena_diameter_unit
         preconditions:
           slot_conditions:
-            light_cycle_type:
-              equals_string: cyclic_ld
+            arena_diameter:
+              value_presence: PRESENT
         postconditions:
           slot_conditions:
-            light_cycle_detail:
+            arena_diameter_unit:
               required: true
+
+      - description: water_depth requires water_depth_unit
+        preconditions:
+          slot_conditions:
+            water_depth:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            water_depth_unit:
+              required: true
+
               
       - description: when mortality is true, counts of individuals at the start and end are required
         preconditions: 
@@ -303,16 +325,29 @@ classes:
       - water_ph
       - water_temperature
       - water_temperature_unit
+      - light_cycle_type
+      - light_cycle_detail
+      - humidity
       
     rules:
       - description: water temperature requires water temperature unit
         preconditions:
           slot_conditions:
             water_temperature:
-              required: true
+              value_presence: PRESENT
         postconditions:
           slot_conditions:
             water_temperature_unit:
+              required: true
+              
+      - description: If light_cycle_type is cyclic_ld, light_cycle_detail should be provided.
+        preconditions:
+          slot_conditions:
+            light_cycle_type:
+              equals_string: cyclic_ld
+        postconditions:
+          slot_conditions:
+            light_cycle_detail:
               required: true
               
 
@@ -332,11 +367,13 @@ classes:
         - exposure_type
         # optional            
         - well_shape_bottom
-        - habituation_duration_min
+        - habituation_duration
+        - habituation_duration_unit
         - habituation_protocol
         - housing_conditions
         - exposure_route
-        - exposure_duration_h
+        - exposure_duration
+        - exposure_duration_unit
         - solvent_vehicle
         - control_type
 
@@ -364,6 +401,26 @@ classes:
           slot_conditions:
             exposure_compound_name:
               recommended: true
+              
+      - description: habituation_duration requires habituation_duration_unit
+        preconditions:
+          slot_conditions:
+            habituation_duration:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            habituation_duration_unit:
+              required: true
+
+      - description: exposure_duration requires exposure_duration_unit
+        preconditions:
+          slot_conditions:
+            exposure_duration:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            exposure_duration_unit:
+              required: true
               
   
 
@@ -413,8 +470,10 @@ classes:
       - objective_magnification
       # recommended, contextual across device types
       - camera_position
-      - camera_distance_mm
-      - lens_focal_length_mm
+      - camera_distance
+      - camera_distance_unit
+      - lens_focal_length
+      - lens_focal_length_unit
       - camera_sensor_type
       - contrast_polarity
       - closed_box_system_version
@@ -429,6 +488,26 @@ classes:
       - hardware_notes
     
     rules:
+    
+      - description: camera_distance requires camera_distance_unit
+        preconditions:
+          slot_conditions:
+            camera_distance:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            camera_distance_unit:
+              required: true
+
+      - description: lens_focal_length requires lens_focal_length_unit
+        preconditions:
+          slot_conditions:
+            lens_focal_length:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            lens_focal_length_unit:
+              required: true
 
       # ---------- CAMERA ----------
       - description: >-
@@ -467,9 +546,9 @@ classes:
           slot_conditions:
             camera_position:
               recommended: true
-            camera_distance_mm:
+            camera_distance:
               recommended: true
-            lens_focal_length_mm:
+            lens_focal_length:
               recommended: true
             camera_sensor_type:
               recommended: true
@@ -974,7 +1053,7 @@ slots:
   subject:
     description: >-
       Indicates if a single animals or multiple animals are used, it could be 1 for single-animal models
-      or well plate studie, >1 for mult--animal rodent studies                    
+      or well plate studies, >1 for multi-animal rodent studies                    
     multivalued: true
     inlined: true
     required: true
@@ -989,6 +1068,7 @@ slots:
       Represents the toal number of individual subjects in a given subject entry.
       Use a value greater than one to show its a homogenous subjects. Defaults to one (when omitted)
     range: integer
+    ifabsent: "int(1)"
 
   species_name:
     description: Scientific (Latin) binomial name of the study organism
@@ -1131,7 +1211,7 @@ slots:
     range: float
 
   arena_length_unit:
-    description: Unit of measurement for arena_length.
+    description: Unit of measurement for the length of the arena.
     required: false
     recommended: true
     range: LengthUnitEnum
@@ -1143,7 +1223,7 @@ slots:
     range: float
 
   arena_width_unit:
-    description: Unit of measurement for arena_width.
+    description: Unit of measurement for the width of the arena.
     required: false
     recommended: true
     range: LengthUnitEnum
@@ -1155,7 +1235,31 @@ slots:
     range: float
 
   arena_height_unit:
-    description: Unit of measurement for arena_height.
+    description: Unit of measurement for the height of the arena.
+    required: false
+    recommended: true
+    range: LengthUnitEnum
+    
+  arena_diameter: 
+    description: The diameter of the arena, for aquatic assays.
+    required: false
+    recommended: true
+    range: float
+    
+  arena_diameter_unit:
+    description: Unit of measurement for the diameter of the arena
+    required: false
+    recommended: true
+    range: LengthUnitEnum
+    
+  water_depth:
+    description: The depth of the water used for aquatic essays
+    required: false
+    recommended: true
+    range: float
+    
+  water_depth_unit:
+    description: Unit of measurement for the depth of water
     required: false
     recommended: true
     range: LengthUnitEnum
@@ -1178,14 +1282,6 @@ slots:
     recommended: true
     range: WellCrossSectionShapeEnum
 
-  temperature_celsius:
-    description: Water or ambient temperature during the recording in degrees Celsius
-    range: float
-    required: false
-    recommended: true
-    unit:
-      ucum_code:  Cel
-
   light_cycle_type:
     description: Standardized category of the light-dark cycle.
     required: false
@@ -1199,6 +1295,11 @@ slots:
     range: string
     exact_mappings:
       - MESH:D017440
+      
+  humidity:
+    description: Relative humidity where experiment was conducted (or the experiment area).
+    required: false
+    range: float
 
   treatment_name:
     description: Short label identifying the experimental treatment group, condition, or regimen.
@@ -1305,13 +1406,16 @@ slots:
     description: Geometric bottom shape of the wells of a multiwell plate.
     required: false
     range: WellBottomShapeEnum
-
-  habituation_duration_min:
-    description: Duration of habituation period before recording, in minutes
+    
+  habituation_duration: 
+    description: Duration of habituation period before recording.
     required: false
     range: float
-    unit:
-      ucum_code: min
+
+  habituation_duration_unit:
+    description: Unit of measurement used to measure habituation duration
+    required: false
+    range: TimeUnitEnum
 
   habituation_protocol:
     description: Description of habituation or acclimation prior to testing.
@@ -1332,12 +1436,15 @@ slots:
     exact_mappings:
       - MESH:D004333
 
-  exposure_duration_h:
+  exposure_duration: 
     description: Duration of chemical or treatment exposure in hours.
     required: false
     range: float
-    unit:
-      ucum_code: h
+  
+  exposure_duration_unit:
+    description: Unit of measurement used to report exposure duration.
+    required: false
+    range: TimeUnitEnum
 
   solvent_vehicle:
     description: Solvent or vehicle used to dissolve the test substance.
@@ -1351,6 +1458,7 @@ slots:
   control_type:
     description: Type of control group used.
     required: false
+    multivalued: true
     range: ControlTypeEnum
     exact_mappings:
       - NCIT:C178849 
@@ -1438,19 +1546,19 @@ slots:
 
   camera_count:
     description: Number of cameras used simultaneously.
-    required: true
+    required: false
     range: integer
 
   camera_type:
     description: General type of imaging device.
-    required: true
+    required: false
     range: CameraTypeEnum
     broad_mappings:
       - OBI:0000398
 
   camera_model:
     description: Full manufacturer model name of the camera.
-    required: true
+    required: false
     range: string
     examples:
       - value: "Basler acA1300-60gc"
@@ -1458,7 +1566,7 @@ slots:
 
   camera_manufacturer:
     description: Manufacturer of the camera.
-    required: true
+    required: false
     range: string
     exact_mappings:
       - schema:manufacturer
@@ -1469,31 +1577,38 @@ slots:
     recommended: true
     range: CameraSensorTypeEnum
 
-  camera_distance_mm:
-    description: Distance from camera lens to the arena floor in millimetres.
+
+  camera_distance: 
+    description: Distance from camera lens to the arena floor.
+    required: false
+    range: float
+    
+  camera_distance_unit:
+    description: Unit of measurement for camera distance.
     required: false
     recommended: true
-    range: float
-    unit:
-      ucum_code: mm
+    range: LengthUnitEnum
 
   camera_position:
     description: Position of the camera relative to the arena.
     required: false
     recommended: true
+    multivalued: true
     range: CameraPositionEnum
 
-  lens_focal_length_mm:
-    description: >-
+  lens_focal_length:
+    description: >- 
       Focal length of the imaging lens in millimetres;
       applicable to camera or microscope optics when reported.
     required: false
-    recommended: true
     range: float
-    unit:
-      ucum_code: mm
-    exact_mappings:
-      - AFQ:0000062
+ 
+  lens_focal_length_unit:
+    description: Unit of measurement for focal length of lens (microscope)
+    required: false
+    recommended: true
+    range: LengthUnitEnum
+    
 
   objective_magnification:
     description: Magnification of microscope objective (if applicable).
@@ -1911,11 +2026,9 @@ slots:
     required: false
     recommended: true
     range: boolean
-    examples:
-      - value: "true"
-      - value: "false"
     notes:
       - Use true if outputs were manually curated, corrected, or quality-checked by a human after automated tracking.
+    ifabsent: "false"
 
   compute_hardware:
     description: >-
@@ -2192,6 +2305,7 @@ enums:
     permissible_values:
       male:
       female:
+      hermaphrodite:
       mixed:
         description: Mixed male and female in same group.
       unknown:
@@ -2236,6 +2350,9 @@ enums:
       meter:
         meaning: UO:0000008
         aliases: ["m"]
+      pixels:
+        meaning: 
+        aliases: ["px"]
 
   WeightUnitEnum:
     description: Units of mass used to express weight measurements, ranging from micrograms to kilograms.
@@ -2249,6 +2366,35 @@ enums:
         aliases: ["g"]
       kg:
         meaning: UO:0000009
+        
+        
+  TimeUnitEnum:
+    description: Unit of time measurement, mapped to UCUM (Unified Code for Units of Measure) codes.
+    permissible_values:
+      milliseconds:
+        description: Milliseconds.
+        meaning: ms
+      seconds:
+        description: Seconds.
+        meaning: s
+      minutes:
+        description: Minutes.
+        meaning: min
+      hours:
+        description: Hours.
+        meaning: h
+      days:
+        description: Days.
+        meaning: d
+      weeks:
+        description: Weeks.
+        meaning: wk
+      months:
+        description: Months.
+        meaning: mo
+      years:
+        description: Years.
+        meaning: a
 
   ArenaShapeEnum:
     description: Geometric shape of the test arena. ## get feedback if the values are suitable
@@ -2264,13 +2410,17 @@ enums:
   ArenaTypeEnum:
     description: Type of the test arena, e.g., open field, multiwell plate or elevated plus maze.
     permissible_values:
+      petridish:
+      aquarium:
       open_field:
+      home_cage:
       plus_maze:
       y_maze:
       t_maze:
       multiwell_plate:
       light_dark_box:
       elevated_plus_maze:
+      custom: 
       other:
 
   WellCrossSectionShapeEnum:
@@ -2355,12 +2505,49 @@ enums:
     description: Type of control condition used in the experiment for comparison against treated groups.
     permissible_values:
       solvent_control:
+        description: >-
+          Control receiving only the solvent used to dissolve the test
+          compound (e.g. DMSO, ethanol), without the active compound.
       vehicle_control:
+        description: >-
+          Control receiving the full delivery vehicle/formulation used
+          to administer the treatment (which may include the solvent
+          plus additional excipients or carriers), without the active
+          compound.
       naive_control:
+        description: >-
+          Control never subjected to any procedural handling, injection,
+          or manipulation beyond standard housing; a fully unmanipulated
+          baseline.
       sham_control:
+        description: >-
+          Control subjected to the same surgical or procedural
+          intervention as treated subjects (e.g. anesthesia and incision
+          without lesion or implant), used to isolate the effect of the
+          procedure itself.
       positive_control:
+        description: >-
+          Control using a treatment already known to produce the effect
+          under investigation, used to confirm that the assay is capable
+          of detecting a true response when one is present.
+      negative_control:
+        description: >-
+          Control condition not expected to produce the effect or
+          response under investigation. Depending on field-specific
+          convention, may refer to an untreated/vehicle baseline, or to
+          a comparator compound delivered identically but known to lack
+          the relevant activity.
       untreated_control:
+        description: >-
+          Control subjected to the same handling and procedural context
+          as treated subjects (e.g. timing, injection procedure), but
+          receiving no active compound, solvent, or vehicle.
+      historical_control:
+        description: >-
+          Control data drawn from a previous, non-concurrent cohort or
+          study rather than run alongside the current treatment group.
       other:
+        description: Control type not described by other values
 
   CameraSensorTypeEnum:
     description: Image sensor technologies used in cameras.
@@ -2511,8 +2698,12 @@ enums:
         description: MPEG-4 container.
       avi:
         description: Audio Video Interleave.
+      hdf5:
+        description: Hierarchical Data Format Version 5
       mov:
         description: Apple QuickTime container.
+      image_seq:
+        description: a folder containing series of images (eg- png, jpeg etc)
       other:
         description: Other container format; describe in acquisition_notes.
 

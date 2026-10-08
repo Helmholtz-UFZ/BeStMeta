@@ -6,7 +6,7 @@ search:
 # Slot: arena_length_unit 
 
 
-_Unit of measurement for arena_length._
+_Unit of measurement for the length of the arena._
 
 
 
@@ -85,7 +85,7 @@ URI: [BeStMeta:arena_length_unit](https://w3id.org/BeStMeta/arena_length_unit)
 <details>
 ```yaml
 name: arena_length_unit
-description: Unit of measurement for arena_length.
+description: Unit of measurement for the length of the arena.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
