@@ -3,10 +3,10 @@ search:
   boost: 5.0
 ---
 
-# Slot: light_cycle_type 
+# Slot: humidity 
 
 
-_Standardized category of the light-dark cycle._
+_Relative humidity where experiment was conducted (or the experiment area)._
 
 
 
@@ -14,7 +14,7 @@ _Standardized category of the light-dark cycle._
 
 
 
-URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
+URI: [BeStMeta:humidity](https://w3id.org/BeStMeta/humidity)
 <!-- no inheritance hierarchy -->
 
 
@@ -38,14 +38,13 @@ URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
 
 | Property | Value |
 | --- | --- |
-| Range | [LightCycleTypeEnum](LightCycleTypeEnum.md) |
+| Range | [Float](Float.md) |
 | Domain Of | [EnvironmentalConditions](EnvironmentalConditions.md) |
 
 ### Cardinality and Requirements
 
 | Property | Value |
 | --- | --- |
-| Recommended | Yes |
 
 
 
@@ -74,8 +73,8 @@ URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | BeStMeta:light_cycle_type |
-| native | BeStMeta:light_cycle_type |
+| self | BeStMeta:humidity |
+| native | BeStMeta:humidity |
 
 
 
@@ -84,15 +83,14 @@ URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
 
 <details>
 ```yaml
-name: light_cycle_type
-description: Standardized category of the light-dark cycle.
+name: humidity
+description: Relative humidity where experiment was conducted (or the experiment area).
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
 - EnvironmentalConditions
-range: LightCycleTypeEnum
+range: float
 required: false
-recommended: true
 
 ```
 </details></div>

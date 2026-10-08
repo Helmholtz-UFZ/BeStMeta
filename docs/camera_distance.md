@@ -3,10 +3,10 @@ search:
   boost: 5.0
 ---
 
-# Slot: light_cycle_type 
+# Slot: camera_distance 
 
 
-_Standardized category of the light-dark cycle._
+_Distance from camera lens to the arena floor._
 
 
 
@@ -14,7 +14,7 @@ _Standardized category of the light-dark cycle._
 
 
 
-URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
+URI: [BeStMeta:camera_distance](https://w3id.org/BeStMeta/camera_distance)
 <!-- no inheritance hierarchy -->
 
 
@@ -25,7 +25,7 @@ URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EnvironmentalConditions](EnvironmentalConditions.md) | Environmental conditions and husbandry parameters for the experiments |  no  |
+| [Hardware](Hardware.md) | Camera systems, optical configuration, and physical recording infrastructure ... |  no  |
 
 
 
@@ -38,14 +38,13 @@ URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
 
 | Property | Value |
 | --- | --- |
-| Range | [LightCycleTypeEnum](LightCycleTypeEnum.md) |
-| Domain Of | [EnvironmentalConditions](EnvironmentalConditions.md) |
+| Range | [Float](Float.md) |
+| Domain Of | [Hardware](Hardware.md) |
 
 ### Cardinality and Requirements
 
 | Property | Value |
 | --- | --- |
-| Recommended | Yes |
 
 
 
@@ -74,8 +73,8 @@ URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | BeStMeta:light_cycle_type |
-| native | BeStMeta:light_cycle_type |
+| self | BeStMeta:camera_distance |
+| native | BeStMeta:camera_distance |
 
 
 
@@ -84,15 +83,14 @@ URI: [BeStMeta:light_cycle_type](https://w3id.org/BeStMeta/light_cycle_type)
 
 <details>
 ```yaml
-name: light_cycle_type
-description: Standardized category of the light-dark cycle.
+name: camera_distance
+description: Distance from camera lens to the arena floor.
 from_schema: https://w3id.org/bestmeta/schema
 rank: 1000
 domain_of:
-- EnvironmentalConditions
-range: LightCycleTypeEnum
+- Hardware
+range: float
 required: false
-recommended: true
 
 ```
 </details></div>

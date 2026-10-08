@@ -13,8 +13,6 @@ _Biological and experimental conditions applicable to all trials in the dataset.
 <div data-search-exclude markdown="1">
 
 
-* __NOTE__: this is an abstract class and should not be instantiated directly
-
 
 URI: [BeStMeta:ExperimentalConditions](https://w3id.org/BeStMeta/ExperimentalConditions)
 
@@ -137,7 +135,6 @@ name: ExperimentalConditions
 description: Biological and experimental conditions applicable to all trials in the
   dataset. Covers organism identity, treatment, assay design, and environmental parameters.
 from_schema: https://w3id.org/bestmeta/schema
-abstract: true
 slots:
 - subject
 - experiment
@@ -155,12 +152,11 @@ name: ExperimentalConditions
 description: Biological and experimental conditions applicable to all trials in the
   dataset. Covers organism identity, treatment, assay design, and environmental parameters.
 from_schema: https://w3id.org/bestmeta/schema
-abstract: true
 attributes:
   subject:
     name: subject
     description: 'Indicates if a single animals or multiple animals are used, it could
-      be 1 for single-animal models or well plate studie, >1 for mult--animal rodent
+      be 1 for single-animal models or well plate studies, >1 for multi-animal rodent
       studies                    '
     from_schema: https://w3id.org/bestmeta/schema
     rank: 1000

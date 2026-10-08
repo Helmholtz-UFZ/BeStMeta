@@ -395,11 +395,9 @@ attributes:
     notes:
     - Use true if outputs were manually curated, corrected, or quality-checked by
       a human after automated tracking.
-    examples:
-    - value: 'true'
-    - value: 'false'
     from_schema: https://w3id.org/bestmeta/schema
     rank: 1000
+    ifabsent: 'false'
     owner: TrackingAnalysis
     domain_of:
     - TrackingAnalysis
