@@ -1,0 +1,71 @@
+# ============================================================================
+#  SITE PERSONALIZATION
+#  Edit this file to customize the generated documentation website.
+#  Everything a maintainer would normally want to change lives here, so you
+#  don't have to touch the build scripts or the workflow.
+# ============================================================================
+
+# --- Which schema to document ---------------------------------------------
+# Path to the LinkML schema YAML file, relative to THIS website/ folder.
+# The schema lives at the repository root, one level up.
+schema_file: ../bestmeta_schema.yaml
+
+# --- Basic site identity ---------------------------------------------------
+site_name: BeStMeta Metadata Schema
+site_description: >-
+  Documentation for the BeStMeta cross-domain metadata schema for
+  video tracking assays (VTAs).
+site_author: BeStMeta Project
+
+# The public URL the site will be served from (GitHub Pages, project site).
+site_url: https://helmholtz-ufz.github.io/BeStMeta/
+
+# Link shown behind the "repository" icon in the top-right of the site.
+repo_url: https://github.com/Helmholtz-UFZ/BeStMeta
+repo_name: Helmholtz-UFZ/BeStMeta
+
+# Copyright line shown in the footer.
+copyright: "© BeStMeta / Helmholtz-UFZ — content licensed under CC-BY-4.0"
+
+# --- Branding: logo & favicon ---------------------------------------------
+# Put your image files in docs/overrides/assets/ and reference them here.
+# Leave logo empty ("") to fall back to a Material icon (see logo_icon).
+logo: assets/logo.png          # e.g. assets/logo.png  (empty "" = use icon)
+favicon: assets/favicon.png    # e.g. assets/favicon.png (empty "" = use logo)
+logo_icon: material/database   # Material icon used only when 'logo' is empty
+
+# --- Colors / theme --------------------------------------------------------
+# Any Material primary/accent color name works:
+# red pink purple deep-purple indigo blue light-blue cyan teal green
+# light-green lime yellow amber orange deep-orange brown grey blue-grey black white
+theme_primary_color: teal
+theme_accent_color: deep-orange
+
+# Google Font names (or set to "" to use Material defaults).
+font_text: Roboto
+font_code: Roboto Mono
+
+# Offer a light/dark mode toggle.
+enable_dark_mode_toggle: true
+
+# --- Navigation labels -----------------------------------------------------
+# The two main sections requested. Rename freely.
+intro_nav_label: Introduction
+schema_nav_label: Overview on the Schema
+
+# The auto-generated reference section (enumerations, slots, data types).
+reference_nav_label: Enums & Types
+# Set to false to hide the reference section entirely.
+show_reference_section: true
+
+# --- Footer social links (optional) ---------------------------------------
+# Icons: https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/
+social_links:
+  - icon: fontawesome/brands/github
+    link: https://github.com/Helmholtz-UFZ/BeStMeta
+  # - icon: fontawesome/brands/twitter
+  #   link: https://twitter.com/yourhandle
+
+# --- Analytics (optional) --------------------------------------------------
+# Leave empty ("") to disable. Provide a Google Analytics 4 measurement id.
+google_analytics: ""

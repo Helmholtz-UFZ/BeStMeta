@@ -1,0 +1,78 @@
+name: Build & Deploy Schema Docs
+
+# ---------------------------------------------------------------------------
+# Builds a static documentation website from the LinkML schema and publishes
+# it to GitHub Pages.
+#
+# The website tooling lives in the website/ subfolder; the schema it documents
+# lives at the repository root (bestmeta_schema.yaml).
+#
+# One-time setup in the repository:
+#   Settings > Pages > "Build and deployment" > Source: "GitHub Actions"
+# ---------------------------------------------------------------------------
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "bestmeta_schema.yaml"   # the schema at the repo root
+      - "website/**"             # site config, intro, assets, build script
+      - ".github/workflows/docs.yml"
+  # Allow manual runs from the Actions tab.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: website/requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Lint LinkML schema
+        run: linkml-lint ../bestmeta_schema.yaml --ignore-warnings && echo "✓ Schema linting passed successfully"
+
+      - name: Generate Markdown docs and mkdocs.yml
+        run: python scripts/build_site.py
+
+      - name: Build static site with MkDocs
+        run: mkdocs build --strict
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: website/site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
