@@ -1,0 +1,318 @@
+```yaml
+biomedNeuroExtension:
+
+  classes:
+
+    BiomedNeuroExtension:
+      description: >-
+        Domain-specific metadata for biomedical and neuroscience
+        experiments. Captures behavioral paradigms, biological models,
+        experimental manipulations, assay modalities, and outcome measures
+        not represented in the core VTADataset schema.
+
+      slots:
+        # Experimental paradigm
+        - experimental_paradigm
+        - paradigm_notes
+
+        # Biological model
+        - biological_model
+        - organism
+        - developmental_stage
+        - sex
+        - strain
+
+        # Biological context
+        - brain_region
+        - tissue_type
+        - cell_type
+
+        # Experimental manipulation
+        - experimental_manipulation
+        - manipulation_description
+
+        # Assay
+        - assay_modality
+        - assay_duration_min
+
+        # Outcome
+        - primary_endpoint
+        - secondary_endpoints
+
+        # Additional information
+        - experimental_notes
+
+
+  slots:
+
+    experimental_paradigm:
+      description: Experimental paradigm performed in the study.
+      range: BiomedParadigmEnum
+      required: true
+      multivalued: true
+
+    paradigm_notes:
+      description: Additional paradigm-specific protocol details.
+      range: string
+
+    biological_model:
+      description: Biological model used for the experiment.
+      range: BiomedModelEnum
+      required: true
+
+    organism:
+      description: Species or organism used.
+      range: string
+      recommended: true
+
+    developmental_stage:
+      description: Developmental stage or age of the experimental subject.
+      range: string
+      recommended: true
+
+    sex:
+      description: Biological sex of the experimental subject.
+      range: string
+
+    strain:
+      description: Animal strain or genetic background.
+      range: string
+
+    brain_region:
+      description: Brain region or anatomical structure investigated.
+      range: string
+
+    tissue_type:
+      description: Tissue analysed during the experiment.
+      range: string
+
+    cell_type:
+      description: Cell population or cell type investigated.
+      range: string
+
+    experimental_manipulation:
+      description: Primary experimental manipulation performed.
+      range: ExperimentalManipulationEnum
+      recommended: true
+
+    manipulation_description:
+      description: Description of the manipulation, including parameters when applicable.
+      range: string
+
+    assay_modality:
+      description: Primary assay modality used to acquire the data.
+      range: AssayModalityEnum
+      required: true
+
+    assay_duration_min:
+      description: Duration of the experimental assay in minutes.
+      range: float
+
+    primary_endpoint:
+      description: Primary experimental outcome measured.
+      range: string
+      required: true
+
+    secondary_endpoints:
+      description: Additional outcome measures collected.
+      range: string
+      multivalued: true
+
+    experimental_notes:
+      description: Additional notes relevant to the experiment.
+      range: string
+
+
+  enums:
+
+    BiomedParadigmEnum:
+      description: Common biomedical and neuroscience experimental paradigms.
+      permissible_values:
+
+        social_habituation:
+          description: Social recognition following repeated exposure to a conspecific.
+
+        social_preference:
+          description: Preference for social versus non-social stimuli.
+
+        social_novelty:
+          description: Preference for a novel versus familiar conspecific.
+
+        open_field_test:
+          description: Assessment of locomotion and anxiety-like behaviour.
+
+        elevated_plus_maze:
+          description: Anxiety assessment using an elevated maze.
+
+        light_dark_transition:
+          description: Anxiety-like behaviour in alternating light and dark compartments.
+
+        novel_object_recognition:
+          description: Recognition memory assessment.
+
+        fear_conditioning:
+          description: Associative learning paradigm.
+
+        y_maze:
+          description: Working memory assessment.
+
+        morris_water_maze:
+          description: Spatial learning and memory.
+
+        forced_swim_test:
+          description: Behavioural despair assay.
+
+        tail_suspension_test:
+          description: Behavioural despair assay in mice.
+
+        locomotor_activity:
+          description: Baseline or stimulus-induced locomotor activity.
+
+        startle_response:
+          description: Acoustic or visual startle response.
+
+        seizure_assay:
+          description: Assessment of seizure susceptibility or severity.
+
+        sleep_assay:
+          description: Sleep or circadian rhythm assessment.
+
+        calcium_imaging:
+          description: Functional calcium imaging experiment.
+
+        electrophysiology:
+          description: Electrophysiological recording experiment.
+
+        imaging_assay:
+          description: Structural or functional imaging experiment.
+
+        molecular_assay:
+          description: Molecular or biochemical assay.
+
+        unknown:
+          description: Experimental paradigm not specified.
+
+
+    BiomedModelEnum:
+      description: Biological model used in the study.
+      permissible_values:
+
+        wildtype:
+          description: Wild-type organism.
+
+        transgenic:
+          description: Transgenic model.
+
+        knockout:
+          description: Gene knockout model.
+
+        knockin:
+          description: Gene knock-in model.
+
+        disease_model:
+          description: Disease-associated experimental model.
+
+        pharmacological_model:
+          description: Pharmacologically induced model.
+
+        injury_model:
+          description: Injury or lesion model.
+
+        developmental_model:
+          description: Developmental model.
+
+        primary_cell_culture:
+          description: Primary cultured cells.
+
+        organoid:
+          description: Organoid model.
+
+        ex_vivo_slice:
+          description: Ex vivo tissue slice preparation.
+
+        patient_derived:
+          description: Patient-derived biological material.
+
+        unknown:
+          description: Model not specified.
+
+
+    ExperimentalManipulationEnum:
+      description: Primary manipulation applied during the experiment.
+      permissible_values:
+
+        none:
+          description: No experimental manipulation.
+
+        pharmacological:
+          description: Drug or compound administration.
+
+        genetic:
+          description: Genetic manipulation.
+
+        optogenetic:
+          description: Optogenetic stimulation or inhibition.
+
+        chemogenetic:
+          description: Chemogenetic manipulation.
+
+        electrical_stimulation:
+          description: Electrical stimulation.
+
+        sensory_stimulation:
+          description: Visual, auditory, tactile or other sensory stimulation.
+
+        behavioural_training:
+          description: Behavioural training or conditioning.
+
+        environmental_enrichment:
+          description: Environmental enrichment.
+
+        stress:
+          description: Stress paradigm.
+
+        lesion:
+          description: Lesion or injury.
+
+        dietary:
+          description: Dietary manipulation.
+
+        unknown:
+          description: Manipulation not specified.
+
+
+    AssayModalityEnum:
+      description: Experimental modality used to generate the data.
+      permissible_values:
+
+        behaviour:
+          description: Behavioural assay.
+
+        imaging:
+          description: Imaging-based assay.
+
+        electrophysiology:
+          description: Electrophysiological recording.
+
+        histology:
+          description: Histological analysis.
+
+        molecular:
+          description: Molecular biology assay.
+
+        transcriptomics:
+          description: Transcriptomic assay.
+
+        proteomics:
+          description: Proteomic assay.
+
+        metabolomics:
+          description: Metabolomic assay.
+
+        computational:
+          description: Computational or in silico analysis.
+
+        unknown:
+          description: Assay modality not specified.
+```
+
