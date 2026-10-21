@@ -19,6 +19,7 @@ mkdocs serve
 Re-run `build_site.py` whenever the schema changes. `mkdocs build --strict`
 reproduces exactly what CI does (output in `website/site/`).
 
+
 ## Note on the existing `docs/` folder
 This website uses `website/docs/`, which is separate from the repository's
 top-level `docs/` folder — nothing there is touched.

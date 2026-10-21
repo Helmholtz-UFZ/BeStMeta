@@ -43,3 +43,70 @@
   border-bottom: 2px solid var(--md-primary-fg-color);
   padding-bottom: 0.25rem;
 }
+
+/* -------------------------------------------------------------------------
+   Institutional logos above the footer (see docs/overrides/main.html).
+   Logos are configured in site.config.yml -> footer_logos.
+   ------------------------------------------------------------------------- */
+.bm-institutions {
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  background-color: var(--md-default-bg-color);
+}
+
+.bm-institutions__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.4rem 0.8rem;
+}
+
+.bm-institutions__title {
+  margin: 0;
+  font-size: 0.7rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.bm-institutions__logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem 3rem;
+}
+
+.bm-institutions__logo {
+  display: inline-flex;
+  border-radius: 0.3rem;
+}
+
+.bm-institutions__logo:focus-visible {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 0.3rem;
+}
+
+.bm-institutions .bm-logo-img {
+  display: block;
+  height: var(--bm-logo-height, 3rem);
+  width: auto;
+  max-width: 100%;
+}
+
+/* Light/dark logo variants (only used when image_dark is set). */
+.bm-institutions .bm-only-dark,
+[data-md-color-scheme="slate"] .bm-institutions .bm-only-light {
+  display: none;
+}
+
+[data-md-color-scheme="slate"] .bm-institutions .bm-only-dark {
+  display: block;
+}
+
+/* Logos without a dark variant get a white backing in dark mode so that
+   dark lettering stays readable. */
+[data-md-color-scheme="slate"] .bm-institutions .bm-logo-img--chip {
+  box-sizing: content-box;
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.3rem;
+  background-color: #fff;
+}

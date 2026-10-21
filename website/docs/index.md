@@ -12,7 +12,7 @@ on ecotoxicology and biomedical research.
 
 ## How to read these docs
 
-- **Introduction** *(you are here)* — a short orientation to the schema.
+- **Introduction**  — a short orientation to the schema.
 - **Overview on the Schema** — one page per class. Each page lists that class's
   **slots** (fields), their data types, whether they are required or
   recommended, and how they map to external ontologies.
@@ -43,7 +43,4 @@ SHACL, OWL, Python classes, and more, using the standard LinkML generators.
 
 ---
 
-*This documentation is generated automatically from the LinkML source. To edit
-this introduction, change `docs/index.md`. To restyle or rebrand the site, edit
-`site.config.yml`.*
-The content here needs to change, but can be done later
+*This documentation is generated automatically from the LinkML source*

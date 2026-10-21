@@ -33,6 +33,9 @@ DOCS_DIR = ROOT / "docs"
 # All LinkML-generated pages live together in one flat folder so that the
 # relative cross-links gen-doc emits (Class -> slot -> enum) keep working.
 GEN_DIR = DOCS_DIR / "schema"
+# Theme overrides (templates, CSS, images). Paths like assets/logo.png in
+# site.config.yml are relative to this folder.
+OVERRIDES_DIR = DOCS_DIR / "overrides"
 MKDOCS_PATH = ROOT / "mkdocs.yml"
 
 
@@ -230,6 +233,51 @@ def theme_block(cfg: dict) -> dict:
     return theme
 
 
+def footer_logos(cfg: dict) -> list[dict]:
+    """
+    Validate the footer_logos entries from site.config.yml.
+
+    Image paths are relative to the theme's custom_dir (docs/overrides/), the
+    same convention as `logo` and `favicon`. Entries whose image file is
+    missing are skipped with a warning instead of failing the build, so the
+    site still deploys before the logo files have been added.
+    """
+    logos: list[dict] = []
+    for i, item in enumerate(cfg.get("footer_logos") or [], start=1):
+        if not isinstance(item, dict):
+            print(f"    WARNING: footer_logos entry {i} is not a mapping; skipped",
+                  file=sys.stderr)
+            continue
+
+        image = (item.get("image") or "").strip()
+        if not image:
+            print(f"    WARNING: footer_logos entry {i} has no 'image'; skipped",
+                  file=sys.stderr)
+            continue
+        if not (OVERRIDES_DIR / image).is_file():
+            print(f"    WARNING: footer logo not found: {OVERRIDES_DIR / image}; skipped",
+                  file=sys.stderr)
+            continue
+
+        image_dark = (item.get("image_dark") or "").strip()
+        if image_dark and not (OVERRIDES_DIR / image_dark).is_file():
+            print(f"    WARNING: dark footer logo not found: {OVERRIDES_DIR / image_dark}; "
+                  "using the light version in dark mode", file=sys.stderr)
+            image_dark = ""
+
+        entry = {
+            "name": (item.get("name") or Path(image).stem).strip(),
+            "image": image,
+        }
+        if image_dark:
+            entry["image_dark"] = image_dark
+        link = (item.get("link") or "").strip()
+        if link:
+            entry["link"] = link
+        logos.append(entry)
+    return logos
+
+
 def build_mkdocs(cfg: dict, schema: dict, class_files: list[str], ref_files: list[str]) -> dict:
     intro_label = cfg.get("intro_nav_label", "Introduction")
     schema_label = cfg.get("schema_nav_label", "Overview on the Schema")
@@ -253,6 +301,9 @@ def build_mkdocs(cfg: dict, schema: dict, class_files: list[str], ref_files: lis
         "repo_name": cfg.get("repo_name", ""),
         "copyright": cfg.get("copyright", ""),
         "docs_dir": "docs",
+        # docs/overrides/ is the theme's custom_dir; its files are already
+        # served via the theme, so don't also publish them as raw doc files.
+        "exclude_docs": "overrides/\n",
         "nav": nav,
         "theme": theme_block(cfg),
         "extra": {},
@@ -288,6 +339,13 @@ def build_mkdocs(cfg: dict, schema: dict, class_files: list[str], ref_files: lis
     social = cfg.get("social_links") or []
     if social:
         mkdocs["extra"]["social"] = social
+
+    # Institutional logos above the footer (rendered by docs/overrides/main.html)
+    logos = footer_logos(cfg)
+    if logos:
+        mkdocs["extra"]["footer_logos"] = logos
+        mkdocs["extra"]["footer_logos_title"] = (cfg.get("footer_logos_title") or "").strip()
+        mkdocs["extra"]["footer_logo_height"] = str(cfg.get("footer_logo_height") or "3rem")
 
     # Analytics
     ga = (cfg.get("google_analytics") or "").strip()

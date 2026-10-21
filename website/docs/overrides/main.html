@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block footer %}
+  {%- set logos = config.extra.footer_logos -%}
+  {% if logos %}
+    <div class="bm-institutions" style="--bm-logo-height: {{ config.extra.footer_logo_height }}">
+      <div class="md-grid bm-institutions__inner">
+        {% if config.extra.footer_logos_title %}
+          <p class="bm-institutions__title">{{ config.extra.footer_logos_title }}</p>
+        {% endif %}
+        <div class="bm-institutions__logos">
+          {% for logo in logos %}
+            {%- set tag = "a" if logo.link else "span" -%}
+            <{{ tag }} class="bm-institutions__logo"
+              {%- if logo.link %} href="{{ logo.link }}" target="_blank" rel="noopener"{% endif %}
+              title="{{ logo.name }}">
+              {% if logo.image_dark %}
+                <img src="{{ logo.image | url }}" alt="{{ logo.name }}" class="bm-logo-img bm-only-light">
+                <img src="{{ logo.image_dark | url }}" alt="{{ logo.name }}" class="bm-logo-img bm-only-dark">
+              {% else %}
+                <img src="{{ logo.image | url }}" alt="{{ logo.name }}" class="bm-logo-img bm-logo-img--chip">
+              {% endif %}
+            </{{ tag }}>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {{ super() }}
+{% endblock %}

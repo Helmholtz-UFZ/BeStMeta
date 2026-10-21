@@ -1,8 +1,6 @@
 # ============================================================================
 #  SITE PERSONALIZATION
 #  Edit this file to customize the generated documentation website.
-#  Everything a maintainer would normally want to change lives here, so you
-#  don't have to touch the build scripts or the workflow.
 # ============================================================================
 
 # --- Which schema to document ---------------------------------------------
@@ -18,14 +16,14 @@ site_description: >-
 site_author: BeStMeta Project
 
 # The public URL the site will be served from (GitHub Pages, project site).
-site_url: https://helmholtz-ufz.github.io/BeStMeta/
+site_url: https://helmholtz-imaging.de/project/bestmeta/
 
 # Link shown behind the "repository" icon in the top-right of the site.
 repo_url: https://github.com/Helmholtz-UFZ/BeStMeta
 repo_name: Helmholtz-UFZ/BeStMeta
 
 # Copyright line shown in the footer.
-copyright: "© BeStMeta / Helmholtz-UFZ — content licensed under CC-BY-4.0"
+copyright: "BeStMeta / Helmholtz-UFZ and MDC— content licensed under CC-BY-4.0"
 
 # --- Branding: logo & favicon ---------------------------------------------
 # Put your image files in docs/overrides/assets/ and reference them here.
@@ -66,6 +64,15 @@ social_links:
   # - icon: fontawesome/brands/twitter
   #   link: https://twitter.com/yourhandle
 
-# --- Analytics (optional) --------------------------------------------------
-# Leave empty ("") to disable. Provide a Google Analytics 4 measurement id.
-google_analytics: ""
+# --- Institutional logos in the footer (optional) --------------------------
+footer_logos_title: "" 
+footer_logo_height: 3rem
+footer_logos:
+  - name: UFZ
+    image: assets/institutions/UFZ_logo.png
+    image_dark: ""
+    link: "www.ufz.de"
+  - name: MDC
+    image: assets/institutions/MDC_logo.png
+    image_dark: ""
+    link: "https://www.mdc-berlin.de/"
