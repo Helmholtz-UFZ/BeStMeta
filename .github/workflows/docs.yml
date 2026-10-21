@@ -1,37 +1,28 @@
-name: Build & Deploy Schema Docs
-
-# ---------------------------------------------------------------------------
-# Builds a static documentation website from the LinkML schema and publishes
-# it to GitHub Pages.
-#
-# The website tooling lives in the website/ subfolder; the schema it documents
-# lives at the repository root (bestmeta_schema.yaml).
-#
-# One-time setup in the repository:
-#   Settings > Pages > "Build and deployment" > Source: "GitHub Actions"
-# ---------------------------------------------------------------------------
+name: build_deploy_schema
 
 on:
   push:
     branches: [main]
     paths:
-      - "bestmeta_schema.yaml"   # the schema at the repo root
-      - "website/**"             # site config, intro, assets, build script
+      - "bestmeta_schema.yaml"  
+      - "website/**"           
       - ".github/workflows/docs.yml"
-  # Allow manual runs from the Actions tab.
+      - ".github/workflows/checks.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
+  checks:
+    uses: ./.github/workflows/checks.yml
+
   build:
+    needs: checks
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -52,9 +43,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Lint LinkML schema
-        run: linkml-lint ../bestmeta_schema.yaml --ignore-warnings && echo "✓ Schema linting passed successfully"
-
       - name: Generate Markdown docs and mkdocs.yml
         run: python scripts/build_site.py
 
@@ -69,6 +57,10 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    # access granted just on the deployment
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
