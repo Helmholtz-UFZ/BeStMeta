@@ -16,7 +16,7 @@ site_description: >-
 site_author: BeStMeta Project
 
 # The public URL the site will be served from (GitHub Pages, project site).
-site_url: https://helmholtz-imaging.de/project/bestmeta/
+site_url: https://helmholtz-ufz.github.io/BeStMeta/
 
 # Link shown behind the "repository" icon in the top-right of the site.
 repo_url: https://github.com/Helmholtz-UFZ/BeStMeta
@@ -71,7 +71,7 @@ footer_logos:
   - name: UFZ
     image: assets/institutions/UFZ_logo.png
     image_dark: ""
-    link: "www.ufz.de"
+    link: "https://www.ufz.de"
   - name: MDC
     image: assets/institutions/MDC_logo.png
     image_dark: ""

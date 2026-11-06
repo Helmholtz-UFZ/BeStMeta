@@ -167,6 +167,10 @@ venv.bak/
 # mkdocs documentation
 /site
 
+# MkDocs build output and temporary gen-doc folder (rebuilt by CI)
+website/site/
+website/docs/_generated/
+
 # mypy
 .mypy_cache/
 .dmypy.json
