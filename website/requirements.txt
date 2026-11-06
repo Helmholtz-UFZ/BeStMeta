@@ -1,0 +1,4 @@
+linkml>=1.8
+mkdocs-material>=9.5
+pymdown-extensions>=10.0
+PyYAML>=6.0
